@@ -1,2 +1,5 @@
 # prosemirror-adapter
-A universal adapter to create prosemirror nodeview from frameworks. (React, Vue and more)...
+
+> ⚠️: This project is still WIP.
+
+A universal adapter to create [prosemirror node view](https://prosemirror.net/docs/ref/#view.NodeView) from frameworks. (React, Vue and more)...
