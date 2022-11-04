@@ -21,15 +21,16 @@
         "react"
     ],
     "dependencies": {
-        "@vitejs/plugin-react": "^2.2.0",
         "nanoid": "^4.0.0",
-        "tslib": "^2.4.0"
+        "tslib": "^2.4.0",
+        "@prosemirror-adapter/core": "workspace:*"
     },
     "peerDependencies": {
         "react": "*",
         "react-dom": "*"
     },
     "devDependencies": {
+        "@vitejs/plugin-react": "^2.2.0",
         "@types/react": "^18.0.0",
         "@types/react-dom": "^18.0.0",
         "react": "^18.0.0",

@@ -10,7 +10,7 @@
         "start": "concurrently -n es,dts \"vite build --watch\"  \"tsc --emitDeclarationOnly --watch\"",
         "test": "vitest",
         "tsc": "tsc --noEmit && echo",
-        "build": "tsc --emitDeclarationOnly && vite build"
+        "build": "vite build && tsc --emitDeclarationOnly"
     },
     "files": [
         "lib",
@@ -20,7 +20,6 @@
         "prosemirror-adapter"
     ],
     "dependencies": {
-        "nanoid": "^4.0.0",
         "tslib": "^2.4.0"
     }
 }

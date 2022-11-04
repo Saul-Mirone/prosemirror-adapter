@@ -15,7 +15,7 @@ export class CoreNodeView implements NodeView {
     options: CoreNodeViewUserOptions<CoreNodeView>;
 
     static create(spec: CoreNodeViewSpec<CoreNodeView>) {
-        const coreNodeView = new CoreNodeView(spec);
+        const coreNodeView = new this(spec);
         const userOptions = spec.options;
         const overrideOptions = {
             setSelection: userOptions.setSelection?.bind(coreNodeView),
@@ -40,7 +40,7 @@ export class CoreNodeView implements NodeView {
             : document.createElement(as);
     }
 
-    private constructor({
+    protected constructor({
         node,
         view,
         getPos,

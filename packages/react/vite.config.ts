@@ -9,6 +9,7 @@ const resolvePath = (str: string) => resolve(__dirname, str);
 export default defineConfig({
     build: {
         sourcemap: true,
+        emptyOutDir: false,
         lib: {
             entry: resolvePath('src/index.ts'),
             name: 'prosemirror-adapter_react',
