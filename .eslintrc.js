@@ -1,4 +1,4 @@
-/* Copyright 2021, Milkdown by Mirone. */
+/* Copyright 2021, Prosemirror Adapter by Mirone. */
 
 module.exports = {
     root: true,
@@ -22,7 +22,7 @@ module.exports = {
 
         'import/prefer-default-export': 'off',
         'import/no-default-export': 'error',
-        'import/no-unresolved': ['error', { ignore: ['@milkdown/prose/*', 'mdast', 'unist', 'vitest'] }],
+        'import/no-unresolved': ['error', { ignore: ['vitest'] }],
 
         '@typescript-eslint/explicit-module-boundary-types': 'off',
         '@typescript-eslint/no-unused-vars': 'off',
@@ -32,7 +32,7 @@ module.exports = {
 
         'tsdoc/syntax': 'warn',
 
-        'header/header': ['error', 'block', ' Copyright 2021, Milkdown by Mirone. '],
+        'header/header': ['error', 'block', ' Copyright 2021, Prosemirror Adapter by Mirone. '],
     },
     settings: {
         react: {

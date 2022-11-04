@@ -1,0 +1,26 @@
+{
+    "name": "@prosemirror-adapter/core",
+    "version": "0.0.1",
+    "type": "module",
+    "main": "./lib/index.es.js",
+    "types": "./lib/index.d.ts",
+    "sideEffects": false,
+    "license": "MIT",
+    "scripts": {
+        "start": "concurrently -n es,dts \"vite build --watch\"  \"tsc --emitDeclarationOnly --watch\"",
+        "test": "vitest",
+        "tsc": "tsc --noEmit && echo",
+        "build": "tsc --emitDeclarationOnly && vite build"
+    },
+    "files": [
+        "lib",
+        "src"
+    ],
+    "keywords": [
+        "prosemirror-adapter"
+    ],
+    "dependencies": {
+        "nanoid": "^4.0.0",
+        "tslib": "^2.4.0"
+    }
+}
