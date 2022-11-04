@@ -9,7 +9,7 @@ export type CoreNodeViewUserOptions<T> = {
     as?: DOMSpec;
     contentAs?: DOMSpec;
 
-    // Events
+    // Overrides
     update?: (this: T, node: Node, decorations: readonly Decoration[], innerDecorations: DecorationSource) => boolean;
     selectNode?: (this: T) => void;
     deselectNode?: (this: T) => void;

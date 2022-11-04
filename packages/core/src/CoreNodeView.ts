@@ -20,6 +20,8 @@ export class CoreNodeView implements NodeView {
         const overrideOptions = {
             setSelection: userOptions.setSelection?.bind(coreNodeView),
             stopEvent: userOptions.stopEvent?.bind(coreNodeView),
+            selectNode: userOptions.selectNode?.bind(coreNodeView),
+            deselectNode: userOptions.deselectNode?.bind(coreNodeView),
         };
 
         Object.assign(coreNodeView, overrideOptions);
@@ -38,7 +40,14 @@ export class CoreNodeView implements NodeView {
             : document.createElement(as);
     }
 
-    constructor({ node, view, getPos, decorations, innerDecorations, options }: CoreNodeViewSpec<CoreNodeView>) {
+    private constructor({
+        node,
+        view,
+        getPos,
+        decorations,
+        innerDecorations,
+        options,
+    }: CoreNodeViewSpec<CoreNodeView>) {
         this.node = node;
         this.view = view;
         this.getPos = getPos;
@@ -61,6 +70,8 @@ export class CoreNodeView implements NodeView {
             result = userUpdate.call(this, this.node, this.decorations, this.innerDecorations);
         }
 
+        const oldNode = this.node;
+
         this.node = node;
         this.decorations = decorations;
         this.innerDecorations = innerDecorations;
@@ -69,15 +80,15 @@ export class CoreNodeView implements NodeView {
             return result;
         }
 
+        if (!this.contentDOM && !node.isLeaf) {
+            return false;
+        }
+
+        if (!oldNode.sameMarkup(this.node)) {
+            return false;
+        }
+
         return true;
-    };
-
-    selectNode: () => void = () => {
-        this.options.selectNode?.call(this);
-    };
-
-    deselectNode: () => void = () => {
-        this.options.deselectNode?.call(this);
     };
 
     destroy: () => void = () => {
@@ -87,21 +98,21 @@ export class CoreNodeView implements NodeView {
     };
 
     ignoreMutation: (mutation: MutationRecord) => boolean = (mutation) => {
+        if (!this.dom || !this.contentDOM) {
+            return true;
+        }
+
         const userIgnoreMutation = this.options.ignoreMutation;
 
         if (userIgnoreMutation) {
             return userIgnoreMutation.call(this, mutation);
         }
 
-        if (!this.dom || !this.contentDOM) {
-            return true;
-        }
-
         if (this.node.isLeaf || this.node.isAtom) {
             return true;
         }
 
-        if ((mutation as unknown as { type: string }).type === 'selection') {
+        if ((mutation.type as unknown) === 'selection') {
             return false;
         }
 
