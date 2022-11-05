@@ -3,7 +3,7 @@ import './Editor.css';
 
 import { NodeViewContent, reactNodeViewFactory } from '@prosemirror-adapter/react';
 import { EditorView } from 'prosemirror-view';
-import { FC, ReactPortal, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { FC, ReactPortal, useCallback, useLayoutEffect, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
 
 import { createEditorView } from './prosemirror';
