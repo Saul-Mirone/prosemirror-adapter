@@ -1,15 +1,16 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
 import './Editor.css';
 
-import { NodeViewContent, reactNodeViewFactory } from '@prosemirror-adapter/react';
+import { nodeViewContext, reactNodeViewFactory } from '@prosemirror-adapter/react';
 import { EditorView } from 'prosemirror-view';
-import { FC, ReactPortal, useCallback, useLayoutEffect, useRef, useState } from 'react';
+import { FC, ReactPortal, useCallback, useContext, useLayoutEffect, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
 
 import { createEditorView } from './prosemirror';
 
 const Paragraph = () => {
-    return <NodeViewContent as="span" />;
+    const { contentRef } = useContext(nodeViewContext);
+    return <div style={{ whiteSpace: 'break-spaces' }} ref={contentRef} />;
 };
 
 export const Editor: FC = () => {
@@ -49,12 +50,26 @@ export const Editor: FC = () => {
                         decorations,
                         innerDecorations,
                         options: {
-                            as: 'p',
-                            contentAs: 'span',
-                            destroy: () => {
+                            as: 'div',
+                            contentAs: 'p',
+                            update(node) {
+                                const shouldUpdate = this.shouldUpdate(node);
+
+                                if (shouldUpdate) {
+                                    maybeFlushSync(() => {
+                                        setPortals((prev) => ({
+                                            ...prev,
+                                            [nodeView.key]: this.render(),
+                                        }));
+                                    });
+                                }
+
+                                return shouldUpdate;
+                            },
+                            destroy() {
                                 maybeFlushSync(() => {
                                     setPortals((prev) => {
-                                        const { [nodeView.key]: _, ...rest } = prev;
+                                        const { [this.key]: _, ...rest } = prev;
 
                                         return rest;
                                     });
@@ -64,6 +79,7 @@ export const Editor: FC = () => {
                     });
 
                     const portal = nodeView.render();
+
                     maybeFlushSync(() => {
                         setPortals((prev) => ({
                             ...prev,

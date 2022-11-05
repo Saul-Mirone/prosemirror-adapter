@@ -50,7 +50,28 @@ export class CoreNodeView implements NodeView {
 
         this.dom = this.#createElement(options.as);
         this.contentDOM = node.isLeaf ? null : this.#createElement(options.contentAs);
+        this.dom.setAttribute('data-node-view-root', 'true');
+        if (this.contentDOM) {
+            this.contentDOM.setAttribute('data-node-view-content', 'true');
+            this.contentDOM.style.whiteSpace = 'inherit';
+        }
     }
+
+    shouldUpdate: (node: Node) => boolean = (node) => {
+        if (node.type !== this.node.type) {
+            return false;
+        }
+
+        if (!this.contentDOM && !node.isLeaf) {
+            return false;
+        }
+
+        if (!node.sameMarkup(this.node)) {
+            return false;
+        }
+
+        return true;
+    };
 
     update: (node: Node, decorations: readonly Decoration[], innerDecorations: DecorationSource) => boolean = (
         node,
@@ -60,28 +81,18 @@ export class CoreNodeView implements NodeView {
         const userUpdate = this.options.update;
         let result;
         if (userUpdate) {
-            result = userUpdate.call(this, this.node, this.decorations, this.innerDecorations);
+            result = userUpdate.call(this, node, decorations, innerDecorations);
         }
 
-        const oldNode = this.node;
+        if (typeof result !== 'boolean') {
+            result = this.shouldUpdate(node);
+        }
 
         this.node = node;
         this.decorations = decorations;
         this.innerDecorations = innerDecorations;
 
-        if (typeof result === 'boolean') {
-            return result;
-        }
-
-        if (!this.contentDOM && !node.isLeaf) {
-            return false;
-        }
-
-        if (!oldNode.sameMarkup(this.node)) {
-            return false;
-        }
-
-        return true;
+        return result;
     };
 
     destroy: () => void = () => {

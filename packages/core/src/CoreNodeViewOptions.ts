@@ -10,7 +10,12 @@ export type CoreNodeViewUserOptions<T> = {
     contentAs?: DOMSpec;
 
     // Overrides
-    update?: (this: T, node: Node, decorations: readonly Decoration[], innerDecorations: DecorationSource) => boolean;
+    update?: (
+        this: T,
+        node: Node,
+        decorations: readonly Decoration[],
+        innerDecorations: DecorationSource,
+    ) => boolean | void;
     selectNode?: (this: T) => void;
     deselectNode?: (this: T) => void;
     setSelection?: (this: T, anchor: number, head: number, root: Document | ShadowRoot) => void;
