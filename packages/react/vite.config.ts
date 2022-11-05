@@ -1,5 +1,6 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
 
+import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 import autoExternal from 'rollup-plugin-auto-external';
 import { defineConfig } from 'vite';
@@ -24,4 +25,5 @@ export default defineConfig({
             plugins: [autoExternal()],
         },
     },
+    plugins: [react()],
 });

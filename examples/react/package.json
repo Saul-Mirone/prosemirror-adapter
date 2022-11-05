@@ -1,0 +1,19 @@
+{
+    "name": "@examples/react",
+    "private": true,
+    "license": "MIT",
+    "scripts": {
+        "start": "vite"
+    },
+    "dependencies": {
+        "@types/react": "^18.0.0",
+        "@types/react-dom": "^18.0.0",
+        "@vitejs/plugin-react": "^2.2.0",
+        "@prosemirror-adapter/react": "workspace:*",
+        "prosemirror-example-setup": "^1.2.1",
+        "prosemirror-menu": "^1.2.1",
+        "prosemirror-schema-basic": "^1.2.0",
+        "react": "^18.0.0",
+        "react-dom": "^18.0.0"
+    }
+}

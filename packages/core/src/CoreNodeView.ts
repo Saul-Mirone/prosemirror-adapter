@@ -4,6 +4,21 @@ import type { Decoration, DecorationSource, EditorView, NodeView } from 'prosemi
 
 import type { CoreNodeViewSpec, CoreNodeViewUserOptions } from './CoreNodeViewOptions';
 
+export function coreNodeViewFactory(spec: CoreNodeViewSpec<CoreNodeView>) {
+    const coreNodeView = new CoreNodeView(spec);
+    const userOptions = spec.options;
+    const overrideOptions = {
+        setSelection: userOptions.setSelection?.bind(coreNodeView),
+        stopEvent: userOptions.stopEvent?.bind(coreNodeView),
+        selectNode: userOptions.selectNode?.bind(coreNodeView),
+        deselectNode: userOptions.deselectNode?.bind(coreNodeView),
+    };
+
+    Object.assign(coreNodeView, overrideOptions);
+
+    return coreNodeView;
+}
+
 export class CoreNodeView implements NodeView {
     dom: HTMLElement;
     contentDOM: HTMLElement | null;
@@ -13,21 +28,6 @@ export class CoreNodeView implements NodeView {
     decorations: readonly Decoration[];
     innerDecorations: DecorationSource;
     options: CoreNodeViewUserOptions<CoreNodeView>;
-
-    static create(spec: CoreNodeViewSpec<CoreNodeView>) {
-        const coreNodeView = new this(spec);
-        const userOptions = spec.options;
-        const overrideOptions = {
-            setSelection: userOptions.setSelection?.bind(coreNodeView),
-            stopEvent: userOptions.stopEvent?.bind(coreNodeView),
-            selectNode: userOptions.selectNode?.bind(coreNodeView),
-            deselectNode: userOptions.deselectNode?.bind(coreNodeView),
-        };
-
-        Object.assign(coreNodeView, overrideOptions);
-
-        return coreNodeView;
-    }
 
     #createElement(as?: string | HTMLElement | ((node: Node) => HTMLElement)) {
         const { node } = this;
@@ -40,14 +40,7 @@ export class CoreNodeView implements NodeView {
             : document.createElement(as);
     }
 
-    protected constructor({
-        node,
-        view,
-        getPos,
-        decorations,
-        innerDecorations,
-        options,
-    }: CoreNodeViewSpec<CoreNodeView>) {
+    constructor({ node, view, getPos, decorations, innerDecorations, options }: CoreNodeViewSpec<CoreNodeView>) {
         this.node = node;
         this.view = view;
         this.getPos = getPos;

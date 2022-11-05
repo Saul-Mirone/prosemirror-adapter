@@ -5,7 +5,7 @@ import { Node } from 'prosemirror-model';
 import { ComponentType } from 'react';
 import { createPortal } from 'react-dom';
 
-import { NodeViewContext, nodeViewContext } from './NodeViewContext';
+import { NodeViewContext, nodeViewContext } from './nodeViewContext';
 
 const nanoid = customAlphabet('abcedfghicklmn', 10);
 
@@ -15,11 +15,26 @@ type ReactNodeViewSpec<T> = CoreNodeViewSpec<T> & {
     component: NodeViewComponent;
 };
 
+export function reactNodeViewFactory(spec: ReactNodeViewSpec<ReactNodeView>) {
+    const reactNodeView = new ReactNodeView(spec);
+    const userOptions = spec.options;
+    const overrideOptions = {
+        setSelection: userOptions.setSelection?.bind(reactNodeView),
+        stopEvent: userOptions.stopEvent?.bind(reactNodeView),
+        selectNode: userOptions.selectNode?.bind(reactNodeView),
+        deselectNode: userOptions.deselectNode?.bind(reactNodeView),
+    };
+
+    Object.assign(reactNodeView, overrideOptions);
+
+    return reactNodeView;
+}
+
 export class ReactNodeView extends CoreNodeView {
     key: string = nanoid();
     component: NodeViewComponent;
 
-    protected constructor(spec: ReactNodeViewSpec<ReactNodeView>) {
+    constructor(spec: ReactNodeViewSpec<ReactNodeView>) {
         const { component, ...rest } = spec;
 
         super(rest as CoreNodeViewSpec<CoreNodeView>);
@@ -27,14 +42,12 @@ export class ReactNodeView extends CoreNodeView {
         this.component = component;
     }
 
-    #contentRef = (element: HTMLElement) => {
-        if (element && this.contentDOM && element.firstChild !== this.contentDOM) {
-            element.appendChild(this.contentDOM);
-        }
-    };
-
     #context: NodeViewContext = {
-        contentRef: this.#contentRef,
+        contentRef: (element) => {
+            if (element && this.contentDOM && element.firstChild !== this.contentDOM) {
+                element.appendChild(this.contentDOM);
+            }
+        },
     };
 
     render() {
@@ -42,14 +55,12 @@ export class ReactNodeView extends CoreNodeView {
 
         UserComponent.displayName = 'ProsemirrorNodeView';
 
-        const portal = createPortal(
+        return createPortal(
             <nodeViewContext.Provider value={this.#context}>
                 <UserComponent node={this.node} />
             </nodeViewContext.Provider>,
             this.dom,
             this.key,
         );
-
-        return portal;
     }
 }
