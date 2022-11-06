@@ -4,5 +4,5 @@ import { useContext } from 'react';
 
 export const Paragraph = () => {
     const { contentRef } = useContext(nodeViewContext);
-    return <div style={{ whiteSpace: 'break-spaces' }} ref={contentRef} />;
+    return <div role="presentation" ref={contentRef} />;
 };

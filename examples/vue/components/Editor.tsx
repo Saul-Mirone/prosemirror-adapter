@@ -3,16 +3,7 @@
 import './Editor.css';
 
 import { vueNodeViewFactory } from '@prosemirror-adapter/vue';
-import {
-    ComponentInternalInstance,
-    DefineComponent,
-    defineComponent,
-    getCurrentInstance,
-    onBeforeMount,
-    onMounted,
-    onUnmounted,
-    ref,
-} from 'vue';
+import { DefineComponent, defineComponent, getCurrentInstance, onMounted, ref } from 'vue';
 
 import Paragraph from './Paragraph.vue';
 import { createEditorView } from './prosemirror';
@@ -24,17 +15,6 @@ export const Editor = defineComponent({
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const portals = ref<Record<string, DefineComponent<any, any, any>>>({});
         const instance = getCurrentInstance();
-
-        const rootInstance = ref<null | ComponentInternalInstance>(null);
-
-        onBeforeMount(() => {
-            rootInstance.value = (instance as ComponentInternalInstance & { ctx: { _: ComponentInternalInstance } }).ctx
-                ._ as ComponentInternalInstance;
-        });
-
-        onUnmounted(() => {
-            rootInstance.value = null;
-        });
 
         onMounted(() => {
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -52,7 +32,6 @@ export const Editor = defineComponent({
                             contentAs: 'p',
                             destroy() {
                                 delete portals.value[this.key];
-                                rootInstance.value?.update();
                             },
                         },
                     });
@@ -60,7 +39,7 @@ export const Editor = defineComponent({
                     const portal = nodeView.render();
 
                     portals.value[nodeView.key] = portal;
-                    rootInstance.value?.update();
+                    instance?.update();
 
                     return nodeView;
                 },

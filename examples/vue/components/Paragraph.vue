@@ -6,5 +6,5 @@ const { contentRef } = inject(nodeViewContext)!;
 </script>
 
 <template>
-    <div class="paragraph" :ref="contentRef"></div>
+    <div role="presentation" :ref="contentRef"></div>
 </template>
