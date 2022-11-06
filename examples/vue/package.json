@@ -1,0 +1,16 @@
+{
+    "name": "@examples/vue",
+    "private": true,
+    "license": "MIT",
+    "scripts": {
+        "start": "vite"
+    },
+    "dependencies": {
+        "@vitejs/plugin-vue": "^3.2.0",
+        "@prosemirror-adapter/vue": "workspace:*",
+        "prosemirror-example-setup": "^1.2.1",
+        "prosemirror-menu": "^1.2.1",
+        "prosemirror-schema-basic": "^1.2.0",
+        "vue": "^3.2.38"
+    }
+}

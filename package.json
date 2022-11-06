@@ -32,9 +32,16 @@
     "prosemirror-model": "^1.18.1",
     "prosemirror-state": "^1.4.2",
     "prosemirror-view": "^1.29.0",
-    "rollup-plugin-auto-external": "^2.0.0",
     "tslib": "^2.4.1",
     "typescript": "^4.8.4",
     "vite": "^3.2.2"
-  }
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+        "ignoreMissing": [
+            "vite",
+            "rollup"
+        ]
+    }
+}
 }

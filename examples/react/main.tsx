@@ -3,7 +3,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 
-import { Editor } from './Editor';
+import { Editor } from './components/Editor';
 
 const root$ = document.getElementById('app');
 if (!root$) {
