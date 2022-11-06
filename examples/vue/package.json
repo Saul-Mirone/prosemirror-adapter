@@ -7,6 +7,7 @@
     },
     "dependencies": {
         "@vitejs/plugin-vue": "^3.2.0",
+        "@vitejs/plugin-vue-jsx": "^2.1.0",
         "@prosemirror-adapter/vue": "workspace:*",
         "prosemirror-example-setup": "^1.2.1",
         "prosemirror-menu": "^1.2.1",

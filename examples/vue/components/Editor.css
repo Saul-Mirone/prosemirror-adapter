@@ -1,18 +1,3 @@
-<script setup lang="ts">
-import { onMounted, ref } from 'vue';
-import { createEditorView } from './prosemirror';
-const divRef = ref<HTMLDivElement>();
-
-onMounted(() => {
-    createEditorView(divRef.value!, {});
-});
-</script>
-
-<template>
-    <div class="editor" ref="divRef"></div>
-</template>
-
-<style>
 .editor {
     background: white;
     color: black;
@@ -40,4 +25,3 @@ onMounted(() => {
 }
 
 .ProseMirror p { margin-bottom: 1em }
-</style>

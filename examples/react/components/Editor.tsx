@@ -1,17 +1,13 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
 import './Editor.css';
 
-import { nodeViewContext, reactNodeViewFactory } from '@prosemirror-adapter/react';
+import { reactNodeViewFactory } from '@prosemirror-adapter/react';
 import { EditorView } from 'prosemirror-view';
-import { FC, ReactPortal, useCallback, useContext, useLayoutEffect, useRef, useState } from 'react';
+import { FC, ReactPortal, useCallback, useLayoutEffect, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
 
+import { Paragraph } from './Paragraph';
 import { createEditorView } from './prosemirror';
-
-const Paragraph = () => {
-    const { contentRef } = useContext(nodeViewContext);
-    return <div style={{ whiteSpace: 'break-spaces' }} ref={contentRef} />;
-};
 
 export const Editor: FC = () => {
     const viewRef = useRef<EditorView>();
