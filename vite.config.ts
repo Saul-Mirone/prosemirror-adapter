@@ -1,4 +1,5 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
+import { readFileSync } from 'fs';
 import { resolve } from 'path';
 import { BuildOptions, defineConfig, UserConfig } from 'vite';
 
@@ -28,10 +29,16 @@ function mergeDeep<T>(target: T, ...sources: T[]): T {
     return mergeDeep(target, ...sources);
 }
 
-const external = ['react', 'react-dom', 'prosemirror-state', 'prosemirror-view', 'vue'];
-
-const viteBuild = (packageDirName: string, options: BuildOptions = {}): BuildOptions =>
-    mergeDeep<BuildOptions>(
+const viteBuild = (packageDirName: string, options: BuildOptions = {}): BuildOptions => {
+    const packageJson = JSON.parse(
+        readFileSync(resolvePath(`./packages/${packageDirName}/package.json`), { encoding: 'utf-8' }),
+    );
+    const deps = {
+        ...(packageJson.dependencies || {}),
+        ...(packageJson.devDependencies || {}),
+        ...(packageJson.peerDependencies || {}),
+    };
+    return mergeDeep<BuildOptions>(
         {
             sourcemap: true,
             emptyOutDir: false,
@@ -42,7 +49,7 @@ const viteBuild = (packageDirName: string, options: BuildOptions = {}): BuildOpt
                 formats: ['es'],
             },
             rollupOptions: {
-                external,
+                external: Object.keys(deps),
                 output: {
                     dir: resolvePath(`packages/${packageDirName}/lib`),
                 },
@@ -50,6 +57,7 @@ const viteBuild = (packageDirName: string, options: BuildOptions = {}): BuildOpt
         },
         options,
     );
+};
 
 export const viteConfigFactory = (packageDirName: string, options: UserConfig = {}) => {
     return defineConfig({
