@@ -1,8 +1,8 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
 import './Editor.css';
 
-import { reactNodeViewFactory } from '@prosemirror-adapter/react';
-import { EditorView } from 'prosemirror-view';
+import { ReactNodeView, reactNodeViewFactory, ReactNodeViewUserOptions } from '@prosemirror-adapter/react';
+import { EditorView, NodeViewConstructor } from 'prosemirror-view';
 import { FC, ReactPortal, useCallback, useLayoutEffect, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
 
@@ -30,6 +30,67 @@ export const Editor: FC = () => {
         }
     }, []);
 
+    const renderNodeView = useCallback(
+        (nodeView: ReactNodeView) => {
+            maybeFlushSync(() => {
+                setPortals((prev) => ({
+                    ...prev,
+                    [nodeView.key]: nodeView.render(),
+                }));
+            });
+        },
+        [maybeFlushSync],
+    );
+
+    const removeNodeView = useCallback(
+        (nodeView: ReactNodeView) => {
+            maybeFlushSync(() => {
+                setPortals((prev) => {
+                    const { [nodeView.key]: _, ...rest } = prev;
+
+                    return rest;
+                });
+            });
+        },
+        [maybeFlushSync],
+    );
+
+    const createReactNodeView: (options: ReactNodeViewUserOptions) => NodeViewConstructor = useCallback(
+        (options) => (node, view, getPos, decorations, innerDecorations) => {
+            const nodeView = reactNodeViewFactory({
+                node,
+                view,
+                getPos,
+                decorations,
+                innerDecorations,
+                options: {
+                    ...options,
+                    update(node, ...args) {
+                        let shouldUpdate = options.update?.(node, ...args);
+
+                        if (typeof shouldUpdate === 'boolean') {
+                            shouldUpdate = nodeView.shouldUpdate(node);
+                        }
+
+                        if (shouldUpdate) {
+                            renderNodeView(nodeView);
+                        }
+                        return shouldUpdate;
+                    },
+                    destroy() {
+                        options.destroy?.();
+                        removeNodeView(nodeView);
+                    },
+                },
+            });
+
+            renderNodeView(nodeView);
+
+            return nodeView;
+        },
+        [removeNodeView, renderNodeView],
+    );
+
     const editorRef = useCallback(
         (element: HTMLDivElement) => {
             if (!element) return;
@@ -37,57 +98,14 @@ export const Editor: FC = () => {
             if (element.firstChild) return;
 
             viewRef.current = createEditorView(element, {
-                paragraph(node, view, getPos, decorations, innerDecorations) {
-                    const nodeView = reactNodeViewFactory({
-                        node,
-                        view,
-                        getPos,
-                        decorations,
-                        innerDecorations,
-                        options: {
-                            component: Paragraph,
-                            as: 'div',
-                            contentAs: 'p',
-                            update(node) {
-                                const shouldUpdate = this.shouldUpdate(node);
-
-                                if (shouldUpdate) {
-                                    maybeFlushSync(() => {
-                                        setPortals((prev) => ({
-                                            ...prev,
-                                            [nodeView.key]: this.render(),
-                                        }));
-                                    });
-                                }
-
-                                return shouldUpdate;
-                            },
-                            destroy() {
-                                maybeFlushSync(() => {
-                                    setPortals((prev) => {
-                                        const { [this.key]: _, ...rest } = prev;
-
-                                        return rest;
-                                    });
-                                });
-                            },
-                        },
-                    });
-
-                    const portal = nodeView.render();
-
-                    maybeFlushSync(() => {
-                        setPortals((prev) => ({
-                            ...prev,
-                            [nodeView.key]: portal,
-                        }));
-                    });
-
-                    return nodeView;
-                },
+                paragraph: createReactNodeView({
+                    component: Paragraph,
+                    as: 'div',
+                    contentAs: 'p',
+                }),
             });
         },
-        [maybeFlushSync],
+        [createReactNodeView],
     );
 
     return (

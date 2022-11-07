@@ -6,14 +6,14 @@ import { defineComponent, markRaw, provide, Teleport } from 'vue';
 import { NodeViewContext, nodeViewContext } from './nodeViewContext';
 import { VueNodeViewComponent, VueNodeViewSpec } from './VueNodeViewOptions';
 
-export function vueNodeViewFactory(spec: VueNodeViewSpec<VueNodeView>) {
+export function vueNodeViewFactory(spec: VueNodeViewSpec) {
     const vueNodeView = new VueNodeView(spec);
-    const userOptions = spec.options;
+    const { setSelection, stopEvent, selectNode, deselectNode } = spec.options;
     const overrideOptions = {
-        setSelection: userOptions.setSelection?.bind(vueNodeView),
-        stopEvent: userOptions.stopEvent?.bind(vueNodeView),
-        selectNode: userOptions.selectNode?.bind(vueNodeView),
-        deselectNode: userOptions.deselectNode?.bind(vueNodeView),
+        setSelection,
+        stopEvent,
+        selectNode,
+        deselectNode,
     };
 
     Object.assign(vueNodeView, overrideOptions);

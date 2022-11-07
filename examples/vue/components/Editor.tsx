@@ -31,7 +31,7 @@ export const Editor = defineComponent({
                             as: 'div',
                             contentAs: 'p',
                             destroy() {
-                                delete portals.value[this.key];
+                                delete portals.value[nodeView.key];
                             },
                         },
                     });

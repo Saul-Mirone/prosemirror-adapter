@@ -4,14 +4,14 @@ import type { Decoration, DecorationSource, EditorView, NodeView } from 'prosemi
 
 import type { CoreNodeViewSpec, CoreNodeViewUserOptions } from './CoreNodeViewOptions';
 
-export function coreNodeViewFactory<ComponentType>(spec: CoreNodeViewSpec<CoreNodeView<ComponentType>, ComponentType>) {
+export function coreNodeViewFactory<ComponentType = unknown>(spec: CoreNodeViewSpec<ComponentType>) {
     const coreNodeView = new CoreNodeView(spec);
-    const userOptions = spec.options;
+    const { setSelection, stopEvent, selectNode, deselectNode } = spec.options;
     const overrideOptions = {
-        setSelection: userOptions.setSelection?.bind(coreNodeView),
-        stopEvent: userOptions.stopEvent?.bind(coreNodeView),
-        selectNode: userOptions.selectNode?.bind(coreNodeView),
-        deselectNode: userOptions.deselectNode?.bind(coreNodeView),
+        setSelection,
+        stopEvent,
+        selectNode,
+        deselectNode,
     };
 
     Object.assign(coreNodeView, overrideOptions);
@@ -27,7 +27,7 @@ export class CoreNodeView<ComponentType> implements NodeView {
     getPos: () => number;
     decorations: readonly Decoration[];
     innerDecorations: DecorationSource;
-    options: CoreNodeViewUserOptions<CoreNodeView<ComponentType>, ComponentType>;
+    options: CoreNodeViewUserOptions<ComponentType>;
 
     #createElement(as?: string | HTMLElement | ((node: Node) => HTMLElement)) {
         const { node } = this;
@@ -40,20 +40,13 @@ export class CoreNodeView<ComponentType> implements NodeView {
             : document.createElement(as);
     }
 
-    constructor({
-        node,
-        view,
-        getPos,
-        decorations,
-        innerDecorations,
-        options,
-    }: CoreNodeViewSpec<never, ComponentType>) {
+    constructor({ node, view, getPos, decorations, innerDecorations, options }: CoreNodeViewSpec<ComponentType>) {
         this.node = node;
         this.view = view;
         this.getPos = getPos;
         this.decorations = decorations;
         this.innerDecorations = innerDecorations;
-        this.options = options as CoreNodeViewUserOptions<CoreNodeView<ComponentType>, ComponentType>;
+        this.options = options;
 
         this.dom = this.#createElement(options.as);
         this.contentDOM = node.isLeaf ? null : this.#createElement(options.contentAs);
@@ -92,7 +85,7 @@ export class CoreNodeView<ComponentType> implements NodeView {
         const userUpdate = this.options.update;
         let result;
         if (userUpdate) {
-            result = userUpdate.call(this, node, decorations, innerDecorations);
+            result = userUpdate(node, decorations, innerDecorations);
         }
 
         if (typeof result !== 'boolean') {
@@ -140,7 +133,7 @@ export class CoreNodeView<ComponentType> implements NodeView {
         const userIgnoreMutation = this.options.ignoreMutation;
 
         if (userIgnoreMutation) {
-            result = userIgnoreMutation.call(this, mutation);
+            result = userIgnoreMutation(mutation);
         }
 
         if (typeof result !== 'boolean') {
@@ -151,7 +144,7 @@ export class CoreNodeView<ComponentType> implements NodeView {
     };
 
     destroy: () => void = () => {
-        this.options.destroy?.call(this);
+        this.options.destroy?.();
         this.dom.remove();
         this.contentDOM?.remove();
     };

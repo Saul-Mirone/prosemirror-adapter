@@ -8,14 +8,14 @@ import { ReactNodeViewComponent, ReactNodeViewSpec } from './ReactNodeViewOption
 
 const nanoid = customAlphabet('abcedfghicklmn', 10);
 
-export function reactNodeViewFactory(spec: ReactNodeViewSpec<ReactNodeView>) {
+export function reactNodeViewFactory(spec: ReactNodeViewSpec) {
     const reactNodeView = new ReactNodeView(spec);
-    const userOptions = spec.options;
+    const { setSelection, stopEvent, selectNode, deselectNode } = spec.options;
     const overrideOptions = {
-        setSelection: userOptions.setSelection?.bind(reactNodeView),
-        stopEvent: userOptions.stopEvent?.bind(reactNodeView),
-        selectNode: userOptions.selectNode?.bind(reactNodeView),
-        deselectNode: userOptions.deselectNode?.bind(reactNodeView),
+        setSelection,
+        stopEvent,
+        selectNode,
+        deselectNode,
     };
 
     Object.assign(reactNodeView, overrideOptions);
