@@ -1,10 +1,14 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
 import type { Node } from 'prosemirror-model';
-import { InjectionKey, VNodeRef } from 'vue';
+import { InjectionKey, Ref, VNodeRef } from 'vue';
 
 export type NodeViewContext = {
     contentRef: VNodeRef;
-    node: Node;
+    node: Ref<Node>;
 };
 
-export const nodeViewContext: InjectionKey<NodeViewContext> = Symbol();
+export type UnRefedContext = {
+    [P in keyof NodeViewContext]: NodeViewContext[P] extends Ref<infer T> ? T : NodeViewContext[P];
+};
+
+export const nodeViewContext: InjectionKey<Readonly<NodeViewContext>> = Symbol();

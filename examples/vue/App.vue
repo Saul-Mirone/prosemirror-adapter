@@ -1,7 +1,10 @@
 <script setup lang="ts">
-import { Editor } from './components/Editor';
+import { ProsemirrorAdapterProvider } from '@prosemirror-adapter/vue';
+import Editor from './components/Editor.vue';
 </script>
 
 <template>
-    <Editor />
+    <ProsemirrorAdapterProvider>
+        <Editor />
+    </ProsemirrorAdapterProvider>
 </template>

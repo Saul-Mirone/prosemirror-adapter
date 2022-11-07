@@ -6,7 +6,8 @@ import {
     h,
     inject,
     InjectionKey,
-    onMounted,
+    markRaw,
+    onBeforeMount,
     onUnmounted,
     provide,
     ref,
@@ -24,21 +25,17 @@ export const ProsemirrorAdapterProvider = defineComponent({
     setup: (_, { slots }) => {
         const portals = ref<Record<string, VueNodeViewComponent>>({});
         const instance = getCurrentInstance();
-        const isMounted = ref(false);
+        const update = markRaw<{ updater?: () => void }>({});
 
-        onMounted(() => {
-            isMounted.value = true;
+        onBeforeMount(() => {
+            update.updater = () => {
+                instance?.update();
+            };
         });
 
         onUnmounted(() => {
-            isMounted.value = false;
+            update.updater = void 0;
         });
-
-        const forceUpdate = () => {
-            if (isMounted.value) {
-                instance?.update();
-            }
-        };
 
         const createVueNodeView: NodeViewFactory = (options) => (node, view, getPos, decorations, innerDecorations) => {
             const nodeView = vueNodeViewFactory({
@@ -66,13 +63,12 @@ export const ProsemirrorAdapterProvider = defineComponent({
                     destroy() {
                         options.destroy?.();
                         delete portals.value[nodeView.key];
-                        forceUpdate();
                     },
                 },
             });
 
             portals.value[nodeView.key] = nodeView.render();
-            forceUpdate();
+            update.updater?.();
 
             return nodeView;
         };

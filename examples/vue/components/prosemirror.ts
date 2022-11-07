@@ -4,6 +4,7 @@ import 'prosemirror-example-setup/style/style.css';
 import 'prosemirror-menu/style/menu.css';
 
 import { exampleSetup } from 'prosemirror-example-setup';
+import { keymap } from 'prosemirror-keymap';
 import { DOMParser } from 'prosemirror-model';
 import { schema } from 'prosemirror-schema-basic';
 import { EditorState } from 'prosemirror-state';
@@ -15,7 +16,33 @@ export const createEditorView = (element: HTMLElement, nodeViews: Record<string,
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             doc: DOMParser.fromSchema(schema).parse(document.querySelector('#content')!),
             schema,
-            plugins: exampleSetup({ schema }),
+            plugins: [
+                ...exampleSetup({ schema }),
+                keymap({
+                    'Mod-[': (state, dispatch) => {
+                        const { selection } = state;
+                        const node = selection.$from.node();
+                        if (node.type.name !== 'heading') {
+                            return false;
+                        }
+
+                        let level = node.attrs['level'];
+                        if (level >= 6) {
+                            level = 1;
+                        } else {
+                            level += 1;
+                        }
+
+                        dispatch?.(
+                            state.tr.setNodeMarkup(selection.$from.before(), null, {
+                                ...node.attrs,
+                                level,
+                            }),
+                        );
+                        return true;
+                    },
+                }),
+            ],
         }),
         nodeViews,
     });
