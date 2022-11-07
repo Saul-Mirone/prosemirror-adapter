@@ -1,18 +1,10 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
-import { CoreNodeView, CoreNodeViewSpec } from '@prosemirror-adapter/core';
+import { CoreNodeView } from '@prosemirror-adapter/core';
 import { nanoid } from 'nanoid';
-import { DefineComponent, defineComponent, markRaw, provide, Teleport } from 'vue';
+import { defineComponent, markRaw, provide, Teleport } from 'vue';
 
 import { NodeViewContext, nodeViewContext } from './nodeViewContext';
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type AnyVueComponent = DefineComponent<any, any, any>;
-
-type NodeViewComponent = AnyVueComponent;
-
-type VueNodeViewSpec<T> = CoreNodeViewSpec<T> & {
-    component: NodeViewComponent;
-};
+import { VueNodeViewComponent, VueNodeViewSpec } from './VueNodeViewOptions';
 
 export function vueNodeViewFactory(spec: VueNodeViewSpec<VueNodeView>) {
     const vueNodeView = new VueNodeView(spec);
@@ -29,17 +21,8 @@ export function vueNodeViewFactory(spec: VueNodeViewSpec<VueNodeView>) {
     return vueNodeView;
 }
 
-export class VueNodeView extends CoreNodeView {
+export class VueNodeView extends CoreNodeView<VueNodeViewComponent> {
     key: string = nanoid();
-    component: NodeViewComponent;
-
-    constructor(spec: VueNodeViewSpec<VueNodeView>) {
-        const { component, ...rest } = spec;
-
-        super(rest as CoreNodeViewSpec<CoreNodeView>);
-
-        this.component = component;
-    }
 
     #context: NodeViewContext = {
         contentRef: (element) => {
@@ -69,6 +52,6 @@ export class VueNodeView extends CoreNodeView {
                     );
                 },
             }),
-        ) as AnyVueComponent;
+        ) as VueNodeViewComponent;
     };
 }

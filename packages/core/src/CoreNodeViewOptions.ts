@@ -4,32 +4,35 @@ import type { Decoration, DecorationSource, EditorView } from 'prosemirror-view'
 
 export type DOMSpec = string | HTMLElement | ((node: Node) => HTMLElement);
 
-export type CoreNodeViewUserOptions<T> = {
+export type CoreNodeViewUserOptions<Instance, Component> = {
     // DOM
     as?: DOMSpec;
     contentAs?: DOMSpec;
 
+    // Component
+    component: Component;
+
     // Overrides
     update?: (
-        this: T,
+        this: Instance,
         node: Node,
         decorations: readonly Decoration[],
         innerDecorations: DecorationSource,
     ) => boolean | void;
-    selectNode?: (this: T) => void;
-    deselectNode?: (this: T) => void;
-    setSelection?: (this: T, anchor: number, head: number, root: Document | ShadowRoot) => void;
-    stopEvent?: (this: T, event: Event) => boolean;
-    ignoreMutation?: (this: T, mutation: MutationRecord) => boolean;
-    destroy?: (this: T) => void;
+    selectNode?: (this: Instance) => void;
+    deselectNode?: (this: Instance) => void;
+    setSelection?: (this: Instance, anchor: number, head: number, root: Document | ShadowRoot) => void;
+    stopEvent?: (this: Instance, event: Event) => boolean;
+    ignoreMutation?: (this: Instance, mutation: MutationRecord) => boolean;
+    destroy?: (this: Instance) => void;
 };
 
-export type CoreNodeViewSpec<T> = {
+export type CoreNodeViewSpec<Instance, Component> = {
     node: Node;
     view: EditorView;
     getPos: () => number;
     decorations: readonly Decoration[];
     innerDecorations: DecorationSource;
 
-    options: CoreNodeViewUserOptions<T>;
+    options: CoreNodeViewUserOptions<Instance, Component>;
 };

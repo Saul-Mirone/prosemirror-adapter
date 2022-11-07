@@ -4,7 +4,7 @@ import type { Decoration, DecorationSource, EditorView, NodeView } from 'prosemi
 
 import type { CoreNodeViewSpec, CoreNodeViewUserOptions } from './CoreNodeViewOptions';
 
-export function coreNodeViewFactory(spec: CoreNodeViewSpec<CoreNodeView>) {
+export function coreNodeViewFactory<ComponentType>(spec: CoreNodeViewSpec<CoreNodeView<ComponentType>, ComponentType>) {
     const coreNodeView = new CoreNodeView(spec);
     const userOptions = spec.options;
     const overrideOptions = {
@@ -19,7 +19,7 @@ export function coreNodeViewFactory(spec: CoreNodeViewSpec<CoreNodeView>) {
     return coreNodeView;
 }
 
-export class CoreNodeView implements NodeView {
+export class CoreNodeView<ComponentType> implements NodeView {
     dom: HTMLElement;
     contentDOM: HTMLElement | null;
     node: Node;
@@ -27,7 +27,7 @@ export class CoreNodeView implements NodeView {
     getPos: () => number;
     decorations: readonly Decoration[];
     innerDecorations: DecorationSource;
-    options: CoreNodeViewUserOptions<CoreNodeView>;
+    options: CoreNodeViewUserOptions<CoreNodeView<ComponentType>, ComponentType>;
 
     #createElement(as?: string | HTMLElement | ((node: Node) => HTMLElement)) {
         const { node } = this;
@@ -40,13 +40,20 @@ export class CoreNodeView implements NodeView {
             : document.createElement(as);
     }
 
-    constructor({ node, view, getPos, decorations, innerDecorations, options }: CoreNodeViewSpec<CoreNodeView>) {
+    constructor({
+        node,
+        view,
+        getPos,
+        decorations,
+        innerDecorations,
+        options,
+    }: CoreNodeViewSpec<never, ComponentType>) {
         this.node = node;
         this.view = view;
         this.getPos = getPos;
         this.decorations = decorations;
         this.innerDecorations = innerDecorations;
-        this.options = options;
+        this.options = options as CoreNodeViewUserOptions<CoreNodeView<ComponentType>, ComponentType>;
 
         this.dom = this.#createElement(options.as);
         this.contentDOM = node.isLeaf ? null : this.#createElement(options.contentAs);
@@ -55,6 +62,10 @@ export class CoreNodeView implements NodeView {
             this.contentDOM.setAttribute('data-node-view-content', 'true');
             this.contentDOM.style.whiteSpace = 'inherit';
         }
+    }
+
+    get component() {
+        return this.options.component;
     }
 
     shouldUpdate: (node: Node) => boolean = (node) => {

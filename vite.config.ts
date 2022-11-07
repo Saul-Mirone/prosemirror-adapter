@@ -51,7 +51,7 @@ const viteBuild = (packageDirName: string, options: BuildOptions = {}): BuildOpt
         options,
     );
 
-export const viteConfigFactory = (packageDirName: string, options: UserConfig) => {
+export const viteConfigFactory = (packageDirName: string, options: UserConfig = {}) => {
     return defineConfig({
         ...options,
         build: viteBuild(packageDirName, options.build),

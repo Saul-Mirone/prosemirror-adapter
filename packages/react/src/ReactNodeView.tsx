@@ -1,19 +1,12 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
-import { CoreNodeView, CoreNodeViewSpec } from '@prosemirror-adapter/core';
+import { CoreNodeView } from '@prosemirror-adapter/core';
 import { customAlphabet } from 'nanoid';
-import { Node } from 'prosemirror-model';
-import { ComponentType } from 'react';
 import { createPortal } from 'react-dom';
 
 import { NodeViewContext, nodeViewContext } from './nodeViewContext';
+import { ReactNodeViewComponent, ReactNodeViewSpec } from './ReactNodeViewOptions';
 
 const nanoid = customAlphabet('abcedfghicklmn', 10);
-
-type NodeViewComponent = ComponentType<{ node: Node }>;
-
-type ReactNodeViewSpec<T> = CoreNodeViewSpec<T> & {
-    component: NodeViewComponent;
-};
 
 export function reactNodeViewFactory(spec: ReactNodeViewSpec<ReactNodeView>) {
     const reactNodeView = new ReactNodeView(spec);
@@ -30,17 +23,8 @@ export function reactNodeViewFactory(spec: ReactNodeViewSpec<ReactNodeView>) {
     return reactNodeView;
 }
 
-export class ReactNodeView extends CoreNodeView {
+export class ReactNodeView extends CoreNodeView<ReactNodeViewComponent> {
     key: string = nanoid();
-    component: NodeViewComponent;
-
-    constructor(spec: ReactNodeViewSpec<ReactNodeView>) {
-        const { component, ...rest } = spec;
-
-        super(rest as CoreNodeViewSpec<CoreNodeView>);
-
-        this.component = component;
-    }
 
     #context: NodeViewContext = {
         contentRef: (element) => {
@@ -57,7 +41,7 @@ export class ReactNodeView extends CoreNodeView {
 
         return createPortal(
             <nodeViewContext.Provider value={this.#context}>
-                <UserComponent node={this.node} />
+                <UserComponent />
             </nodeViewContext.Provider>,
             this.dom,
             this.key,
