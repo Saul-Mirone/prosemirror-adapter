@@ -39,13 +39,13 @@ export const Editor: FC = () => {
             viewRef.current = createEditorView(element, {
                 paragraph(node, view, getPos, decorations, innerDecorations) {
                     const nodeView = reactNodeViewFactory({
-                        component: Paragraph,
                         node,
                         view,
                         getPos,
                         decorations,
                         innerDecorations,
                         options: {
+                            component: Paragraph,
                             as: 'div',
                             contentAs: 'p',
                             update(node) {

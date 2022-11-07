@@ -21,13 +21,13 @@ export const Editor = defineComponent({
             createEditorView(divRef.value!, {
                 paragraph(node, view, getPos, decorations, innerDecorations) {
                     const nodeView = vueNodeViewFactory({
-                        component: Paragraph,
                         node,
                         view,
                         getPos,
                         decorations,
                         innerDecorations,
                         options: {
+                            component: Paragraph,
                             as: 'div',
                             contentAs: 'p',
                             destroy() {
