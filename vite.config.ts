@@ -3,6 +3,8 @@ import { readFileSync } from 'fs';
 import { resolve } from 'path';
 import { BuildOptions, defineConfig, UserConfig } from 'vite';
 
+import globalPackageJson from './package.json';
+
 export const libFileName = (format: string) => `index.${format}.js`;
 
 const resolvePath = (str: string) => resolve(__dirname, str);
@@ -37,6 +39,7 @@ const viteBuild = (packageDirName: string, options: BuildOptions = {}): BuildOpt
         ...(packageJson.dependencies || {}),
         ...(packageJson.devDependencies || {}),
         ...(packageJson.peerDependencies || {}),
+        ...(globalPackageJson.dependencies || {}),
     };
     return mergeDeep<BuildOptions>(
         {

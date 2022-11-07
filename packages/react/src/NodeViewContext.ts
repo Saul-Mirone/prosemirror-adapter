@@ -1,5 +1,5 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
-import { Node } from 'prosemirror-model';
+import type { Node } from 'prosemirror-model';
 import { createContext } from 'react';
 
 export type NodeViewContentRef = (node: HTMLElement | null) => void;
@@ -10,7 +10,7 @@ export type NodeViewContext = {
 };
 
 export const nodeViewContext = createContext<NodeViewContext>({
-    node: new Node(),
+    node: null as never,
     contentRef: () => {
         // nothing to do
     },

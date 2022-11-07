@@ -1,13 +1,11 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
 import { CoreNodeView } from '@prosemirror-adapter/core';
-import { customAlphabet } from 'nanoid';
+import { nanoid } from 'nanoid';
 import React from 'react';
 import { createPortal } from 'react-dom';
 
 import { NodeViewContext, nodeViewContext } from './nodeViewContext';
 import { ReactNodeViewComponent, ReactNodeViewSpec } from './ReactNodeViewOptions';
-
-const nanoid = customAlphabet('abcedfghicklmn', 10);
 
 export function reactNodeViewFactory(spec: ReactNodeViewSpec) {
     const reactNodeView = new ReactNodeView(spec);
