@@ -1,0 +1,20 @@
+{
+    "name": "@examples/shared",
+    "private": true,
+    "license": "MIT",
+    "type": "module",
+    "main": "./lib/index.es.js",
+    "types": "./lib/index.d.ts",
+    "sideEffects": false,
+    "scripts": {
+        "start": "concurrently -n es,dts \"vite build --watch\"  \"tsc --emitDeclarationOnly --watch\"",
+        "test": "vitest",
+        "tsc": "tsc --noEmit && echo",
+        "build": "vite build && tsc --emitDeclarationOnly"
+    },
+    "dependencies": {
+        "prosemirror-example-setup": "^1.2.1",
+        "prosemirror-menu": "^1.2.1",
+        "prosemirror-schema-basic": "^1.2.0"
+    }
+}

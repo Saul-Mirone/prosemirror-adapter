@@ -60,6 +60,7 @@ importers:
 
   examples/react:
     specifiers:
+      '@examples/shared': workspace:*
       '@prosemirror-adapter/react': workspace:*
       '@types/react': ^18.0.0
       '@types/react-dom': ^18.0.0
@@ -70,6 +71,7 @@ importers:
       react: ^18.0.0
       react-dom: ^18.0.0
     dependencies:
+      '@examples/shared': link:../shared
       '@prosemirror-adapter/react': link:../../packages/react
       '@types/react': 18.0.24
       '@types/react-dom': 18.0.8
@@ -80,8 +82,19 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
 
+  examples/shared:
+    specifiers:
+      prosemirror-example-setup: ^1.2.1
+      prosemirror-menu: ^1.2.1
+      prosemirror-schema-basic: ^1.2.0
+    dependencies:
+      prosemirror-example-setup: 1.2.1
+      prosemirror-menu: 1.2.1
+      prosemirror-schema-basic: 1.2.0
+
   examples/vue:
     specifiers:
+      '@examples/shared': workspace:*
       '@prosemirror-adapter/vue': workspace:*
       '@vitejs/plugin-vue': ^3.2.0
       '@vitejs/plugin-vue-jsx': ^2.1.0
@@ -90,6 +103,7 @@ importers:
       prosemirror-schema-basic: ^1.2.0
       vue: ^3.2.38
     dependencies:
+      '@examples/shared': link:../shared
       '@prosemirror-adapter/vue': link:../../packages/vue
       '@vitejs/plugin-vue': 3.2.0_vue@3.2.41
       '@vitejs/plugin-vue-jsx': 2.1.0_vue@3.2.41

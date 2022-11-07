@@ -1,5 +1,6 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
 
+import { ProsemirrorAdapterProvider } from '@prosemirror-adapter/react';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 
@@ -14,6 +15,9 @@ const root = createRoot(root$);
 
 root.render(
     <StrictMode>
-        <Editor />
+        <h1>Prosemirror Adapter React</h1>
+        <ProsemirrorAdapterProvider>
+            <Editor />
+        </ProsemirrorAdapterProvider>
     </StrictMode>,
 );

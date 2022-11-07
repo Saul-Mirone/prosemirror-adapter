@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { useNodeViewFactory } from '@prosemirror-adapter/vue';
 import { onMounted, ref } from 'vue';
-import { createEditorView } from './prosemirror';
+import { createEditorView } from '@examples/shared';
 import Paragraph from './Paragraph.vue';
 import Heading from './Heading.vue';
+
+import '@examples/shared/lib/style.css';
 
 const divRef = ref<HTMLDivElement>();
 const nodeViewFactory = useNodeViewFactory();

@@ -6,6 +6,7 @@
         "start": "vite"
     },
     "dependencies": {
+        "@examples/shared": "workspace:*",
         "@vitejs/plugin-vue": "^3.2.0",
         "@vitejs/plugin-vue-jsx": "^2.1.0",
         "@prosemirror-adapter/vue": "workspace:*",
