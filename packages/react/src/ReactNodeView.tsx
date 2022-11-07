@@ -27,21 +27,24 @@ export function reactNodeViewFactory(spec: ReactNodeViewSpec) {
 export class ReactNodeView extends CoreNodeView<ReactNodeViewComponent> {
     key: string = nanoid();
 
-    #context: NodeViewContext = {
+    context: NodeViewContext = {
         contentRef: (element) => {
             if (element && this.contentDOM && element.firstChild !== this.contentDOM) {
                 element.appendChild(this.contentDOM);
             }
         },
+        node: this.node,
+    };
+
+    updateContext = (context: Partial<NodeViewContext>) => {
+        Object.assign(this.context, context);
     };
 
     render = () => {
         const UserComponent = this.component;
 
-        UserComponent.displayName = 'ProsemirrorNodeView';
-
         return createPortal(
-            <nodeViewContext.Provider value={this.#context}>
+            <nodeViewContext.Provider value={this.context}>
                 <UserComponent />
             </nodeViewContext.Provider>,
             this.dom,

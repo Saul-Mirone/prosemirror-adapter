@@ -5,6 +5,7 @@ import { ProsemirrorAdapterProvider, useNodeViewFactory } from '@prosemirror-ada
 import { EditorView } from 'prosemirror-view';
 import { FC, useCallback, useRef } from 'react';
 
+import { Heading } from './Heading';
 import { Paragraph } from './Paragraph';
 import { createEditorView } from './prosemirror';
 
@@ -23,6 +24,9 @@ const InnerEditor: FC = () => {
                     component: Paragraph,
                     as: 'div',
                     contentAs: 'p',
+                }),
+                heading: nodeViewFactory({
+                    component: Heading,
                 }),
             });
         },

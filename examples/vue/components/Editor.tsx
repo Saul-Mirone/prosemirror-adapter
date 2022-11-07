@@ -17,8 +17,8 @@ export const Editor = defineComponent({
         const instance = getCurrentInstance();
 
         onMounted(() => {
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-            createEditorView(divRef.value!, {
+            if (!divRef.value) return;
+            createEditorView(divRef.value, {
                 paragraph(node, view, getPos, decorations, innerDecorations) {
                     const nodeView = vueNodeViewFactory({
                         node,

@@ -81,11 +81,15 @@ export const ProsemirrorAdapterProvider: FC<{ children: ReactNode }> = ({ childr
                         update(node, ...args) {
                             let shouldUpdate = options.update?.(node, ...args);
 
-                            if (typeof shouldUpdate === 'boolean') {
+                            if (typeof shouldUpdate !== 'boolean') {
                                 shouldUpdate = nodeView.shouldUpdate(node);
                             }
 
                             if (shouldUpdate) {
+                                nodeView.updateContext({
+                                    node,
+                                });
+                                // In react, we just render a new node view and update context.
                                 renderNodeView(nodeView);
                             }
                             return shouldUpdate;

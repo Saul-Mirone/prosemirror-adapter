@@ -66,11 +66,7 @@ export class CoreNodeView<ComponentType> implements NodeView {
             return false;
         }
 
-        if (!this.contentDOM && !node.isLeaf) {
-            return false;
-        }
-
-        if (!node.sameMarkup(this.node)) {
+        if (node.sameMarkup(this.node)) {
             return false;
         }
 

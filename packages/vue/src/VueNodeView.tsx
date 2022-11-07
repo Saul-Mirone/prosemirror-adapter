@@ -1,7 +1,7 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
 import { CoreNodeView } from '@prosemirror-adapter/core';
 import { nanoid } from 'nanoid';
-import { defineComponent, markRaw, provide, Teleport } from 'vue';
+import { defineComponent, markRaw, provide, reactive, Teleport } from 'vue';
 
 import { NodeViewContext, nodeViewContext } from './nodeViewContext';
 import { VueNodeViewComponent, VueNodeViewSpec } from './VueNodeViewOptions';
@@ -24,7 +24,7 @@ export function vueNodeViewFactory(spec: VueNodeViewSpec) {
 export class VueNodeView extends CoreNodeView<VueNodeViewComponent> {
     key: string = nanoid();
 
-    #context: NodeViewContext = {
+    context = reactive<NodeViewContext>({
         contentRef: (element) => {
             if (
                 element &&
@@ -35,7 +35,7 @@ export class VueNodeView extends CoreNodeView<VueNodeViewComponent> {
                 element.appendChild(this.contentDOM);
             }
         },
-    };
+    });
 
     render = () => {
         const UserComponent = this.component;
@@ -44,7 +44,7 @@ export class VueNodeView extends CoreNodeView<VueNodeViewComponent> {
             defineComponent({
                 name: 'ProsemirrorNodeView',
                 setup: () => {
-                    provide(nodeViewContext, this.#context);
+                    provide(nodeViewContext, this.context);
                     return () => (
                         <Teleport key={this.key} to={this.dom}>
                             <UserComponent />
