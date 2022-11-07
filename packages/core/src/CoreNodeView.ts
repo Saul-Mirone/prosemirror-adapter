@@ -106,21 +106,9 @@ export class CoreNodeView<ComponentType> implements NodeView {
         return result;
     };
 
-    destroy: () => void = () => {
-        this.options.destroy?.call(this);
-        this.dom.remove();
-        this.contentDOM?.remove();
-    };
-
-    ignoreMutation: (mutation: MutationRecord) => boolean = (mutation) => {
+    shouldIgnoreMutation: (mutation: MutationRecord) => boolean = (mutation) => {
         if (!this.dom || !this.contentDOM) {
             return true;
-        }
-
-        const userIgnoreMutation = this.options.ignoreMutation;
-
-        if (userIgnoreMutation) {
-            return userIgnoreMutation.call(this, mutation);
         }
 
         if (this.node.isLeaf || this.node.isAtom) {
@@ -140,5 +128,31 @@ export class CoreNodeView<ComponentType> implements NodeView {
         }
 
         return true;
+    };
+
+    ignoreMutation: (mutation: MutationRecord) => boolean = (mutation) => {
+        if (!this.dom || !this.contentDOM) {
+            return true;
+        }
+
+        let result;
+
+        const userIgnoreMutation = this.options.ignoreMutation;
+
+        if (userIgnoreMutation) {
+            result = userIgnoreMutation.call(this, mutation);
+        }
+
+        if (typeof result !== 'boolean') {
+            result = this.shouldIgnoreMutation(mutation);
+        }
+
+        return result;
+    };
+
+    destroy: () => void = () => {
+        this.options.destroy?.call(this);
+        this.dom.remove();
+        this.contentDOM?.remove();
     };
 }

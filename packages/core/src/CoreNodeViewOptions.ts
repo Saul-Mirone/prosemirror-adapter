@@ -19,11 +19,11 @@ export type CoreNodeViewUserOptions<Instance, Component> = {
         decorations: readonly Decoration[],
         innerDecorations: DecorationSource,
     ) => boolean | void;
+    ignoreMutation?: (this: Instance, mutation: MutationRecord) => boolean | void;
     selectNode?: (this: Instance) => void;
     deselectNode?: (this: Instance) => void;
     setSelection?: (this: Instance, anchor: number, head: number, root: Document | ShadowRoot) => void;
     stopEvent?: (this: Instance, event: Event) => boolean;
-    ignoreMutation?: (this: Instance, mutation: MutationRecord) => boolean;
     destroy?: (this: Instance) => void;
 };
 
