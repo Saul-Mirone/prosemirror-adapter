@@ -50,7 +50,7 @@ export class ReactNodeView extends CoreNodeView {
         },
     };
 
-    render() {
+    render = () => {
         const UserComponent = this.component;
 
         UserComponent.displayName = 'ProsemirrorNodeView';
@@ -62,5 +62,5 @@ export class ReactNodeView extends CoreNodeView {
             this.dom,
             this.key,
         );
-    }
+    };
 }

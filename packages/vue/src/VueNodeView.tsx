@@ -1,11 +1,9 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
 import { CoreNodeView, CoreNodeViewSpec } from '@prosemirror-adapter/core';
 import { nanoid } from 'nanoid';
-import { DefineComponent, defineComponent, InjectionKey, markRaw, provide, Teleport, VNodeRef } from 'vue';
+import { DefineComponent, defineComponent, markRaw, provide, Teleport } from 'vue';
 
-export const nodeViewContext: InjectionKey<{
-    contentRef: VNodeRef;
-}> = Symbol();
+import { NodeViewContext, nodeViewContext } from './nodeViewContext';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type AnyVueComponent = DefineComponent<any, any, any>;
@@ -43,25 +41,27 @@ export class VueNodeView extends CoreNodeView {
         this.component = component;
     }
 
-    render() {
+    #context: NodeViewContext = {
+        contentRef: (element) => {
+            if (
+                element &&
+                element instanceof HTMLElement &&
+                this.contentDOM &&
+                element.firstChild !== this.contentDOM
+            ) {
+                element.appendChild(this.contentDOM);
+            }
+        },
+    };
+
+    render = () => {
         const UserComponent = this.component;
 
         return markRaw(
             defineComponent({
                 name: 'ProsemirrorNodeView',
                 setup: () => {
-                    provide(nodeViewContext, {
-                        contentRef: (element) => {
-                            if (
-                                element &&
-                                element instanceof HTMLElement &&
-                                this.contentDOM &&
-                                element.firstChild !== this.contentDOM
-                            ) {
-                                element.appendChild(this.contentDOM);
-                            }
-                        },
-                    });
+                    provide(nodeViewContext, this.#context);
                     return () => (
                         <Teleport key={this.key} to={this.dom}>
                             <UserComponent />
@@ -70,5 +70,5 @@ export class VueNodeView extends CoreNodeView {
                 },
             }),
         ) as AnyVueComponent;
-    }
+    };
 }
