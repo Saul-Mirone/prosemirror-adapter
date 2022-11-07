@@ -2,57 +2,33 @@
 
 import './Editor.css';
 
-import { vueNodeViewFactory } from '@prosemirror-adapter/vue';
-import { DefineComponent, defineComponent, getCurrentInstance, onMounted, ref } from 'vue';
+import { ProsemirrorAdapterProvider, useNodeViewFactory } from '@prosemirror-adapter/vue';
+import { defineComponent, onMounted, ref } from 'vue';
 
 import Paragraph from './Paragraph.vue';
 import { createEditorView } from './prosemirror';
 
-export const Editor = defineComponent({
-    name: 'Editor',
+const InnerEditor = defineComponent({
     setup: () => {
         const divRef = ref<HTMLDivElement>();
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const portals = ref<Record<string, DefineComponent<any, any, any>>>({});
-        const instance = getCurrentInstance();
+        const nodeViewFactory = useNodeViewFactory();
 
         onMounted(() => {
             if (!divRef.value) return;
             createEditorView(divRef.value, {
-                paragraph(node, view, getPos, decorations, innerDecorations) {
-                    const nodeView = vueNodeViewFactory({
-                        node,
-                        view,
-                        getPos,
-                        decorations,
-                        innerDecorations,
-                        options: {
-                            component: Paragraph,
-                            as: 'div',
-                            contentAs: 'p',
-                            destroy() {
-                                delete portals.value[nodeView.key];
-                            },
-                        },
-                    });
-
-                    const portal = nodeView.render();
-
-                    portals.value[nodeView.key] = portal;
-                    instance?.update();
-
-                    return nodeView;
-                },
+                paragraph: nodeViewFactory({
+                    component: Paragraph,
+                    as: 'div',
+                    contentAs: 'p',
+                }),
             });
         });
-        return () => {
-            const portalElements = Object.entries(portals.value).map(([id, P]) => <P key={id} />);
-            return (
-                <>
-                    <div class="editor" ref={divRef} />
-                    {portalElements}
-                </>
-            );
-        };
+
+        return () => <div class="editor" ref={divRef} />;
     },
+});
+
+export const Editor = defineComponent({
+    name: 'Editor',
+    setup: () => () => <ProsemirrorAdapterProvider>{{ default: () => <InnerEditor /> }}</ProsemirrorAdapterProvider>,
 });

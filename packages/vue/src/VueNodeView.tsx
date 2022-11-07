@@ -1,7 +1,7 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
 import { CoreNodeView } from '@prosemirror-adapter/core';
 import { nanoid } from 'nanoid';
-import { defineComponent, markRaw, provide, reactive, Teleport } from 'vue';
+import { defineComponent, markRaw, provide, shallowReactive, Teleport } from 'vue';
 
 import { NodeViewContext, nodeViewContext } from './nodeViewContext';
 import { VueNodeViewComponent, VueNodeViewSpec } from './VueNodeViewOptions';
@@ -24,7 +24,7 @@ export function vueNodeViewFactory(spec: VueNodeViewSpec) {
 export class VueNodeView extends CoreNodeView<VueNodeViewComponent> {
     key: string = nanoid();
 
-    context = reactive<NodeViewContext>({
+    context = shallowReactive<NodeViewContext>({
         contentRef: (element) => {
             if (
                 element &&
@@ -35,7 +35,14 @@ export class VueNodeView extends CoreNodeView<VueNodeViewComponent> {
                 element.appendChild(this.contentDOM);
             }
         },
+        node: this.node,
     });
+
+    updateContext = (context: Partial<NodeViewContext>) => {
+        Object.entries(context).forEach(([key, value]) => {
+            this.context[key as keyof NodeViewContext] = value as never;
+        });
+    };
 
     render = () => {
         const UserComponent = this.component;
