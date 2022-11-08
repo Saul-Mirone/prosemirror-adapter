@@ -5,6 +5,7 @@ import { InjectionKey, Ref, VNodeRef } from 'vue';
 export type NodeViewContext = {
     contentRef: VNodeRef;
     node: Ref<Node>;
+    selected: Ref<boolean>;
 };
 
 export type UnRefedContext = {

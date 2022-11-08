@@ -2,9 +2,15 @@
 import { nodeViewContext } from '@prosemirror-adapter/vue';
 import { inject } from 'vue';
 
-const { contentRef } = inject(nodeViewContext)!;
+const { contentRef, selected } = inject(nodeViewContext)!;
 </script>
 
 <template>
-    <div role="presentation" :ref="contentRef"></div>
+    <div role="presentation" :class="{ selected: selected }" :ref="contentRef"></div>
 </template>
+
+<style scoped>
+.selected {
+    outline: blue solid 1px;
+}
+</style>

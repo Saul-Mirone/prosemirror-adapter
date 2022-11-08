@@ -8,12 +8,10 @@ import { VueNodeViewComponent, VueNodeViewSpec } from './VueNodeViewOptions';
 
 export function vueNodeViewFactory(spec: VueNodeViewSpec) {
     const vueNodeView = new VueNodeView(spec);
-    const { setSelection, stopEvent, selectNode, deselectNode } = spec.options;
+    const { setSelection, stopEvent } = spec.options;
     const overrideOptions = {
         setSelection,
         stopEvent,
-        selectNode,
-        deselectNode,
     };
 
     Object.assign(vueNodeView, overrideOptions);
@@ -36,6 +34,7 @@ export class VueNodeView extends CoreNodeView<VueNodeViewComponent> {
             }
         },
         node: ref(this.node),
+        selected: ref(this.selected),
     };
 
     updateContext = (context: Partial<UnRefedContext>) => {

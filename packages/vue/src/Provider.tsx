@@ -60,6 +60,16 @@ export const ProsemirrorAdapterProvider = defineComponent({
                         }
                         return shouldUpdate;
                     },
+                    selectNode() {
+                        nodeView.updateContext({
+                            selected: true,
+                        });
+                    },
+                    deselectNode() {
+                        nodeView.updateContext({
+                            selected: false,
+                        });
+                    },
                     destroy() {
                         options.destroy?.();
                         delete portals.value[nodeView.key];

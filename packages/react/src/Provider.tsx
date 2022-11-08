@@ -94,6 +94,14 @@ export const ProsemirrorAdapterProvider: FC<{ children: ReactNode }> = ({ childr
                             }
                             return shouldUpdate;
                         },
+                        selectNode() {
+                            nodeView.updateContext({ selected: true });
+                            renderNodeView(nodeView);
+                        },
+                        deselectNode() {
+                            nodeView.updateContext({ selected: false });
+                            renderNodeView(nodeView);
+                        },
                         destroy() {
                             options.destroy?.();
                             removeNodeView(nodeView);

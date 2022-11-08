@@ -6,12 +6,10 @@ import type { CoreNodeViewSpec, CoreNodeViewUserOptions } from './CoreNodeViewOp
 
 export function coreNodeViewFactory<ComponentType = unknown>(spec: CoreNodeViewSpec<ComponentType>) {
     const coreNodeView = new CoreNodeView(spec);
-    const { setSelection, stopEvent, selectNode, deselectNode } = spec.options;
+    const { setSelection, stopEvent } = spec.options;
     const overrideOptions = {
         setSelection,
         stopEvent,
-        selectNode,
-        deselectNode,
     };
 
     Object.assign(coreNodeView, overrideOptions);
@@ -28,6 +26,7 @@ export class CoreNodeView<ComponentType> implements NodeView {
     decorations: readonly Decoration[];
     innerDecorations: DecorationSource;
     options: CoreNodeViewUserOptions<ComponentType>;
+    selected = false;
 
     #createElement(as?: string | HTMLElement | ((node: Node) => HTMLElement)) {
         const { node } = this;
@@ -60,6 +59,16 @@ export class CoreNodeView<ComponentType> implements NodeView {
     get component() {
         return this.options.component;
     }
+
+    selectNode = () => {
+        this.selected = true;
+        this.options.selectNode?.();
+    };
+
+    deselectNode = () => {
+        this.selected = false;
+        this.options.deselectNode?.();
+    };
 
     shouldUpdate: (node: Node) => boolean = (node) => {
         if (node.type !== this.node.type) {

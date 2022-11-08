@@ -5,13 +5,15 @@ import { createContext } from 'react';
 export type NodeViewContentRef = (node: HTMLElement | null) => void;
 
 export type NodeViewContext = {
-    node: Node;
     contentRef: NodeViewContentRef;
+    node: Node;
+    selected: boolean;
 };
 
 export const nodeViewContext = createContext<NodeViewContext>({
-    node: null as never,
     contentRef: () => {
         // nothing to do
     },
+    node: null as never,
+    selected: false,
 });

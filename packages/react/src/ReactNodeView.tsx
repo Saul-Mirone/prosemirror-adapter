@@ -9,12 +9,10 @@ import { ReactNodeViewComponent, ReactNodeViewSpec } from './ReactNodeViewOption
 
 export function reactNodeViewFactory(spec: ReactNodeViewSpec) {
     const reactNodeView = new ReactNodeView(spec);
-    const { setSelection, stopEvent, selectNode, deselectNode } = spec.options;
+    const { setSelection, stopEvent } = spec.options;
     const overrideOptions = {
         setSelection,
         stopEvent,
-        selectNode,
-        deselectNode,
     };
 
     Object.assign(reactNodeView, overrideOptions);
@@ -32,6 +30,7 @@ export class ReactNodeView extends CoreNodeView<ReactNodeViewComponent> {
             }
         },
         node: this.node,
+        selected: this.selected,
     };
 
     updateContext = (context: Partial<NodeViewContext>) => {
