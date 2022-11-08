@@ -1,5 +1,5 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
-import type { Node } from 'prosemirror-model';
+import type { Attrs, Node } from 'prosemirror-model';
 import type { Decoration, DecorationSource, EditorView, NodeView } from 'prosemirror-view';
 
 import type { CoreNodeViewSpec, CoreNodeViewUserOptions } from './CoreNodeViewOptions';
@@ -156,5 +156,15 @@ export class CoreNodeView<ComponentType> implements NodeView {
         this.options.destroy?.();
         this.dom.remove();
         this.contentDOM?.remove();
+    };
+
+    setAttrs = (attr: Attrs) => {
+        const { dispatch, state } = this.view;
+        return dispatch(
+            state.tr.setNodeMarkup(this.getPos(), undefined, {
+                ...this.node.attrs,
+                ...attr,
+            }),
+        );
     };
 }

@@ -31,6 +31,7 @@ export class ReactNodeView extends CoreNodeView<ReactNodeViewComponent> {
         },
         view: this.view,
         getPos: this.getPos,
+        setAttrs: this.setAttrs,
 
         node: this.node,
         selected: this.selected,

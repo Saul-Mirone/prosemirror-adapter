@@ -4,7 +4,10 @@ import { computed, inject } from 'vue';
 
 const { contentRef, node } = inject(nodeViewContext)!;
 
-const tag = computed(() =>  `h${node.value.attrs['level']}`);
+
+const tag = computed(() => {
+    return `h${node.value.attrs['level']}`
+});
 </script>
 
 <template>

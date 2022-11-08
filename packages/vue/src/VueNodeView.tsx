@@ -1,7 +1,7 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
 import { CoreNodeView } from '@prosemirror-adapter/core';
 import { nanoid } from 'nanoid';
-import { defineComponent, markRaw, provide, ref, shallowRef, Teleport } from 'vue';
+import { defineComponent, markRaw, provide, shallowRef, Teleport } from 'vue';
 
 import { NodeViewContext, nodeViewContext } from './nodeViewContext';
 import { VueNodeViewComponent, VueNodeViewSpec } from './VueNodeViewOptions';
@@ -35,9 +35,10 @@ export class VueNodeView extends CoreNodeView<VueNodeViewComponent> {
         },
         view: this.view,
         getPos: this.getPos,
+        setAttrs: this.setAttrs,
 
         node: shallowRef(this.node),
-        selected: ref(this.selected),
+        selected: shallowRef(this.selected),
         decorations: shallowRef(this.decorations),
         innerDecorations: shallowRef(this.innerDecorations),
     };

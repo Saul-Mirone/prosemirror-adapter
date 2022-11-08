@@ -1,23 +1,20 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
-import type { Node } from 'prosemirror-model';
+import type { Attrs, Node } from 'prosemirror-model';
 import type { Decoration, DecorationSource, EditorView } from 'prosemirror-view';
-import type { InjectionKey, Ref, ShallowRef, VNodeRef } from 'vue';
+import type { InjectionKey, ShallowRef, VNodeRef } from 'vue';
 
 export type NodeViewContext = {
     // won't change
     contentRef: VNodeRef;
     view: EditorView;
     getPos: () => number;
+    setAttrs: (attrs: Attrs) => void;
 
     // changes between updates
     node: ShallowRef<Node>;
-    selected: Ref<boolean>;
+    selected: ShallowRef<boolean>;
     decorations: ShallowRef<readonly Decoration[]>;
     innerDecorations: ShallowRef<DecorationSource>;
-};
-
-export type UnRefedContext = {
-    [P in keyof NodeViewContext]: NodeViewContext[P] extends Ref<infer T> ? T : NodeViewContext[P];
 };
 
 export const nodeViewContext: InjectionKey<Readonly<NodeViewContext>> = Symbol();

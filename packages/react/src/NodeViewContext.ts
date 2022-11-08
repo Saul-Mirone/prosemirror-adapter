@@ -1,5 +1,5 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
-import type { Node } from 'prosemirror-model';
+import type { Attrs, Node } from 'prosemirror-model';
 import type { Decoration, DecorationSource, EditorView } from 'prosemirror-view';
 import { createContext } from 'react';
 
@@ -10,6 +10,7 @@ export type NodeViewContext = {
     contentRef: NodeViewContentRef;
     view: EditorView;
     getPos: () => number;
+    setAttrs: (attrs: Attrs) => void;
 
     // changes between updates
     node: Node;
@@ -24,6 +25,9 @@ export const nodeViewContext = createContext<NodeViewContext>({
     },
     view: null as never,
     getPos: () => 0,
+    setAttrs: () => {
+        // nothing to do
+    },
 
     node: null as never,
     selected: false,
