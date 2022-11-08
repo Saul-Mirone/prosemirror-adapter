@@ -29,14 +29,21 @@ export class ReactNodeView extends CoreNodeView<ReactNodeViewComponent> {
                 element.appendChild(this.contentDOM);
             }
         },
+        view: this.view,
+        getPos: this.getPos,
+
         node: this.node,
         selected: this.selected,
+        decorations: this.decorations,
+        innerDecorations: this.innerDecorations,
     };
 
     updateContext = () => {
         Object.assign(this.context, {
             node: this.node,
             selected: this.selected,
+            decorations: this.decorations,
+            innerDecorations: this.innerDecorations,
         });
     };
 

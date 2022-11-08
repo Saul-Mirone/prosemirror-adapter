@@ -1,11 +1,19 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
 import type { Node } from 'prosemirror-model';
-import { InjectionKey, Ref, VNodeRef } from 'vue';
+import type { Decoration, DecorationSource, EditorView } from 'prosemirror-view';
+import type { InjectionKey, Ref, ShallowRef, VNodeRef } from 'vue';
 
 export type NodeViewContext = {
+    // won't change
     contentRef: VNodeRef;
-    node: Ref<Node>;
+    view: EditorView;
+    getPos: () => number;
+
+    // changes between updates
+    node: ShallowRef<Node>;
     selected: Ref<boolean>;
+    decorations: ShallowRef<readonly Decoration[]>;
+    innerDecorations: ShallowRef<DecorationSource>;
 };
 
 export type UnRefedContext = {

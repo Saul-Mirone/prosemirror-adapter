@@ -1,7 +1,7 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
 import { CoreNodeView } from '@prosemirror-adapter/core';
 import { nanoid } from 'nanoid';
-import { defineComponent, isRef, markRaw, provide, ref, Teleport } from 'vue';
+import { defineComponent, markRaw, provide, ref, shallowRef, Teleport } from 'vue';
 
 import { NodeViewContext, nodeViewContext } from './nodeViewContext';
 import { VueNodeViewComponent, VueNodeViewSpec } from './VueNodeViewOptions';
@@ -33,20 +33,25 @@ export class VueNodeView extends CoreNodeView<VueNodeViewComponent> {
                 element.appendChild(this.contentDOM);
             }
         },
-        node: ref(this.node),
+        view: this.view,
+        getPos: this.getPos,
+
+        node: shallowRef(this.node),
         selected: ref(this.selected),
+        decorations: shallowRef(this.decorations),
+        innerDecorations: shallowRef(this.innerDecorations),
     };
 
     updateContext = () => {
         Object.entries({
             node: this.node,
             selected: this.selected,
+            decorations: this.decorations,
+            innerDecorations: this.innerDecorations,
         }).forEach(([key, value]) => {
-            const prev = this.context[key as keyof NodeViewContext];
-            if (isRef(prev) && prev.value !== value) {
+            const prev = this.context[key as 'node' | 'selected' | 'decorations' | 'innerDecorations'];
+            if (prev.value !== value) {
                 prev.value = value;
-            } else {
-                this.context[key as keyof NodeViewContext] = value as never;
             }
         });
     };

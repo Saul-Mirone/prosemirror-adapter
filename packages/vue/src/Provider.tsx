@@ -64,6 +64,9 @@ export const ProsemirrorAdapterProvider = defineComponent({
             });
 
             portals.value[nodeView.key] = nodeView.render();
+
+            // Force update the vue component to render
+            // Cursor won't move to new node without this
             update.updater?.();
 
             return nodeView;
