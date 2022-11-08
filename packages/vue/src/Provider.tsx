@@ -46,29 +46,15 @@ export const ProsemirrorAdapterProvider = defineComponent({
                 innerDecorations,
                 options: {
                     ...options,
-                    update(node, ...args) {
-                        let shouldUpdate = options.update?.(node, ...args);
-
-                        if (typeof shouldUpdate !== 'boolean') {
-                            shouldUpdate = nodeView.shouldUpdate(node);
-                        }
-
-                        if (shouldUpdate) {
-                            nodeView.updateContext({
-                                node,
-                            });
-                        }
-                        return shouldUpdate;
+                    onUpdate() {
+                        options.onUpdate?.();
+                        nodeView.updateContext();
                     },
                     selectNode() {
-                        nodeView.updateContext({
-                            selected: true,
-                        });
+                        nodeView.updateContext();
                     },
                     deselectNode() {
-                        nodeView.updateContext({
-                            selected: false,
-                        });
+                        nodeView.updateContext();
                     },
                     destroy() {
                         options.destroy?.();

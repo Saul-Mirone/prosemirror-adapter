@@ -43,8 +43,11 @@ export const ProsemirrorAdapterProvider: FC<{ children: ReactNode }> = ({ childr
     }, []);
 
     const renderNodeView = useCallback(
-        (nodeView: ReactNodeView) => {
+        (nodeView: ReactNodeView, update = true) => {
             maybeFlushSync(() => {
+                if (update) {
+                    nodeView.updateContext();
+                }
                 setPortals((prev) => ({
                     ...prev,
                     [nodeView.key]: nodeView.render(),
@@ -78,28 +81,14 @@ export const ProsemirrorAdapterProvider: FC<{ children: ReactNode }> = ({ childr
                     innerDecorations,
                     options: {
                         ...options,
-                        update(node, ...args) {
-                            let shouldUpdate = options.update?.(node, ...args);
-
-                            if (typeof shouldUpdate !== 'boolean') {
-                                shouldUpdate = nodeView.shouldUpdate(node);
-                            }
-
-                            if (shouldUpdate) {
-                                nodeView.updateContext({
-                                    node,
-                                });
-                                // In react, we just render a new node view and update context.
-                                renderNodeView(nodeView);
-                            }
-                            return shouldUpdate;
+                        onUpdate() {
+                            options.onUpdate?.();
+                            renderNodeView(nodeView);
                         },
                         selectNode() {
-                            nodeView.updateContext({ selected: true });
                             renderNodeView(nodeView);
                         },
                         deselectNode() {
-                            nodeView.updateContext({ selected: false });
                             renderNodeView(nodeView);
                         },
                         destroy() {
@@ -109,7 +98,7 @@ export const ProsemirrorAdapterProvider: FC<{ children: ReactNode }> = ({ childr
                     },
                 });
 
-                renderNodeView(nodeView);
+                renderNodeView(nodeView, false);
 
                 return nodeView;
             },

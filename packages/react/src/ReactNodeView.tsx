@@ -33,8 +33,11 @@ export class ReactNodeView extends CoreNodeView<ReactNodeViewComponent> {
         selected: this.selected,
     };
 
-    updateContext = (context: Partial<NodeViewContext>) => {
-        Object.assign(this.context, context);
+    updateContext = () => {
+        Object.assign(this.context, {
+            node: this.node,
+            selected: this.selected,
+        });
     };
 
     render = () => {

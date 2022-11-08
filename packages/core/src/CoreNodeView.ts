@@ -101,6 +101,10 @@ export class CoreNodeView<ComponentType> implements NodeView {
         this.decorations = decorations;
         this.innerDecorations = innerDecorations;
 
+        if (result) {
+            this.options.onUpdate?.();
+        }
+
         return result;
     };
 

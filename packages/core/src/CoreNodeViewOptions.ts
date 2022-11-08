@@ -20,6 +20,9 @@ export type CoreNodeViewUserOptions<Component> = {
     setSelection?: (anchor: number, head: number, root: Document | ShadowRoot) => void;
     stopEvent?: (event: Event) => boolean;
     destroy?: () => void;
+
+    // Additional
+    onUpdate?: () => void;
 };
 
 export type CoreNodeViewSpec<Component> = {
