@@ -1,8 +1,7 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
-import { nodeViewContext } from '@prosemirror-adapter/react';
-import { useContext } from 'react';
+import { useNodeViewContext } from '@prosemirror-adapter/react';
 
 export const Paragraph = () => {
-    const { contentRef, selected } = useContext(nodeViewContext);
+    const { contentRef, selected } = useNodeViewContext();
     return <div style={{ outline: selected ? 'blue solid 1px' : 'none' }} role="presentation" ref={contentRef} />;
 };

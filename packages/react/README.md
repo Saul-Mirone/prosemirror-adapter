@@ -1,6 +1,6 @@
 # @prosemirror-adapter/react
 
-React adapter for [ProseMirror](https://prosemirror.net/).
+[React](https://reactjs.org/) adapter for [ProseMirror](https://prosemirror.net/).
 
 ## Example
 
@@ -28,19 +28,18 @@ export const Component = () => {
 };
 ```
 
-### Build [node view](https://prosemirror.net/docs/ref/#view.NodeView) component.
+### Build component for [node view](https://prosemirror.net/docs/ref/#view.NodeView).
 
 ```tsx
-import { nodeViewContext } from '@prosemirror-adapter/react';
-import { useContext } from 'react';
+import { useNodeViewContext } from '@prosemirror-adapter/react';
 
 const Paragraph = () => {
-    const { contentRef, selected } = useContext(nodeViewContext);
+    const { contentRef, selected } = useNodeViewContext();
     return <div style={{ outline: selected ? 'blue solid 1px' : 'none' }} role="presentation" ref={contentRef} />;
 }
 ```
 
-### Bind node view component with prosemirror.
+### Bind node view components with prosemirror.
 
 ```tsx
 import { FC, useCallback, useRef } from 'react';
@@ -61,12 +60,9 @@ export const Editor: FC = () => {
                 nodeViews: {
                     paragraph: nodeViewFactory({
                         component: Paragraph,
+                        // Optional: add some options
                         as: 'div',
                         contentAs: 'p',
-                        // You can add more options
-                    }),
-                    heading: nodeViewFactory({
-                        component: Heading,
                     }),
                 }
             });
@@ -80,7 +76,7 @@ export const Editor: FC = () => {
 
 ## API
 
-### NodeViewFactory: (options: NodeViewFactoryOptions) => NodeView
+### useNodeViewFactory: () => (options: NodeViewFactoryOptions) => NodeView
 
 ```ts
 type DOMSpec = string | HTMLElement | ((node: Node) => HTMLElement);
@@ -105,6 +101,36 @@ type NodeViewFactoryOptions = {
 
     // Called when the node view is updated.
     onUpdate?: () => void;
+}
+```
+
+### useNodeViewContext: () => NodeViewContext
+
+```ts
+type NodeViewContext = {
+    // The DOM element that contains the content of the node.
+    contentRef: NodeViewContentRef;
+
+    // The prosemirror editor view.
+    view: EditorView;
+
+    // Get prosemirror position of current node view.
+    getPos: () => number;
+
+    // Set node.attrs of current node.
+    setAttrs: (attrs: Attrs) => void;
+
+    // The prosemirror node for current node.
+    node: Node;
+
+    // The prosemirror decorations for current node. 
+    decorations: readonly Decoration[];
+
+    // The prosemirror inner decorations for current node. 
+    innerDecorations: DecorationSource;
+
+    // Whether the node is selected.
+    selected: boolean;
 }
 ```
 

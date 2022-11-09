@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { nodeViewContext } from '@prosemirror-adapter/vue';
-import { computed, inject } from 'vue';
+import { useNodeViewContext } from '@prosemirror-adapter/vue';
+import { computed } from 'vue';
 
-const { contentRef, node } = inject(nodeViewContext)!;
-
+const { contentRef, node } = useNodeViewContext();
 
 const tag = computed(() => {
     return `h${node.value.attrs['level']}`

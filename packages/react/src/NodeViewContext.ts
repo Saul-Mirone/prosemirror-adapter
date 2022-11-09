@@ -1,7 +1,7 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
 import type { Attrs, Node } from 'prosemirror-model';
 import type { Decoration, DecorationSource, EditorView } from 'prosemirror-view';
-import { createContext } from 'react';
+import { createContext, useContext } from 'react';
 
 export type NodeViewContentRef = (node: HTMLElement | null) => void;
 
@@ -34,3 +34,5 @@ export const nodeViewContext = createContext<NodeViewContext>({
     decorations: [],
     innerDecorations: null as never,
 });
+
+export const useNodeViewContext = () => useContext(nodeViewContext);

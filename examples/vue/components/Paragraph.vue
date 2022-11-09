@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { nodeViewContext } from '@prosemirror-adapter/vue';
-import { inject } from 'vue';
+import { useNodeViewContext } from '@prosemirror-adapter/vue';
 
-const { contentRef, selected } = inject(nodeViewContext)!;
+const { contentRef, selected } = useNodeViewContext();
 </script>
 
 <template>

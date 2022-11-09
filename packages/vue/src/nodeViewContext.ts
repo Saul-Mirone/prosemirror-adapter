@@ -1,7 +1,7 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
 import type { Attrs, Node } from 'prosemirror-model';
 import type { Decoration, DecorationSource, EditorView } from 'prosemirror-view';
-import type { InjectionKey, ShallowRef, VNodeRef } from 'vue';
+import { inject, InjectionKey, ShallowRef, VNodeRef } from 'vue';
 
 export type NodeViewContext = {
     // won't change
@@ -18,3 +18,5 @@ export type NodeViewContext = {
 };
 
 export const nodeViewContext: InjectionKey<Readonly<NodeViewContext>> = Symbol();
+
+export const useNodeViewContext = () => inject(nodeViewContext) as Readonly<NodeViewContext>;
