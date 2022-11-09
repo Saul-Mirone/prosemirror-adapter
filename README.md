@@ -39,8 +39,24 @@ So something out of this scope will not be considered. For example:
 
 ## Getting Started
 
-- [x] [React](/packages/react)
-- [x] [Vue](/packages/vue)
+<table>
+  <tr>
+    <th>react</th>
+    <th>vue</th>
+  </tr>
+  <tr>
+    <td>
+      <a align="center" title="react" href="/packages/react">
+        <img src="/assets/react.svg" width="100" height="100" alt="react">
+      </a>
+    </td>
+    <td>
+      <a align="center" title="vue" href="/packages/vue">
+        <img src="/assets/vue.svg" width="100" height="100" alt="vue">
+      </a>
+    </td>
+  </tr>
+</table>
 
 ## Contributing
 
