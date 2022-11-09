@@ -49,7 +49,7 @@ const { contentRef, selected } = useNodeViewContext();
 
 ### Bind node view components with prosemirror
 
-```tsx
+```vue
 <script setup lang="ts">
 import { VNodeRef } from 'vue';
 import { useNodeViewFactory } from '@prosemirror-adapter/vue';
