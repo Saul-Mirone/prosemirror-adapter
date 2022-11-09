@@ -20,12 +20,10 @@ An universal adapter for [ProseMirror](https://prosemirror.net/) to use it with 
 
 ## Supported UI frameworks
 
-- [x]: [React](/packages/react)
-- [x]: [Vue](/packages/vue)
+- [x] [React](/packages/react)
+- [x] [Vue](/packages/vue)
 
-## Contribute
-
-# Contributing
+## Contributing
 
 Follow our [contribution guide](/CONTRIBUTING.md) to learn how to contribute to milkdown.
 
