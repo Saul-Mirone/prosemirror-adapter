@@ -34,7 +34,7 @@ So something out of this scope will not be considered. For example:
 
 ## Contributing
 
-PR welcome! Follow our [contribution guide](/CONTRIBUTING.md) to learn how to contribute to milkdown.
+PR welcome! Follow our [contribution guide](/CONTRIBUTING.md) to learn how to contribute to prosemirror-adapter.
 
 ## License
 

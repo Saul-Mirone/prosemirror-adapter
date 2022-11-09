@@ -3,7 +3,7 @@
 > We use pnpm for development.
 > Please make sure you have node.js, npm and pnpm installed on your machine.
 
-After cloning Milkdown, run `pnpm install` to install dependencies.
+After cloning prosemirror-adapter, run `pnpm install` to install dependencies.
 
 To get started:
 

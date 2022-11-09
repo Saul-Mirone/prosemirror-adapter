@@ -142,7 +142,7 @@ type NodeViewContext = {
 
 ## Contributing
 
-Follow our [contribution guide](../../CONTRIBUTING.md) to learn how to contribute to milkdown.
+Follow our [contribution guide](../../CONTRIBUTING.md) to learn how to contribute to prosemirror-adapter.
 
 ## License
 
