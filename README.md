@@ -1,6 +1,6 @@
 # prosemirror-adapter
 
-An universal adapter for [ProseMirror](https://prosemirror.net/) to use it with modern UI frameworks. (React, Vue and more coming soon)
+Universal adapter for [ProseMirror](https://prosemirror.net/) to use it with modern UI frameworks. (React, Vue and more coming soon)
 
 ## What is this?
 
