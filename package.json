@@ -7,7 +7,9 @@
   },
   "scripts": {
     "build": "pnpm -r run build",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "ex:react": "pnpm --filter=@examples/react start",
+    "ex:vue": "pnpm --filter=@examples/vue start"
   },
   "license": "MIT",
   "dependencies": {
