@@ -8,13 +8,13 @@ You can view the example in [prosemirror-adapter/examples/react](../../examples/
 
 ## Getting Started
 
-### Install the package.
+### Install the package
 
 ```bash
 npm install @prosemirror-adapter/react
 ```
 
-### Wrap your component with provider.
+### Wrap your component with provider
 
 ```tsx
 import { ProsemirrorAdapterProvider } from '@prosemirror-adapter/react';
@@ -28,7 +28,7 @@ export const Component = () => {
 };
 ```
 
-### Build component for [node view](https://prosemirror.net/docs/ref/#view.NodeView).
+### Build component for [node view](https://prosemirror.net/docs/ref/#view.NodeView)
 
 ```tsx
 import { useNodeViewContext } from '@prosemirror-adapter/react';
@@ -39,7 +39,7 @@ const Paragraph = () => {
 }
 ```
 
-### Bind node view components with prosemirror.
+### Bind node view components with prosemirror
 
 ```tsx
 import { FC, useCallback, useRef } from 'react';
@@ -73,6 +73,8 @@ export const Editor: FC = () => {
     return <div className="editor" ref={editorRef} />;
 };
 ```
+
+🚀 Congratulations! You have built your first react node view with prosemirror-adapter.
 
 ## API
 
