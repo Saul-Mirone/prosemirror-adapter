@@ -1,5 +1,11 @@
 # prosemirror-adapter
 
+<p align="center">
+    <img src="/assets/logo.svg?raw=true" width="600"/>
+<br>
+    <a href='https://www.npmjs.com/search?q=%40prosemirror-adapter'><img src='https://img.shields.io/npm/v/@prosemirror-adapter/core' alt='npm'></a>
+</p>
+
 Universal adapter for [ProseMirror](https://prosemirror.net/) to use it with modern UI frameworks. (React, Vue and more coming soon)
 
 ## What is this?
