@@ -1,0 +1,117 @@
+# @prosemirror-adapter/react
+
+React adapter for [ProseMirror](https://prosemirror.net/).
+
+## Example
+
+You can view the example in [prosemirror-adapter/examples/react](../../examples/react/).
+
+## Getting Started
+
+### Install the package.
+
+```bash
+npm install @prosemirror-adapter/react
+```
+
+### Wrap your component with provider.
+
+```tsx
+import { ProsemirrorAdapterProvider } from '@prosemirror-adapter/react';
+
+export const Component = () => {
+    return (
+        <ProsemirrorAdapterProvider>
+            <YourAwesomeEditor />
+        </ProsemirrorAdapterProvider>
+    );
+};
+```
+
+### Build [node view](https://prosemirror.net/docs/ref/#view.NodeView) component.
+
+```tsx
+import { nodeViewContext } from '@prosemirror-adapter/react';
+import { useContext } from 'react';
+
+const Paragraph = () => {
+    const { contentRef, selected } = useContext(nodeViewContext);
+    return <div style={{ outline: selected ? 'blue solid 1px' : 'none' }} role="presentation" ref={contentRef} />;
+}
+```
+
+### Bind node view component with prosemirror.
+
+```tsx
+import { FC, useCallback, useRef } from 'react';
+import { useNodeViewFactory } from '@prosemirror-adapter/react';
+
+export const Editor: FC = () => {
+    const nodeViewFactory = useNodeViewFactory();
+    const viewRef = useRef<EditorView>();
+
+    const editorRef = useCallback(
+        (element: HTMLDivElement) => {
+            if (!element) return;
+
+            if (element.firstChild) return;
+
+            viewRef.current = new EditorView(element, {
+                state: YourProsemirrorEditorState,
+                nodeViews: {
+                    paragraph: nodeViewFactory({
+                        component: Paragraph,
+                        as: 'div',
+                        contentAs: 'p',
+                        // You can add more options
+                    }),
+                    heading: nodeViewFactory({
+                        component: Heading,
+                    }),
+                }
+            });
+        },
+        [nodeViewFactory],
+    );
+
+    return <div className="editor" ref={editorRef} />;
+};
+```
+
+## API
+
+### NodeViewFactory: (options: NodeViewFactoryOptions) => NodeView
+
+```ts
+type DOMSpec = string | HTMLElement | ((node: Node) => HTMLElement);
+
+type NodeViewFactoryOptions = {
+    // Component
+    component: ReactComponent,
+
+    // The DOM element to use as the root node of the node view.
+    as?: DOMSpec;
+    // The DOM element that contains the content of the node.
+    contentAs?: DOMSpec;
+
+    // Overrides: this part is equal to properties of [NodeView](https://prosemirror.net/docs/ref/#view.NodeView)
+    update?: (node: Node, decorations: readonly Decoration[], innerDecorations: DecorationSource) => boolean | void;
+    ignoreMutation?: (mutation: MutationRecord) => boolean | void;
+    selectNode?: () => void;
+    deselectNode?: () => void;
+    setSelection?: (anchor: number, head: number, root: Document | ShadowRoot) => void;
+    stopEvent?: (event: Event) => boolean;
+    destroy?: () => void;
+
+    // Called when the node view is updated.
+    onUpdate?: () => void;
+}
+```
+
+## Contributing
+
+Follow our [contribution guide](../../CONTRIBUTING.md) to learn how to contribute to milkdown.
+
+## License
+
+[MIT](../../LICENSE)
