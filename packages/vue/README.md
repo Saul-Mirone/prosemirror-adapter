@@ -1,78 +1,84 @@
-# @prosemirror-adapter/react
+# @prosemirror-adapter/vue
 
-[React](https://reactjs.org/) adapter for [ProseMirror](https://prosemirror.net/).
+[Vue](https://vuejs.org/) adapter for [ProseMirror](https://prosemirror.net/).
 
 ## Example
 
-You can view the example in [prosemirror-adapter/examples/react](../../examples/react/).
+You can view the example in [prosemirror-adapter/examples/vue](../../examples/vue/).
 
 ## Getting Started
 
 ### Install the package
 
 ```bash
-npm install @prosemirror-adapter/react
+npm install @prosemirror-adapter/vue
 ```
 
 ### Wrap your component with provider
 
-```tsx
-import { ProsemirrorAdapterProvider } from '@prosemirror-adapter/react';
+```vue
+<script setup lang="ts">
+import { ProsemirrorAdapterProvider } from '@prosemirror-adapter/vue';
+</script>
 
-export const Component = () => {
-    return (
-        <ProsemirrorAdapterProvider>
-            <YourAwesomeEditor />
-        </ProsemirrorAdapterProvider>
-    );
-};
+<template>
+    <ProsemirrorAdapterProvider>
+        <YourAwesomeEditor />
+    </ProsemirrorAdapterProvider>
+</template>
 ```
 
 ### Build component for [node view](https://prosemirror.net/docs/ref/#view.NodeView)
 
-```tsx
-import { useNodeViewContext } from '@prosemirror-adapter/react';
+```vue
+<script setup lang="ts">
+import { useNodeViewContext } from '@prosemirror-adapter/vue';
+const { contentRef, selected } = useNodeViewContext();
+</script>
 
-const Paragraph = () => {
-    const { contentRef, selected } = useNodeViewContext();
-    return <div style={{ outline: selected ? 'blue solid 1px' : 'none' }} role="presentation" ref={contentRef} />;
+<template>
+    <div role="presentation" :class="{ selected: selected }" :ref="contentRef"></div>
+</template>
+
+<style scoped>
+.selected {
+    outline: blue solid 1px;
 }
+</style>
 ```
 
 ### Bind node view components with prosemirror
 
 ```tsx
-import { FC, useCallback, useRef } from 'react';
-import { useNodeViewFactory } from '@prosemirror-adapter/react';
-import { Paragraph } from './Paragraph';
+<script setup lang="ts">
+import { VNodeRef } from 'vue';
+import { useNodeViewFactory } from '@prosemirror-adapter/vue';
+import Paragraph from './Paragraph.vue';
 
-export const YourAwesomeEditor: FC = () => {
-    const nodeViewFactory = useNodeViewFactory();
+const editorRef: VNodeRef = (element) => {
+    const el = element as HTMLElement;
+    if (!el || el.firstChild) return;
 
-    const editorRef = useCallback(
-        (element: HTMLDivElement) => {
-            if (!element || element.firstChild) return;
-
-            new EditorView(element, {
-                state: YourProsemirrorEditorState,
-                nodeViews: {
-                    paragraph: nodeViewFactory({
-                        component: Paragraph,
-                        // Optional: add some options
-                        as: 'div',
-                        contentAs: 'p',
-                    }),
-                }
-            });
+    new EditorView(el, {
+        state: YourProsemirrorEditorState,
+        nodeViews: {
+            paragraph: nodeViewFactory({
+                component: Paragraph,
+                // Optional: add some options
+                as: 'div',
+                contentAs: 'p',
+            }),
         },
-        [nodeViewFactory],
-    );
-
-    return <div className="editor" ref={editorRef} />;
+    });
 };
+</script>
+
+<template>
+    <div class="editor" :ref="editorRef" />
+</template>
 ```
 
-🚀 Congratulations! You have built your first react node view with prosemirror-adapter.
+🚀 Congratulations! You have built your first vue node view with prosemirror-adapter.
 
 ## API
 
@@ -83,7 +89,7 @@ type DOMSpec = string | HTMLElement | ((node: Node) => HTMLElement);
 
 type NodeViewFactoryOptions = {
     // Component
-    component: ReactComponent,
+    component: VueComponent
 
     // The DOM element to use as the root node of the node view.
     as?: DOMSpec;

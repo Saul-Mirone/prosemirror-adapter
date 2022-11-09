@@ -1,18 +1,19 @@
 <script setup lang="ts">
 import { useNodeViewFactory } from '@prosemirror-adapter/vue';
-import { onMounted, ref } from 'vue';
+import { VNodeRef } from 'vue';
 import { createEditorView } from '@examples/shared';
 import Paragraph from './Paragraph.vue';
 import Heading from './Heading.vue';
 
 import '@examples/shared/lib/style.css';
 
-const divRef = ref<HTMLDivElement>();
 const nodeViewFactory = useNodeViewFactory();
 
-onMounted(() => {
-    if (!divRef.value) return;
-    createEditorView(divRef.value, {
+const editorRef: VNodeRef = (element) => {
+    const el = element as HTMLElement;
+    if (!el || el.firstChild) return;
+
+    createEditorView(el, {
         paragraph: nodeViewFactory({
             component: Paragraph,
             as: 'div',
@@ -22,11 +23,11 @@ onMounted(() => {
             component: Heading,
         })
     });
-});
+};
 </script>
 
 <template>
-    <div class="editor" ref="divRef" />
+    <div class="editor" :ref="editorRef" />
 </template>
 
 <style>
