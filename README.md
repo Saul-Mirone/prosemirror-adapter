@@ -27,7 +27,7 @@ So something out of this scope will not be considered. For example:
 - ❎ We won't provide key bindings.
 - ❎ We won't provide schema for special modules like table or math.
 
-## Supported UI frameworks
+## Getting Started
 
 - [x] [React](/packages/react)
 - [x] [Vue](/packages/vue)

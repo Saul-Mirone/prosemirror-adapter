@@ -9,10 +9,13 @@
     "build": "pnpm -r run build",
     "commit": "git-cz",
     "ex:react": "pnpm --filter=@examples/react start",
-    "ex:vue": "pnpm --filter=@examples/vue start"
+    "ex:vue": "pnpm --filter=@examples/vue start",
+    "changeset": "changeset",
+    "release": "changeset publish"
   },
   "license": "MIT",
   "dependencies": {
+    "@changesets/cli": "^2.25.2",
     "@commitlint/cli": "^17.0.0",
     "@commitlint/config-conventional": "^17.0.0",
     "@types/rollup-plugin-auto-external": "^2.0.2",
