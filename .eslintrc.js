@@ -7,9 +7,6 @@ module.exports = {
   ],
   plugins: ['header', 'eslint-plugin-tsdoc'],
   rules: {
-    '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/no-unused-vars': 'off',
-
     'tsdoc/syntax': 'warn',
   },
   settings: {

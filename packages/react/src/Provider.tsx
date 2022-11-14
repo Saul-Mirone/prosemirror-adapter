@@ -65,9 +65,9 @@ export const ProsemirrorAdapterProvider: FC<{ children: ReactNode }> = ({ childr
     (nodeView: ReactNodeView) => {
       maybeFlushSync(() => {
         setPortals((prev) => {
-          const { [nodeView.key]: _, ...rest } = prev
-
-          return rest
+          const next = { ...prev }
+          delete next[nodeView.key]
+          return next
         })
       })
     },
