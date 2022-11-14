@@ -1,25 +1,25 @@
 {
-    "name": "@prosemirror-adapter/core",
-    "version": "0.0.1",
-    "type": "module",
-    "main": "./lib/index.es.js",
-    "types": "./lib/index.d.ts",
-    "sideEffects": false,
-    "license": "MIT",
-    "scripts": {
-        "start": "concurrently -n es,dts \"vite build --watch\"  \"tsc --emitDeclarationOnly --watch\"",
-        "test": "vitest",
-        "tsc": "tsc --noEmit && echo",
-        "build": "vite build && tsc --emitDeclarationOnly"
-    },
-    "files": [
-        "lib",
-        "src"
-    ],
-    "keywords": [
-        "prosemirror-adapter"
-    ],
-    "dependencies": {
-        "tslib": "^2.4.0"
-    }
+  "name": "@prosemirror-adapter/core",
+  "type": "module",
+  "version": "0.0.1",
+  "license": "MIT",
+  "keywords": [
+    "prosemirror-adapter"
+  ],
+  "sideEffects": false,
+  "main": "./lib/index.es.js",
+  "types": "./lib/index.d.ts",
+  "files": [
+    "lib",
+    "src"
+  ],
+  "scripts": {
+    "start": "concurrently -n es,dts \"vite build --watch\"  \"tsc --emitDeclarationOnly --watch\"",
+    "test": "vitest",
+    "tsc": "tsc --noEmit && echo",
+    "build": "vite build && tsc --emitDeclarationOnly"
+  },
+  "dependencies": {
+    "tslib": "^2.4.0"
+  }
 }

@@ -1,118 +1,122 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
 
-import type { NodeViewConstructor } from 'prosemirror-view';
+import type { NodeViewConstructor } from 'prosemirror-view'
+import type {
+  FC,
+  ReactNode,
+  ReactPortal,
+} from 'react'
 import React, {
-    createContext,
-    FC,
-    ReactNode,
-    ReactPortal,
-    useCallback,
-    useContext,
-    useLayoutEffect,
-    useMemo,
-    useRef,
-    useState,
-} from 'react';
-import { flushSync } from 'react-dom';
+  createContext,
+  useCallback,
+  useContext,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
+import { flushSync } from 'react-dom'
 
-import { ReactNodeView, reactNodeViewFactory } from './ReactNodeView';
-import { ReactNodeViewUserOptions } from './ReactNodeViewOptions';
+import type { ReactNodeView } from './ReactNodeView'
+import { reactNodeViewFactory } from './ReactNodeView'
+import type { ReactNodeViewUserOptions } from './ReactNodeViewOptions'
 
-export const createNodeViewContext = createContext<(options: ReactNodeViewUserOptions) => NodeViewConstructor>(() => {
-    throw new Error('out of scope');
-});
-export const useNodeViewFactory = () => useContext(createNodeViewContext);
+export const createNodeViewContext = createContext<(options: ReactNodeViewUserOptions) => NodeViewConstructor>(
+  (_options) => {
+    throw new Error('out of scope')
+  },
+)
+export const useNodeViewFactory = () => useContext(createNodeViewContext)
 
 export const ProsemirrorAdapterProvider: FC<{ children: ReactNode }> = ({ children }) => {
-    const [portals, setPortals] = useState<Record<string, ReactPortal>>({});
-    const mountedRef = useRef(false);
+  const [portals, setPortals] = useState<Record<string, ReactPortal>>({})
+  const mountedRef = useRef(false)
 
-    useLayoutEffect(() => {
-        mountedRef.current = true;
-        return () => {
-            mountedRef.current = false;
-        };
-    }, []);
+  useLayoutEffect(() => {
+    mountedRef.current = true
+    return () => {
+      mountedRef.current = false
+    }
+  }, [])
 
-    const maybeFlushSync = useCallback((fn: () => void) => {
-        if (mountedRef.current) {
-            flushSync(fn);
-        } else {
-            fn();
-        }
-    }, []);
+  const maybeFlushSync = useCallback((fn: () => void) => {
+    if (mountedRef.current)
+      flushSync(fn)
+    else
+      fn()
+  }, [])
 
-    const renderNodeView = useCallback(
-        (nodeView: ReactNodeView, update = true) => {
-            maybeFlushSync(() => {
-                if (update) {
-                    nodeView.updateContext();
-                }
-                setPortals((prev) => ({
-                    ...prev,
-                    [nodeView.key]: nodeView.render(),
-                }));
-            });
-        },
-        [maybeFlushSync],
-    );
+  const renderNodeView = useCallback(
+    (nodeView: ReactNodeView, update = true) => {
+      maybeFlushSync(() => {
+        if (update)
+          nodeView.updateContext()
 
-    const removeNodeView = useCallback(
-        (nodeView: ReactNodeView) => {
-            maybeFlushSync(() => {
-                setPortals((prev) => {
-                    const { [nodeView.key]: _, ...rest } = prev;
+        setPortals(prev => ({
+          ...prev,
+          [nodeView.key]: nodeView.render(),
+        }))
+      })
+    },
+    [maybeFlushSync],
+  )
 
-                    return rest;
-                });
-            });
-        },
-        [maybeFlushSync],
-    );
+  const removeNodeView = useCallback(
+    (nodeView: ReactNodeView) => {
+      maybeFlushSync(() => {
+        setPortals((prev) => {
+          const { [nodeView.key]: _, ...rest } = prev
 
-    const createReactNodeView = useCallback(
-        (options: ReactNodeViewUserOptions): NodeViewConstructor =>
-            (node, view, getPos, decorations, innerDecorations) => {
-                const nodeView = reactNodeViewFactory({
-                    node,
-                    view,
-                    getPos,
-                    decorations,
-                    innerDecorations,
-                    options: {
-                        ...options,
-                        onUpdate() {
-                            options.onUpdate?.();
-                            renderNodeView(nodeView);
-                        },
-                        selectNode() {
-                            renderNodeView(nodeView);
-                        },
-                        deselectNode() {
-                            renderNodeView(nodeView);
-                        },
-                        destroy() {
-                            options.destroy?.();
-                            removeNodeView(nodeView);
-                        },
-                    },
-                });
+          return rest
+        })
+      })
+    },
+    [maybeFlushSync],
+  )
 
-                renderNodeView(nodeView, false);
-
-                return nodeView;
+  const createReactNodeView = useCallback(
+    (options: ReactNodeViewUserOptions): NodeViewConstructor =>
+      (node, view, getPos, decorations, innerDecorations) => {
+        const nodeView = reactNodeViewFactory({
+          node,
+          view,
+          getPos,
+          decorations,
+          innerDecorations,
+          options: {
+            ...options,
+            onUpdate() {
+              options.onUpdate?.()
+              renderNodeView(nodeView)
             },
-        [removeNodeView, renderNodeView],
-    );
+            selectNode() {
+              renderNodeView(nodeView)
+            },
+            deselectNode() {
+              renderNodeView(nodeView)
+            },
+            destroy() {
+              options.destroy?.()
+              removeNodeView(nodeView)
+            },
+          },
+        })
 
-    const memoizedPortals = useMemo(() => Object.values(portals), [portals]);
+        renderNodeView(nodeView, false)
 
-    return (
+        return nodeView
+      },
+    [removeNodeView, renderNodeView],
+  )
+
+  const memoizedPortals = useMemo(() => Object.values(portals), [portals])
+
+  return (
         <createNodeViewContext.Provider value={createReactNodeView}>
             <>
                 {children}
                 {memoizedPortals}
             </>
         </createNodeViewContext.Provider>
-    );
-};
+  )
+}

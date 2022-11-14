@@ -1,35 +1,35 @@
 {
-    "name": "@prosemirror-adapter/vue",
-    "version": "0.0.1",
-    "type": "module",
-    "main": "./lib/index.es.js",
-    "types": "./lib/index.d.ts",
-    "sideEffects": false,
-    "license": "MIT",
-    "scripts": {
-        "start": "concurrently -n es,dts \"vite build --watch\"  \"tsc --emitDeclarationOnly --watch\"",
-        "test": "vitest",
-        "tsc": "tsc --noEmit && echo",
-        "build": "tsc --emitDeclarationOnly && vite build"
-    },
-    "files": [
-        "lib",
-        "src"
-    ],
-    "keywords": [
-        "prosemirror-adapter",
-        "vue"
-    ],
-    "dependencies": {
-        "nanoid": "^4.0.0",
-        "tslib": "^2.4.0",
-        "@prosemirror-adapter/core": "workspace:*"
-    },
-    "peerDependencies": {
-        "vue": "^3.0.0"
-    },
-    "devDependencies": {
-        "@vitejs/plugin-vue-jsx": "^2.1.0",
-        "vue": "^3.2.38"
-    }
+  "name": "@prosemirror-adapter/vue",
+  "type": "module",
+  "version": "0.0.1",
+  "license": "MIT",
+  "keywords": [
+    "prosemirror-adapter",
+    "vue"
+  ],
+  "sideEffects": false,
+  "main": "./lib/index.es.js",
+  "types": "./lib/index.d.ts",
+  "files": [
+    "lib",
+    "src"
+  ],
+  "scripts": {
+    "start": "concurrently -n es,dts \"vite build --watch\"  \"tsc --emitDeclarationOnly --watch\"",
+    "test": "vitest",
+    "tsc": "tsc --noEmit && echo",
+    "build": "tsc --emitDeclarationOnly && vite build"
+  },
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  },
+  "dependencies": {
+    "@prosemirror-adapter/core": "workspace:*",
+    "nanoid": "^4.0.0",
+    "tslib": "^2.4.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue-jsx": "^2.1.0",
+    "vue": "^3.2.38"
+  }
 }

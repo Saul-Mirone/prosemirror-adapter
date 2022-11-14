@@ -1,17 +1,16 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
 
-import { ProsemirrorAdapterProvider } from '@prosemirror-adapter/react';
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
+import { ProsemirrorAdapterProvider } from '@prosemirror-adapter/react'
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
 
-import { Editor } from './components/Editor';
+import { Editor } from './components/Editor'
 
-const root$ = document.getElementById('app');
-if (!root$) {
-    throw new Error('No root element found');
-}
+const root$ = document.getElementById('app')
+if (!root$)
+  throw new Error('No root element found')
 
-const root = createRoot(root$);
+const root = createRoot(root$)
 
 root.render(
     <StrictMode>
@@ -20,4 +19,4 @@ root.render(
             <Editor />
         </ProsemirrorAdapterProvider>
     </StrictMode>,
-);
+)

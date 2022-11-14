@@ -61,7 +61,7 @@ const editorRef: VNodeRef = (element) => {
     const el = element as HTMLElement;
     if (!el || el.firstChild) return;
 
-    new EditorView(el, {
+    const editorView = new EditorView(el, {
         state: YourProsemirrorEditorState,
         nodeViews: {
             paragraph: nodeViewFactory({
@@ -87,58 +87,60 @@ const editorRef: VNodeRef = (element) => {
 ### useNodeViewFactory: () => (options: NodeViewFactoryOptions) => NodeView
 
 ```ts
-type DOMSpec = string | HTMLElement | ((node: Node) => HTMLElement);
+/* Copyright 2021, Prosemirror Adapter by Mirone. */
+type DOMSpec = string | HTMLElement | ((node: Node) => HTMLElement)
 
-type NodeViewFactoryOptions = {
-    // Component
-    component: VueComponent
+interface NodeViewFactoryOptions {
+  // Component
+  component: VueComponent
 
-    // The DOM element to use as the root node of the node view.
-    as?: DOMSpec;
-    // The DOM element that contains the content of the node.
-    contentAs?: DOMSpec;
+  // The DOM element to use as the root node of the node view.
+  as?: DOMSpec
+  // The DOM element that contains the content of the node.
+  contentAs?: DOMSpec
 
-    // Overrides: this part is equal to properties of [NodeView](https://prosemirror.net/docs/ref/#view.NodeView)
-    update?: (node: Node, decorations: readonly Decoration[], innerDecorations: DecorationSource) => boolean | void;
-    ignoreMutation?: (mutation: MutationRecord) => boolean | void;
-    selectNode?: () => void;
-    deselectNode?: () => void;
-    setSelection?: (anchor: number, head: number, root: Document | ShadowRoot) => void;
-    stopEvent?: (event: Event) => boolean;
-    destroy?: () => void;
+  // Overrides: this part is equal to properties of [NodeView](https://prosemirror.net/docs/ref/#view.NodeView)
+  update?: (node: Node, decorations: readonly Decoration[], innerDecorations: DecorationSource) => boolean | void
+  ignoreMutation?: (mutation: MutationRecord) => boolean | void
+  selectNode?: () => void
+  deselectNode?: () => void
+  setSelection?: (anchor: number, head: number, root: Document | ShadowRoot) => void
+  stopEvent?: (event: Event) => boolean
+  destroy?: () => void
 
-    // Called when the node view is updated.
-    onUpdate?: () => void;
+  // Called when the node view is updated.
+  onUpdate?: () => void
 }
 ```
 
 ### useNodeViewContext: () => NodeViewContext
 
 ```ts
-type NodeViewContext = {
-    // The DOM element that contains the content of the node.
-    contentRef: NodeViewContentRef;
+/* Copyright 2021, Prosemirror Adapter by Mirone. */
+interface NodeViewContext {
+  // The DOM element that contains the content of the node.
+  contentRef: NodeViewContentRef
 
-    // The prosemirror editor view.
-    view: EditorView;
+  // The prosemirror editor view.
+  view: EditorView
 
-    // Get prosemirror position of current node view.
-    getPos: () => number;
+  // Get prosemirror position of current node view.
+  getPos: () => number
 
-    // Set node.attrs of current node.
-    setAttrs: (attrs: Attrs) => void;
+  // Set node.attrs of current node.
+  setAttrs: (attrs: Attrs) => void
 
-    // The prosemirror node for current node.
-    node: Node;
+  // The prosemirror node for current node.
+  node: Node
 
-    // The prosemirror decorations for current node. 
-    decorations: readonly Decoration[];
+  // The prosemirror decorations for current node.
+  decorations: readonly Decoration[]
 
-    // The prosemirror inner decorations for current node. 
-    innerDecorations: DecorationSource;
+  // The prosemirror inner decorations for current node.
+  innerDecorations: DecorationSource
 
-    // Whether the node is selected.
-    selected: boolean;
+  // Whether the node is selected.
+  selected: boolean
 }
 ```
 

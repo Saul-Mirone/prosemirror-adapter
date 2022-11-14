@@ -1,9 +1,9 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
 
-import { ProsemirrorAdapterProvider } from '@prosemirror-adapter/react';
-import { StrictMode } from 'react';
+import { ProsemirrorAdapterProvider } from '@prosemirror-adapter/react'
+import { StrictMode } from 'react'
 
-import { Editor } from './components/Editor';
+import { Editor } from './components/Editor'
 
 export const App = () => (
     <StrictMode>
@@ -12,4 +12,4 @@ export const App = () => (
             <Editor />
         </ProsemirrorAdapterProvider>
     </StrictMode>
-);
+)

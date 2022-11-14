@@ -1,6 +1,6 @@
 {
-    "extends": "@type-config/strict",
-    "compilerOptions": {
-        "jsx": "react-jsx"
-    }
+  "extends": "@type-config/strict",
+  "compilerOptions": {
+    "jsx": "react-jsx"
+  }
 }

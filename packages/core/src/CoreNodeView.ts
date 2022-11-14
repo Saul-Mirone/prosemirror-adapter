@@ -1,170 +1,157 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
-import type { Attrs, Node } from 'prosemirror-model';
-import type { Decoration, DecorationSource, EditorView, NodeView } from 'prosemirror-view';
+import type { Attrs, Node } from 'prosemirror-model'
+import type { Decoration, DecorationSource, EditorView, NodeView } from 'prosemirror-view'
 
-import type { CoreNodeViewSpec, CoreNodeViewUserOptions } from './CoreNodeViewOptions';
+import type { CoreNodeViewSpec, CoreNodeViewUserOptions } from './CoreNodeViewOptions'
 
 export function coreNodeViewFactory<ComponentType = unknown>(spec: CoreNodeViewSpec<ComponentType>) {
-    const coreNodeView = new CoreNodeView(spec);
-    const { setSelection, stopEvent } = spec.options;
-    const overrideOptions = {
-        setSelection,
-        stopEvent,
-    };
+  const coreNodeView = new CoreNodeView(spec)
+  const { setSelection, stopEvent } = spec.options
+  const overrideOptions = {
+    setSelection,
+    stopEvent,
+  }
 
-    Object.assign(coreNodeView, overrideOptions);
+  Object.assign(coreNodeView, overrideOptions)
 
-    return coreNodeView;
+  return coreNodeView
 }
 
 export class CoreNodeView<ComponentType> implements NodeView {
-    dom: HTMLElement;
-    contentDOM: HTMLElement | null;
-    node: Node;
-    view: EditorView;
-    getPos: () => number;
-    decorations: readonly Decoration[];
-    innerDecorations: DecorationSource;
-    options: CoreNodeViewUserOptions<ComponentType>;
-    selected = false;
+  dom: HTMLElement
+  contentDOM: HTMLElement | null
+  node: Node
+  view: EditorView
+  getPos: () => number
+  decorations: readonly Decoration[]
+  innerDecorations: DecorationSource
+  options: CoreNodeViewUserOptions<ComponentType>
+  selected = false
 
-    #createElement(as?: string | HTMLElement | ((node: Node) => HTMLElement)) {
-        const { node } = this;
-        return as == null
-            ? document.createElement(node.isInline ? 'span' : 'div')
-            : as instanceof HTMLElement
-            ? as
-            : as instanceof Function
-            ? as(node)
-            : document.createElement(as);
+  #createElement(as?: string | HTMLElement | ((node: Node) => HTMLElement)) {
+    const { node } = this
+    return as == null
+      ? document.createElement(node.isInline ? 'span' : 'div')
+      : as instanceof HTMLElement
+        ? as
+        : as instanceof Function
+          ? as(node)
+          : document.createElement(as)
+  }
+
+  constructor({ node, view, getPos, decorations, innerDecorations, options }: CoreNodeViewSpec<ComponentType>) {
+    this.node = node
+    this.view = view
+    this.getPos = getPos
+    this.decorations = decorations
+    this.innerDecorations = innerDecorations
+    this.options = options
+
+    this.dom = this.#createElement(options.as)
+    this.contentDOM = node.isLeaf ? null : this.#createElement(options.contentAs)
+    this.dom.setAttribute('data-node-view-root', 'true')
+    if (this.contentDOM) {
+      this.contentDOM.setAttribute('data-node-view-content', 'true')
+      this.contentDOM.style.whiteSpace = 'inherit'
     }
+  }
 
-    constructor({ node, view, getPos, decorations, innerDecorations, options }: CoreNodeViewSpec<ComponentType>) {
-        this.node = node;
-        this.view = view;
-        this.getPos = getPos;
-        this.decorations = decorations;
-        this.innerDecorations = innerDecorations;
-        this.options = options;
+  get component() {
+    return this.options.component
+  }
 
-        this.dom = this.#createElement(options.as);
-        this.contentDOM = node.isLeaf ? null : this.#createElement(options.contentAs);
-        this.dom.setAttribute('data-node-view-root', 'true');
-        if (this.contentDOM) {
-            this.contentDOM.setAttribute('data-node-view-content', 'true');
-            this.contentDOM.style.whiteSpace = 'inherit';
-        }
-    }
+  selectNode = () => {
+    this.selected = true
+    this.options.selectNode?.()
+  }
 
-    get component() {
-        return this.options.component;
-    }
+  deselectNode = () => {
+    this.selected = false
+    this.options.deselectNode?.()
+  }
 
-    selectNode = () => {
-        this.selected = true;
-        this.options.selectNode?.();
-    };
+  shouldUpdate: (node: Node) => boolean = (node) => {
+    if (node.type !== this.node.type)
+      return false
 
-    deselectNode = () => {
-        this.selected = false;
-        this.options.deselectNode?.();
-    };
+    if (node.sameMarkup(this.node))
+      return false
 
-    shouldUpdate: (node: Node) => boolean = (node) => {
-        if (node.type !== this.node.type) {
-            return false;
-        }
+    return true
+  }
 
-        if (node.sameMarkup(this.node)) {
-            return false;
-        }
+  update: (node: Node, decorations: readonly Decoration[], innerDecorations: DecorationSource) => boolean = (
+    node,
+    decorations,
+    innerDecorations,
+  ) => {
+    const userUpdate = this.options.update
+    let result
+    if (userUpdate)
+      result = userUpdate(node, decorations, innerDecorations)
 
-        return true;
-    };
+    if (typeof result !== 'boolean')
+      result = this.shouldUpdate(node)
 
-    update: (node: Node, decorations: readonly Decoration[], innerDecorations: DecorationSource) => boolean = (
-        node,
-        decorations,
-        innerDecorations,
-    ) => {
-        const userUpdate = this.options.update;
-        let result;
-        if (userUpdate) {
-            result = userUpdate(node, decorations, innerDecorations);
-        }
+    this.node = node
+    this.decorations = decorations
+    this.innerDecorations = innerDecorations
 
-        if (typeof result !== 'boolean') {
-            result = this.shouldUpdate(node);
-        }
+    if (result)
+      this.options.onUpdate?.()
 
-        this.node = node;
-        this.decorations = decorations;
-        this.innerDecorations = innerDecorations;
+    return result
+  }
 
-        if (result) {
-            this.options.onUpdate?.();
-        }
+  shouldIgnoreMutation: (mutation: MutationRecord) => boolean = (mutation) => {
+    if (!this.dom || !this.contentDOM)
+      return true
 
-        return result;
-    };
+    if (this.node.isLeaf || this.node.isAtom)
+      return true
 
-    shouldIgnoreMutation: (mutation: MutationRecord) => boolean = (mutation) => {
-        if (!this.dom || !this.contentDOM) {
-            return true;
-        }
+    if ((mutation.type as unknown) === 'selection')
+      return false
 
-        if (this.node.isLeaf || this.node.isAtom) {
-            return true;
-        }
+    if (this.contentDOM === mutation.target && mutation.type === 'attributes')
+      return true
 
-        if ((mutation.type as unknown) === 'selection') {
-            return false;
-        }
+    if (this.contentDOM.contains(mutation.target))
+      return false
 
-        if (this.contentDOM === mutation.target && mutation.type === 'attributes') {
-            return true;
-        }
+    return true
+  }
 
-        if (this.contentDOM.contains(mutation.target)) {
-            return false;
-        }
+  ignoreMutation: (mutation: MutationRecord) => boolean = (mutation) => {
+    if (!this.dom || !this.contentDOM)
+      return true
 
-        return true;
-    };
+    let result
 
-    ignoreMutation: (mutation: MutationRecord) => boolean = (mutation) => {
-        if (!this.dom || !this.contentDOM) {
-            return true;
-        }
+    const userIgnoreMutation = this.options.ignoreMutation
 
-        let result;
+    if (userIgnoreMutation)
+      result = userIgnoreMutation(mutation)
 
-        const userIgnoreMutation = this.options.ignoreMutation;
+    if (typeof result !== 'boolean')
+      result = this.shouldIgnoreMutation(mutation)
 
-        if (userIgnoreMutation) {
-            result = userIgnoreMutation(mutation);
-        }
+    return result
+  }
 
-        if (typeof result !== 'boolean') {
-            result = this.shouldIgnoreMutation(mutation);
-        }
+  destroy: () => void = () => {
+    this.options.destroy?.()
+    this.dom.remove()
+    this.contentDOM?.remove()
+  }
 
-        return result;
-    };
-
-    destroy: () => void = () => {
-        this.options.destroy?.();
-        this.dom.remove();
-        this.contentDOM?.remove();
-    };
-
-    setAttrs = (attr: Attrs) => {
-        const { dispatch, state } = this.view;
-        return dispatch(
-            state.tr.setNodeMarkup(this.getPos(), undefined, {
-                ...this.node.attrs,
-                ...attr,
-            }),
-        );
-    };
+  setAttrs = (attr: Attrs) => {
+    const { dispatch, state } = this.view
+    return dispatch(
+      state.tr.setNodeMarkup(this.getPos(), undefined, {
+        ...this.node.attrs,
+        ...attr,
+      }),
+    )
+  }
 }
