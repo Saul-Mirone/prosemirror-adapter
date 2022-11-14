@@ -1,5 +1,5 @@
 {
-    "extends": "../../tsconfig.base.json",
+    "extends": "@type-config/strict",
     "compilerOptions": {
         "jsx": "preserve"
     }

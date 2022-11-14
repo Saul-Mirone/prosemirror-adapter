@@ -11,11 +11,14 @@ import { schema } from 'prosemirror-schema-basic';
 import { EditorState } from 'prosemirror-state';
 import { EditorView, NodeViewConstructor } from 'prosemirror-view';
 
-export const createEditorView = (element: HTMLElement, nodeViews: Record<string, NodeViewConstructor>) =>
-    new EditorView(element, {
+export const createEditorView = (element: HTMLElement, nodeViews: Record<string, NodeViewConstructor>) => {
+    const content = document.querySelector('#content');
+    if (!content) {
+        throw new Error('Content element not found');
+    }
+    return new EditorView(element, {
         state: EditorState.create({
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-            doc: DOMParser.fromSchema(schema).parse(document.querySelector('#content')!),
+            doc: DOMParser.fromSchema(schema).parse(content),
             schema,
             plugins: [
                 ...exampleSetup({ schema }),
@@ -47,3 +50,4 @@ export const createEditorView = (element: HTMLElement, nodeViews: Record<string,
         }),
         nodeViews,
     });
+};
