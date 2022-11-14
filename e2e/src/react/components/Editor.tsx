@@ -1,12 +1,11 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
-import '@examples/shared/lib/style.css';
 import './Editor.css';
 
-import { createEditorView } from '@examples/shared';
 import { useNodeViewFactory } from '@prosemirror-adapter/react';
 import { EditorView } from 'prosemirror-view';
 import { FC, useCallback, useRef } from 'react';
 
+import { createEditorView } from '../../createEditorView';
 import { Heading } from './Heading';
 import { Paragraph } from './Paragraph';
 

@@ -6,15 +6,21 @@
         "start": "vite"
     },
     "dependencies": {
-        "@examples/shared": "workspace:*",
         "@types/react": "^18.0.0",
         "@types/react-dom": "^18.0.0",
         "@vitejs/plugin-react": "^2.2.0",
-        "@prosemirror-adapter/react": "workspace:*",
+        "@prosemirror-adapter/react": "latest",
         "prosemirror-example-setup": "^1.2.1",
         "prosemirror-menu": "^1.2.1",
         "prosemirror-schema-basic": "^1.2.0",
+        "prosemirror-keymap": "^1.2.0",
+        "prosemirror-model": "^1.18.1",
+        "prosemirror-state": "^1.4.2",
+        "prosemirror-view": "^1.29.0",
+        "tslib": "^2.4.1",
+        "typescript": "^4.8.4",
         "react": "^18.0.0",
-        "react-dom": "^18.0.0"
+        "react-dom": "^18.0.0",
+        "vite": "^3.2.2"
     }
 }

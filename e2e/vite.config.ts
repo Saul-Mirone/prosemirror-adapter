@@ -9,6 +9,8 @@ export default defineConfig({
     root: 'src',
     plugins: [react(), vue()],
     build: {
+        outDir: '../dist',
+        emptyOutDir: true,
         rollupOptions: {
             input: {
                 main: resolve(__dirname, 'src/index.html'),
