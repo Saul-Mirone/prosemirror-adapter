@@ -12,7 +12,8 @@
     "ex:react": "pnpm --filter=@examples/react start",
     "ex:vue": "pnpm --filter=@examples/vue start",
     "changeset": "changeset",
-    "release": "changeset publish"
+    "release": "changeset publish",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@antfu/eslint-config-ts": "^0.30.1",
