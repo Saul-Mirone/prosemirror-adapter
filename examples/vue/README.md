@@ -2,6 +2,8 @@
 
 A simple example for [`@prosemirror-adapter/vue`](../../packages/vue/).
 
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/Saul-Mirone/prosemirror-adapter/tree/main/examples/vue)
+
 ## Getting Started
 
 1. Clone the repo.
