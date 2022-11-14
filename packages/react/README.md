@@ -6,6 +6,8 @@
 
 You can view the example in [prosemirror-adapter/examples/react](../../examples/react/).
 
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/Saul-Mirone/prosemirror-adapter/tree/main/examples/react)
+
 ## Getting Started
 
 ### Install the package
