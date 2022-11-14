@@ -15,6 +15,7 @@
     "release": "changeset publish"
   },
   "dependencies": {
+    "@antfu/eslint-config-ts": "^0.30.1",
     "@changesets/cli": "^2.25.2",
     "@commitlint/cli": "^17.0.0",
     "@commitlint/config-conventional": "^17.0.0",
@@ -25,6 +26,7 @@
     "concurrently": "^7.5.0",
     "cross-env": "^7.0.3",
     "eslint": "^8.26.0",
+    "eslint-plugin-header": "^3.1.1",
     "eslint-plugin-react-hooks": "^4.3.0",
     "eslint-plugin-tsdoc": "^0.2.14",
     "git-cz": "^4.9.0",
