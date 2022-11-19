@@ -33,7 +33,9 @@ jobs:
       - name: load cache
         uses: actions/cache@v3
         with:
-          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          path: |
+            ~/.cache/Cypress
+            ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
           key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}
@@ -76,3 +78,19 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.CHANGESET_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: export screenshots (on failure only)
+        uses: actions/upload-artifact@v3.1.0
+        if: ${{ failure() }}
+        with:
+          name: cypress-screenshots
+          path: e2e/cypress/screenshots
+          retention-days: 7
+
+      - name: export screen recordings (on failure only)
+        uses: actions/upload-artifact@v3.1.0
+        if: ${{ failure() }}
+        with:
+          name: cypress-videos
+          path: e2e/cypress/videos
+          retention-days: 7
