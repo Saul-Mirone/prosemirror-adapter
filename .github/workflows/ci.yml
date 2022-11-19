@@ -48,9 +48,8 @@ jobs:
         uses: cypress-io/github-action@v4
         with:
           install: false
-          working-directory: e2e
-          start: pnpm run setup
-          command: pnpm test
+          start: pnpm --filter=e2e run setup
+          command: pnpm --filter=e2e test
           wait-on: 'http://localhost:7000'
           browser: chrome
 
@@ -58,9 +57,8 @@ jobs:
         uses: cypress-io/github-action@v4
         with:
           install: false
-          working-directory: e2e
-          start: pnpm run setup
-          command: pnpm test
+          start: pnpm --filter=e2e run setup
+          command: pnpm --filter=e2e test
           wait-on: 'http://localhost:7000'
           browser: firefox
 
