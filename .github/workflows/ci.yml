@@ -46,20 +46,26 @@ jobs:
 
       - name: run e2e test on chrome
         uses: cypress-io/github-action@v4
+        env:
+          CYPRESS_SERVER_PORT: 7000
+          CYPRESS_PORT: 8000
         with:
           install: false
-          start: pnpm --filter=e2e run setup
-          command: pnpm --filter=e2e test
+          working-directory: e2e
+          start: pnpm exec vite preview --port 7000
           wait-on: 'http://localhost:7000'
           browser: chrome
 
       - name: run e2e test on firefox
         uses: cypress-io/github-action@v4
+        env:
+          CYPRESS_SERVER_PORT: 7001
+          CYPRESS_PORT: 8000
         with:
           install: false
-          start: pnpm --filter=e2e run setup
-          command: pnpm --filter=e2e test
-          wait-on: 'http://localhost:7000'
+          working-directory: e2e
+          start: pnpm exec vite preview --port 7001
+          wait-on: 'http://localhost:7001'
           browser: firefox
 
       - name: create versions or publish to npm registry

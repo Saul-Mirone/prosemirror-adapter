@@ -6,9 +6,10 @@
     "start": "vite --port 7000",
     "build": "vite build",
     "setup": "vite preview --port 7000 --host",
-    "test": "cross-env CYPRESS_SERVER_PORT=7000 cypress run",
-    "test:verbose": "cross-env CYPRESS_SERVER_PORT=7000 cypress open",
-    "start:test": "cross-env CYPRESS_SERVER_PORT=7000 start-server-and-test setup http-get://localhost:7000 test"
+    "test": "cypress run",
+    "test:verbose": "cypress open",
+    "start:test": "cross-env CYPRESS_SERVER_PORT=7000 start-server-and-test setup http-get://localhost:7000 test",
+    "start:test:verbose": "cross-env CYPRESS_SERVER_PORT=7000 start-server-and-test setup http-get://localhost:7000 test:verbose"
   },
   "devDependencies": {
     "@prosemirror-adapter/react": "workspace:*",
