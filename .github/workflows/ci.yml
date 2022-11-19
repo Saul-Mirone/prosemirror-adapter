@@ -51,7 +51,7 @@ jobs:
           working-directory: e2e
           start: pnpm run setup
           command: pnpm test
-          wait-on: 'http://127.0.0.1:7000'
+          wait-on: 'http://localhost:7000'
           browser: chrome
 
       - name: run e2e test on firefox
@@ -61,7 +61,7 @@ jobs:
           working-directory: e2e
           start: pnpm run setup
           command: pnpm test
-          wait-on: 'http://127.0.0.1:7000'
+          wait-on: 'http://localhost:7000'
           browser: firefox
 
       - name: create versions or publish to npm registry
