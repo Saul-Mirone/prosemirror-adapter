@@ -45,21 +45,21 @@ jobs:
         run: pnpm build
 
       - name: run e2e test on chrome
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         with:
           install: false
           start: pnpm --filter=e2e run setup
           command: pnpm --filter=e2e test
-          wait-on: 'http://localhost:7000'
+          wait-on: 'http://127.0.0.1:7000'
           browser: chrome
 
       - name: run e2e test on firefox
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4
         with:
           install: false
           start: pnpm --filter=e2e run setup
           command: pnpm --filter=e2e test
-          wait-on: 'http://localhost:7000'
+          wait-on: 'http://127.0.0.1:7000'
           browser: firefox
 
       - name: create versions or publish to npm registry
