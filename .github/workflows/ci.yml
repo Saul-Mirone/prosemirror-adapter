@@ -45,7 +45,7 @@ jobs:
         run: pnpm build
 
       - name: run e2e test on chrome
-        uses: cypress-io/github-action@v4
+        uses: cypress-io/github-action@v2
         with:
           install: false
           start: pnpm --filter=e2e run setup
