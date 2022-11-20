@@ -1,8 +1,9 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
 import type { Attrs, Node } from 'prosemirror-model'
-import type { Decoration, DecorationSource, EditorView } from 'prosemirror-view'
+import type { Decoration, DecorationSource, EditorView, NodeViewConstructor } from 'prosemirror-view'
 import type { InjectionKey, ShallowRef, VNodeRef } from 'vue'
 import { inject } from 'vue'
+import type { VueNodeViewUserOptions } from './VueNodeViewOptions'
 
 export interface NodeViewContext {
   // won't change
@@ -21,3 +22,7 @@ export interface NodeViewContext {
 export const nodeViewContext: InjectionKey<Readonly<NodeViewContext>> = Symbol('[ProsemirrorAdapter]nodeViewContext')
 
 export const useNodeViewContext = () => inject(nodeViewContext) as Readonly<NodeViewContext>
+
+export type NodeViewFactory = (options: VueNodeViewUserOptions) => NodeViewConstructor
+export const nodeViewFactoryKey: InjectionKey<NodeViewFactory> = Symbol('[ProsemirrorAdapter]useNodeViewFactory')
+export const useNodeViewFactory = () => inject(nodeViewFactoryKey) as NodeViewFactory

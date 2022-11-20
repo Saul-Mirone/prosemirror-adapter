@@ -6,8 +6,9 @@
     border: 2px solid rgba(0, 0, 0, 0.2);
     padding: 5px 0;
     margin-bottom: 23px;
+    position: relative;
 }
-  
+
 .ProseMirror p:first-child,
 .ProseMirror h1:first-child,
 .ProseMirror h2:first-child,

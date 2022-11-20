@@ -11,7 +11,7 @@ To get started:
 > You can just press `Ctrl/Cmd+Shift+b`.
 
 1. Run `pnpm build`.
-2. Run `pnpm ex:react` or `pnpm ex:vue`.
+2. Run `pnpm ex`.
 
 After that,
 you may want to play with any packages,

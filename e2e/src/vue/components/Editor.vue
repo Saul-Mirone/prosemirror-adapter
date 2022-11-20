@@ -1,11 +1,14 @@
 <script setup lang="ts">
-import { useNodeViewFactory } from '@prosemirror-adapter/vue';
+import { useNodeViewFactory, usePluginViewFactory } from '@prosemirror-adapter/vue';
+import { Plugin } from 'prosemirror-state'
 import { VNodeRef } from 'vue';
 import { createEditorView } from '../../createEditorView';
 import Paragraph from './Paragraph.vue';
 import Heading from './Heading.vue';
+import Tooltip from './Tooltip.vue'
 
 const nodeViewFactory = useNodeViewFactory();
+const pluginViewFactory = usePluginViewFactory();
 
 const editorRef: VNodeRef = (element) => {
     const el = element as HTMLElement;
@@ -20,7 +23,13 @@ const editorRef: VNodeRef = (element) => {
         heading: nodeViewFactory({
             component: Heading,
         })
-    });
+    }, [
+      new Plugin({
+        view: pluginViewFactory({
+          component: Tooltip,
+        }),
+      }),
+    ]);
 };
 </script>
 
@@ -37,8 +46,9 @@ const editorRef: VNodeRef = (element) => {
     border: 2px solid rgba(0, 0, 0, 0.2);
     padding: 5px 0;
     margin-bottom: 23px;
+    position: relative;
 }
-  
+
 .ProseMirror p:first-child,
 .ProseMirror h1:first-child,
 .ProseMirror h2:first-child,

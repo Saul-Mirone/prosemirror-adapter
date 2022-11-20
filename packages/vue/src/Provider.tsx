@@ -1,41 +1,20 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
-import type { NodeViewConstructor } from 'prosemirror-view'
-import type { InjectionKey } from 'vue'
 import {
-  defineComponent,
-  getCurrentInstance,
-  h,
-  inject,
-  markRaw,
-  onBeforeMount,
-  onUnmounted,
-  provide,
-  ref,
+  defineComponent, h, provide,
 } from 'vue'
+import type { NodeViewFactory } from './nodeViewContext'
+import { nodeViewFactoryKey } from './nodeViewContext'
+import type { PluginViewFactory } from './pluginViewContext'
+import { pluginViewFactoryKey } from './pluginViewContext'
 import { VueNodeView } from './VueNodeView'
 
-import type { VueNodeViewComponent, VueNodeViewUserOptions } from './VueNodeViewOptions'
-
-export type NodeViewFactory = (options: VueNodeViewUserOptions) => NodeViewConstructor
-export const nodeViewFactoryKey: InjectionKey<NodeViewFactory> = Symbol('[ProsemirrorAdapter]useNodeViewFactory')
-export const useNodeViewFactory = () => inject(nodeViewFactoryKey) as NodeViewFactory
+import { VuePluginView } from './VuePluginView'
+import { useVueRenderer } from './VueRenderer'
 
 export const ProsemirrorAdapterProvider = defineComponent({
   name: 'prosemirror-adapter-provider',
   setup: (_, { slots }) => {
-    const portals = ref<Record<string, VueNodeViewComponent>>({})
-    const instance = getCurrentInstance()
-    const update = markRaw<{ updater?: () => void }>({})
-
-    onBeforeMount(() => {
-      update.updater = () => {
-        instance?.update()
-      }
-    })
-
-    onUnmounted(() => {
-      update.updater = undefined
-    })
+    const { portals, renderVueRenderer, removeVueRenderer } = useVueRenderer()
 
     const createVueNodeView: NodeViewFactory = options => (node, view, getPos, decorations, innerDecorations) => {
       const nodeView = new VueNodeView({
@@ -60,21 +39,39 @@ export const ProsemirrorAdapterProvider = defineComponent({
           },
           destroy() {
             options.destroy?.()
-            delete portals.value[nodeView.key]
+            removeVueRenderer(nodeView)
           },
         },
       })
 
-      portals.value[nodeView.key] = nodeView.render()
-
-      // Force update the vue component to render
-      // Cursor won't move to new node without this
-      update.updater?.()
+      renderVueRenderer(nodeView)
 
       return nodeView
     }
 
+    const createVuePluginView: PluginViewFactory = options => (view) => {
+      const pluginView = new VuePluginView({
+        view,
+        options: {
+          ...options,
+          update: (view, prevState) => {
+            options.update?.(view, prevState)
+            pluginView.updateContext()
+          },
+          destroy: () => {
+            options.destroy?.()
+            removeVueRenderer(pluginView)
+          },
+        },
+      })
+
+      renderVueRenderer(pluginView)
+
+      return pluginView
+    }
+
     provide(nodeViewFactoryKey, createVueNodeView)
+    provide(pluginViewFactoryKey, createVuePluginView)
 
     return () => {
       return (

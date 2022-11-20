@@ -9,8 +9,7 @@
   "scripts": {
     "build": "pnpm -r run build",
     "commit": "git-cz",
-    "ex:react": "pnpm --filter=@examples/react start",
-    "ex:vue": "pnpm --filter=@examples/vue start",
+    "ex": "pnpm --filter=e2e start",
     "changeset": "changeset",
     "lint": "eslint .",
     "release": "changeset publish",

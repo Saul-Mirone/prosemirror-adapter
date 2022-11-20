@@ -6,8 +6,9 @@ import { Teleport, defineComponent, markRaw, provide, shallowRef } from 'vue'
 import type { NodeViewContext } from './nodeViewContext'
 import { nodeViewContext } from './nodeViewContext'
 import type { VueNodeViewComponent } from './VueNodeViewOptions'
+import type { VueRenderer, VueRendererComponent } from './VueRenderer'
 
-export class VueNodeView extends CoreNodeView<VueNodeViewComponent> {
+export class VueNodeView extends CoreNodeView<VueNodeViewComponent> implements VueRenderer<NodeViewContext> {
   key: string = nanoid()
 
   context: NodeViewContext = {
@@ -58,6 +59,6 @@ export class VueNodeView extends CoreNodeView<VueNodeViewComponent> {
           )
         },
       }),
-    ) as VueNodeViewComponent
+    ) as VueRendererComponent
   }
 }

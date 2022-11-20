@@ -4,19 +4,6 @@ import type { Decoration, DecorationSource, EditorView, NodeView } from 'prosemi
 
 import type { CoreNodeViewSpec, CoreNodeViewUserOptions } from './CoreNodeViewOptions'
 
-export function coreNodeViewFactory<ComponentType = unknown>(spec: CoreNodeViewSpec<ComponentType>) {
-  const coreNodeView = new CoreNodeView(spec)
-  const { setSelection, stopEvent } = spec.options
-  const overrideOptions = {
-    setSelection,
-    stopEvent,
-  }
-
-  Object.assign(coreNodeView, overrideOptions)
-
-  return coreNodeView
-}
-
 export class CoreNodeView<ComponentType> implements NodeView {
   dom: HTMLElement
   contentDOM: HTMLElement | null

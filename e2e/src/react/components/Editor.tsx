@@ -1,18 +1,21 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
 import './Editor.css'
 
-import { useNodeViewFactory } from '@prosemirror-adapter/react'
+import { useNodeViewFactory, usePluginViewFactory } from '@prosemirror-adapter/react'
 import type { EditorView } from 'prosemirror-view'
 import type { FC } from 'react'
 import { useCallback, useRef } from 'react'
 
+import { Plugin } from 'prosemirror-state'
 import { createEditorView } from '../../createEditorView'
 import { Heading } from './Heading'
 import { Paragraph } from './Paragraph'
+import { Tooltip } from './Tooltip'
 
 export const Editor: FC = () => {
   const viewRef = useRef<EditorView>()
   const nodeViewFactory = useNodeViewFactory()
+  const pluginViewFactory = usePluginViewFactory()
 
   const editorRef = useCallback(
     (element: HTMLDivElement) => {
@@ -31,9 +34,15 @@ export const Editor: FC = () => {
         heading: nodeViewFactory({
           component: Heading,
         }),
-      })
+      }, [
+        new Plugin({
+          view: pluginViewFactory({
+            component: Tooltip,
+          }),
+        }),
+      ])
     },
-    [nodeViewFactory],
+    [nodeViewFactory, pluginViewFactory],
   )
 
   return <div className="editor" ref={editorRef} />

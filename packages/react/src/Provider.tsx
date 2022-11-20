@@ -1,77 +1,25 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
 
+import type { PluginViewSpec } from '@prosemirror-adapter/core'
 import type { NodeViewConstructor } from 'prosemirror-view'
 import type {
   FC,
   ReactNode,
-  ReactPortal,
 } from 'react'
 import React, {
-  createContext,
-  useCallback,
-  useContext,
-  useLayoutEffect,
-  useMemo,
-  useRef,
-  useState,
+  useCallback, useMemo,
 } from 'react'
-import { flushSync } from 'react-dom'
+import { createNodeViewContext } from './nodeViewContext'
+import { createPluginViewContext } from './pluginViewContext'
 
 import { ReactNodeView } from './ReactNodeView'
 import type { ReactNodeViewUserOptions } from './ReactNodeViewOptions'
-
-export const createNodeViewContext = createContext<(options: ReactNodeViewUserOptions) => NodeViewConstructor>(
-  (_options) => {
-    throw new Error('out of scope')
-  },
-)
-export const useNodeViewFactory = () => useContext(createNodeViewContext)
+import { ReactPluginView } from './ReactPluginView'
+import type { ReactPluginViewUserOptions } from './ReactPluginViewOptions'
+import { useReactRenderer } from './ReactRenderer'
 
 export const ProsemirrorAdapterProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const [portals, setPortals] = useState<Record<string, ReactPortal>>({})
-  const mountedRef = useRef(false)
-
-  useLayoutEffect(() => {
-    mountedRef.current = true
-    return () => {
-      mountedRef.current = false
-    }
-  }, [])
-
-  const maybeFlushSync = useCallback((fn: () => void) => {
-    if (mountedRef.current)
-      flushSync(fn)
-    else
-      fn()
-  }, [])
-
-  const renderNodeView = useCallback(
-    (nodeView: ReactNodeView, update = true) => {
-      maybeFlushSync(() => {
-        if (update)
-          nodeView.updateContext()
-
-        setPortals(prev => ({
-          ...prev,
-          [nodeView.key]: nodeView.render(),
-        }))
-      })
-    },
-    [maybeFlushSync],
-  )
-
-  const removeNodeView = useCallback(
-    (nodeView: ReactNodeView) => {
-      maybeFlushSync(() => {
-        setPortals((prev) => {
-          const next = { ...prev }
-          delete next[nodeView.key]
-          return next
-        })
-      })
-    },
-    [maybeFlushSync],
-  )
+  const { renderReactRenderer, removeReactRenderer, portals } = useReactRenderer()
 
   const createReactNodeView = useCallback(
     (options: ReactNodeViewUserOptions): NodeViewConstructor =>
@@ -86,38 +34,63 @@ export const ProsemirrorAdapterProvider: FC<{ children: ReactNode }> = ({ childr
             ...options,
             onUpdate() {
               options.onUpdate?.()
-              renderNodeView(nodeView)
+              renderReactRenderer(nodeView)
             },
             selectNode() {
               options.selectNode?.()
-              renderNodeView(nodeView)
+              renderReactRenderer(nodeView)
             },
             deselectNode() {
               options.deselectNode?.()
-              renderNodeView(nodeView)
+              renderReactRenderer(nodeView)
             },
             destroy() {
               options.destroy?.()
-              removeNodeView(nodeView)
+              removeReactRenderer(nodeView)
             },
           },
         })
 
-        renderNodeView(nodeView, false)
+        renderReactRenderer(nodeView, false)
 
         return nodeView
       },
-    [removeNodeView, renderNodeView],
+    [removeReactRenderer, renderReactRenderer],
   )
+
+  const createReactPluginView = useCallback((options: ReactPluginViewUserOptions): PluginViewSpec => {
+    return (view) => {
+      const pluginView = new ReactPluginView({
+        view,
+        options: {
+          ...options,
+          update: (view, prevState) => {
+            options.update?.(view, prevState)
+            renderReactRenderer(pluginView)
+          },
+          destroy: () => {
+            options.destroy?.()
+            removeReactRenderer(pluginView)
+          },
+        },
+      })
+
+      renderReactRenderer(pluginView, false)
+
+      return pluginView
+    }
+  }, [removeReactRenderer, renderReactRenderer])
 
   const memoizedPortals = useMemo(() => Object.values(portals), [portals])
 
   return (
-        <createNodeViewContext.Provider value={createReactNodeView}>
-            <>
-                {children}
-                {memoizedPortals}
-            </>
-        </createNodeViewContext.Provider>
+    <createNodeViewContext.Provider value={createReactNodeView}>
+      <createPluginViewContext.Provider value={createReactPluginView}>
+        <>
+          {children}
+          {memoizedPortals}
+        </>
+      </createPluginViewContext.Provider>
+    </createNodeViewContext.Provider>
   )
 }

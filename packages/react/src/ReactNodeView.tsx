@@ -7,8 +7,9 @@ import { createPortal } from 'react-dom'
 import type { NodeViewContext } from './nodeViewContext'
 import { nodeViewContext } from './nodeViewContext'
 import type { ReactNodeViewComponent } from './ReactNodeViewOptions'
+import type { ReactRenderer } from './ReactRenderer'
 
-export class ReactNodeView extends CoreNodeView<ReactNodeViewComponent> {
+export class ReactNodeView extends CoreNodeView<ReactNodeViewComponent> implements ReactRenderer<NodeViewContext> {
   key: string = nanoid()
 
   context: NodeViewContext = {
