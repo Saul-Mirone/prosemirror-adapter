@@ -76,10 +76,10 @@ export const ProsemirrorAdapterProvider = defineComponent({
 
     return () => {
       return (
-                <>
-                    {slots.default?.()}
-                    {Object.values(portals.value).map(x => h(x))}
-                </>
+        <>
+          {slots.default?.()}
+          {Object.values(portals.value).map(x => h(x))}
+        </>
       )
     }
   },

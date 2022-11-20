@@ -65,9 +65,9 @@ export class VueNodeView extends CoreNodeView<VueNodeViewComponent> {
         setup: () => {
           provide(nodeViewContext, this.context)
           return () => (
-                        <Teleport key={this.key} to={this.dom}>
-                            <UserComponent />
-                        </Teleport>
+            <Teleport key={this.key} to={this.dom}>
+                <UserComponent />
+            </Teleport>
           )
         },
       }),

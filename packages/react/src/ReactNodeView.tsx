@@ -52,11 +52,11 @@ export class ReactNodeView extends CoreNodeView<ReactNodeViewComponent> {
     const UserComponent = this.component
 
     return createPortal(
-            <nodeViewContext.Provider value={this.context}>
-                <UserComponent />
-            </nodeViewContext.Provider>,
-            this.dom,
-            this.key,
+      <nodeViewContext.Provider value={this.context}>
+          <UserComponent />
+      </nodeViewContext.Provider>,
+      this.dom,
+      this.key,
     )
   }
 }
