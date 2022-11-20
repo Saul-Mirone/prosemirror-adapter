@@ -6,20 +6,7 @@ import { createPortal } from 'react-dom'
 
 import type { NodeViewContext } from './nodeViewContext'
 import { nodeViewContext } from './nodeViewContext'
-import type { ReactNodeViewComponent, ReactNodeViewSpec } from './ReactNodeViewOptions'
-
-export function reactNodeViewFactory(spec: ReactNodeViewSpec) {
-  const reactNodeView = new ReactNodeView(spec)
-  const { setSelection, stopEvent } = spec.options
-  const overrideOptions = {
-    setSelection,
-    stopEvent,
-  }
-
-  Object.assign(reactNodeView, overrideOptions)
-
-  return reactNodeView
-}
+import type { ReactNodeViewComponent } from './ReactNodeViewOptions'
 
 export class ReactNodeView extends CoreNodeView<ReactNodeViewComponent> {
   key: string = nanoid()

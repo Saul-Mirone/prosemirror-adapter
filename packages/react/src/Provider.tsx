@@ -17,8 +17,7 @@ import React, {
 } from 'react'
 import { flushSync } from 'react-dom'
 
-import type { ReactNodeView } from './ReactNodeView'
-import { reactNodeViewFactory } from './ReactNodeView'
+import { ReactNodeView } from './ReactNodeView'
 import type { ReactNodeViewUserOptions } from './ReactNodeViewOptions'
 
 export const createNodeViewContext = createContext<(options: ReactNodeViewUserOptions) => NodeViewConstructor>(
@@ -77,7 +76,7 @@ export const ProsemirrorAdapterProvider: FC<{ children: ReactNode }> = ({ childr
   const createReactNodeView = useCallback(
     (options: ReactNodeViewUserOptions): NodeViewConstructor =>
       (node, view, getPos, decorations, innerDecorations) => {
-        const nodeView = reactNodeViewFactory({
+        const nodeView = new ReactNodeView({
           node,
           view,
           getPos,
@@ -90,9 +89,11 @@ export const ProsemirrorAdapterProvider: FC<{ children: ReactNode }> = ({ childr
               renderNodeView(nodeView)
             },
             selectNode() {
+              options.selectNode?.()
               renderNodeView(nodeView)
             },
             deselectNode() {
+              options.deselectNode?.()
               renderNodeView(nodeView)
             },
             destroy() {

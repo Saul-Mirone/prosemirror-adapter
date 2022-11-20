@@ -27,6 +27,8 @@ export class CoreNodeView<ComponentType> implements NodeView {
   innerDecorations: DecorationSource
   options: CoreNodeViewUserOptions<ComponentType>
   selected = false
+  setSelection?: (anchor: number, head: number, root: Document | ShadowRoot) => void
+  stopEvent?: (event: Event) => boolean
 
   #createElement(as?: string | HTMLElement | ((node: Node) => HTMLElement)) {
     const { node } = this
@@ -54,6 +56,9 @@ export class CoreNodeView<ComponentType> implements NodeView {
       this.contentDOM.setAttribute('data-node-view-content', 'true')
       this.contentDOM.style.whiteSpace = 'inherit'
     }
+
+    this.setSelection = options.setSelection
+    this.stopEvent = options.stopEvent
   }
 
   get component() {

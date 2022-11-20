@@ -5,20 +5,7 @@ import { Teleport, defineComponent, markRaw, provide, shallowRef } from 'vue'
 
 import type { NodeViewContext } from './nodeViewContext'
 import { nodeViewContext } from './nodeViewContext'
-import type { VueNodeViewComponent, VueNodeViewSpec } from './VueNodeViewOptions'
-
-export function vueNodeViewFactory(spec: VueNodeViewSpec) {
-  const vueNodeView = new VueNodeView(spec)
-  const { setSelection, stopEvent } = spec.options
-  const overrideOptions = {
-    setSelection,
-    stopEvent,
-  }
-
-  Object.assign(vueNodeView, overrideOptions)
-
-  return vueNodeView
-}
+import type { VueNodeViewComponent } from './VueNodeViewOptions'
 
 export class VueNodeView extends CoreNodeView<VueNodeViewComponent> {
   key: string = nanoid()
@@ -27,9 +14,9 @@ export class VueNodeView extends CoreNodeView<VueNodeViewComponent> {
     contentRef: (element) => {
       if (
         element
-                && element instanceof HTMLElement
-                && this.contentDOM
-                && element.firstChild !== this.contentDOM
+        && element instanceof HTMLElement
+        && this.contentDOM
+        && element.firstChild !== this.contentDOM
       )
         element.appendChild(this.contentDOM)
     },

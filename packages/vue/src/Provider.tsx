@@ -12,8 +12,8 @@ import {
   provide,
   ref,
 } from 'vue'
+import { VueNodeView } from './VueNodeView'
 
-import { vueNodeViewFactory } from './VueNodeView'
 import type { VueNodeViewComponent, VueNodeViewUserOptions } from './VueNodeViewOptions'
 
 export type NodeViewFactory = (options: VueNodeViewUserOptions) => NodeViewConstructor
@@ -38,7 +38,7 @@ export const ProsemirrorAdapterProvider = defineComponent({
     })
 
     const createVueNodeView: NodeViewFactory = options => (node, view, getPos, decorations, innerDecorations) => {
-      const nodeView = vueNodeViewFactory({
+      const nodeView = new VueNodeView({
         node,
         view,
         getPos,
@@ -51,9 +51,11 @@ export const ProsemirrorAdapterProvider = defineComponent({
             nodeView.updateContext()
           },
           selectNode() {
+            options.selectNode?.()
             nodeView.updateContext()
           },
           deselectNode() {
+            options.deselectNode?.()
             nodeView.updateContext()
           },
           destroy() {
