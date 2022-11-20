@@ -46,6 +46,9 @@ jobs:
       - name: build packs
         run: pnpm build
 
+      - name: run lint test
+        run: pnpm lint
+
       - name: setup firefox
         uses: browser-actions/setup-firefox@latest
         with:

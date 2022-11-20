@@ -12,6 +12,7 @@
     "ex:react": "pnpm --filter=@examples/react start",
     "ex:vue": "pnpm --filter=@examples/vue start",
     "changeset": "changeset",
+    "lint": "eslint .",
     "release": "changeset publish",
     "prepare": "husky install"
   },
