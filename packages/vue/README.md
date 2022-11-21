@@ -30,7 +30,9 @@ import { ProsemirrorAdapterProvider } from '@prosemirror-adapter/vue'
 </template>
 ```
 
-### Build component for [node view](https://prosemirror.net/docs/ref/#view.NodeView)
+### Play with node view
+
+#### Build component for [node view](https://prosemirror.net/docs/ref/#view.NodeView)
 
 ```vue
 <script setup lang="ts">
@@ -49,7 +51,7 @@ const { contentRef, selected } = useNodeViewContext()
 </style>
 ```
 
-### Bind node view components with prosemirror
+#### Bind node view components with prosemirror
 
 ```vue
 <script setup lang="ts">
@@ -83,7 +85,9 @@ const editorRef: VNodeRef = (element) => {
 
 🚀 Congratulations! You have built your first vue node view with prosemirror-adapter.
 
-### Build component for [plugin view](https://prosemirror.net/docs/ref/#state.PluginView)
+### Play with plugin view
+
+#### Build component for [plugin view](https://prosemirror.net/docs/ref/#state.PluginView)
 
 ```vue
 <script setup lang="ts">
@@ -99,7 +103,7 @@ const size = computed(() => {
 </template>
 ```
 
-### Bind plugin view components with prosemirror
+#### Bind plugin view components with prosemirror
 
 ```vue
 <script setup lang="ts">

@@ -32,7 +32,9 @@ export const Component = () => {
 }
 ```
 
-### Build component for [node view](https://prosemirror.net/docs/ref/#view.NodeView)
+### Play with node view
+
+#### Build component for [node view](https://prosemirror.net/docs/ref/#view.NodeView)
 
 ```tsx
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
@@ -44,7 +46,7 @@ const Paragraph = () => {
 }
 ```
 
-### Bind node view components with prosemirror
+#### Bind node view components with prosemirror
 
 ```tsx
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
@@ -83,7 +85,9 @@ export const YourAwesomeEditor: FC = () => {
 
 🚀 Congratulations! You have built your first react node view with prosemirror-adapter.
 
-### Build component for [plugin view](https://prosemirror.net/docs/ref/#state.PluginView)
+### Play with plugin view
+
+#### Build component for [plugin view](https://prosemirror.net/docs/ref/#state.PluginView)
 
 ```tsx
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
@@ -96,7 +100,7 @@ const Size = () => {
 }
 ```
 
-### Bind plugin view components with prosemirror
+#### Bind plugin view components with prosemirror
 
 ```tsx
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
