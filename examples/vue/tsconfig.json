@@ -1,6 +1,7 @@
 {
   "extends": "@type-config/strict",
   "compilerOptions": {
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "noPropertyAccessFromIndexSignature": false
   }
 }
