@@ -20,13 +20,13 @@ npm install @prosemirror-adapter/vue
 
 ```vue
 <script setup lang="ts">
-import { ProsemirrorAdapterProvider } from '@prosemirror-adapter/vue';
+import { ProsemirrorAdapterProvider } from '@prosemirror-adapter/vue'
 </script>
 
 <template>
-    <ProsemirrorAdapterProvider>
-        <YourAwesomeEditor />
-    </ProsemirrorAdapterProvider>
+  <ProsemirrorAdapterProvider>
+    <YourAwesomeEditor />
+  </ProsemirrorAdapterProvider>
 </template>
 ```
 
@@ -34,12 +34,12 @@ import { ProsemirrorAdapterProvider } from '@prosemirror-adapter/vue';
 
 ```vue
 <script setup lang="ts">
-import { useNodeViewContext } from '@prosemirror-adapter/vue';
-const { contentRef, selected } = useNodeViewContext();
+import { useNodeViewContext } from '@prosemirror-adapter/vue'
+const { contentRef, selected } = useNodeViewContext()
 </script>
 
 <template>
-    <div role="presentation" :class="{ selected: selected }" :ref="contentRef"></div>
+  <div :ref="contentRef" role="presentation" :class="{ selected }" />
 </template>
 
 <style scoped>
@@ -53,30 +53,31 @@ const { contentRef, selected } = useNodeViewContext();
 
 ```vue
 <script setup lang="ts">
-import { VNodeRef } from 'vue';
-import { useNodeViewFactory } from '@prosemirror-adapter/vue';
-import Paragraph from './Paragraph.vue';
+import type { VNodeRef } from 'vue'
+import { useNodeViewFactory } from '@prosemirror-adapter/vue'
+import Paragraph from './Paragraph.vue'
 
 const editorRef: VNodeRef = (element) => {
-    const el = element as HTMLElement;
-    if (!el || el.firstChild) return;
+  const el = element as HTMLElement
+  if (!el || el.firstChild)
+    return
 
-    const editorView = new EditorView(el, {
-        state: YourProsemirrorEditorState,
-        nodeViews: {
-            paragraph: nodeViewFactory({
-                component: Paragraph,
-                // Optional: add some options
-                as: 'div',
-                contentAs: 'p',
-            }),
-        },
-    });
-};
+  const editorView = new EditorView(el, {
+    state: YourProsemirrorEditorState,
+    nodeViews: {
+      paragraph: nodeViewFactory({
+        component: Paragraph,
+        // Optional: add some options
+        as: 'div',
+        contentAs: 'p',
+      }),
+    },
+  })
+}
 </script>
 
 <template>
-    <div class="editor" :ref="editorRef" />
+  <div :ref="editorRef" class="editor" />
 </template>
 ```
 

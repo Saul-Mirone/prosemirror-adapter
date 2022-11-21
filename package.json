@@ -39,6 +39,10 @@
     "typescript": "^4.8.4",
     "vite": "^3.2.2"
   },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.31.0",
+    "eslint-plugin-react": "^7.31.11"
+  },
   "pnpm": {
     "peerDependencyRules": {
       "ignoreMissing": [

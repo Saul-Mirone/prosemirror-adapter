@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { useNodeViewContext } from '@prosemirror-adapter/vue';
+import { useNodeViewContext } from '@prosemirror-adapter/vue'
 
-const { contentRef, selected } = useNodeViewContext();
+const { contentRef, selected } = useNodeViewContext()
 </script>
 
 <template>
-    <div role="presentation" :class="{ selected: selected }" :ref="contentRef"></div>
+  <div :ref="contentRef" role="presentation" :class="{ selected }" />
 </template>
 
 <style scoped>

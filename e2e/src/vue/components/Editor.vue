@@ -1,40 +1,41 @@
 <script setup lang="ts">
-import { useNodeViewFactory, usePluginViewFactory } from '@prosemirror-adapter/vue';
+import { useNodeViewFactory, usePluginViewFactory } from '@prosemirror-adapter/vue'
 import { Plugin } from 'prosemirror-state'
-import { VNodeRef } from 'vue';
-import { createEditorView } from '../../createEditorView';
-import Paragraph from './Paragraph.vue';
-import Heading from './Heading.vue';
+import type { VNodeRef } from 'vue'
+import { createEditorView } from '../../createEditorView'
+import Paragraph from './Paragraph.vue'
+import Heading from './Heading.vue'
 import Tooltip from './Tooltip.vue'
 
-const nodeViewFactory = useNodeViewFactory();
-const pluginViewFactory = usePluginViewFactory();
+const nodeViewFactory = useNodeViewFactory()
+const pluginViewFactory = usePluginViewFactory()
 
 const editorRef: VNodeRef = (element) => {
-    const el = element as HTMLElement;
-    if (!el || el.firstChild) return;
+  const el = element as HTMLElement
+  if (!el || el.firstChild)
+    return
 
-    createEditorView(el, {
-        paragraph: nodeViewFactory({
-            component: Paragraph,
-            as: 'div',
-            contentAs: 'p',
-        }),
-        heading: nodeViewFactory({
-            component: Heading,
-        })
-    }, [
-      new Plugin({
-        view: pluginViewFactory({
-          component: Tooltip,
-        }),
+  createEditorView(el, {
+    paragraph: nodeViewFactory({
+      component: Paragraph,
+      as: 'div',
+      contentAs: 'p',
+    }),
+    heading: nodeViewFactory({
+      component: Heading,
+    }),
+  }, [
+    new Plugin({
+      view: pluginViewFactory({
+        component: Tooltip,
       }),
-    ]);
-};
+    }),
+  ])
+}
 </script>
 
 <template>
-    <div class="editor" :ref="editorRef" />
+  <div :ref="editorRef" class="editor" />
 </template>
 
 <style>

@@ -21,6 +21,7 @@ npm install @prosemirror-adapter/react
 ```tsx
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
 import { ProsemirrorAdapterProvider } from '@prosemirror-adapter/react'
+import { YourAwesomeEditor } from 'somewhere'
 
 export const Component = () => {
   return (

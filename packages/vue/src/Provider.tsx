@@ -12,7 +12,7 @@ import { VuePluginView } from './VuePluginView'
 import { useVueRenderer } from './VueRenderer'
 
 export const ProsemirrorAdapterProvider = defineComponent({
-  name: 'prosemirror-adapter-provider',
+  name: 'ProsemirrorAdapterProvider',
   setup: (_, { slots }) => {
     const { portals, renderVueRenderer, removeVueRenderer } = useVueRenderer()
 

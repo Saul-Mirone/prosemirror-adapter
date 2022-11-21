@@ -1,31 +1,32 @@
 <script setup lang="ts">
-import { useNodeViewFactory } from '@prosemirror-adapter/vue';
-import { VNodeRef } from 'vue';
-import { createEditorView } from '../createEditorView';
-import Paragraph from './Paragraph.vue';
-import Heading from './Heading.vue';
+import { useNodeViewFactory } from '@prosemirror-adapter/vue'
+import type { VNodeRef } from 'vue'
+import { createEditorView } from '../createEditorView'
+import Paragraph from './Paragraph.vue'
+import Heading from './Heading.vue'
 
-const nodeViewFactory = useNodeViewFactory();
+const nodeViewFactory = useNodeViewFactory()
 
 const editorRef: VNodeRef = (element) => {
-    const el = element as HTMLElement;
-    if (!el || el.firstChild) return;
+  const el = element as HTMLElement
+  if (!el || el.firstChild)
+    return
 
-    createEditorView(el, {
-        paragraph: nodeViewFactory({
-            component: Paragraph,
-            as: 'div',
-            contentAs: 'p',
-        }),
-        heading: nodeViewFactory({
-            component: Heading,
-        })
-    });
-};
+  createEditorView(el, {
+    paragraph: nodeViewFactory({
+      component: Paragraph,
+      as: 'div',
+      contentAs: 'p',
+    }),
+    heading: nodeViewFactory({
+      component: Heading,
+    }),
+  })
+}
 </script>
 
 <template>
-    <div class="editor" :ref="editorRef" />
+  <div :ref="editorRef" class="editor" />
 </template>
 
 <style>
@@ -38,7 +39,7 @@ const editorRef: VNodeRef = (element) => {
     padding: 5px 0;
     margin-bottom: 23px;
 }
-  
+
 .ProseMirror p:first-child,
 .ProseMirror h1:first-child,
 .ProseMirror h2:first-child,

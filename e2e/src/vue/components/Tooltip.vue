@@ -1,18 +1,19 @@
 <script setup lang="ts">
-import { usePluginViewContext } from '@prosemirror-adapter/vue';
-import { computed, effect, ref, Ref } from 'vue';
+import { usePluginViewContext } from '@prosemirror-adapter/vue'
+import type { Ref } from 'vue'
+import { computed, effect, ref } from 'vue'
 
-const { view } = usePluginViewContext();
+const { view } = usePluginViewContext()
 const divRef: Ref = ref()
 
 const len = computed(() => {
-  const { from, to }  = view.value.state.selection
+  const { from, to } = view.value.state.selection
   return to - from
 })
 
 effect(() => {
   if (divRef.value) {
-    const { from, to }  = view.value.state.selection
+    const { from, to } = view.value.state.selection
     const start = view.value.coordsAtPos(from)
     const end = view.value.coordsAtPos(to)
     const box = divRef.value.offsetParent?.getBoundingClientRect()
@@ -25,12 +26,12 @@ effect(() => {
     divRef.value.style.bottom = `${y}px`
   }
 })
-
-
 </script>
 
 <template>
-    <div class="tooltip" ref="divRef">{{ len }}</div>
+  <div ref="divRef" class="tooltip">
+    {{ len }}
+  </div>
 </template>
 
 <style scoped>

@@ -2,29 +2,41 @@
 
 module.exports = {
   extends: [
-    '@antfu/eslint-config-ts',
-    'plugin:react-hooks/recommended',
+    '@antfu',
   ],
-  plugins: ['header', 'eslint-plugin-tsdoc'],
-  rules: {
-    'tsdoc/syntax': 'warn',
-  },
+  plugins: ['header'],
   settings: {
     react: {
       version: 'detect',
     },
   },
+  ignorePatterns: [
+    'lib',
+  ],
   overrides: [
     {
-      files: ['**/vue/**/*.tsx'],
+      files: ['**/react/**/*.tsx', '**/react/**/*.ts'],
+      extends: [
+        'plugin:react/recommended',
+        'plugin:react-hooks/recommended',
+      ],
       rules: {
-        'react-hooks/rules-of-hooks': 'off',
+        'jsx-quotes': [
+          'error',
+          'prefer-double',
+        ],
+        'react/react-in-jsx-scope': 'off',
       },
     },
     {
       files: ['**/*.ts', '**/*.tsx', '**/*.js'],
       rules: {
         'header/header': ['error', 'block', ' Copyright 2021, Prosemirror Adapter by Mirone. '],
+      },
+    },
+    {
+      files: ['**/*.md'],
+      rules: {
       },
     },
   ],
