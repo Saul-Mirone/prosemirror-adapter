@@ -83,6 +83,60 @@ export const YourAwesomeEditor: FC = () => {
 
 🚀 Congratulations! You have built your first react node view with prosemirror-adapter.
 
+### Build component for [plugin view](https://prosemirror.net/docs/ref/#state.PluginView)
+
+```tsx
+/* Copyright 2021, Prosemirror Adapter by Mirone. */
+import { usePluginViewContext } from '@prosemirror-adapter/react'
+
+const Size = () => {
+  const { view } = usePluginViewContext()
+  const size = view.state.doc.nodeSize
+  return <div>Size for document: {size}</div>
+}
+```
+
+### Bind plugin view components with prosemirror
+
+```tsx
+/* Copyright 2021, Prosemirror Adapter by Mirone. */
+import { usePluginViewFactory } from '@prosemirror-adapter/react'
+import type { FC } from 'react'
+import { useCallback, useRef } from 'react'
+import { Plugin } from 'prosemirror-state'
+
+import { Paragraph } from './Paragraph'
+
+export const YourAwesomeEditor: FC = () => {
+  const pluginViewFactory = usePluginViewFactory()
+
+  const editorRef = useCallback(
+    (element: HTMLDivElement) => {
+      if (!element || element.firstChild)
+        return
+
+      const editorView = new EditorView(element, {
+        state: EditorState.create({
+          schema: YourProsemirrorSchema,
+          plugins: [
+            new Plugin({
+              view: pluginViewFactory({
+                component: Size,
+              }),
+            }),
+          ]
+        })
+      })
+    },
+    [pluginViewFactory],
+  )
+
+  return <div className="editor" ref={editorRef} />
+}
+```
+
+🚀 Congratulations! You have built your first react plugin view with prosemirror-adapter.
+
 ## API
 
 ### useNodeViewFactory: () => (options: NodeViewFactoryOptions) => NodeView
@@ -142,6 +196,39 @@ interface NodeViewContext {
 
   // Whether the node is selected.
   selected: boolean
+}
+```
+
+### usePluginViewFactory: () => (options: PluginViewFactoryOptions) => PluginView
+
+```ts
+/* Copyright 2021, Prosemirror Adapter by Mirone. */
+interface PluginViewFactoryOptions {
+  // Component
+  component: Component
+
+  // The DOM element to use as the root node of the plugin view.
+  // The `viewDOM` here means `EditorState.view.dom`.
+  // By default, it will be `EditorState.view.dom.parentElement`.
+  root?: (viewDOM: HTMLElement) => HTMLElement
+
+  // Overrides: this part is equal to properties of [PluginView](https://prosemirror.net/docs/ref/#state.PluginView)
+  update?: (view: EditorView, prevState: EditorState) => void
+  destroy?: () => void
+}
+```
+
+### usePluginViewContext: () => PluginViewContext
+
+```ts
+/* Copyright 2021, Prosemirror Adapter by Mirone. */
+interface PluginViewContext {
+  // The prosemirror editor view.
+  view: EditorView
+
+  // The previously prosemirror editor state.
+  // Will be `undefined` when the plugin view is created.
+  prevState?: EditorState
 }
 ```
 
