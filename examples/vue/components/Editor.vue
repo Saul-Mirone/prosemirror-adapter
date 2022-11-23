@@ -1,11 +1,14 @@
 <script setup lang="ts">
-import { useNodeViewFactory } from '@prosemirror-adapter/vue'
+import { useNodeViewFactory, usePluginViewFactory } from '@prosemirror-adapter/vue'
 import type { VNodeRef } from 'vue'
+import { Plugin } from 'prosemirror-state'
 import { createEditorView } from '../createEditorView'
 import Paragraph from './Paragraph.vue'
 import Heading from './Heading.vue'
+import Size from './Size.vue'
 
 const nodeViewFactory = useNodeViewFactory()
+const pluginViewFactory = usePluginViewFactory()
 
 const editorRef: VNodeRef = (element) => {
   const el = element as HTMLElement
@@ -21,7 +24,13 @@ const editorRef: VNodeRef = (element) => {
     heading: nodeViewFactory({
       component: Heading,
     }),
-  })
+  }, [
+    new Plugin({
+      view: pluginViewFactory({
+        component: Size,
+      }),
+    }),
+  ])
 }
 </script>
 

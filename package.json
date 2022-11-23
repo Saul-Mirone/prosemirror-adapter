@@ -1,5 +1,5 @@
 {
-  "name": "prosemirror-adapter",
+  "name": "@prosemirror-adapter/monorepo",
   "private": true,
   "license": "MIT",
   "engines": {
