@@ -1,14 +1,22 @@
 <script setup lang="ts">
-import { useNodeViewFactory, usePluginViewFactory } from '@prosemirror-adapter/vue'
+import { useNodeViewFactory, usePluginViewFactory, useWidgetViewFactory } from '@prosemirror-adapter/vue'
 import { Plugin } from 'prosemirror-state'
 import type { VNodeRef } from 'vue'
+import { DecorationSet } from 'prosemirror-view'
 import { createEditorView } from '../../createEditorView'
 import Paragraph from './Paragraph.vue'
 import Heading from './Heading.vue'
 import Tooltip from './Tooltip.vue'
+import Hashes from './Hashes.vue'
 
 const nodeViewFactory = useNodeViewFactory()
 const pluginViewFactory = usePluginViewFactory()
+const widgetViewFactory = useWidgetViewFactory()
+
+const hashWidgetFactory = widgetViewFactory({
+  as: 'span',
+  component: Hashes,
+})
 
 const editorRef: VNodeRef = (element) => {
   const el = element as HTMLElement
@@ -29,6 +37,28 @@ const editorRef: VNodeRef = (element) => {
       view: pluginViewFactory({
         component: Tooltip,
       }),
+    }),
+    new Plugin<DecorationSet>({
+      state: {
+        init() { return DecorationSet.empty },
+        apply(tr) {
+          const { $from } = tr.selection
+          const node = $from.node()
+          if (node.type.name !== 'heading')
+            return DecorationSet.empty
+
+          const widget = hashWidgetFactory($from.before() + 1, {
+            side: -1,
+          })
+
+          return DecorationSet.create(tr.doc, [widget])
+        },
+      },
+      props: {
+        decorations(state) {
+          return this.getState(state)
+        },
+      },
     }),
   ])
 }

@@ -1,6 +1,11 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
 
-import type { EditorView } from 'prosemirror-view'
+import type { Decoration } from 'prosemirror-view'
+
+export type WidgetDecoration = typeof Decoration.widget
+export type WidgetDecorationSpec = NonNullable<Parameters<WidgetDecoration>[2]>
+
+export type WidgetDecorationFactory = (pos: number, spec?: WidgetDecorationSpec) => Decoration
 
 export interface CoreWidgetViewUserOptions<Component> {
   as: string | HTMLElement
@@ -8,8 +13,8 @@ export interface CoreWidgetViewUserOptions<Component> {
 }
 
 export interface CoreWidgetViewSpec<Component> {
-  view: EditorView
-  getPos: () => number
+  pos: number
+  spec?: WidgetDecorationSpec
 
   options: CoreWidgetViewUserOptions<Component>
 }

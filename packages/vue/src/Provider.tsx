@@ -8,6 +8,8 @@ import { pluginViewFactoryKey } from './pluginView'
 import { useVuePluginViewCreator } from './pluginView/useVuePluginViewCreator'
 
 import { useVueRenderer } from './VueRenderer'
+import { useVueWidgetViewCreator } from './widgetView/useVueWidgetViewCreator'
+import { widgetViewFactoryKey } from './widgetView/widgetViewContext'
 
 export const ProsemirrorAdapterProvider = defineComponent({
   name: 'ProsemirrorAdapterProvider',
@@ -16,9 +18,11 @@ export const ProsemirrorAdapterProvider = defineComponent({
 
     const createVueNodeView = useVueNodeViewCreator(renderVueRenderer, removeVueRenderer)
     const createVuePluginView = useVuePluginViewCreator(renderVueRenderer, removeVueRenderer)
+    const createVueWidgetView = useVueWidgetViewCreator(renderVueRenderer, removeVueRenderer)
 
     provide(nodeViewFactoryKey, createVueNodeView)
     provide(pluginViewFactoryKey, createVuePluginView)
+    provide(widgetViewFactoryKey, createVueWidgetView)
 
     return () => {
       return (

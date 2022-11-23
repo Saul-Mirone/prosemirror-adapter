@@ -1,11 +1,14 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
 import type { EditorView } from 'prosemirror-view'
-import type { CoreWidgetViewSpec, CoreWidgetViewUserOptions } from './CoreWidgetViewOptions'
+import type { CoreWidgetViewSpec, CoreWidgetViewUserOptions, WidgetDecorationSpec } from './CoreWidgetViewOptions'
 
 export class CoreWidgetView<Component> {
   dom: HTMLElement
-  view: EditorView
-  getPos: () => number
+  pos: number
+  view?: EditorView
+  getPos?: () => number | undefined
+  spec?: WidgetDecorationSpec
+
   options: CoreWidgetViewUserOptions<Component>
 
   #createElement(as: string | HTMLElement) {
@@ -14,13 +17,18 @@ export class CoreWidgetView<Component> {
       : document.createElement(as)
   }
 
-  constructor({ view, getPos, options }: CoreWidgetViewSpec<Component>) {
-    this.view = view
-    this.getPos = getPos
+  constructor({ pos, spec, options }: CoreWidgetViewSpec<Component>) {
+    this.pos = pos
     this.options = options
+    this.spec = spec
 
     this.dom = this.#createElement(options.as)
     this.dom.setAttribute('data-widget-view-root', 'true')
+  }
+
+  bind(view: EditorView, getPos: () => number | undefined) {
+    this.view = view
+    this.getPos = getPos
   }
 
   get component() {
