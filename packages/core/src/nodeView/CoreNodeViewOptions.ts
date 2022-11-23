@@ -2,12 +2,12 @@
 import type { Node } from 'prosemirror-model'
 import type { Decoration, DecorationSource, EditorView } from 'prosemirror-view'
 
-export type DOMSpec = string | HTMLElement | ((node: Node) => HTMLElement)
+export type NodeViewDOMSpec = string | HTMLElement | ((node: Node) => HTMLElement)
 
 export interface CoreNodeViewUserOptions<Component> {
   // DOM
-  as?: DOMSpec
-  contentAs?: DOMSpec
+  as?: NodeViewDOMSpec
+  contentAs?: NodeViewDOMSpec
 
   // Component
   component: Component
