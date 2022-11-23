@@ -1,5 +1,5 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
-import type { DefineComponent } from 'vue'
+import type { DefineComponent, Ref } from 'vue'
 import { getCurrentInstance, markRaw, onBeforeMount, onUnmounted, ref } from 'vue'
 
 export type VueRendererComponent = DefineComponent<any, any, any>
@@ -14,7 +14,13 @@ export interface VueRenderer<Context> {
   updateContext: () => void
 }
 
-export const useVueRenderer = () => {
+export interface VueRendererResult {
+  readonly portals: Ref<Record<string, VueRendererComponent>>
+  readonly renderVueRenderer: (renderer: VueRenderer<unknown>) => void
+  readonly removeVueRenderer: (renderer: VueRenderer<unknown>) => void
+}
+
+export const useVueRenderer = (): VueRendererResult => {
   const portals = ref<Record<string, VueRendererComponent>>({})
   const instance = getCurrentInstance()
   const update = markRaw<{ updater?: () => void }>({})

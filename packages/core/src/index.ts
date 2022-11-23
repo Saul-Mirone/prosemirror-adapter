@@ -1,5 +1,3 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
-export * from './CoreNodeView'
-export * from './CoreNodeViewOptions'
-export * from './CorePluginView'
-export * from './CorePluginViewOptions'
+export * from './nodeView'
+export * from './pluginView'

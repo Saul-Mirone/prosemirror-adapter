@@ -14,7 +14,13 @@ export interface ReactRenderer<Context> {
   updateContext: () => void
 }
 
-export const useReactRenderer = () => {
+export interface ReactRendererResult {
+  readonly portals: Record<string, ReactPortal>
+  readonly renderReactRenderer: (nodeView: ReactRenderer<unknown>, update?: boolean) => void
+  readonly removeReactRenderer: (nodeView: ReactRenderer<unknown>) => void
+}
+
+export const useReactRenderer = (): ReactRendererResult => {
   const [portals, setPortals] = useState<Record<string, ReactPortal>>({})
   const mountedRef = useRef(false)
 
