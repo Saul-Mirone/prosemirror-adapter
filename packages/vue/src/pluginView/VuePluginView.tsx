@@ -3,10 +3,10 @@
 import { CorePluginView } from '@prosemirror-adapter/core'
 import { nanoid } from 'nanoid'
 import { Teleport, defineComponent, markRaw, provide, shallowRef } from 'vue'
+import type { VueRenderer, VueRendererComponent } from '../VueRenderer'
 import type { PluginViewContext } from './pluginViewContext'
 import { pluginViewContext } from './pluginViewContext'
 import type { VuePluginViewComponent } from './VuePluginViewOptions'
-import type { VueRenderer, VueRendererComponent } from './VueRenderer'
 
 export class VuePluginView extends CorePluginView<VuePluginViewComponent> implements VueRenderer<PluginViewContext> {
   key: string = nanoid()
