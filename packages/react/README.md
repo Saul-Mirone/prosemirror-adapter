@@ -25,9 +25,9 @@ import { YourAwesomeEditor } from 'somewhere'
 
 export const Component = () => {
   return (
-        <ProsemirrorAdapterProvider>
-            <YourAwesomeEditor />
-        </ProsemirrorAdapterProvider>
+    <ProsemirrorAdapterProvider>
+      <YourAwesomeEditor />
+    </ProsemirrorAdapterProvider>
   )
 }
 ```
