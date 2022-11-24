@@ -32,7 +32,13 @@ export const Component = () => {
 }
 ```
 
+<details>
+
+<summary>
+
 ### Play with node view
+
+</summary>
 
 In this section we will implement a node view for paragraph node.
 
@@ -87,7 +93,15 @@ export const YourAwesomeEditor: FC = () => {
 
 🚀 Congratulations! You have built your first react node view with prosemirror-adapter.
 
+</details>
+
+<details>
+
+<summary>
+
 ### Play with plugin view
+
+</summary>
 
 In this section we will implement a plugin view that will display the size of the document.
 
@@ -145,7 +159,15 @@ export const YourAwesomeEditor: FC = () => {
 
 🚀 Congratulations! You have built your first react plugin view with prosemirror-adapter.
 
+</details>
+
+<details>
+
+<summary>
+
 ### Play with widget view
+
+</summary>
 
 In this section we will implement a widget view that will add hashes for heading when selected.
 
@@ -222,9 +244,19 @@ export const YourAwesomeEditor: FC = () => {
 
 🚀 Congratulations! You have built your first react widget view with prosemirror-adapter.
 
+</details>
+
 ## API
 
-### useNodeViewFactory: () => (options: NodeViewFactoryOptions) => NodeView
+<details>
+
+<summary>
+
+### Node view API
+
+</summary>
+
+#### useNodeViewFactory: () => (options: NodeViewFactoryOptions) => NodeView
 
 ```ts
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
@@ -253,7 +285,7 @@ interface NodeViewFactoryOptions {
 }
 ```
 
-### useNodeViewContext: () => NodeViewContext
+#### useNodeViewContext: () => NodeViewContext
 
 ```ts
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
@@ -284,7 +316,17 @@ interface NodeViewContext {
 }
 ```
 
-### usePluginViewFactory: () => (options: PluginViewFactoryOptions) => PluginView
+</details>
+
+<details>
+
+<summary>
+
+### Plugin view API
+
+</summary>
+
+#### usePluginViewFactory: () => (options: PluginViewFactoryOptions) => PluginView
 
 ```ts
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
@@ -303,7 +345,7 @@ interface PluginViewFactoryOptions {
 }
 ```
 
-### usePluginViewContext: () => PluginViewContext
+#### usePluginViewContext: () => PluginViewContext
 
 ```ts
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
@@ -317,7 +359,17 @@ interface PluginViewContext {
 }
 ```
 
-### useWidgetViewFactory: () => (options: WidgetViewFactoryOptions) => WidgetDecorationFactory
+</details>
+
+<details>
+
+<summary>
+
+### Widget view API
+
+</summary>
+
+#### useWidgetViewFactory: () => (options: WidgetViewFactoryOptions) => WidgetDecorationFactory
 
 ```ts
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
@@ -332,8 +384,7 @@ interface WidgetViewFactoryOptions {
 }
 ```
 
-
-### useWidgetViewContext: () => WidgetViewContext
+#### useWidgetViewContext: () => WidgetViewContext
 
 ```ts
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
@@ -348,6 +399,8 @@ interface WidgetViewContext {
   spec?: WidgetDecorationSpec
 }
 ```
+
+</details>
 
 ## Contributing
 
