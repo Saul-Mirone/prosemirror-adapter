@@ -14,12 +14,14 @@ export class ReactWidgetView extends CoreWidgetView<ReactWidgetViewComponent> im
   context: WidgetViewContext = {
     view: this.view!,
     getPos: this.getPos!,
+    spec: this.spec,
   }
 
   updateContext = () => {
     Object.assign(this.context, {
       view: this.view,
       prevState: this.getPos,
+      spec: this.spec,
     })
   }
 

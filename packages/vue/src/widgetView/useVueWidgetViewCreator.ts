@@ -22,6 +22,7 @@ export const useVueWidgetViewCreator = (
           removeVueRenderer(widgetView)
         },
       }
+      widgetView.spec = spec
 
       return Decoration.widget(pos, (view, getPos) => {
         widgetView.bind(view, getPos)

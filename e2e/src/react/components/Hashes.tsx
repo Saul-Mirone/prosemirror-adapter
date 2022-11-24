@@ -2,14 +2,9 @@
 import { useWidgetViewContext } from '@prosemirror-adapter/react'
 
 export const Hashes = () => {
-  const { view } = useWidgetViewContext()
-  const $from = view.state.selection.$from
-  const node = $from.node()
-  const level = node.attrs.level
-  const hashes = Array(level || 0)
-    .fill(0)
-    .map(_ => '#')
-    .join('')
+  const { spec } = useWidgetViewContext()
+  const level = spec?.level
+  const hashes = Array(level || 0).fill('#').join('')
 
-  return <span style={{ color: 'blue' }}>{hashes}  </span>
+  return <span style={{ color: 'blue', marginRight: 6 }}>{hashes}</span>
 }

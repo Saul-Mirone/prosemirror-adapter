@@ -59,6 +59,7 @@ export const Editor: FC = () => {
 
               const widget = hashWidgetFactory($from.before() + 1, {
                 side: -1,
+                level: node.attrs.level,
               })
 
               return DecorationSet.create(tr.doc, [widget])

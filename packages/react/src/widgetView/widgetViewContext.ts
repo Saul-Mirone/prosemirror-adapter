@@ -1,5 +1,5 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
-import type { WidgetDecorationFactory } from '@prosemirror-adapter/core'
+import type { WidgetDecorationFactory, WidgetDecorationSpec } from '@prosemirror-adapter/core'
 import type { EditorView } from 'prosemirror-view'
 import { createContext, useContext } from 'react'
 import type { ReactWidgetViewUserOptions } from './ReactWidgetViewOptions'
@@ -7,6 +7,7 @@ import type { ReactWidgetViewUserOptions } from './ReactWidgetViewOptions'
 export interface WidgetViewContext {
   view: EditorView
   getPos: () => number | undefined
+  spec?: WidgetDecorationSpec
 }
 
 export const widgetViewContext = createContext<WidgetViewContext>({

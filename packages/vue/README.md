@@ -32,6 +32,8 @@ import { ProsemirrorAdapterProvider } from '@prosemirror-adapter/vue'
 
 ### Play with node view
 
+In this section we will implement a node view for paragraph node.
+
 #### Build component for [node view](https://prosemirror.net/docs/ref/#view.NodeView)
 
 ```vue
@@ -87,6 +89,8 @@ const editorRef: VNodeRef = (element) => {
 
 ### Play with plugin view
 
+In this section we will implement a plugin view that will display the size of the document.
+
 #### Build component for [plugin view](https://prosemirror.net/docs/ref/#state.PluginView)
 
 ```vue
@@ -111,6 +115,8 @@ import type { VNodeRef } from 'vue'
 import { usePluginViewFactory } from '@prosemirror-adapter/vue'
 import { Plugin } from 'prosemirror-state'
 import Size from './Size.vue'
+
+const pluginViewFactory = usePluginViewFactory()
 
 const editorRef: VNodeRef = (element) => {
   const el = element as HTMLElement
@@ -138,6 +144,88 @@ const editorRef: VNodeRef = (element) => {
 ```
 
 🚀 Congratulations! You have built your first vue plugin view with prosemirror-adapter.
+
+### Play with widget view
+
+In this section we will implement a widget view that will add hashes for heading when selected.
+
+#### Build component for [widget decoration view](https://prosemirror.net/docs/ref/#view.Decoration%5Ewidget)
+
+```vue
+<script setup lang="ts">
+import { useWidgetViewContext } from '@prosemirror-adapter/vue'
+
+const { spec } = useWidgetViewContext()
+const level = spec?.level
+const hashes = Array(level || 0).fill('#').join('')
+</script>
+
+<template>
+  <span class="hash">{{ hashes }}</span>
+</template>
+
+<style scoped>
+.hash {
+  color: blue;
+  margin-right: 6px;
+}
+</style>
+```
+
+#### Bind widget view components with prosemirror
+
+```vue
+<script setup lang="ts">
+import type { VNodeRef } from 'vue'
+import { useWidgetViewFactory } from '@prosemirror-adapter/vue'
+import { Plugin } from 'prosemirror-state'
+import Hashes from './Hashes.vue'
+
+const widgetViewFactory = useWidgetViewFactory()
+
+const editorRef: VNodeRef = (element) => {
+  const el = element as HTMLElement
+  if (!el || el.firstChild)
+    return
+
+  const getHashWidget = widgetViewFactory({
+    as: 'i',
+    component: Hashes,
+  })
+
+  const editorView = new EditorView(el, {
+    state: EditorState.create({
+      schema: YourProsemirrorSchema,
+      plugins: [
+        new Plugin({
+          props: {
+            decorations(state) {
+              const { $from } = state.selection
+              const node = $from.node()
+              if (node.type.name !== 'heading')
+                return DecorationSet.empty
+
+              const widget = getHashWidget($from.before() + 1, {
+                side: -1,
+                level: node.attrs.level,
+              })
+
+              return DecorationSet.create(tr.doc, [widget])
+            },
+          },
+        }),
+      ]
+    })
+  })
+}
+</script>
+
+<template>
+  <div :ref="editorRef" class="editor" />
+</template>
+```
+
+🚀 Congratulations! You have built your first vue widget view with prosemirror-adapter.
 
 ## API
 
@@ -233,6 +321,39 @@ interface PluginViewContext {
   prevState: ShallowRef<EditorState | undefined>
 }
 ```
+
+### useWidgetViewFactory: () => (options: WidgetViewFactoryOptions) => WidgetDecorationFactory
+
+```ts
+/* Copyright 2021, Prosemirror Adapter by Mirone. */
+type WidgetDecorationFactory = (pos: number, spec?: WidgetDecorationSpec) => Decoration
+
+interface WidgetViewFactoryOptions {
+  // Component
+  component: Component
+
+  // The DOM element to use as the root node of the widget view.
+  as: string | HTMLElement
+}
+```
+
+
+### useWidgetViewContext: () => WidgetViewContext
+
+```ts
+/* Copyright 2021, Prosemirror Adapter by Mirone. */
+interface WidgetViewContext {
+  // The prosemirror editor view.
+  view: EditorView
+
+  // Get the position of the widget.
+  getPos: () => number | undefined
+
+  // Get the [spec](https://prosemirror.net/docs/ref/#view.Decoration^widget^spec) of the widget.
+  spec?: WidgetDecorationSpec
+}
+```
+
 
 ## Contributing
 

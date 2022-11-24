@@ -34,6 +34,8 @@ export const Component = () => {
 
 ### Play with node view
 
+In this section we will implement a node view for paragraph node.
+
 #### Build component for [node view](https://prosemirror.net/docs/ref/#view.NodeView)
 
 ```tsx
@@ -86,6 +88,8 @@ export const YourAwesomeEditor: FC = () => {
 🚀 Congratulations! You have built your first react node view with prosemirror-adapter.
 
 ### Play with plugin view
+
+In this section we will implement a plugin view that will display the size of the document.
 
 #### Build component for [plugin view](https://prosemirror.net/docs/ref/#state.PluginView)
 
@@ -140,6 +144,83 @@ export const YourAwesomeEditor: FC = () => {
 ```
 
 🚀 Congratulations! You have built your first react plugin view with prosemirror-adapter.
+
+### Play with widget view
+
+In this section we will implement a widget view that will add hashes for heading when selected.
+
+#### Build component for [widget decoration view](https://prosemirror.net/docs/ref/#view.Decoration%5Ewidget)
+
+```tsx
+/* Copyright 2021, Prosemirror Adapter by Mirone. */
+import { useWidgetViewContext } from '@prosemirror-adapter/react'
+
+export const Hashes = () => {
+  const { spec } = useWidgetViewContext()
+  const level = spec?.level
+  const hashes = Array(level || 0).fill('#').join('')
+
+  return <span style={{ color: 'blue', marginRight: 6 }}>{hashes}</span>
+}
+```
+
+#### Bind widget view components with prosemirror
+
+```tsx
+/* Copyright 2021, Prosemirror Adapter by Mirone. */
+import { useWidgetViewFactory } from '@prosemirror-adapter/react'
+import type { FC } from 'react'
+import { useCallback, useRef } from 'react'
+import { Plugin } from 'prosemirror-state'
+
+import { Hashes } from './Hashes'
+
+export const YourAwesomeEditor: FC = () => {
+  const widgetViewFactory = useWidgetViewFactory()
+
+  const editorRef = useCallback(
+    (element: HTMLDivElement) => {
+      if (!element || element.firstChild)
+        return
+
+      const getHashWidget = widgetViewFactory({
+        as: 'i',
+        component: Hashes,
+      })
+
+      const editorView = new EditorView(element, {
+        state: EditorState.create({
+          schema: YourProsemirrorSchema,
+          plugins: [
+            new Plugin({
+              props: {
+                decorations(state) {
+                  const { $from } = state.selection
+                  const node = $from.node()
+                  if (node.type.name !== 'heading')
+                    return DecorationSet.empty
+
+                  const widget = getHashWidget($from.before() + 1, {
+                    side: -1,
+                    level: node.attrs.level,
+                  })
+
+                  return DecorationSet.create(tr.doc, [widget])
+                },
+              },
+            }),
+          ]
+        })
+      })
+    },
+    [widgetViewFactory],
+  )
+
+  return <div className="editor" ref={editorRef} />
+}
+```
+
+🚀 Congratulations! You have built your first react widget view with prosemirror-adapter.
 
 ## API
 
@@ -233,6 +314,38 @@ interface PluginViewContext {
   // The previously prosemirror editor state.
   // Will be `undefined` when the plugin view is created.
   prevState?: EditorState
+}
+```
+
+### useWidgetViewFactory: () => (options: WidgetViewFactoryOptions) => WidgetDecorationFactory
+
+```ts
+/* Copyright 2021, Prosemirror Adapter by Mirone. */
+type WidgetDecorationFactory = (pos: number, spec?: WidgetDecorationSpec) => Decoration
+
+interface WidgetViewFactoryOptions {
+  // Component
+  component: Component
+
+  // The DOM element to use as the root node of the widget view.
+  as: string | HTMLElement
+}
+```
+
+
+### useWidgetViewContext: () => WidgetViewContext
+
+```ts
+/* Copyright 2021, Prosemirror Adapter by Mirone. */
+interface WidgetViewContext {
+  // The prosemirror editor view.
+  view: EditorView
+
+  // Get the position of the widget.
+  getPos: () => number | undefined
+
+  // Get the [spec](https://prosemirror.net/docs/ref/#view.Decoration^widget^spec) of the widget.
+  spec?: WidgetDecorationSpec
 }
 ```
 

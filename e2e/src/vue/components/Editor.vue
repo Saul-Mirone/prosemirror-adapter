@@ -14,7 +14,7 @@ const pluginViewFactory = usePluginViewFactory()
 const widgetViewFactory = useWidgetViewFactory()
 
 const hashWidgetFactory = widgetViewFactory({
-  as: 'span',
+  as: 'i',
   component: Hashes,
 })
 
@@ -49,6 +49,7 @@ const editorRef: VNodeRef = (element) => {
 
           const widget = hashWidgetFactory($from.before() + 1, {
             side: -1,
+            level: node.attrs.level,
           })
 
           return DecorationSet.create(tr.doc, [widget])
