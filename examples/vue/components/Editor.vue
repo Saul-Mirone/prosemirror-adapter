@@ -1,14 +1,22 @@
 <script setup lang="ts">
-import { useNodeViewFactory, usePluginViewFactory } from '@prosemirror-adapter/vue'
+import { useNodeViewFactory, usePluginViewFactory, useWidgetViewFactory } from '@prosemirror-adapter/vue'
 import type { VNodeRef } from 'vue'
 import { Plugin } from 'prosemirror-state'
+import { DecorationSet } from 'prosemirror-view'
 import { createEditorView } from '../createEditorView'
 import Paragraph from './Paragraph.vue'
 import Heading from './Heading.vue'
 import Size from './Size.vue'
+import Hashes from './Hashes.vue'
 
 const nodeViewFactory = useNodeViewFactory()
 const pluginViewFactory = usePluginViewFactory()
+const widgetViewFactory = useWidgetViewFactory()
+
+const getHashWidget = widgetViewFactory({
+  as: 'i',
+  component: Hashes,
+})
 
 const editorRef: VNodeRef = (element) => {
   const el = element as HTMLElement
@@ -29,6 +37,23 @@ const editorRef: VNodeRef = (element) => {
       view: pluginViewFactory({
         component: Size,
       }),
+    }),
+    new Plugin({
+      props: {
+        decorations(state) {
+          const { $from } = state.selection
+          const node = $from.node()
+          if (node.type.name !== 'heading')
+            return DecorationSet.empty
+
+          const widget = getHashWidget($from.before() + 1, {
+            side: -1,
+            level: node.attrs.level,
+          })
+
+          return DecorationSet.create(state.doc, [widget])
+        },
+      },
     }),
   ])
 }

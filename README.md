@@ -26,7 +26,7 @@ Universal adapter for [ProseMirror](https://prosemirror.net/) to use it with mod
 - [x] Add out of box support for prosemirror features
   - [x] [Prosemirror Node View](https://prosemirror.net/docs/ref/#view.NodeView)
   - [x] [Prosemirror Plugin View](https://prosemirror.net/docs/ref/#state.PluginView)
-  - [ ] [Prosemirror Widget Decoration](https://prosemirror.net/docs/ref/#view.Decoration%5Ewidget)
+  - [x] [Prosemirror Widget Decoration](https://prosemirror.net/docs/ref/#view.Decoration%5Ewidget)
 
 ### What's not on the plan?
 

@@ -102,7 +102,7 @@ importers:
       typescript: ^4.8.4
       vite: ^3.2.2
     dependencies:
-      '@prosemirror-adapter/react': 0.1.0_biqbaboplfbrettd7655fr4n2y
+      '@prosemirror-adapter/react': link:../../packages/react
       '@type-config/strict': 1.2.1
       '@types/react': 18.0.24
       '@types/react-dom': 18.0.8
@@ -137,7 +137,7 @@ importers:
       vite: ^3.2.2
       vue: ^3.2.38
     dependencies:
-      '@prosemirror-adapter/vue': 0.1.0_vue@3.2.41
+      '@prosemirror-adapter/vue': link:../../packages/vue
       '@type-config/strict': 1.2.1
       '@vitejs/plugin-vue': 3.2.0_vite@3.2.2+vue@3.2.41
       prosemirror-example-setup: 1.2.1
@@ -1129,36 +1129,6 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.13.0
-    dev: false
-
-  /@prosemirror-adapter/core/0.1.0:
-    resolution: {integrity: sha512-0O9BDy4iV33hK4Ldxt9BlyqRAl5trzzigMX70CcyGPhUeMBJ96iVEriH5ayrdyIYQaMZUt4aUQNmq4LUDWzNWA==}
-    dependencies:
-      tslib: 2.4.1
-    dev: false
-
-  /@prosemirror-adapter/react/0.1.0_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-5wJ1Ih0imAY6wZJuPXAUwMXi+gzDN7t7VgrXnWN0qV458bj9xTNPaHiAyvnMKTdBdzLfmFTcrgG95RllXLVa6w==}
-    peerDependencies:
-      react: '*'
-      react-dom: '*'
-    dependencies:
-      '@prosemirror-adapter/core': 0.1.0
-      nanoid: 4.0.0
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-      tslib: 2.4.1
-    dev: false
-
-  /@prosemirror-adapter/vue/0.1.0_vue@3.2.41:
-    resolution: {integrity: sha512-+1rggiERDe0Ky8Do+kWt972drDo7vLR10aQzDVpVeAjZzXJt177SmGFotny3VQcE0liy0HbNHtcV2pV0UkwuaA==}
-    peerDependencies:
-      vue: ^3.0.0
-    dependencies:
-      '@prosemirror-adapter/core': 0.1.0
-      nanoid: 4.0.0
-      tslib: 2.4.1
-      vue: 3.2.41
     dev: false
 
   /@sideway/address/4.1.4:
