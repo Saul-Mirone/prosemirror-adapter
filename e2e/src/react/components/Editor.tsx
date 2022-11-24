@@ -11,7 +11,7 @@ import { Plugin } from 'prosemirror-state'
 import { createEditorView } from '../../createEditorView'
 import { Heading } from './Heading'
 import { Paragraph } from './Paragraph'
-import { Tooltip } from './Tooltip'
+import { Size } from './Size'
 import { Hashes } from './Hashes'
 
 export const Editor: FC = () => {
@@ -28,7 +28,7 @@ export const Editor: FC = () => {
       if (element.firstChild)
         return
 
-      const hashWidgetFactory = widgetViewFactory({
+      const getHashWidget = widgetViewFactory({
         as: 'i',
         component: Hashes,
       })
@@ -45,29 +45,23 @@ export const Editor: FC = () => {
       }, [
         new Plugin({
           view: pluginViewFactory({
-            component: Tooltip,
+            component: Size,
           }),
         }),
-        new Plugin<DecorationSet>({
-          state: {
-            init() { return DecorationSet.empty },
-            apply(tr) {
-              const { $from } = tr.selection
+        new Plugin({
+          props: {
+            decorations(state) {
+              const { $from } = state.selection
               const node = $from.node()
               if (node.type.name !== 'heading')
                 return DecorationSet.empty
 
-              const widget = hashWidgetFactory($from.before() + 1, {
+              const widget = getHashWidget($from.before() + 1, {
                 side: -1,
                 level: node.attrs.level,
               })
 
-              return DecorationSet.create(tr.doc, [widget])
-            },
-          },
-          props: {
-            decorations(state) {
-              return this.getState(state)
+              return DecorationSet.create(state.doc, [widget])
             },
           },
         }),

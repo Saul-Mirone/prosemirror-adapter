@@ -210,7 +210,7 @@ const editorRef: VNodeRef = (element) => {
                 level: node.attrs.level,
               })
 
-              return DecorationSet.create(tr.doc, [widget])
+              return DecorationSet.create(state.doc, [widget])
             },
           },
         }),

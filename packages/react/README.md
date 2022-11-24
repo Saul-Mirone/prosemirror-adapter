@@ -205,7 +205,7 @@ export const YourAwesomeEditor: FC = () => {
                     level: node.attrs.level,
                   })
 
-                  return DecorationSet.create(tr.doc, [widget])
+                  return DecorationSet.create(state.doc, [widget])
                 },
               },
             }),
