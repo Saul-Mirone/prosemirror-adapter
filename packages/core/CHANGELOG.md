@@ -1,5 +1,11 @@
 # @prosemirror-adapter/core
 
+## 0.2.1
+
+### Patch Changes
+
+-   09dcb35: Add types of hooks
+
 ## 0.2.0
 
 ### Minor Changes
