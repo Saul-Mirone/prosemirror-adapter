@@ -14,12 +14,16 @@ import { useReactRenderer } from './ReactRenderer'
 import { createWidgetViewContext } from './widgetView'
 import { useReactWidgetViewCreator } from './widgetView/useReactWidgetViewCreator'
 
+export type CreateReactNodeView = ReturnType<typeof useReactNodeViewCreator>
+export type CreateReactPluginView = ReturnType<typeof useReactPluginViewCreator>
+export type CreateReactWidgetView = ReturnType<typeof useReactWidgetViewCreator>
+
 export const ProsemirrorAdapterProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const { renderReactRenderer, removeReactRenderer, portals } = useReactRenderer()
 
-  const createReactNodeView = useReactNodeViewCreator(renderReactRenderer, removeReactRenderer)
-  const createReactPluginView = useReactPluginViewCreator(renderReactRenderer, removeReactRenderer)
-  const createReactWidgetView = useReactWidgetViewCreator(renderReactRenderer, removeReactRenderer)
+  const createReactNodeView: CreateReactNodeView = useReactNodeViewCreator(renderReactRenderer, removeReactRenderer)
+  const createReactPluginView: CreateReactPluginView = useReactPluginViewCreator(renderReactRenderer, removeReactRenderer)
+  const createReactWidgetView: CreateReactWidgetView = useReactWidgetViewCreator(renderReactRenderer, removeReactRenderer)
 
   const memoizedPortals = useMemo(() => Object.values(portals), [portals])
 
