@@ -1,5 +1,13 @@
 # @prosemirror-adapter/vue
 
+## 0.2.1
+
+### Patch Changes
+
+-   09dcb35: Add types of hooks
+-   Updated dependencies [09dcb35]
+    -   @prosemirror-adapter/core@0.2.1
+
 ## 0.2.0
 
 ### Minor Changes
