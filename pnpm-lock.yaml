@@ -58,7 +58,7 @@ importers:
       '@types/react-dom': ^18.0.0
       '@vitejs/plugin-react': ^2.2.0
       '@vitejs/plugin-vue': ^3.2.0
-      cypress: ^11.0.0
+      cypress: ^12.0.0
       prosemirror-example-setup: ^1.2.1
       prosemirror-menu: ^1.2.1
       prosemirror-schema-basic: ^1.2.0
@@ -73,7 +73,7 @@ importers:
       '@types/react-dom': 18.0.8
       '@vitejs/plugin-react': 2.2.0
       '@vitejs/plugin-vue': 3.2.0_vue@3.2.41
-      cypress: 11.0.1
+      cypress: 12.0.0
       prosemirror-example-setup: 1.2.1
       prosemirror-menu: 1.2.1
       prosemirror-schema-basic: 1.2.0
@@ -2205,9 +2205,9 @@ packages:
       stream-transform: 2.1.3
     dev: false
 
-  /cypress/11.0.1:
-    resolution: {integrity: sha512-NuEfd0Vim492RJ3m/+bbTZ3OZrqXgfAfuLaZfIQ9D5lKocS3EDr2tyAarZdAhKwLyoh7OJ33jwMeMFIDbzYqog==}
-    engines: {node: '>=12.0.0'}
+  /cypress/12.0.0:
+    resolution: {integrity: sha512-hX/UeaKrL4uiRxJh+eX9t5YFXJconJyqG0hkFkK6CG+4xj2mMmzvJERF3e2h/9TzvLxPAkQ6cGz8eaHfJZeyGg==}
+    engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
     hasBin: true
     requiresBuild: true
     dependencies:
@@ -5768,7 +5768,7 @@ packages:
     dev: false
 
   /verror/1.10.0:
-    resolution: {integrity: sha1-OhBcoXBTr1XW4nDB+CiGguGNpAA=}
+    resolution: {integrity: sha512-ZZKSmDAEFOijERBLkmYfJ+vmk3w+7hOLYDNkRCuRuMJGEmqYNCNLyBBFwWKVMhfwaEF3WOd0Zlw86U/WC/+nYw==}
     engines: {'0': node >=0.6.0}
     dependencies:
       assert-plus: 1.0.0
