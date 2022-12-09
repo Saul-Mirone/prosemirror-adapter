@@ -34,7 +34,7 @@
     "tslib": "^2.4.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue-jsx": "^2.1.0",
+    "@vitejs/plugin-vue-jsx": "^3.0.0",
     "vue": "^3.2.38"
   }
 }

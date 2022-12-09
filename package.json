@@ -37,7 +37,7 @@
     "prosemirror-view": "^1.29.0",
     "tslib": "^2.4.1",
     "typescript": "^4.8.4",
-    "vite": "^3.2.2"
+    "vite": "^4.0.0"
   },
   "pnpm": {
     "peerDependencyRules": {
