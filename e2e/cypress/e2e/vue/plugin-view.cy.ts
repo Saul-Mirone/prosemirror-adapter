@@ -23,4 +23,3 @@ it('Size plugin view render', () => {
     .get('[data-test-id="size-view-plugin"]')
     .contains('Size for document: 524')
 })
-
