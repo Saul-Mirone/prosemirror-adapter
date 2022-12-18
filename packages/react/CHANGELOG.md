@@ -1,5 +1,13 @@
 # @prosemirror-adapter/react
 
+## 0.2.2
+
+### Patch Changes
+
+-   8303be1: Fix rerender issues between editor renders
+-   Updated dependencies [8303be1]
+    -   @prosemirror-adapter/core@0.2.2
+
 ## 0.2.1
 
 ### Patch Changes
