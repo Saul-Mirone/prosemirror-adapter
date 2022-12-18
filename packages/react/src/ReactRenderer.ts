@@ -1,7 +1,7 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
 
 import type { ReactPortal } from 'react'
-import { useCallback, useLayoutEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { flushSync } from 'react-dom'
 
 export interface ReactRenderer<Context> {
@@ -24,8 +24,10 @@ export const useReactRenderer = (): ReactRendererResult => {
   const [portals, setPortals] = useState<Record<string, ReactPortal>>({})
   const mountedRef = useRef(false)
 
-  useLayoutEffect(() => {
-    mountedRef.current = true
+  useEffect(() => {
+    requestAnimationFrame(() => {
+      mountedRef.current = true
+    })
     return () => {
       mountedRef.current = false
     }
@@ -34,8 +36,8 @@ export const useReactRenderer = (): ReactRendererResult => {
   const maybeFlushSync = useCallback((fn: () => void) => {
     if (mountedRef.current)
       flushSync(fn)
-    else
-      fn()
+
+    else fn()
   }, [])
 
   const renderReactRenderer = useCallback(
