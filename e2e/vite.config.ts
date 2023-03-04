@@ -1,6 +1,6 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
 
-import { resolve } from 'path'
+import { resolve } from 'node:path'
 import react from '@vitejs/plugin-react'
 import vue from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
