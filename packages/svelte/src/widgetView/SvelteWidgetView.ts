@@ -1,27 +1,28 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
-
-import { CorePluginView } from '@prosemirror-adapter/core'
+import { CoreWidgetView } from '@prosemirror-adapter/core'
 import { nanoid } from 'nanoid'
 import type { Writable } from 'svelte/store'
 import { writable } from 'svelte/store'
 import type { SvelteRenderer } from '../SvelteRenderer'
-import type { PluginViewContext, PluginViewContextMap } from './pluginViewContext'
-import type { SveltePluginViewComponent } from './SveltePluginViewOptions'
+import type { SvelteWidgetViewComponent } from './SvelteWidgetViewOptions'
+import type { WidgetViewContext, WidgetViewContextMap } from './widgetViewContext'
 
-export class SveltePluginView extends CorePluginView<SveltePluginViewComponent> implements SvelteRenderer<PluginViewContextMap> {
+export class SvelteWidgetView extends CoreWidgetView<SvelteWidgetViewComponent> implements SvelteRenderer<WidgetViewContextMap> {
   key: string = nanoid()
 
-  _context: PluginViewContext = {
-    view: writable(this.view),
-    prevState: writable(this.prevState),
+  _context: WidgetViewContext = {
+    view: writable(this.view!),
+    getPos: writable(this.getPos!),
+    spec: writable(this.spec),
   }
 
-  context: PluginViewContextMap = new Map(Object.entries(this._context)) as PluginViewContextMap
+  context: WidgetViewContextMap = new Map(Object.entries(this._context)) as WidgetViewContextMap
 
   updateContext = () => {
     const original = {
       view: this.view,
-      prevState: this.prevState,
+      getPos: this.getPos,
+      spec: this.spec,
     }
     Object.entries(original).forEach(([key, value]) => {
       const mapKey = key as keyof typeof original
@@ -34,7 +35,7 @@ export class SveltePluginView extends CorePluginView<SveltePluginViewComponent> 
     const UserComponent = this.component
 
     return new UserComponent({
-      target: this.root,
+      target: this.dom,
       context: this.context,
     })
   }

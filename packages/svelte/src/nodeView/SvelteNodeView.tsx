@@ -1,7 +1,6 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
 import { CoreNodeView } from '@prosemirror-adapter/core'
 import { nanoid } from 'nanoid'
-import type { SvelteComponent } from 'svelte'
 import type { Writable } from 'svelte/store'
 import { writable } from 'svelte/store'
 
@@ -11,8 +10,6 @@ import type { SvelteNodeViewComponent } from './SvelteNodeViewOptions'
 
 export class SvelteNodeView extends CoreNodeView<SvelteNodeViewComponent> implements SvelteRenderer<NodeViewContextMap> {
   key: string = nanoid()
-
-  _component?: SvelteComponent
 
   _context: NodeViewContext = {
     contentRef: (element) => {
@@ -53,13 +50,9 @@ export class SvelteNodeView extends CoreNodeView<SvelteNodeViewComponent> implem
   render = () => {
     const UserComponent = this.component
 
-    const rendered = new UserComponent({
+    return new UserComponent({
       target: this.dom,
       context: this.context,
     })
-
-    this._component = rendered
-
-    return rendered
   }
 }
