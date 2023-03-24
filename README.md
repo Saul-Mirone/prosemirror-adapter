@@ -22,6 +22,7 @@ Universal adapter for [ProseMirror](https://prosemirror.net/) to use it with mod
 - [x] Support Popular UI Frameworks
   - [x] [React](https://reactjs.org/)
   - [x] [Vue](https://vuejs.org/)
+  - [x] [Svelte](https://svelte.dev/)
   - 🚀 coming soon...
 - [x] Add out of box support for prosemirror features
   - [x] [Prosemirror Node View](https://prosemirror.net/docs/ref/#view.NodeView)
@@ -43,6 +44,7 @@ So something out of this scope will not be considered. For example:
   <tr>
     <th>react</th>
     <th>vue</th>
+    <th>svelte</th>
   </tr>
   <tr>
     <td>
@@ -53,6 +55,11 @@ So something out of this scope will not be considered. For example:
     <td>
       <a align="center" title="vue" href="/packages/vue">
         <img src="/assets/vue.svg" width="100" height="100" alt="vue">
+      </a>
+    </td>
+    <td>
+      <a align="center" title="svelte" href="/packages/svelte">
+        <img src="/assets/svlte.svg" width="100" height="100" alt="vue">
       </a>
     </td>
   </tr>
