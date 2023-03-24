@@ -2,7 +2,6 @@
   import {
     useNodeViewFactory,
     usePluginViewFactory,
-    useProsemirrorAdapterProvider,
     useWidgetViewFactory
   } from "@prosemirror-adapter/svelte";
   import { Plugin } from 'prosemirror-state'
@@ -16,7 +15,6 @@
 
   let components: SvelteComponent[]
 
-  useProsemirrorAdapterProvider()
   const nodeViewFactory = useNodeViewFactory()
   const pluginViewFactory = usePluginViewFactory()
   const widgetViewFactory = useWidgetViewFactory()

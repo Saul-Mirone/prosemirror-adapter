@@ -3,14 +3,13 @@
 import type { WidgetDecorationFactory, WidgetDecorationSpec } from '@prosemirror-adapter/core'
 import type { EditorView } from 'prosemirror-view'
 import { getContext } from 'svelte'
-import type { Writable } from 'svelte/store'
 import type { Obj2Map } from '../types'
 import type { SvelteWidgetViewUserOptions } from './SvelteWidgetViewOptions'
 
 export interface WidgetViewContext {
-  view: Writable<EditorView>
-  getPos: Writable<() => number | undefined>
-  spec?: Writable<WidgetDecorationSpec>
+  view: EditorView
+  getPos: () => number | undefined
+  spec?: WidgetDecorationSpec
 }
 
 export type WidgetViewContextMap = Obj2Map<WidgetViewContext>

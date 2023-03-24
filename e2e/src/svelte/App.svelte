@@ -1,5 +1,9 @@
 <script lang="ts">
+  import { useProsemirrorAdapterProvider } from "@prosemirror-adapter/svelte";
   import Editor from "./components/Editor.svelte";
+
+  useProsemirrorAdapterProvider()
+
   let count = 0;
   function handleClick() {
     count += 1;

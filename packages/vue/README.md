@@ -67,6 +67,8 @@ import type { VNodeRef } from 'vue'
 import { useNodeViewFactory } from '@prosemirror-adapter/vue'
 import Paragraph from './Paragraph.vue'
 
+const nodeViewFactory = useNodeViewFactory()
+
 const editorRef: VNodeRef = (element) => {
   const el = element as HTMLElement
   if (!el || el.firstChild)
