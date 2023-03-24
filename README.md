@@ -15,7 +15,10 @@ Universal adapter for [ProseMirror](https://prosemirror.net/) to use it with mod
 
 ## What is this?
 
-[Prosemirror](https://github.com/ProseMirror/prosemirror) is a toolkit to build modern rich text editors.  But it is not a good fit for a modern UI framework like React or Vue. This adapter is a low level tool to make it work with them without pain. You'll need this adapter if you want to use Prosemirror to build a rich text editor with complex UI in React or Vue.
+[Prosemirror](https://github.com/ProseMirror/prosemirror) is a toolkit to build modern rich text editors.
+But it is not a good fit for a modern UI framework like React or Vue.
+This adapter is a low level tool to make it work with them without pain.
+You'll need this adapter if you want to use Prosemirror to build a rich text editor with complex UI in modern UI frameworks we support.
 
 ### What's on the plan?
 
@@ -23,7 +26,7 @@ Universal adapter for [ProseMirror](https://prosemirror.net/) to use it with mod
   - [x] [React](https://reactjs.org/)
   - [x] [Vue](https://vuejs.org/)
   - [x] [Svelte](https://svelte.dev/)
-  - 🚀 coming soon...
+  - [ ] 🚀 coming soon...
 - [x] Add out of box support for prosemirror features
   - [x] [Prosemirror Node View](https://prosemirror.net/docs/ref/#view.NodeView)
   - [x] [Prosemirror Plugin View](https://prosemirror.net/docs/ref/#state.PluginView)

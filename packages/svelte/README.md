@@ -18,7 +18,7 @@ npm install @prosemirror-adapter/svelte
 
 ### Wrap your component with provider
 
-```sveltehtml
+```html
 <script lang="ts">
 import { useProsemirrorAdapterProvider } from "@prosemirror-adapter/svelte";
 
@@ -40,7 +40,7 @@ In this section we will implement a node view for paragraph node.
 
 #### Build component for [node view](https://prosemirror.net/docs/ref/#view.NodeView)
 
-```sveltehtml
+```html
 <script lang="ts">
 import { useNodeViewContext } from "@prosemirror-adapter/svelte";
 let selected = false;
@@ -64,7 +64,7 @@ selectedStore.subscribe((value) => {
 
 #### Bind node view components with prosemirror
 
-```sveltehtml
+```html
 <script lang="ts">
 import { useNodeViewFactory } from '@prosemirror-adapter/svelte'
 import Paragraph from './Paragraph.svelte'
@@ -105,7 +105,7 @@ In this section we will implement a plugin view that will display the size of th
 
 #### Build component for [plugin view](https://prosemirror.net/docs/ref/#state.PluginView)
 
-```sveltehtml
+```html
 <script lang="ts">
 import { usePluginViewContext } from '@prosemirror-adapter/svelte'
 const viewStore = usePluginViewContext('view');
@@ -121,7 +121,7 @@ viewStore.subscribe(view => {
 
 #### Bind plugin view components with prosemirror
 
-```sveltehtml
+```html
 <script lang="ts">
 import { usePluginViewFactory } from '@prosemirror-adapter/svelte'
 import { Plugin } from 'prosemirror-state'
@@ -164,7 +164,7 @@ In this section we will implement a widget view that will add hashes for heading
 
 #### Build component for [widget decoration view](https://prosemirror.net/docs/ref/#view.Decoration%5Ewidget)
 
-```sveltehtml
+```html
 <script lang="ts">
   import { useWidgetViewContext } from '@prosemirror-adapter/svelte'
 
@@ -185,7 +185,7 @@ In this section we will implement a widget view that will add hashes for heading
 
 #### Bind widget view components with prosemirror
 
-```sveltehtml
+```html
 <script lang="ts">
 import { useWidgetViewFactory } from '@prosemirror-adapter/svelte'
 import { Plugin } from 'prosemirror-state'
