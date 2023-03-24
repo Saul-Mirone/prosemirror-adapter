@@ -59,7 +59,7 @@ So something out of this scope will not be considered. For example:
     </td>
     <td>
       <a align="center" title="svelte" href="/packages/svelte">
-        <img src="/assets/svlte.svg" width="100" height="100" alt="vue">
+        <img src="/assets/svelte.svg" width="100" height="100" alt="svelte">
       </a>
     </td>
   </tr>
