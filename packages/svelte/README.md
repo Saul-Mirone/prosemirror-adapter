@@ -1,33 +1,31 @@
-# @prosemirror-adapter/vue
+# @prosemirror-adapter/svelte
 
-[Vue](https://vuejs.org/) adapter for [ProseMirror](https://prosemirror.net/).
+[Svelte](https://svelte.dev/) adapter for [ProseMirror](https://prosemirror.net/).
 
 ## Example
 
-You can view the example in [prosemirror-adapter/examples/vue](../../examples/vue/).
+You can view the example in [prosemirror-adapter/examples/svelte](../../examples/svelte/).
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/Saul-Mirone/prosemirror-adapter/tree/main/examples/vue)
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/Saul-Mirone/prosemirror-adapter/tree/main/examples/svelte)
 
 ## Getting Started
 
 ### Install the package
 
 ```bash
-npm install @prosemirror-adapter/vue
+npm install @prosemirror-adapter/svelte
 ```
 
 ### Wrap your component with provider
 
-```vue
-<script setup lang="ts">
-import { ProsemirrorAdapterProvider } from '@prosemirror-adapter/vue'
+```sveltehtml
+<script lang="ts">
+import { useProsemirrorAdapterProvider } from "@prosemirror-adapter/svelte";
+
+useProsemirrorAdapterProvider();
 </script>
 
-<template>
-  <ProsemirrorAdapterProvider>
-    <YourAwesomeEditor />
-  </ProsemirrorAdapterProvider>
-</template>
+<YourAwesomeEditor />
 ```
 
 <details>
@@ -42,39 +40,39 @@ In this section we will implement a node view for paragraph node.
 
 #### Build component for [node view](https://prosemirror.net/docs/ref/#view.NodeView)
 
-```vue
-<script setup lang="ts">
-import { useNodeViewContext } from '@prosemirror-adapter/vue'
-const { contentRef, selected } = useNodeViewContext()
+```sveltehtml
+<script lang="ts">
+import { useNodeViewContext } from "@prosemirror-adapter/svelte";
+let selected = false;
+
+const contentRef = useNodeViewContext('contentRef');
+const selectedStore = useNodeViewContext('selected');
+selectedStore.subscribe((value) => {
+  selected = value;
+})
+
 </script>
 
-<template>
-  <div :ref="contentRef" role="presentation" :class="{ selected }" />
-</template>
+<div use:contentRef class:selected={selected} />
 
-<style scoped>
+<style>
 .selected {
-    outline: blue solid 1px;
+  outline: blue solid 1px;
 }
 </style>
 ```
 
 #### Bind node view components with prosemirror
 
-```vue
-<script setup lang="ts">
-import type { VNodeRef } from 'vue'
-import { useNodeViewFactory } from '@prosemirror-adapter/vue'
-import Paragraph from './Paragraph.vue'
+```sveltehtml
+<script lang="ts">
+import { useNodeViewFactory } from '@prosemirror-adapter/svelte'
+import Paragraph from './Paragraph.svelte'
 
 const nodeViewFactory = useNodeViewFactory()
 
-const editorRef: VNodeRef = (element) => {
-  const el = element as HTMLElement
-  if (!el || el.firstChild)
-    return
-
-  const editorView = new EditorView(el, {
+const editor = (element: HTMLElement) => {
+  const editorView = new EditorView(element, {
     state: YourProsemirrorEditorState,
     nodeViews: {
       paragraph: nodeViewFactory({
@@ -88,12 +86,10 @@ const editorRef: VNodeRef = (element) => {
 }
 </script>
 
-<template>
-  <div :ref="editorRef" class="editor" />
-</template>
+<div use:editor />
 ```
 
-🚀 Congratulations! You have built your first vue node view with prosemirror-adapter.
+🚀 Congratulations! You have built your first svelte node view with prosemirror-adapter.
 
 </details>
 
@@ -109,37 +105,32 @@ In this section we will implement a plugin view that will display the size of th
 
 #### Build component for [plugin view](https://prosemirror.net/docs/ref/#state.PluginView)
 
-```vue
-<script setup lang="ts">
-import { usePluginViewContext } from '@prosemirror-adapter/vue'
-const { view } = usePluginViewContext()
-const size = computed(() => {
-  return view.value.state.doc.nodeSize
+```sveltehtml
+<script lang="ts">
+import { usePluginViewContext } from '@prosemirror-adapter/svelte'
+const viewStore = usePluginViewContext('view');
+let size = 0;
+
+viewStore.subscribe(view => {
+  size = view.state.doc.nodeSize;
 })
 </script>
 
-<template>
-  <div>Size for document: {{ size }}</div>
-</template>
+<div>Size for document: { size }</div>
 ```
 
 #### Bind plugin view components with prosemirror
 
-```vue
-<script setup lang="ts">
-import type { VNodeRef } from 'vue'
-import { usePluginViewFactory } from '@prosemirror-adapter/vue'
+```sveltehtml
+<script lang="ts">
+import { usePluginViewFactory } from '@prosemirror-adapter/svelte'
 import { Plugin } from 'prosemirror-state'
-import Size from './Size.vue'
+import Size from './Size.svelte'
 
 const pluginViewFactory = usePluginViewFactory()
 
-const editorRef: VNodeRef = (element) => {
-  const el = element as HTMLElement
-  if (!el || el.firstChild)
-    return
-
-  const editorView = new EditorView(el, {
+const editor = (element: HTMLElement) => {
+  const editorView = new EditorView(element, {
     state: EditorState.create({
       schema: YourProsemirrorSchema,
       plugins: [
@@ -154,12 +145,10 @@ const editorRef: VNodeRef = (element) => {
 }
 </script>
 
-<template>
-  <div :ref="editorRef" class="editor" />
-</template>
+<div use:editor />
 ```
 
-🚀 Congratulations! You have built your first vue plugin view with prosemirror-adapter.
+🚀 Congratulations! You have built your first svelte plugin view with prosemirror-adapter.
 
 </details>
 
@@ -175,49 +164,42 @@ In this section we will implement a widget view that will add hashes for heading
 
 #### Build component for [widget decoration view](https://prosemirror.net/docs/ref/#view.Decoration%5Ewidget)
 
-```vue
-<script setup lang="ts">
-import { useWidgetViewContext } from '@prosemirror-adapter/vue'
+```sveltehtml
+<script lang="ts">
+  import { useWidgetViewContext } from '@prosemirror-adapter/svelte'
 
-const { spec } = useWidgetViewContext()
-const level = spec?.level
-const hashes = Array(level || 0).fill('#').join('')
+  const spec = useWidgetViewContext('spec')
+  const level = spec?.level
+  const hashes = Array(level || 0).fill('#').join('')
 </script>
 
-<template>
-  <span class="hash">{{ hashes }}</span>
-</template>
+<span class="hash">{hashes}</span>
 
-<style scoped>
-.hash {
-  color: blue;
-  margin-right: 6px;
-}
+<style>
+  .hash {
+    color: blue;
+    margin-right: 6px;
+  }
 </style>
 ```
 
 #### Bind widget view components with prosemirror
 
-```vue
-<script setup lang="ts">
-import type { VNodeRef } from 'vue'
-import { useWidgetViewFactory } from '@prosemirror-adapter/vue'
+```sveltehtml
+<script lang="ts">
+import { useWidgetViewFactory } from '@prosemirror-adapter/svelte'
 import { Plugin } from 'prosemirror-state'
-import Hashes from './Hashes.vue'
+import Hashes from './Hashes.svelte'
 
 const widgetViewFactory = useWidgetViewFactory()
 
-const editorRef: VNodeRef = (element) => {
-  const el = element as HTMLElement
-  if (!el || el.firstChild)
-    return
-
+const editor = (element: HTMLElement) => {
   const getHashWidget = widgetViewFactory({
     as: 'i',
     component: Hashes,
   })
 
-  const editorView = new EditorView(el, {
+  const editorView = new EditorView(element, {
     state: EditorState.create({
       schema: YourProsemirrorSchema,
       plugins: [
@@ -244,12 +226,10 @@ const editorRef: VNodeRef = (element) => {
 }
 </script>
 
-<template>
-  <div :ref="editorRef" class="editor" />
-</template>
+<div use:editor />
 ```
 
-🚀 Congratulations! You have built your first vue widget view with prosemirror-adapter.
+🚀 Congratulations! You have built your first svelte widget view with prosemirror-adapter.
 
 </details>
 
@@ -271,7 +251,7 @@ type DOMSpec = string | HTMLElement | ((node: Node) => HTMLElement)
 
 interface NodeViewFactoryOptions {
   // Component
-  component: VueComponent
+  component: SvelteComponent
 
   // The DOM element to use as the root node of the node view.
   as?: DOMSpec
@@ -310,16 +290,16 @@ interface NodeViewContext {
   setAttrs: (attrs: Attrs) => void
 
   // The prosemirror node for current node.
-  node: ShallowRef<Node>
+  node: Writable<Node>
 
   // The prosemirror decorations for current node.
-  decorations: ShallowRef<readonly Decoration[]>
+  decorations: Writable<readonly Decoration[]>
 
   // The prosemirror inner decorations for current node.
-  innerDecorations: ShallowRef<DecorationSource>
+  innerDecorations: Writable<DecorationSource>
 
   // Whether the node is selected.
-  selected: ShallowRef<boolean>
+  selected: Writable<boolean>
 }
 ```
 
@@ -358,11 +338,11 @@ interface PluginViewFactoryOptions {
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
 interface PluginViewContext {
   // The prosemirror editor view.
-  view: ShallowRef<EditorView>
+  view: Writable<EditorView>
 
   // The previously prosemirror editor state.
   // Will be `undefined` when the plugin view is created.
-  prevState: ShallowRef<EditorState | undefined>
+  prevState: Writable<EditorState | undefined>
 }
 ```
 
