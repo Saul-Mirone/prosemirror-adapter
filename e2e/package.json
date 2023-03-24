@@ -1,9 +1,10 @@
 {
   "name": "e2e",
+  "type": "module",
   "private": true,
   "license": "MIT",
   "scripts": {
-    "start": "vite --port 7000",
+    "start": "vite --port 9000",
     "build": "vite build",
     "setup": "vite preview --port $CYPRESS_SERVER_PORT --host",
     "test": "cross-env CYPRESS_SERVER_PORT=7001 cypress run",
@@ -13,7 +14,9 @@
   },
   "devDependencies": {
     "@prosemirror-adapter/react": "workspace:*",
+    "@prosemirror-adapter/svelte": "workspace:*",
     "@prosemirror-adapter/vue": "workspace:*",
+    "@sveltejs/vite-plugin-svelte": "^2.0.3",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "@vitejs/plugin-react": "^3.0.0",
@@ -25,6 +28,7 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "start-server-and-test": "^2.0.0",
+    "svelte": "^3.57.0",
     "vue": "^3.2.38"
   }
 }
