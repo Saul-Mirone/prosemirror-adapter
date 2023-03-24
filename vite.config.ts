@@ -34,6 +34,10 @@ function mergeDeep<T>(target: T, ...sources: T[]): T {
   return mergeDeep(target, ...sources)
 }
 
+const externals = [
+  'svelte/store',
+]
+
 const viteBuild = (path: string, options: BuildOptions = {}): BuildOptions => {
   const dir = dirname(fileURLToPath(path))
   const packageDirName = basename(dir)
@@ -56,7 +60,7 @@ const viteBuild = (path: string, options: BuildOptions = {}): BuildOptions => {
         formats: ['es'],
       },
       rollupOptions: {
-        external: Object.keys(deps),
+        external: [...Object.keys(deps), ...externals],
         output: {
           dir: resolve(dir, 'lib'),
         },
