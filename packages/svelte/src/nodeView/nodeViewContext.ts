@@ -3,6 +3,7 @@ import type { Attrs, Node } from 'prosemirror-model'
 import type { Decoration, DecorationSource, EditorView, NodeViewConstructor } from 'prosemirror-view'
 import { getContext } from 'svelte'
 import type { Writable } from 'svelte/store'
+import type { Obj2Map } from '../types'
 import type { SvelteNodeViewUserOptions } from './SvelteNodeViewOptions'
 
 export interface NodeViewContext {
@@ -19,7 +20,7 @@ export interface NodeViewContext {
   innerDecorations: Writable<DecorationSource>
 }
 
-export type NodeViewContextMap = Map<keyof NodeViewContext, NodeViewContext[keyof NodeViewContext]>
+export type NodeViewContextMap = Obj2Map<NodeViewContext>
 
 export const useNodeViewContext = <Key extends keyof NodeViewContext>(key: Key): NodeViewContext[Key] => getContext(key)
 
