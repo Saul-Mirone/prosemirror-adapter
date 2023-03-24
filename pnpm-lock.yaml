@@ -128,6 +128,7 @@ importers:
 
   examples/svelte:
     specifiers:
+      '@prosemirror-adapter/svelte': latest
       '@sveltejs/adapter-auto': ^2.0.0
       '@sveltejs/kit': ^1.5.0
       prettier: ^2.8.0
@@ -145,6 +146,7 @@ importers:
       typescript: ^5.0.0
       vite: ^4.2.0
     dependencies:
+      '@prosemirror-adapter/svelte': link:../../packages/svelte
       prosemirror-example-setup: 1.2.1
       prosemirror-keymap: 1.2.0
       prosemirror-menu: 1.2.1

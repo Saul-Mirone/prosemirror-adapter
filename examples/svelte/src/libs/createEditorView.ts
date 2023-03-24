@@ -1,5 +1,4 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
-
 import 'prosemirror-view/style/prosemirror.css'
 import 'prosemirror-example-setup/style/style.css'
 import 'prosemirror-menu/style/menu.css'

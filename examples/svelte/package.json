@@ -3,7 +3,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "vite dev",
+    "start": "vite dev",
     "build": "vite build",
     "preview": "vite preview",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -12,6 +12,7 @@
     "format": "prettier --plugin-search-dir . --write ."
   },
   "dependencies": {
+    "@prosemirror-adapter/svelte": "latest",
     "prosemirror-example-setup": "^1.2.1",
     "prosemirror-keymap": "^1.2.0",
     "prosemirror-menu": "^1.2.1",
