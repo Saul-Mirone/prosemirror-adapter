@@ -1,5 +1,11 @@
 # @prosemirror-adapter/core
 
+## 0.2.3
+
+### Patch Changes
+
+-   ea69057: Fix version for svelte released too early.
+
 ## 0.2.2
 
 ### Patch Changes
