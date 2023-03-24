@@ -1,38 +1,21 @@
-# create-svelte
+# Example for @prosemirror-adapter/svelte
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+A simple example for [`@prosemirror-adapter/svelte`](../../packages/svelte/).
 
-## Creating a project
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/Saul-Mirone/prosemirror-adapter/tree/main/examples/vue)
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Getting Started
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+1. Clone the repo.
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+2. Install dependencies by `pnpm install`.
 
-## Developing
+3. Run the example by `pnpm --filter=@examples/svelte start`.
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Contributing
 
-```bash
-npm run dev
+Follow our [contribution guide](../../CONTRIBUTING.md) to learn how to contribute to prosemirror-adapter.
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+## License
 
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+[MIT](../../LICENSE)

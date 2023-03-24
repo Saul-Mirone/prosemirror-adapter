@@ -10,7 +10,7 @@ A simple example for [`@prosemirror-adapter/react`](../../packages/react/).
 
 2. Install dependencies by `pnpm install`.
 
-3. Run the example by `pnpm ex:react`.
+3. Run the example by `pnpm --filter=@examples/react start`.
 
 ## Contributing
 

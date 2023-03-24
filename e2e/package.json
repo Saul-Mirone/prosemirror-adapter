@@ -4,13 +4,13 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "start": "vite --port 9000",
+    "start": "vite --port $CYPRESS_SERVER_PORT --host",
     "build": "vite build",
     "setup": "vite preview --port $CYPRESS_SERVER_PORT --host",
     "test": "cross-env CYPRESS_SERVER_PORT=7001 cypress run",
     "test:verbose": "cross-env CYPRESS_SERVER_PORT=7001 cypress open",
     "start:test": "cross-env CYPRESS_SERVER_PORT=7001 start-test setup :7001 test",
-    "start:test:verbose": "cross-env CYPRESS_SERVER_PORT=7001 start-test setup :7001 test:verbose"
+    "start:test:verbose": "cross-env CYPRESS_SERVER_PORT=7001 start-test start :7001 test:verbose"
   },
   "devDependencies": {
     "@prosemirror-adapter/react": "workspace:*",

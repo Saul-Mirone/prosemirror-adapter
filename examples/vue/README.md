@@ -10,7 +10,7 @@ A simple example for [`@prosemirror-adapter/vue`](../../packages/vue/).
 
 2. Install dependencies by `pnpm install`.
 
-3. Run the example by `pnpm ex:vue`.
+3. Run the example by `pnpm --filter=@examples/vue start`.
 
 ## Contributing
 
