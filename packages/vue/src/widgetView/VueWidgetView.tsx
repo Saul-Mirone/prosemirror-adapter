@@ -19,7 +19,7 @@ export class VueWidgetView extends CoreWidgetView<VueWidgetViewComponent> implem
   updateContext = () => {
     Object.assign(this.context, {
       view: this.view,
-      prevState: this.getPos,
+      getPos: this.getPos,
       spec: this.spec,
     })
   }

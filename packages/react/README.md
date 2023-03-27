@@ -332,7 +332,7 @@ interface NodeViewContext {
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
 interface PluginViewFactoryOptions {
   // Component
-  component: Component
+  component: ReactComponent
 
   // The DOM element to use as the root node of the plugin view.
   // The `viewDOM` here means `EditorState.view.dom`.
@@ -377,7 +377,7 @@ type WidgetDecorationFactory = (pos: number, spec?: WidgetDecorationSpec) => Dec
 
 interface WidgetViewFactoryOptions {
   // Component
-  component: Component
+  component: ReactComponent
 
   // The DOM element to use as the root node of the widget view.
   as: string | HTMLElement

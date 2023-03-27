@@ -29,7 +29,7 @@ export class ReactPluginView extends CorePluginView<ReactPluginViewComponent> im
 
     return createPortal(
       <pluginViewContext.Provider value={this.context}>
-          <UserComponent />
+        <UserComponent />
       </pluginViewContext.Provider>,
       this.root,
       this.key,

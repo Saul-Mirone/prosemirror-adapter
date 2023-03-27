@@ -13,6 +13,8 @@
     "start:test:verbose": "cross-env CYPRESS_SERVER_PORT=7001 start-test start :7001 test:verbose"
   },
   "devDependencies": {
+    "@lit-labs/context": "^0.3.0",
+    "@prosemirror-adapter/lit": "workspace:*",
     "@prosemirror-adapter/react": "workspace:*",
     "@prosemirror-adapter/svelte": "workspace:*",
     "@prosemirror-adapter/vue": "workspace:*",
@@ -21,7 +23,8 @@
     "@types/react-dom": "^18.0.0",
     "@vitejs/plugin-react": "^3.0.0",
     "@vitejs/plugin-vue": "^4.0.0",
-    "cypress": "^12.0.0",
+    "cypress": "^12.8.1",
+    "lit": "^2.7.0",
     "prosemirror-example-setup": "^1.2.1",
     "prosemirror-menu": "^1.2.1",
     "prosemirror-schema-basic": "^1.2.0",

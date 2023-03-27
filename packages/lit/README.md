@@ -1,33 +1,36 @@
-# @prosemirror-adapter/vue
+# @prosemirror-adapter/lit
 
-[Vue](https://vuejs.org/) adapter for [ProseMirror](https://prosemirror.net/).
+[Lit](https://lit.dev/) adapter for [ProseMirror](https://prosemirror.net/).
 
 ## Example
 
-You can view the example in [prosemirror-adapter/examples/vue](../../examples/vue/).
+You can view the example in [prosemirror-adapter/examples/lit](../../examples/lit/).
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/Saul-Mirone/prosemirror-adapter/tree/main/examples/vue)
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/Saul-Mirone/prosemirror-adapter/tree/main/examples/lit)
 
 ## Getting Started
 
 ### Install the package
 
 ```bash
-npm install @prosemirror-adapter/vue
+npm install @prosemirror-adapter/lit
 ```
 
 ### Wrap your component with provider
 
-```vue
-<script setup lang="ts">
-import { ProsemirrorAdapterProvider } from '@prosemirror-adapter/vue'
-</script>
+```ts
+/* Copyright 2021, Prosemirror Adapter by Mirone. */
+import { ProsemirrorAdapterProvider } from '@prosemirror-adapter/lit'
 
-<template>
-  <ProsemirrorAdapterProvider>
-    <YourAwesomeEditor />
-  </ProsemirrorAdapterProvider>
-</template>
+class YourElement extends LitElement {
+  render() {
+    return html`
+      <prosemirror-adapter-provider>
+        <your-awesome-editor></your-awesome-editor/>
+      </prosemirror-adapter-provider>
+    `
+  }
+}
 ```
 
 <details>
@@ -42,58 +45,70 @@ In this section we will implement a node view for paragraph node.
 
 #### Build component for [node view](https://prosemirror.net/docs/ref/#view.NodeView)
 
-```vue
-<script setup lang="ts">
-import { useNodeViewContext } from '@prosemirror-adapter/vue'
-const { contentRef, selected } = useNodeViewContext()
-</script>
+```ts
+/* Copyright 2021, Prosemirror Adapter by Mirone. */
+import { ShallowLitElement, useNodeViewContext } from '@prosemirror-adapter/lit'
+import { html } from 'lit'
+import { customElement } from 'lit/decorators.js'
+import { ref } from 'lit/directives/ref.js'
 
-<template>
-  <div :ref="contentRef" role="presentation" :class="{ selected }" />
-</template>
+@customElement('my-paragraph')
+export class Paragraph extends ShallowLitElement {
+  nodeViewContext = useNodeViewContext(this)
 
-<style scoped>
-.selected {
-    outline: blue solid 1px;
+  override render() {
+    const contentRef = this.nodeViewContext.value?.contentRef
+    if (!contentRef)
+      return
+
+    return html`<div ${ref(contentRef)}></div>`
+  }
 }
-</style>
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'my-paragraph': Paragraph
+  }
+}
 ```
 
 #### Bind node view components with prosemirror
 
-```vue
-<script setup lang="ts">
-import type { VNodeRef } from 'vue'
-import { useNodeViewFactory } from '@prosemirror-adapter/vue'
-import Paragraph from './Paragraph.vue'
+```ts
+/* Copyright 2021, Prosemirror Adapter by Mirone. */
+import {
+  ShallowLitElement,
+  useNodeViewFactory,
+} from '@prosemirror-adapter/lit'
+import { RefOrCallback, ref } from 'lit/directives/ref.js'
+import Paragraph from './Paragraph.ts'
 
-const nodeViewFactory = useNodeViewFactory()
+@customElement('my-editor')
+export class MyEditor extends ShallowLitElement {
+  nodeViewFactory = useNodeViewFactory(this)
 
-const editorRef: VNodeRef = (element) => {
-  const el = element as HTMLElement
-  if (!el || el.firstChild)
-    return
+  editorRef: RefOrCallback = (element) => {
+    const nodeViewFactory = this.nodeViewFactory.value!
+    const editorView = new EditorView(element, {
+      state: YourProsemirrorEditorState,
+      nodeViews: {
+        paragraph: this.nodeViewFactory({
+          component: Paragraph,
+          // Optional: add some options
+          as: 'div',
+          contentAs: 'p',
+        }),
+      },
+    })
+  }
 
-  const editorView = new EditorView(el, {
-    state: YourProsemirrorEditorState,
-    nodeViews: {
-      paragraph: nodeViewFactory({
-        component: Paragraph,
-        // Optional: add some options
-        as: 'div',
-        contentAs: 'p',
-      }),
-    },
-  })
+  override render() {
+    return html`<div class="editor" ${ref(this.editorRef)}></div>`
+  }
 }
-</script>
-
-<template>
-  <div :ref="editorRef" class="editor" />
-</template>
 ```
 
-🚀 Congratulations! You have built your first vue node view with prosemirror-adapter.
+🚀 Congratulations! You have built your first lit node view with prosemirror-adapter.
 
 </details>
 
@@ -109,39 +124,50 @@ In this section we will implement a plugin view that will display the size of th
 
 #### Build component for [plugin view](https://prosemirror.net/docs/ref/#state.PluginView)
 
-```vue
-<script setup lang="ts">
-import { usePluginViewContext } from '@prosemirror-adapter/vue'
-const { view } = usePluginViewContext()
-const size = computed(() => {
-  return view.value.state.doc.nodeSize
-})
-</script>
+```ts
+/* Copyright 2021, Prosemirror Adapter by Mirone. */
+import { ShallowLitElement, usePluginViewContext } from '@prosemirror-adapter/lit'
+import { html } from 'lit'
+import { customElement } from 'lit/decorators.js'
 
-<template>
-  <div>Size for document: {{ size }}</div>
-</template>
+@customElement('my-size')
+export class Size extends ShallowLitElement {
+  pluginViewContext = usePluginViewContext(this)
+
+  override render() {
+    const size = this.pluginViewContext.value?.view.state.doc.nodeSize
+
+    return html`<div>Size for document: ${size}</div>`
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'my-size': Size
+  }
+}
 ```
 
 #### Bind plugin view components with prosemirror
 
-```vue
-<script setup lang="ts">
-import type { VNodeRef } from 'vue'
-import { usePluginViewFactory } from '@prosemirror-adapter/vue'
+```ts
+/* Copyright 2021, Prosemirror Adapter by Mirone. */
+import {
+  ShallowLitElement,
+  usePluginViewFactory,
+} from '@prosemirror-adapter/lit'
+import { RefOrCallback, ref } from 'lit/directives/ref.js'
 import { Plugin } from 'prosemirror-state'
-import Size from './Size.vue'
+import Size from './Size.ts'
 
-const pluginViewFactory = usePluginViewFactory()
+@customElement('my-editor')
+export class MyEditor extends ShallowLitElement {
+  pluginViewFactory = usePluginViewFactory(this)
 
-const editorRef: VNodeRef = (element) => {
-  const el = element as HTMLElement
-  if (!el || el.firstChild)
-    return
-
-  const editorView = new EditorView(el, {
-    state: EditorState.create({
-      schema: YourProsemirrorSchema,
+  editorRef: RefOrCallback = (element) => {
+    const pluginViewFactory = this.pluginViewFactory.value!
+    const editorView = new EditorView(element, {
+      state: YourProsemirrorEditorState,
       plugins: [
         new Plugin({
           view: pluginViewFactory({
@@ -150,16 +176,15 @@ const editorRef: VNodeRef = (element) => {
         }),
       ]
     })
-  })
-}
-</script>
+  }
 
-<template>
-  <div :ref="editorRef" class="editor" />
-</template>
+  override render() {
+    return html`<div class="editor" ${ref(this.editorRef)}></div>`
+  }
+}
 ```
 
-🚀 Congratulations! You have built your first vue plugin view with prosemirror-adapter.
+🚀 Congratulations! You have built your first lit plugin view with prosemirror-adapter.
 
 </details>
 
@@ -175,51 +200,55 @@ In this section we will implement a widget view that will add hashes for heading
 
 #### Build component for [widget decoration view](https://prosemirror.net/docs/ref/#view.Decoration%5Ewidget)
 
-```vue
-<script setup lang="ts">
-import { useWidgetViewContext } from '@prosemirror-adapter/vue'
+```ts
+/* Copyright 2021, Prosemirror Adapter by Mirone. */
+import { ShallowLitElement, useWidgetViewContext } from '@prosemirror-adapter/lit'
+import { html } from 'lit'
+import { customElement } from 'lit/decorators.js'
 
-const { spec } = useWidgetViewContext()
-const level = spec?.level
-const hashes = Array(level || 0).fill('#').join('')
-</script>
+@customElement('my-hashes')
+export class Hashes extends ShallowLitElement {
+  widgetViewContext = useWidgetViewContext(this)
 
-<template>
-  <span class="hash">{{ hashes }}</span>
-</template>
-
-<style scoped>
-.hash {
-  color: blue;
-  margin-right: 6px;
+  override render() {
+    const spec = this.widgetViewContext.value?.spec
+    const level = spec?.level ?? 0
+    const hashes = Array(level).fill('#').join('')
+    return html`<span class="hash">${hashes}</span>`
+  }
 }
-</style>
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'my-hashes': Hashes
+  }
+}
 ```
 
 #### Bind widget view components with prosemirror
 
-```vue
-<script setup lang="ts">
-import type { VNodeRef } from 'vue'
-import { useWidgetViewFactory } from '@prosemirror-adapter/vue'
+```ts
+/* Copyright 2021, Prosemirror Adapter by Mirone. */
+import {
+  ShallowLitElement,
+  useWidgetViewFactory,
+} from '@prosemirror-adapter/lit'
+import { RefOrCallback, ref } from 'lit/directives/ref.js'
 import { Plugin } from 'prosemirror-state'
-import Hashes from './Hashes.vue'
+import { Hashes } from './Hashes'
 
-const widgetViewFactory = useWidgetViewFactory()
+@customElement('my-editor')
+export class MyEditor extends ShallowLitElement {
+  widgetViewFactory = useWidgetViewFactory(this)
 
-const editorRef: VNodeRef = (element) => {
-  const el = element as HTMLElement
-  if (!el || el.firstChild)
-    return
-
-  const getHashWidget = widgetViewFactory({
-    as: 'i',
-    component: Hashes,
-  })
-
-  const editorView = new EditorView(el, {
-    state: EditorState.create({
-      schema: YourProsemirrorSchema,
+  editorRef: RefOrCallback = (element) => {
+    const widgetViewFactory = this.widgetViewFactory.value!
+    const getHashWidget = widgetViewFactory({
+      as: 'i',
+      component: Hashes,
+    })
+    const editorView = new EditorView(element, {
+      state: YourProsemirrorEditorState,
       plugins: [
         new Plugin({
           props: {
@@ -240,16 +269,15 @@ const editorRef: VNodeRef = (element) => {
         }),
       ]
     })
-  })
-}
-</script>
+  }
 
-<template>
-  <div :ref="editorRef" class="editor" />
-</template>
+  override render() {
+    return html`<div class="editor" ${ref(this.editorRef)}></div>`
+  }
+}
 ```
 
-🚀 Congratulations! You have built your first vue widget view with prosemirror-adapter.
+🚀 Congratulations! You have built your first lit widget view with prosemirror-adapter.
 
 </details>
 
@@ -271,7 +299,7 @@ type DOMSpec = string | HTMLElement | ((node: Node) => HTMLElement)
 
 interface NodeViewFactoryOptions {
   // Component
-  component: VueComponent
+  component: LitComponent
 
   // The DOM element to use as the root node of the node view.
   as?: DOMSpec
@@ -310,16 +338,16 @@ interface NodeViewContext {
   setAttrs: (attrs: Attrs) => void
 
   // The prosemirror node for current node.
-  node: ShallowRef<Node>
+  node: Writable<Node>
 
   // The prosemirror decorations for current node.
-  decorations: ShallowRef<readonly Decoration[]>
+  decorations: Writable<readonly Decoration[]>
 
   // The prosemirror inner decorations for current node.
-  innerDecorations: ShallowRef<DecorationSource>
+  innerDecorations: Writable<DecorationSource>
 
   // Whether the node is selected.
-  selected: ShallowRef<boolean>
+  selected: Writable<boolean>
 }
 ```
 
@@ -339,7 +367,7 @@ interface NodeViewContext {
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
 interface PluginViewFactoryOptions {
   // Component
-  component: VueComponent
+  component: LitComponent
 
   // The DOM element to use as the root node of the plugin view.
   // The `viewDOM` here means `EditorState.view.dom`.
@@ -358,11 +386,11 @@ interface PluginViewFactoryOptions {
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
 interface PluginViewContext {
   // The prosemirror editor view.
-  view: ShallowRef<EditorView>
+  view: Writable<EditorView>
 
   // The previously prosemirror editor state.
   // Will be `undefined` when the plugin view is created.
-  prevState: ShallowRef<EditorState | undefined>
+  prevState: Writable<EditorState | undefined>
 }
 ```
 
@@ -384,7 +412,7 @@ type WidgetDecorationFactory = (pos: number, spec?: WidgetDecorationSpec) => Dec
 
 interface WidgetViewFactoryOptions {
   // Component
-  component: VueComponent
+  component: LitComponent
 
   // The DOM element to use as the root node of the widget view.
   as: string | HTMLElement
