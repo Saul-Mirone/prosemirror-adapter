@@ -1,6 +1,6 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
 import { ShallowLitElement, useNodeViewContext } from '@prosemirror-adapter/lit'
-import { html } from 'lit'
+import { html, nothing } from 'lit'
 import { customElement } from 'lit/decorators.js'
 import { ref } from 'lit/directives/ref.js'
 
@@ -9,10 +9,11 @@ export class Paragraph extends ShallowLitElement {
   nodeViewContext = useNodeViewContext(this)
 
   override render() {
-    const contentRef = this.nodeViewContext.value?.contentRef
-    if (!contentRef)
+    const ctx = this.nodeViewContext.value
+    if (!ctx)
       return
-    return html`<div ${ref(contentRef)}></div>`
+    const { contentRef, selected } = ctx
+    return html`<div class="${selected ? 'selected' : nothing}" ${ref(contentRef)}></div>`
   }
 }
 

@@ -31,3 +31,7 @@
   color: blue;
   margin-right: 6px;
 }
+
+.selected {
+  outline: blue solid 1px;
+}

@@ -27,6 +27,10 @@
 
 .ProseMirror p { margin-bottom: 1em }
 
+.selected {
+  outline: blue solid 1px;
+}
+
 .hash {
   color: blue;
   margin-right: 6px;
