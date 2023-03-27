@@ -1,0 +1,25 @@
+{
+  "name": "@examples/lit",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "vite"
+  },
+  "dependencies": {
+    "@lit-labs/context": "^0.3.0",
+    "@prosemirror-adapter/lit": "latest",
+    "lit": "^2.6.1",
+    "prosemirror-example-setup": "^1.2.1",
+    "prosemirror-keymap": "^1.2.0",
+    "prosemirror-menu": "^1.2.1",
+    "prosemirror-model": "^1.18.1",
+    "prosemirror-schema-basic": "^1.2.0",
+    "prosemirror-state": "^1.4.2",
+    "prosemirror-view": "^1.29.0",
+    "tslib": "^2.4.1"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.3",
+    "vite": "^4.2.0"
+  }
+}
