@@ -36,6 +36,7 @@ function mergeDeep<T>(target: T, ...sources: T[]): T {
 
 const externals = [
   'svelte/store',
+  /^lit/,
 ]
 
 const viteBuild = (path: string, options: BuildOptions = {}): BuildOptions => {

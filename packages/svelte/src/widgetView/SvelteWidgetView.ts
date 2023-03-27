@@ -24,9 +24,6 @@ export class SvelteWidgetView extends CoreWidgetView<SvelteWidgetViewComponent> 
     }
     Object.entries(original).forEach(([key, value]) => {
       this.context.set(key as keyof typeof original, value)
-      // const mapKey = key as keyof typeof original
-      // const writable = this.context.get(mapKey) as Writable<typeof original[typeof mapKey]>
-      // writable.set(value)
     })
   }
 

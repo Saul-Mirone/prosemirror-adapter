@@ -21,6 +21,7 @@ export default defineConfig({
         react: resolve(__dirname, 'src/react/index.html'),
         vue: resolve(__dirname, 'src/vue/index.html'),
         svelte: resolve(__dirname, 'src/svelte/index.html'),
+        lit: resolve(__dirname, 'src/lit/index.html'),
       },
     },
   },

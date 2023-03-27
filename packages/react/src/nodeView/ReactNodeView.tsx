@@ -41,7 +41,7 @@ export class ReactNodeView extends CoreNodeView<ReactNodeViewComponent> implemen
 
     return createPortal(
       <nodeViewContext.Provider value={this.context}>
-          <UserComponent />
+        <UserComponent />
       </nodeViewContext.Provider>,
       this.dom,
       this.key,
