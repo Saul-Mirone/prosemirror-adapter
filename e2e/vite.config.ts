@@ -23,7 +23,6 @@ export default defineConfig({
         svelte: resolve(__dirname, 'src/svelte/index.html'),
         lit: resolve(__dirname, 'src/lit/index.html'),
       },
-      external: /^lit/,
     },
   },
 })
