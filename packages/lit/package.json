@@ -1,5 +1,5 @@
 {
-  "name": "@prosemirror-adapter/svelte",
+  "name": "@prosemirror-adapter/lit",
   "type": "module",
   "version": "0.2.3",
   "license": "MIT",
@@ -10,7 +10,7 @@
   },
   "keywords": [
     "prosemirror-adapter",
-    "svelte"
+    "lit"
   ],
   "sideEffects": false,
   "main": "./lib/index.es.js",
@@ -26,7 +26,8 @@
     "build": "tsc --emitDeclarationOnly && vite build"
   },
   "peerDependencies": {
-    "svelte": "^3.57.0"
+    "@lit-labs/context": "^0.3.0",
+    "lit": "^2.6.1"
   },
   "dependencies": {
     "@prosemirror-adapter/core": "workspace:*",
@@ -34,7 +35,7 @@
     "tslib": "^2.4.0"
   },
   "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "^2.0.3",
-    "svelte": "^3.57.0"
+    "@lit-labs/context": "^0.3.0",
+    "lit": "^2.6.1"
   }
 }

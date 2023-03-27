@@ -28,6 +28,14 @@ export class CoreNodeView<ComponentType> implements NodeView {
           : document.createElement(as)
   }
 
+  createDOM(as?: string | HTMLElement | ((node: Node) => HTMLElement)) {
+    return this.#createElement(as)
+  }
+
+  createContentDOM(as?: string | HTMLElement | ((node: Node) => HTMLElement)) {
+    return this.#createElement(as)
+  }
+
   constructor({ node, view, getPos, decorations, innerDecorations, options }: CoreNodeViewSpec<ComponentType>) {
     this.node = node
     this.view = view
@@ -36,8 +44,8 @@ export class CoreNodeView<ComponentType> implements NodeView {
     this.innerDecorations = innerDecorations
     this.options = options
 
-    this.dom = this.#createElement(options.as)
-    this.contentDOM = node.isLeaf ? null : this.#createElement(options.contentAs)
+    this.dom = this.createDOM(options.as)
+    this.contentDOM = node.isLeaf ? null : this.createContentDOM(options.contentAs)
     this.dom.setAttribute('data-node-view-root', 'true')
     if (this.contentDOM) {
       this.contentDOM.setAttribute('data-node-view-content', 'true')

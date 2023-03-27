@@ -26,6 +26,7 @@ You'll need this adapter if you want to use Prosemirror to build a rich text edi
   - [x] [React](https://reactjs.org/)
   - [x] [Vue](https://vuejs.org/)
   - [x] [Svelte](https://svelte.dev/)
+  - [x] [Lit](https://lit.dev/)
   - [ ] 🚀 coming soon...
 - [x] Add out of box support for prosemirror features
   - [x] [Prosemirror Node View](https://prosemirror.net/docs/ref/#view.NodeView)
@@ -48,6 +49,7 @@ So something out of this scope will not be considered. For example:
     <th>react</th>
     <th>vue</th>
     <th>svelte</th>
+    <th>lit</th>
   </tr>
   <tr>
     <td>
@@ -63,6 +65,11 @@ So something out of this scope will not be considered. For example:
     <td>
       <a align="center" title="svelte" href="/packages/svelte">
         <img src="/assets/svelte.svg" width="100" height="100" alt="svelte">
+      </a>
+    </td>
+    <td>
+      <a align="center" title="svelte" href="/packages/lit">
+        <img src="/assets/lit.svg" width="100" height="100" alt="lit">
       </a>
     </td>
   </tr>

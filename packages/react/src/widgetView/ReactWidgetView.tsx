@@ -20,7 +20,7 @@ export class ReactWidgetView extends CoreWidgetView<ReactWidgetViewComponent> im
   updateContext = () => {
     Object.assign(this.context, {
       view: this.view,
-      prevState: this.getPos,
+      getPos: this.getPos,
       spec: this.spec,
     })
   }
@@ -30,7 +30,7 @@ export class ReactWidgetView extends CoreWidgetView<ReactWidgetViewComponent> im
 
     return createPortal(
       <widgetViewContext.Provider value={this.context}>
-          <UserComponent />
+        <UserComponent />
       </widgetViewContext.Provider>,
       this.dom,
       this.key,
