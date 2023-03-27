@@ -49,6 +49,7 @@ So something out of this scope will not be considered. For example:
     <th>react</th>
     <th>vue</th>
     <th>svelte</th>
+    <th>lit</th>
   </tr>
   <tr>
     <td>
