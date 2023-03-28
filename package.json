@@ -24,7 +24,7 @@
     "@commitlint/config-conventional": "^17.4.4",
     "@type-config/strict": "^1.2.1",
     "@types/rollup-plugin-auto-external": "^2.0.2",
-    "concurrently": "^7.6.0",
+    "concurrently": "^8.0.0",
     "cross-env": "^7.0.3",
     "eslint": "^8.36.0",
     "eslint-plugin-header": "^3.1.1",
