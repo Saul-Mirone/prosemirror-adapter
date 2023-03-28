@@ -8,7 +8,7 @@
     <br/>
 </p>
 
-Universal adapter for [ProseMirror](https://prosemirror.net/) to use it with modern UI frameworks. (React, Vue and more coming soon)
+Universal adapter for [ProseMirror](https://prosemirror.net/) to use it with modern UI frameworks.
 
 ![npm](https://img.shields.io/npm/v/@prosemirror-adapter/core)
 [![ci](https://github.com/Saul-Mirone/prosemirror-adapter/actions/workflows/ci.yml/badge.svg)](https://github.com/Saul-Mirone/prosemirror-adapter/actions/workflows/ci.yml)
