@@ -6,19 +6,19 @@
     "start": "vite"
   },
   "dependencies": {
-    "@prosemirror-adapter/vue": "latest",
+    "@prosemirror-adapter/vue": "workspace:latest",
     "@type-config/strict": "^1.2.1",
     "@vitejs/plugin-vue": "^3.2.0",
     "prosemirror-example-setup": "^1.2.1",
-    "prosemirror-keymap": "^1.2.0",
+    "prosemirror-keymap": "^1.2.1",
     "prosemirror-menu": "^1.2.1",
-    "prosemirror-model": "^1.18.1",
-    "prosemirror-schema-basic": "^1.2.0",
+    "prosemirror-model": "^1.19.0",
+    "prosemirror-schema-basic": "^1.2.1",
     "prosemirror-state": "^1.4.2",
-    "prosemirror-view": "^1.29.0",
-    "tslib": "^2.4.1",
-    "typescript": "^4.8.4",
-    "vite": "^3.2.2",
-    "vue": "^3.2.38"
+    "prosemirror-view": "^1.30.2",
+    "tslib": "^2.5.0",
+    "typescript": "^4.9.5",
+    "vite": "^3.2.5",
+    "vue": "^3.2.47"
   }
 }

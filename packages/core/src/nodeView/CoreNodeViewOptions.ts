@@ -28,7 +28,7 @@ export interface CoreNodeViewUserOptions<Component> {
 export interface CoreNodeViewSpec<Component> {
   node: Node
   view: EditorView
-  getPos: () => number
+  getPos: () => number | undefined
   decorations: readonly Decoration[]
   innerDecorations: DecorationSource
 

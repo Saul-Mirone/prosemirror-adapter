@@ -9,7 +9,7 @@ export interface NodeViewContext {
   // won't change
   contentRef: VNodeRef
   view: EditorView
-  getPos: () => number
+  getPos: () => number | undefined
   setAttrs: (attrs: Attrs) => void
 
   // changes between updates
