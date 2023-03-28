@@ -332,7 +332,7 @@ interface NodeViewContext {
   view: EditorView
 
   // Get prosemirror position of current node view.
-  getPos: () => number
+  getPos: () => number | undefined
 
   // Set node.attrs of current node.
   setAttrs: (attrs: Attrs) => void

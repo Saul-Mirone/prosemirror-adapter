@@ -9,7 +9,7 @@ export class CoreNodeView<ComponentType> implements NodeView {
   contentDOM: HTMLElement | null
   node: Node
   view: EditorView
-  getPos: () => number
+  getPos: () => number | undefined
   decorations: readonly Decoration[]
   innerDecorations: DecorationSource
   options: CoreNodeViewUserOptions<ComponentType>
@@ -147,8 +147,13 @@ export class CoreNodeView<ComponentType> implements NodeView {
 
   setAttrs = (attr: Attrs) => {
     const { dispatch, state } = this.view
+    const pos = this.getPos()
+
+    if (typeof pos !== 'number')
+      return
+
     return dispatch(
-      state.tr.setNodeMarkup(this.getPos(), undefined, {
+      state.tr.setNodeMarkup(pos, undefined, {
         ...this.node.attrs,
         ...attr,
       }),

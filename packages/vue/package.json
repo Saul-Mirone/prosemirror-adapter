@@ -30,11 +30,11 @@
   },
   "dependencies": {
     "@prosemirror-adapter/core": "workspace:*",
-    "nanoid": "^4.0.0",
-    "tslib": "^2.4.0"
+    "nanoid": "^4.0.2",
+    "tslib": "^2.5.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue-jsx": "^3.0.0",
-    "vue": "^3.2.38"
+    "@vitejs/plugin-vue-jsx": "^3.0.1",
+    "vue": "^3.2.47"
   }
 }

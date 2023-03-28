@@ -10,7 +10,7 @@ export interface NodeViewContext {
   // won't change
   contentRef: RefOrCallback
   view: EditorView
-  getPos: () => number
+  getPos: () => number | undefined
   setAttrs: (attrs: Attrs) => void
 
   // changes between updates
