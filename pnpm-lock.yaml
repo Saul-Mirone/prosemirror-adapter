@@ -23,8 +23,8 @@ importers:
         specifier: ^2.0.2
         version: 2.0.2
       concurrently:
-        specifier: ^7.6.0
-        version: 7.6.0
+        specifier: ^8.0.0
+        version: 8.0.0
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
@@ -2649,9 +2649,9 @@ packages:
   /concat-map@0.0.1:
     resolution: {integrity: sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=}
 
-  /concurrently@7.6.0:
-    resolution: {integrity: sha512-BKtRgvcJGeZ4XttiDiNcFiRlxoAeZOseqUvyYRUp/Vtd+9p1ULmeoSqGsDA+2ivdeDFpqrJvGvmI+StKfKl5hw==}
-    engines: {node: ^12.20.0 || ^14.13.0 || >=16.0.0}
+  /concurrently@8.0.0:
+    resolution: {integrity: sha512-1fjagjL+RgPRAx9Wi8Yv866Whtx34MRdk9qf6wwxpQoYL2mD+lUZMOe9RXYULC6eBl6e4sde6cu8bpyg9Rd9/w==}
+    engines: {node: ^14.13.0 || >=16.0.0}
     hasBin: true
     dependencies:
       chalk: 4.1.2
