@@ -13,6 +13,9 @@ module.exports = {
   ignorePatterns: [
     'lib',
   ],
+  rules: {
+    'antfu/top-level-function': 'off',
+  },
   overrides: [
     {
       files: ['**/react/**/*.tsx', '**/react/**/*.ts'],
@@ -21,10 +24,7 @@ module.exports = {
         'plugin:react-hooks/recommended',
       ],
       rules: {
-        'jsx-quotes': [
-          'error',
-          'prefer-double',
-        ],
+        'jsx-quotes': ['error', 'prefer-double'],
         'react/react-in-jsx-scope': 'off',
       },
     },
