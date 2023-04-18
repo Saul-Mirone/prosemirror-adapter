@@ -6,7 +6,7 @@
     "start": "vite"
   },
   "dependencies": {
-    "@prosemirror-adapter/vue": "workspace:latest",
+    "@prosemirror-adapter/vue": "*",
     "@type-config/strict": "^1.2.1",
     "@vitejs/plugin-vue": "^3.2.0",
     "prosemirror-example-setup": "^1.2.1",
