@@ -74,7 +74,7 @@ export class CoreNodeView<ComponentType> implements NodeView {
     if (node.type !== this.node.type)
       return false
 
-    if (node.sameMarkup(this.node))
+    if (node.sameMarkup(this.node) && node.content.eq(this.node.content))
       return false
 
     return true
