@@ -1,5 +1,13 @@
 # @prosemirror-adapter/react
 
+## 0.2.5
+
+### Patch Changes
+
+-   2721329: Fix IME unexpected behavior.
+-   Updated dependencies [2721329]
+    -   @prosemirror-adapter/core@0.2.5
+
 ## 0.2.4
 
 ### Patch Changes
