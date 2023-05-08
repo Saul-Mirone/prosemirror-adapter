@@ -1,5 +1,11 @@
 # @prosemirror-adapter/core
 
+## 0.2.5
+
+### Patch Changes
+
+-   2721329: Fix IME unexpected behavior.
+
 ## 0.2.4
 
 ### Patch Changes
