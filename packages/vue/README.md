@@ -45,6 +45,7 @@ In this section we will implement a node view for paragraph node.
 ```vue
 <script setup lang="ts">
 import { useNodeViewContext } from '@prosemirror-adapter/vue'
+
 const { contentRef, selected } = useNodeViewContext()
 </script>
 
@@ -112,6 +113,7 @@ In this section we will implement a plugin view that will display the size of th
 ```vue
 <script setup lang="ts">
 import { usePluginViewContext } from '@prosemirror-adapter/vue'
+
 const { view } = usePluginViewContext()
 const size = computed(() => {
   return view.value.state.doc.nodeSize
