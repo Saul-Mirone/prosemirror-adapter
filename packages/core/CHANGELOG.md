@@ -1,5 +1,11 @@
 # @prosemirror-adapter/core
 
+## 0.2.6
+
+### Patch Changes
+
+-   aafa1e3: Bug fixes and improvement.
+
 ## 0.2.5
 
 ### Patch Changes
