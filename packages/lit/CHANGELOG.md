@@ -1,5 +1,13 @@
 # @prosemirror-adapter/lit
 
+## 0.2.6
+
+### Patch Changes
+
+-   aafa1e3: Bug fixes and improvement.
+-   Updated dependencies [aafa1e3]
+    -   @prosemirror-adapter/core@0.2.6
+
 ## 0.2.5
 
 ### Patch Changes
