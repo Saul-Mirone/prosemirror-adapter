@@ -18,7 +18,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@antfu/eslint-config": "^0.39.0",
+    "@antfu/eslint-config": "^0.40.0",
     "@changesets/cli": "^2.26.1",
     "@commitlint/cli": "^17.5.1",
     "@commitlint/config-conventional": "^17.4.4",
@@ -26,7 +26,7 @@
     "@types/rollup-plugin-auto-external": "^2.0.2",
     "concurrently": "^8.0.0",
     "cross-env": "^7.0.3",
-    "eslint": "^8.36.0",
+    "eslint": "^8.46.0",
     "eslint-plugin-header": "^3.1.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
