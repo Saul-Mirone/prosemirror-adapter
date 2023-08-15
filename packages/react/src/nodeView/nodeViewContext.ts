@@ -40,7 +40,7 @@ export const useNodeViewContext = () => useContext(nodeViewContext)
 
 export const createNodeViewContext = createContext<(options: ReactNodeViewUserOptions) => NodeViewConstructor>(
   (_options) => {
-    throw new Error('out of scope')
+    throw new Error('No ProsemirrorAdapterProvider detected, maybe you need to wrap the component with the Editor with ProsemirrorAdapterProvider?')
   },
 )
 
