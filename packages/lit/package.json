@@ -26,7 +26,7 @@
     "build": "tsc --emitDeclarationOnly && vite build"
   },
   "peerDependencies": {
-    "@lit-labs/context": "^0.3.0",
+    "@lit-labs/context": "^0.4.0",
     "lit": "^2.6.1"
   },
   "dependencies": {
@@ -35,7 +35,7 @@
     "tslib": "^2.5.0"
   },
   "devDependencies": {
-    "@lit-labs/context": "^0.3.0",
+    "@lit-labs/context": "^0.4.0",
     "lit": "^2.7.0"
   }
 }

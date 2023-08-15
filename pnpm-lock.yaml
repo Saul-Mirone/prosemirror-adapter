@@ -78,8 +78,8 @@ importers:
   e2e:
     devDependencies:
       '@lit-labs/context':
-        specifier: ^0.3.0
-        version: 0.3.0
+        specifier: ^0.4.0
+        version: 0.4.0
       '@prosemirror-adapter/lit':
         specifier: workspace:*
         version: link:../packages/lit
@@ -354,8 +354,8 @@ importers:
         version: 2.5.0
     devDependencies:
       '@lit-labs/context':
-        specifier: ^0.3.0
-        version: 0.3.0
+        specifier: ^0.4.0
+        version: 0.4.0
       lit:
         specifier: ^2.7.0
         version: 2.7.0
@@ -1632,6 +1632,14 @@ packages:
     dependencies:
       '@lit/reactive-element': 1.6.1
       lit: 2.7.0
+    dev: false
+
+  /@lit-labs/context@0.4.0:
+    resolution: {integrity: sha512-NENAYRxRUgdS1rVVrahOCzVs6JzWdREtw8GjgTVpFBy20oqZGC5tazFYpvE5m5BkKMAAQnej9hAGROb553c85g==}
+    dependencies:
+      '@lit/reactive-element': 1.6.1
+      lit: 2.7.0
+    dev: true
 
   /@lit-labs/ssr-dom-shim@1.1.0:
     resolution: {integrity: sha512-92uQ5ARf7UXYrzaFcAX3T2rTvaS9Z1//ukV+DqjACM4c8s0ZBQd7ayJU5Dh2AFLD/Ayuyz4uMmxQec8q3U4Ong==}
@@ -5561,7 +5569,7 @@ packages:
     resolution: {integrity: sha512-/5CMN3T0R4XTj4DcGaexo+roZSdSFW/0AOOTROrjxzCG1wrWXEsGbRKevjlIL+ZDE4sZlJr5ED4YW0yqmkK+eA==}
     dependencies:
       hosted-git-info: 2.8.9
-      resolve: 1.22.1
+      resolve: 1.22.3
       semver: 5.7.1
       validate-npm-package-license: 3.0.4
     dev: false
@@ -5571,8 +5579,8 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       hosted-git-info: 4.1.0
-      is-core-module: 2.11.0
-      semver: 7.3.8
+      is-core-module: 2.12.1
+      semver: 7.5.4
       validate-npm-package-license: 3.0.4
     dev: false
 
