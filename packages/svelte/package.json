@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@prosemirror-adapter/core": "workspace:*",
-    "nanoid": "^4.0.2",
+    "nanoid": "^5.0.0",
     "tslib": "^2.5.0"
   },
   "devDependencies": {
