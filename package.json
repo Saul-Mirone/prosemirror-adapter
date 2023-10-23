@@ -18,10 +18,10 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@antfu/eslint-config": "^0.42.0",
+    "@antfu/eslint-config": "^0.43.0",
     "@changesets/cli": "^2.26.1",
-    "@commitlint/cli": "^17.5.1",
-    "@commitlint/config-conventional": "^17.4.4",
+    "@commitlint/cli": "^18.0.0",
+    "@commitlint/config-conventional": "^18.0.0",
     "@type-config/strict": "^1.2.1",
     "@types/rollup-plugin-auto-external": "^2.0.2",
     "concurrently": "^8.0.0",
@@ -32,7 +32,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "git-cz": "^4.9.0",
     "husky": "^8.0.3",
-    "lint-staged": "^14.0.0",
+    "lint-staged": "^15.0.0",
     "prosemirror-keymap": "^1.2.1",
     "prosemirror-model": "^1.19.0",
     "prosemirror-state": "^1.4.2",
