@@ -1,9 +1,9 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "jsx": "preserve",
     "rootDir": "src",
-    "outDir": "lib",
-    "jsx": "preserve"
+    "outDir": "lib"
   },
   "include": ["src"]
 }

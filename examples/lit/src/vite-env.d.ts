@@ -1,1 +1,1 @@
-/// <reference types="vite/client" />
+/* Copyright 2021, Prosemirror Adapter by Mirone. */
