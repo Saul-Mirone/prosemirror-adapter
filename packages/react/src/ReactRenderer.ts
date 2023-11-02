@@ -20,7 +20,7 @@ export interface ReactRendererResult {
   readonly removeReactRenderer: (nodeView: ReactRenderer<unknown>) => void
 }
 
-export const useReactRenderer = (): ReactRendererResult => {
+export function useReactRenderer(): ReactRendererResult {
   const [portals, setPortals] = useState<Record<string, ReactPortal>>({})
   const mountedRef = useRef(false)
 

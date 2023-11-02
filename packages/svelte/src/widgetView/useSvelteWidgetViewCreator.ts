@@ -5,10 +5,7 @@ import type { SvelteRendererResult } from '../SvelteRenderer'
 import { SvelteWidgetView } from './SvelteWidgetView'
 import type { SvelteWidgetViewUserOptions } from './SvelteWidgetViewOptions'
 
-export const useSvelteWidgetViewCreator = (
-  renderSvelteRenderer: SvelteRendererResult['renderSvelteRenderer'],
-  removeSvelteRenderer: SvelteRendererResult['removeSvelteRenderer'],
-) => {
+export function useSvelteWidgetViewCreator(renderSvelteRenderer: SvelteRendererResult['renderSvelteRenderer'], removeSvelteRenderer: SvelteRendererResult['removeSvelteRenderer']) {
   const createWidgetPluginView = (options: SvelteWidgetViewUserOptions): WidgetDecorationFactory => {
     return (pos, userSpec = {}) => {
       const widgetView = new SvelteWidgetView({

@@ -5,10 +5,7 @@ import type { LitRendererResult } from '../LitRenderer'
 import { LitWidgetView } from './LitWidgetView'
 import type { LitWidgetViewUserOptions } from './LitWidgetViewOptions'
 
-export const useLitWidgetViewCreator = (
-  renderLitRenderer: LitRendererResult['renderLitRenderer'],
-  removeLitRenderer: LitRendererResult['removeLitRenderer'],
-) => {
+export function useLitWidgetViewCreator(renderLitRenderer: LitRendererResult['renderLitRenderer'], removeLitRenderer: LitRendererResult['removeLitRenderer']) {
   const createWidgetPluginView = (options: LitWidgetViewUserOptions): WidgetDecorationFactory => {
     return (pos, userSpec = {}) => {
       const widgetView = new LitWidgetView({

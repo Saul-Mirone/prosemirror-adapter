@@ -13,7 +13,7 @@ import { EditorState } from 'prosemirror-state'
 import type { NodeViewConstructor } from 'prosemirror-view'
 import { EditorView } from 'prosemirror-view'
 
-export const createEditorView = (element: HTMLElement | ShadowRoot, nodeViews: Record<string, NodeViewConstructor>, plugins: Plugin[]) => {
+export function createEditorView(element: HTMLElement | ShadowRoot, nodeViews: Record<string, NodeViewConstructor>, plugins: Plugin[]) {
   const content = document.querySelector('#content')
   if (!content)
     throw new Error('Content element not found')

@@ -34,7 +34,7 @@ export class VueWidgetView extends CoreWidgetView<VueWidgetViewComponent> implem
           provide(widgetViewContext, this.context)
           return () => (
             <Teleport key={this.key} to={this.dom}>
-                <UserComponent />
+              <UserComponent />
             </Teleport>
           )
         },

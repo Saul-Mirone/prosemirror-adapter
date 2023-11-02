@@ -5,10 +5,7 @@ import type { VueRendererResult } from '../VueRenderer'
 import { VueWidgetView } from './VueWidgetView'
 import type { VueWidgetViewUserOptions } from './VueWidgetViewOptions'
 
-export const useVueWidgetViewCreator = (
-  renderVueRenderer: VueRendererResult['renderVueRenderer'],
-  removeVueRenderer: VueRendererResult['removeVueRenderer'],
-) => {
+export function useVueWidgetViewCreator(renderVueRenderer: VueRendererResult['renderVueRenderer'], removeVueRenderer: VueRendererResult['removeVueRenderer']) {
   const createWidgetPluginView = (options: VueWidgetViewUserOptions): WidgetDecorationFactory => {
     return (pos, userSpec = {}) => {
       const widgetView = new VueWidgetView({

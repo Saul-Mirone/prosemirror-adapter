@@ -17,7 +17,7 @@ export interface LitRendererResult {
   readonly removeLitRenderer: (renderer: LitRenderer<unknown>) => void
 }
 
-export const useLitRenderer = (): LitRendererResult => {
+export function useLitRenderer(): LitRendererResult {
   const portals = new Map<string, LitElement>()
 
   const renderLitRenderer = (renderer: LitRenderer<unknown>) => {
