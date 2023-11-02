@@ -8,6 +8,7 @@ export function Size() {
   return (
     <div data-test-id="size-view-plugin">
       Size for document:
+      {' '}
       {size}
     </div>
   )
