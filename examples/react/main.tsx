@@ -13,10 +13,10 @@ if (!root$)
 const root = createRoot(root$)
 
 root.render(
-    <StrictMode>
-        <h1>Prosemirror Adapter React</h1>
-        <ProsemirrorAdapterProvider>
-            <Editor />
-        </ProsemirrorAdapterProvider>
-    </StrictMode>,
+  <StrictMode>
+    <h1>Prosemirror Adapter React</h1>
+    <ProsemirrorAdapterProvider>
+      <Editor />
+    </ProsemirrorAdapterProvider>
+  </StrictMode>,
 )

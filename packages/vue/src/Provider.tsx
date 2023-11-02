@@ -1,6 +1,8 @@
 /* Copyright 2021, Prosemirror Adapter by Mirone. */
 import {
-  defineComponent, h, provide,
+  defineComponent,
+  h,
+  provide,
 } from 'vue'
 import { nodeViewFactoryKey } from './nodeView'
 import { useVueNodeViewCreator } from './nodeView/useVueNodeViewCreator'

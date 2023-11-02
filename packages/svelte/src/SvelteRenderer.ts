@@ -19,7 +19,7 @@ export interface SvelteRendererResult {
   readonly removeSvelteRenderer: (renderer: SvelteRenderer<unknown>) => void
 }
 
-export const useSvelteRenderer = (): SvelteRendererResult => {
+export function useSvelteRenderer(): SvelteRendererResult {
   const portals: Writable<Record<string, SvelteComponent>> = writable({})
 
   const renderSvelteRenderer = (renderer: SvelteRenderer<unknown>) => {

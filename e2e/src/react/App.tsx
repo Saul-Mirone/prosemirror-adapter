@@ -5,7 +5,7 @@ import { StrictMode, useState } from 'react'
 
 import { Editor } from './components/Editor'
 
-export const App = () => {
+export function App() {
   const [counter, setCounter] = useState(0)
   return (
     <StrictMode>

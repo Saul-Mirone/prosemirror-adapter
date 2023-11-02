@@ -6,10 +6,7 @@ import type { ReactRendererResult } from '../ReactRenderer'
 import { ReactWidgetView } from './ReactWidgetView'
 import type { ReactWidgetViewUserOptions } from './ReactWidgetViewOptions'
 
-export const useReactWidgetViewCreator = (
-  renderReactRenderer: ReactRendererResult['renderReactRenderer'],
-  removeReactRenderer: ReactRendererResult['removeReactRenderer'],
-) => {
+export function useReactWidgetViewCreator(renderReactRenderer: ReactRendererResult['renderReactRenderer'], removeReactRenderer: ReactRendererResult['removeReactRenderer']) {
   const createWidgetPluginView = useCallback((options: ReactWidgetViewUserOptions): WidgetDecorationFactory => {
     return (pos, userSpec = {}) => {
       const widgetView = new ReactWidgetView({

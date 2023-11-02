@@ -4,10 +4,7 @@ import type { LitRendererResult } from '../LitRenderer'
 import type { PluginViewFactory } from './pluginViewContext'
 import { LitPluginView } from './LitPluginView'
 
-export const useLitPluginViewCreator = (
-  renderLitRenderer: LitRendererResult['renderLitRenderer'],
-  removeLitRenderer: LitRendererResult['removeLitRenderer'],
-) => {
+export function useLitPluginViewCreator(renderLitRenderer: LitRendererResult['renderLitRenderer'], removeLitRenderer: LitRendererResult['removeLitRenderer']) {
   const createLitPluginView: PluginViewFactory = options => (view) => {
     const pluginView = new LitPluginView({
       view,

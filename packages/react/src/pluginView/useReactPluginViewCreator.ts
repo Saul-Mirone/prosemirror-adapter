@@ -5,10 +5,7 @@ import type { ReactRendererResult } from '../ReactRenderer'
 import { ReactPluginView } from './ReactPluginView'
 import type { ReactPluginViewUserOptions } from './ReactPluginViewOptions'
 
-export const useReactPluginViewCreator = (
-  renderReactRenderer: ReactRendererResult['renderReactRenderer'],
-  removeReactRenderer: ReactRendererResult['removeReactRenderer'],
-) => {
+export function useReactPluginViewCreator(renderReactRenderer: ReactRendererResult['renderReactRenderer'], removeReactRenderer: ReactRendererResult['removeReactRenderer']) {
   const createReactPluginView = useCallback((options: ReactPluginViewUserOptions): PluginViewSpec => {
     return (view) => {
       const pluginView = new ReactPluginView({

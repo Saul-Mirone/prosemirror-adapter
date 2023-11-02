@@ -4,10 +4,7 @@ import type { SvelteRendererResult } from '../SvelteRenderer'
 import type { PluginViewFactory } from './pluginViewContext'
 import { SveltePluginView } from './SveltePluginView'
 
-export const useSveltePluginViewCreator = (
-  renderSvelteRenderer: SvelteRendererResult['renderSvelteRenderer'],
-  removeSvelteRenderer: SvelteRendererResult['removeSvelteRenderer'],
-) => {
+export function useSveltePluginViewCreator(renderSvelteRenderer: SvelteRendererResult['renderSvelteRenderer'], removeSvelteRenderer: SvelteRendererResult['removeSvelteRenderer']) {
   const createSveltePluginView: PluginViewFactory = options => (view) => {
     const pluginView = new SveltePluginView({
       view,

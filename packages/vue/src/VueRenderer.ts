@@ -20,7 +20,7 @@ export interface VueRendererResult {
   readonly removeVueRenderer: (renderer: VueRenderer<unknown>) => void
 }
 
-export const useVueRenderer = (): VueRendererResult => {
+export function useVueRenderer(): VueRendererResult {
   const portals = ref<Record<string, VueRendererComponent>>({})
   const instance = getCurrentInstance()
   const update = markRaw<{ updater?: () => void }>({})

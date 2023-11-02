@@ -42,7 +42,7 @@ export class VuePluginView extends CorePluginView<VuePluginViewComponent> implem
           provide(pluginViewContext, this.context)
           return () => (
             <Teleport key={this.key} to={this.root}>
-                <UserComponent />
+              <UserComponent />
             </Teleport>
           )
         },

@@ -4,10 +4,7 @@ import type { VueRendererResult } from '../VueRenderer'
 import type { NodeViewFactory } from './nodeViewContext'
 import { VueNodeView } from './VueNodeView'
 
-export const useVueNodeViewCreator = (
-  renderVueRenderer: VueRendererResult['renderVueRenderer'],
-  removeVueRenderer: VueRendererResult['removeVueRenderer'],
-) => {
+export function useVueNodeViewCreator(renderVueRenderer: VueRendererResult['renderVueRenderer'], removeVueRenderer: VueRendererResult['removeVueRenderer']) {
   const createVueNodeView: NodeViewFactory = options => (node, view, getPos, decorations, innerDecorations) => {
     const nodeView = new VueNodeView({
       node,
