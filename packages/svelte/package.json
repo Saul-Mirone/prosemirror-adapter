@@ -34,7 +34,7 @@
     "tslib": "^2.5.0"
   },
   "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "^2.4.4",
+    "@sveltejs/vite-plugin-svelte": "^3.0.0",
     "svelte": "^4.0.0"
   }
 }
