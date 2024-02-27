@@ -20,8 +20,8 @@
   "dependencies": {
     "@antfu/eslint-config": "^2.0.0",
     "@changesets/cli": "^2.26.1",
-    "@commitlint/cli": "^18.0.0",
-    "@commitlint/config-conventional": "^18.0.0",
+    "@commitlint/cli": "^19.0.0",
+    "@commitlint/config-conventional": "^19.0.0",
     "@type-config/strict": "^1.2.1",
     "@types/rollup-plugin-auto-external": "^2.0.2",
     "concurrently": "^8.0.0",
