@@ -108,8 +108,8 @@ importers:
         specifier: ^5.0.0
         version: 5.0.0(vite@5.2.11(@types/node@18.15.10))(vue@3.2.47)
       cypress:
-        specifier: ^13.0.0
-        version: 13.0.0
+        specifier: ^13.2.0
+        version: 13.10.0
       lit:
         specifier: ^3.0.0
         version: 3.0.0
@@ -1380,9 +1380,6 @@ packages:
   '@types/node@12.20.55':
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
 
-  '@types/node@16.18.46':
-    resolution: {integrity: sha512-Mnq3O9Xz52exs3mlxMcQuA7/9VFe/dXcrgAyfjLkABIqxXKOgBRjyazTxUbjsxDa4BP7hhPliyjVTP9RDP14xg==}
-
   '@types/node@18.15.10':
     resolution: {integrity: sha512-9avDaQJczATcXgfmMAW3MIWArOO7A+m90vuCFLr8AotWf8igO/mRoYukrk2cqZVtv38tHs33retzHEilM7FpeQ==}
 
@@ -2028,8 +2025,8 @@ packages:
     resolution: {integrity: sha512-QTaY0XjjhTQOdguARF0lGKm5/mEq9PD9/VhZZegHDIBq2tQwgNpHc3dneD4mGo2iJs+fTKv5Bp0fZ+BRuY3Z0g==}
     engines: {node: '>= 0.1.90'}
 
-  cypress@13.0.0:
-    resolution: {integrity: sha512-nWHU5dUxP2Wm/zrMd8SWTTl706aJex/l+H4vi/tbu2SWUr17BUcd/sIYeqyxeoSPW1JFV2pT1pf4JEImH/POMg==}
+  cypress@13.10.0:
+    resolution: {integrity: sha512-tOhwRlurVOQbMduX+KonoMeQILs2cwR3yHGGENoFvvSoLUBHmJ8b9/n21gFSDqjlOJ+SRVcwuh+fG/JDsHsT6Q==}
     engines: {node: ^16.0.0 || ^18.0.0 || >=20.0.0}
     hasBin: true
 
@@ -4413,7 +4410,7 @@ packages:
     resolution: {integrity: sha512-DpKm2Ui/xN7/HQKCtpZxoRWBhZ9Z0kqtygG8XCgNQ8ZlDnxuQmWhj566j8fN4Cu3/JmbhsDo7fcAJq4s9h27Ew==}
 
   verror@1.10.0:
-    resolution: {integrity: sha512-ZZKSmDAEFOijERBLkmYfJ+vmk3w+7hOLYDNkRCuRuMJGEmqYNCNLyBBFwWKVMhfwaEF3WOd0Zlw86U/WC/+nYw==}
+    resolution: {integrity: sha1-OhBcoXBTr1XW4nDB+CiGguGNpAA=}
     engines: {'0': node >=0.6.0}
 
   vite@3.2.5:
@@ -5753,8 +5750,6 @@ snapshots:
 
   '@types/node@12.20.55': {}
 
-  '@types/node@16.18.46': {}
-
   '@types/node@18.15.10': {}
 
   '@types/normalize-package-data@2.4.1': {}
@@ -6490,11 +6485,10 @@ snapshots:
       csv-stringify: 5.6.5
       stream-transform: 2.1.3
 
-  cypress@13.0.0:
+  cypress@13.10.0:
     dependencies:
       '@cypress/request': 3.0.0
       '@cypress/xvfb': 1.2.4(supports-color@8.1.1)
-      '@types/node': 16.18.46
       '@types/sinonjs__fake-timers': 8.1.1
       '@types/sizzle': 2.3.3
       arch: 2.2.0
@@ -6530,7 +6524,7 @@ snapshots:
       process: 0.11.10
       proxy-from-env: 1.0.0
       request-progress: 3.0.0
-      semver: 7.5.4
+      semver: 7.6.0
       supports-color: 8.1.1
       tmp: 0.2.1
       untildify: 4.0.0
