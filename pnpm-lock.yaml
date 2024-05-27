@@ -20,6 +20,12 @@ importers:
       '@commitlint/config-conventional':
         specifier: ^19.0.0
         version: 19.0.0
+      '@eslint/compat':
+        specifier: ^1.0.1
+        version: 1.0.1
+      '@eslint/eslintrc':
+        specifier: ^3.1.0
+        version: 3.1.0
       '@type-config/strict':
         specifier: ^1.2.1
         version: 1.2.1
@@ -45,8 +51,8 @@ importers:
         specifier: ^4.9.0
         version: 4.9.0
       husky:
-        specifier: ^9.0.0
-        version: 9.0.1
+        specifier: ^9.0.11
+        version: 9.0.11
       lint-staged:
         specifier: ^15.0.0
         version: 15.0.2
@@ -71,13 +77,6 @@ importers:
       vite:
         specifier: ^5.2.11
         version: 5.2.11(@types/node@18.15.10)
-    devDependencies:
-      '@eslint/compat':
-        specifier: ^1.0.1
-        version: 1.0.1
-      '@eslint/eslintrc':
-        specifier: ^3.1.0
-        version: 3.1.0
 
   e2e:
     devDependencies:
@@ -3071,8 +3070,8 @@ packages:
     resolution: {integrity: sha512-AXcZb6vzzrFAUE61HnN4mpLqd/cSIwNQjtNWR0euPm6y0iqx3G4gOXaIDdtdDwZmhwe82LA6+zinmW4UBWVePQ==}
     engines: {node: '>=16.17.0'}
 
-  husky@9.0.1:
-    resolution: {integrity: sha512-rXCT8yF2v3awSG03AG6IgICDhJ+m8o3jL1ROwsT4nQZ6urEyKSj0IWFDIh5YC2zgZeAxWksNMbN6rYY4BE1Zrw==}
+  husky@9.0.11:
+    resolution: {integrity: sha512-AB6lFlbwwyIqMdHYhwPe+kjOC3Oc5P3nThEoW/AaO2BX3vJDjWPFxYLxokUZOo6RNX20He3AaT8sESs9NJcmEw==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -8192,7 +8191,7 @@ snapshots:
 
   human-signals@5.0.0: {}
 
-  husky@9.0.1: {}
+  husky@9.0.11: {}
 
   iconv-lite@0.4.24:
     dependencies:
