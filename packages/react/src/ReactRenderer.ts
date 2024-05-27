@@ -1,5 +1,3 @@
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
-
 import type { ReactPortal } from 'react'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { flushSync } from 'react-dom'

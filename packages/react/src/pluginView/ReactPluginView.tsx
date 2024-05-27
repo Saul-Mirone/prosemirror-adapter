@@ -1,5 +1,3 @@
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
-
 import { CorePluginView } from '@prosemirror-adapter/core'
 import React from 'react'
 import { nanoid } from 'nanoid'

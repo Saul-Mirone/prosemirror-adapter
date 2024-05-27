@@ -1,4 +1,3 @@
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
 import { html } from 'lit'
 import { customElement, state } from 'lit/decorators.js'
 import { keyed } from 'lit/directives/keyed.js'

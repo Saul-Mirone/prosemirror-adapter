@@ -1,4 +1,3 @@
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
 import { usePluginViewContext } from '@prosemirror-adapter/react'
 
 export function Size() {

@@ -1,5 +1,3 @@
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
-
 import type { CoreWidgetViewSpec, CoreWidgetViewUserOptions } from '@prosemirror-adapter/core'
 import type { DefineComponent } from 'vue'
 

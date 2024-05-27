@@ -1,5 +1,3 @@
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
-
 import type { SvelteRendererResult } from '../SvelteRenderer'
 import type { PluginViewFactory } from './pluginViewContext'
 import { SveltePluginView } from './SveltePluginView'

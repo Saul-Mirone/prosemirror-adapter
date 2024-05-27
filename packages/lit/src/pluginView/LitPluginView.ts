@@ -1,5 +1,3 @@
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
-
 import type { Context } from '@lit-labs/context'
 import { ContextProvider } from '@lit-labs/context'
 import { CorePluginView } from '@prosemirror-adapter/core'

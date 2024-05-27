@@ -1,4 +1,3 @@
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
 import type { WidgetDecorationFactory, WidgetDecorationSpec } from '@prosemirror-adapter/core'
 import { Decoration } from 'prosemirror-view'
 import type { SvelteRendererResult } from '../SvelteRenderer'

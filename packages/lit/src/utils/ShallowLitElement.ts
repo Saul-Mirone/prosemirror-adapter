@@ -1,4 +1,3 @@
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
 import { LitElement } from 'lit'
 
 export class ShallowLitElement extends LitElement {

@@ -1,4 +1,3 @@
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
 import type { SvelteComponent } from 'svelte'
 import type { Writable } from 'svelte/store'
 import { writable } from 'svelte/store'

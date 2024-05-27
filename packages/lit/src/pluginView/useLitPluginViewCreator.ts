@@ -1,5 +1,3 @@
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
-
 import type { LitRendererResult } from '../LitRenderer'
 import type { PluginViewFactory } from './pluginViewContext'
 import { LitPluginView } from './LitPluginView'

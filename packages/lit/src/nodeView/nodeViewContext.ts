@@ -1,4 +1,3 @@
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
 import { ContextConsumer, createContext } from '@lit-labs/context'
 import type { LitElement } from 'lit'
 import type { Attrs, Node } from 'prosemirror-model'

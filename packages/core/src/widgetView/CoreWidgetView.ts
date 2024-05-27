@@ -1,4 +1,3 @@
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
 import type { EditorView } from 'prosemirror-view'
 import type { CoreWidgetViewSpec, CoreWidgetViewUserOptions, WidgetDecorationSpec } from './CoreWidgetViewOptions'
 

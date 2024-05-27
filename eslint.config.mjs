@@ -1,11 +1,9 @@
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
+import antfu from '@antfu/eslint-config'
+import react from 'eslint-plugin-react'
+import hooks from 'eslint-plugin-react-hooks'
+import { fixupPluginRules } from '@eslint/compat'
 
-const antfu = require('@antfu/eslint-config').default
-const header = require('eslint-plugin-header')
-const react = require('eslint-plugin-react')
-const hooks = require('eslint-plugin-react-hooks')
-
-module.exports = antfu(
+export default antfu(
   {
     stylistic: true,
     markdown: false,
@@ -31,19 +29,10 @@ module.exports = antfu(
     },
   },
   {
-    files: ['**/*.ts', '**/*.tsx'],
-    plugins: {
-      header,
-    },
-    rules: {
-      'header/header': ['error', 'block', ' Copyright 2021, Prosemirror Adapter by Mirone. '],
-    },
-  },
-  {
     files: ['**/react/**/*.tsx', '**/react/**/*.ts'],
     plugins: {
-      'react': react,
-      'react-hooks': hooks,
+      'react': fixupPluginRules(react),
+      'react-hooks': fixupPluginRules(hooks),
     },
     settings: {
       react: {

@@ -1,4 +1,3 @@
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
 import { CoreWidgetView } from '@prosemirror-adapter/core'
 import { nanoid } from 'nanoid'
 import type { SvelteRenderer } from '../SvelteRenderer'

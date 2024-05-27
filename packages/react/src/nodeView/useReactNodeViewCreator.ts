@@ -1,4 +1,3 @@
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
 import type { NodeViewConstructor } from 'prosemirror-view'
 import { useCallback } from 'react'
 import type { ReactRendererResult } from '../ReactRenderer'

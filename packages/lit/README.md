@@ -19,7 +19,7 @@ npm install @prosemirror-adapter/lit
 ### Wrap your component with provider
 
 ```ts
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
+
 import { ProsemirrorAdapterProvider } from '@prosemirror-adapter/lit'
 
 class YourElement extends LitElement {
@@ -46,7 +46,7 @@ In this section we will implement a node view for paragraph node.
 #### Build component for [node view](https://prosemirror.net/docs/ref/#view.NodeView)
 
 ```ts
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
+
 import { ShallowLitElement, useNodeViewContext } from '@prosemirror-adapter/lit'
 import { html } from 'lit'
 import { customElement } from 'lit/decorators.js'
@@ -75,7 +75,7 @@ declare global {
 #### Bind node view components with prosemirror
 
 ```ts
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
+
 import {
   ShallowLitElement,
   useNodeViewFactory,
@@ -125,7 +125,7 @@ In this section we will implement a plugin view that will display the size of th
 #### Build component for [plugin view](https://prosemirror.net/docs/ref/#state.PluginView)
 
 ```ts
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
+
 import { ShallowLitElement, usePluginViewContext } from '@prosemirror-adapter/lit'
 import { html } from 'lit'
 import { customElement } from 'lit/decorators.js'
@@ -151,7 +151,7 @@ declare global {
 #### Bind plugin view components with prosemirror
 
 ```ts
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
+
 import {
   ShallowLitElement,
   usePluginViewFactory,
@@ -201,7 +201,7 @@ In this section we will implement a widget view that will add hashes for heading
 #### Build component for [widget decoration view](https://prosemirror.net/docs/ref/#view.Decoration%5Ewidget)
 
 ```ts
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
+
 import { ShallowLitElement, useWidgetViewContext } from '@prosemirror-adapter/lit'
 import { html } from 'lit'
 import { customElement } from 'lit/decorators.js'
@@ -228,7 +228,7 @@ declare global {
 #### Bind widget view components with prosemirror
 
 ```ts
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
+
 import {
   ShallowLitElement,
   useWidgetViewFactory,
@@ -294,7 +294,7 @@ export class MyEditor extends ShallowLitElement {
 #### useNodeViewFactory: () => (options: NodeViewFactoryOptions) => NodeView
 
 ```ts
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
+
 type DOMSpec = string | HTMLElement | ((node: Node) => HTMLElement)
 
 interface NodeViewFactoryOptions {
@@ -323,7 +323,7 @@ interface NodeViewFactoryOptions {
 #### useNodeViewContext: () => NodeViewContext
 
 ```ts
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
+
 interface NodeViewContext {
   // The DOM element that contains the content of the node.
   contentRef: NodeViewContentRef
@@ -364,7 +364,7 @@ interface NodeViewContext {
 #### usePluginViewFactory: () => (options: PluginViewFactoryOptions) => PluginView
 
 ```ts
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
+
 interface PluginViewFactoryOptions {
   // Component
   component: LitComponent
@@ -383,7 +383,7 @@ interface PluginViewFactoryOptions {
 #### usePluginViewContext: () => PluginViewContext
 
 ```ts
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
+
 interface PluginViewContext {
   // The prosemirror editor view.
   view: Writable<EditorView>
@@ -407,7 +407,7 @@ interface PluginViewContext {
 #### useWidgetViewFactory: () => (options: WidgetViewFactoryOptions) => WidgetDecorationFactory
 
 ```ts
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
+
 type WidgetDecorationFactory = (pos: number, spec?: WidgetDecorationSpec) => Decoration
 
 interface WidgetViewFactoryOptions {
@@ -423,7 +423,7 @@ interface WidgetViewFactoryOptions {
 #### useWidgetViewContext: () => WidgetViewContext
 
 ```ts
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
+
 interface WidgetViewContext {
   // The prosemirror editor view.
   view: EditorView
