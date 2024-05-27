@@ -3,8 +3,8 @@
   "private": true,
   "license": "MIT",
   "engines": {
-    "node": ">=16",
-    "pnpm": ">=7"
+    "node": ">=20",
+    "pnpm": ">=9"
   },
   "scripts": {
     "build": "pnpm -r run build",
@@ -38,8 +38,8 @@
     "prosemirror-state": "^1.4.2",
     "prosemirror-view": "^1.30.2",
     "tslib": "^2.5.0",
-    "typescript": "^5.0.2",
-    "vite": "^5.0.0"
+    "typescript": "^5.4.5",
+    "vite": "^5.2.11"
   },
   "pnpm": {
     "peerDependencyRules": {
