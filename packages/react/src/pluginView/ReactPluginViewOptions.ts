@@ -1,5 +1,3 @@
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
-
 import type { CorePluginViewSpec, CorePluginViewUserOptions } from '@prosemirror-adapter/core'
 import type { ComponentType } from 'react'
 

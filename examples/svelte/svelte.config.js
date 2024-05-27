@@ -1,4 +1,3 @@
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
 import adapter from '@sveltejs/adapter-auto'
 import { vitePreprocess } from '@sveltejs/kit/vite'
 

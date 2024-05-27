@@ -1,4 +1,3 @@
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
 import type { DefineComponent, Ref } from 'vue'
 import { getCurrentInstance, markRaw, onBeforeMount, onUnmounted, ref } from 'vue'
 

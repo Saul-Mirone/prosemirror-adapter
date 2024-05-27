@@ -1,4 +1,3 @@
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
 import { ContextProvider } from '@lit-labs/context'
 import { customElement } from 'lit/decorators.js'
 import { useLitRenderer } from './LitRenderer'

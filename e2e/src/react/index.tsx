@@ -1,5 +1,3 @@
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
-
 import { createRoot } from 'react-dom/client'
 
 import { App } from './App'

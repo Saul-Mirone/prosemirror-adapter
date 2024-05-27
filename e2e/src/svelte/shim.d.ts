@@ -1,5 +1,3 @@
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
-
 declare module '*.svelte' {
   import type { SvelteComponent } from 'svelte'
 

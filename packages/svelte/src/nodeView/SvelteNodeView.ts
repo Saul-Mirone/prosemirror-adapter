@@ -1,4 +1,3 @@
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
 import { CoreNodeView } from '@prosemirror-adapter/core'
 import { nanoid } from 'nanoid'
 import type { Writable } from 'svelte/store'

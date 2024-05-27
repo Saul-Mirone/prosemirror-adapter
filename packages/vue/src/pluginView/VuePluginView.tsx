@@ -1,5 +1,3 @@
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
-
 import { CorePluginView } from '@prosemirror-adapter/core'
 import { nanoid } from 'nanoid'
 import { Teleport, defineComponent, markRaw, provide, shallowRef } from 'vue'

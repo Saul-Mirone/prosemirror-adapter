@@ -1,5 +1,3 @@
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
-
 import { ProsemirrorAdapterProvider } from '@prosemirror-adapter/react'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'

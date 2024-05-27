@@ -246,7 +246,7 @@ const editor = (element: HTMLElement) => {
 #### useNodeViewFactory: () => (options: NodeViewFactoryOptions) => NodeView
 
 ```ts
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
+
 type DOMSpec = string | HTMLElement | ((node: Node) => HTMLElement)
 
 interface NodeViewFactoryOptions {
@@ -275,7 +275,7 @@ interface NodeViewFactoryOptions {
 #### useNodeViewContext: () => NodeViewContext
 
 ```ts
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
+
 interface NodeViewContext {
   // The DOM element that contains the content of the node.
   contentRef: NodeViewContentRef
@@ -316,7 +316,7 @@ interface NodeViewContext {
 #### usePluginViewFactory: () => (options: PluginViewFactoryOptions) => PluginView
 
 ```ts
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
+
 interface PluginViewFactoryOptions {
   // Component
   component: SvelteComponent
@@ -335,7 +335,7 @@ interface PluginViewFactoryOptions {
 #### usePluginViewContext: () => PluginViewContext
 
 ```ts
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
+
 interface PluginViewContext {
   // The prosemirror editor view.
   view: Writable<EditorView>
@@ -359,7 +359,7 @@ interface PluginViewContext {
 #### useWidgetViewFactory: () => (options: WidgetViewFactoryOptions) => WidgetDecorationFactory
 
 ```ts
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
+
 type WidgetDecorationFactory = (pos: number, spec?: WidgetDecorationSpec) => Decoration
 
 interface WidgetViewFactoryOptions {
@@ -375,7 +375,7 @@ interface WidgetViewFactoryOptions {
 #### useWidgetViewContext: () => WidgetViewContext
 
 ```ts
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
+
 interface WidgetViewContext {
   // The prosemirror editor view.
   view: EditorView

@@ -1,4 +1,3 @@
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
 import type { PluginViewSpec } from '@prosemirror-adapter/core'
 import type { EditorState } from 'prosemirror-state'
 import type { EditorView } from 'prosemirror-view'

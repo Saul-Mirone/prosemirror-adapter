@@ -19,7 +19,7 @@ npm install @prosemirror-adapter/react
 ### Wrap your component with provider
 
 ```tsx
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
+
 import { ProsemirrorAdapterProvider } from '@prosemirror-adapter/react'
 import { YourAwesomeEditor } from 'somewhere'
 
@@ -45,7 +45,7 @@ In this section we will implement a node view for paragraph node.
 #### Build component for [node view](https://prosemirror.net/docs/ref/#view.NodeView)
 
 ```tsx
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
+
 import { useNodeViewContext } from '@prosemirror-adapter/react'
 
 const Paragraph = () => {
@@ -57,7 +57,7 @@ const Paragraph = () => {
 #### Bind node view components with prosemirror
 
 ```tsx
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
+
 import { useNodeViewFactory } from '@prosemirror-adapter/react'
 import type { FC } from 'react'
 import { useCallback, useRef } from 'react'
@@ -108,7 +108,7 @@ In this section we will implement a plugin view that will display the size of th
 #### Build component for [plugin view](https://prosemirror.net/docs/ref/#state.PluginView)
 
 ```tsx
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
+
 import { usePluginViewContext } from '@prosemirror-adapter/react'
 
 const Size = () => {
@@ -121,7 +121,7 @@ const Size = () => {
 #### Bind plugin view components with prosemirror
 
 ```tsx
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
+
 import { usePluginViewFactory } from '@prosemirror-adapter/react'
 import type { FC } from 'react'
 import { useCallback, useRef } from 'react'
@@ -174,7 +174,7 @@ In this section we will implement a widget view that will add hashes for heading
 #### Build component for [widget decoration view](https://prosemirror.net/docs/ref/#view.Decoration%5Ewidget)
 
 ```tsx
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
+
 import { useWidgetViewContext } from '@prosemirror-adapter/react'
 
 export const Hashes = () => {
@@ -189,7 +189,7 @@ export const Hashes = () => {
 #### Bind widget view components with prosemirror
 
 ```tsx
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
+
 import { useWidgetViewFactory } from '@prosemirror-adapter/react'
 import type { FC } from 'react'
 import { useCallback, useRef } from 'react'
@@ -259,7 +259,7 @@ export const YourAwesomeEditor: FC = () => {
 #### useNodeViewFactory: () => (options: NodeViewFactoryOptions) => NodeView
 
 ```ts
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
+
 type DOMSpec = string | HTMLElement | ((node: Node) => HTMLElement)
 
 interface NodeViewFactoryOptions {
@@ -288,7 +288,7 @@ interface NodeViewFactoryOptions {
 #### useNodeViewContext: () => NodeViewContext
 
 ```ts
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
+
 interface NodeViewContext {
   // The DOM element that contains the content of the node.
   contentRef: NodeViewContentRef
@@ -329,7 +329,7 @@ interface NodeViewContext {
 #### usePluginViewFactory: () => (options: PluginViewFactoryOptions) => PluginView
 
 ```ts
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
+
 interface PluginViewFactoryOptions {
   // Component
   component: ReactComponent
@@ -348,7 +348,7 @@ interface PluginViewFactoryOptions {
 #### usePluginViewContext: () => PluginViewContext
 
 ```ts
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
+
 interface PluginViewContext {
   // The prosemirror editor view.
   view: EditorView
@@ -372,7 +372,7 @@ interface PluginViewContext {
 #### useWidgetViewFactory: () => (options: WidgetViewFactoryOptions) => WidgetDecorationFactory
 
 ```ts
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
+
 type WidgetDecorationFactory = (pos: number, spec?: WidgetDecorationSpec) => Decoration
 
 interface WidgetViewFactoryOptions {
@@ -387,7 +387,7 @@ interface WidgetViewFactoryOptions {
 #### useWidgetViewContext: () => WidgetViewContext
 
 ```ts
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
+
 interface WidgetViewContext {
   // The prosemirror editor view.
   view: EditorView

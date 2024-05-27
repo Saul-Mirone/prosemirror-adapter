@@ -1,4 +1,3 @@
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
 import { ShallowLitElement, useNodeViewContext } from '@prosemirror-adapter/lit'
 import { customElement } from 'lit/decorators.js'
 import { ref } from 'lit/directives/ref.js'

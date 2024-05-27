@@ -1,5 +1,3 @@
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
-
 import type { VueRendererResult } from '../VueRenderer'
 import type { NodeViewFactory } from './nodeViewContext'
 import { VueNodeView } from './VueNodeView'

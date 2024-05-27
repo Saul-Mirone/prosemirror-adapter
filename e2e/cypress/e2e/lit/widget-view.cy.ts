@@ -1,5 +1,3 @@
-/* Copyright 2021, Prosemirror Adapter by Mirone. */
-
 Cypress.config('baseUrl', `http://localhost:${Cypress.env('SERVER_PORT')}`)
 
 beforeEach(() => {
