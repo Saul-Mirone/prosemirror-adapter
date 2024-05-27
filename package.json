@@ -3,8 +3,8 @@
   "private": true,
   "license": "MIT",
   "engines": {
-    "node": ">=16",
-    "pnpm": ">=7"
+    "node": ">=20",
+    "pnpm": ">=9"
   },
   "scripts": {
     "build": "pnpm -r run build",
