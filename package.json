@@ -1,8 +1,8 @@
 {
   "name": "@prosemirror-adapter/monorepo",
   "private": true,
-  "license": "MIT",
   "packageManager": "pnpm@9.4.0",
+  "license": "MIT",
   "engines": {
     "node": ">=20"
   },
