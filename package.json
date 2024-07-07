@@ -2,9 +2,9 @@
   "name": "@prosemirror-adapter/monorepo",
   "private": true,
   "license": "MIT",
+  "packageManager": "pnpm@9.4.0",
   "engines": {
-    "node": ">=20",
-    "pnpm": ">=9"
+    "node": ">=20"
   },
   "scripts": {
     "build": "pnpm -r run build",
