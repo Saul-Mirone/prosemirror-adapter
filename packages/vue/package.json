@@ -35,6 +35,6 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue-jsx": "^4.0.0",
-    "vue": "^3.2.47"
+    "vue": "^3.4.31"
   }
 }
