@@ -9,7 +9,7 @@ export class Hashes extends ShallowLitElement {
   override render() {
     const spec = this.widgetViewContext.value?.spec
     const level = spec?.level ?? 0
-    const hashes = Array(level).fill('#').join('')
+    const hashes = new Array(level).fill('#').join('')
     return html`<span class="hash">${hashes}</span>`
   }
 }

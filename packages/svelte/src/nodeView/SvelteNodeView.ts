@@ -17,8 +17,9 @@ export class SvelteNodeView extends CoreNodeView<SvelteNodeViewComponent> implem
         && element instanceof HTMLElement
         && this.contentDOM
         && element.firstChild !== this.contentDOM
-      )
+      ) {
         element.appendChild(this.contentDOM)
+      }
     },
     view: this.view,
     getPos: this.getPos,
