@@ -7,17 +7,16 @@ export default antfu(
   {
     stylistic: true,
     markdown: false,
-    typescript: {
-      tsconfigPath: 'tsconfig.json',
-    },
     ignores: [
       '.idea',
       '**/lib',
       '**/.svelte-kit',
       'CHANGELOG.md',
+      'vite.config.ts',
+      '**/shim.d.ts',
     ],
-    overrides: {
-      typescript: {
+    typescript: {
+      overrides: {
         'ts/no-unsafe-assignment': 'off',
         'ts/no-unsafe-member-access': 'off',
         'ts/no-unsafe-argument': 'off',
@@ -25,6 +24,8 @@ export default antfu(
         'ts/no-unsafe-return': 'off',
         'ts/unbound-method': 'off',
         'ts/ban-types': 'off',
+        'ts/strict-boolean-expressions': 'off',
+        'unicorn/no-new-array': 'off',
       },
     },
   },
