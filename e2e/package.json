@@ -32,6 +32,6 @@
     "react-dom": "^18.2.0",
     "start-server-and-test": "^2.0.0",
     "svelte": "^4.0.0",
-    "vue": "3.5.1"
+    "vue": "3.5.2"
   }
 }
