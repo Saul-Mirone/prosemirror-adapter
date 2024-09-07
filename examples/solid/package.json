@@ -1,0 +1,29 @@
+{
+  "name": "@example/solid",
+  "version": "0.0.0",
+  "description": "",
+  "scripts": {
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "solid-devtools": "^0.29.2",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.11",
+    "vite-plugin-solid": "^2.8.2"
+  },
+  "dependencies": {
+    "@prosemirror-adapter/solid": "workspace:^",
+    "prosemirror-example-setup": "^1.2.1",
+    "prosemirror-keymap": "^1.2.1",
+    "prosemirror-menu": "^1.2.1",
+    "prosemirror-model": "^1.19.0",
+    "prosemirror-schema-basic": "^1.2.1",
+    "prosemirror-state": "^1.4.2",
+    "prosemirror-view": "^1.30.2",
+    "solid-js": "^1.8.11"
+  }
+}

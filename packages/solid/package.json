@@ -1,0 +1,34 @@
+{
+  "name": "@prosemirror-adapter/solid",
+  "type": "module",
+  "version": "0.2.6",
+  "license": "MIT",
+  "keywords": [
+    "prosemirror-adapter",
+    "solid-js"
+  ],
+  "sideEffects": false,
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "files": [
+    "lib",
+    "src"
+  ],
+  "scripts": {
+    "start": "concurrently -n es,dts \"vite build --watch\"  \"tsc --emitDeclarationOnly --watch\"",
+    "test": "vitest",
+    "tsc": "tsc --noEmit && echo",
+    "build": "tsc --emitDeclarationOnly && vite build"
+  },
+  "dependencies": {
+    "@prosemirror-adapter/core": "workspace:*",
+    "nanoid": "^5.0.0",
+    "tslib": "^2.5.0"
+  },
+  "peerDependencies": {
+    "solid-js": "^1.8.22"
+  },
+  "devDependencies": {
+    "vite-plugin-solid": "^2.8.2"
+  }
+}

@@ -6,6 +6,7 @@ const { view } = usePluginViewContext()
 const size = computed(() => {
   return view.value.state.doc.nodeSize
 })
+
 </script>
 
 <template>

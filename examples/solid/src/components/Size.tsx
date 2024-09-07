@@ -1,9 +1,8 @@
-import { usePluginViewContext } from '@prosemirror-adapter/react'
+import { usePluginViewContext } from '@prosemirror-adapter/solid'
 
 export function Size() {
   const { view } = usePluginViewContext()
   const size = view.state.doc.nodeSize
-  console.log('render')
   return (
     <div>
       Size for document:
