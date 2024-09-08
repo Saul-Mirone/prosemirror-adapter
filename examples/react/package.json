@@ -6,7 +6,7 @@
     "start": "vite"
   },
   "dependencies": {
-    "@prosemirror-adapter/react": "*",
+    "@prosemirror-adapter/react": "workspace:^",
     "@type-config/strict": "^1.2.1",
     "@types/react": "^18.0.30",
     "@types/react-dom": "^18.0.11",

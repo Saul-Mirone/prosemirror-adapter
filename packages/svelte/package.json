@@ -13,8 +13,8 @@
     "svelte"
   ],
   "sideEffects": false,
-  "main": "./lib/index.es.js",
-  "types": "./lib/index.d.ts",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
   "files": [
     "lib",
     "src"

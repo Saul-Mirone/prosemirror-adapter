@@ -1,12 +1,14 @@
 import { usePluginViewContext } from '@prosemirror-adapter/solid'
+import { createMemo } from 'solid-js'
 
 export function Size() {
-  const { view } = usePluginViewContext()
-  const size = view.state.doc.nodeSize
+  const context = usePluginViewContext()
+  const size = createMemo(() => context().view.state.doc.nodeSize)
+
   return (
     <div>
       Size for document:
-      {size}
+      {size()}
     </div>
   )
 }

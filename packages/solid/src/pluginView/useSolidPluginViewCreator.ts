@@ -1,14 +1,14 @@
-import type { PluginViewSpec } from "@prosemirror-adapter/core";
-import type { SolidRendererResult } from "../SolidRenderer";
-import { SolidPluginView } from "./SolidPluginView";
-import type { SolidPluginViewUserOptions } from "./SolidPluginViewOptions";
+import type { PluginViewSpec } from '@prosemirror-adapter/core'
+import type { SolidRendererResult } from '../SolidRenderer'
+import { SolidPluginView } from './SolidPluginView'
+import type { SolidPluginViewUserOptions } from './SolidPluginViewOptions'
 
 export function useSolidPluginViewCreator(
-  renderSolidRenderer: SolidRendererResult["renderSolidRenderer"],
-  removeSolidRenderer: SolidRendererResult["removeSolidRenderer"]
+  renderSolidRenderer: SolidRendererResult['renderSolidRenderer'],
+  removeSolidRenderer: SolidRendererResult['removeSolidRenderer'],
 ) {
   const createSolidPluginView = (
-    options: SolidPluginViewUserOptions
+    options: SolidPluginViewUserOptions,
   ): PluginViewSpec => {
     return (view) => {
       const pluginView = new SolidPluginView({
@@ -16,21 +16,21 @@ export function useSolidPluginViewCreator(
         options: {
           ...options,
           update: (view, prevState) => {
-            options.update?.(view, prevState);
-            renderSolidRenderer(pluginView);
+            options.update?.(view, prevState)
+            pluginView.updateContext()
           },
           destroy: () => {
-            options.destroy?.();
-            removeSolidRenderer(pluginView);
+            options.destroy?.()
+            removeSolidRenderer(pluginView)
           },
         },
-      });
+      })
 
-      renderSolidRenderer(pluginView, false);
+      renderSolidRenderer(pluginView)
 
-      return pluginView;
-    };
-  };
+      return pluginView
+    }
+  }
 
-  return createSolidPluginView;
+  return createSolidPluginView
 }

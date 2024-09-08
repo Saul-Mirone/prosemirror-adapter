@@ -187,8 +187,8 @@ importers:
   examples/react:
     dependencies:
       '@prosemirror-adapter/react':
-        specifier: '*'
-        version: 0.2.6(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        specifier: workspace:^
+        version: link:../../packages/react
       '@type-config/strict':
         specifier: ^1.2.1
         version: 1.2.1
@@ -284,8 +284,8 @@ importers:
   examples/svelte:
     dependencies:
       '@prosemirror-adapter/svelte':
-        specifier: '*'
-        version: 0.2.6(svelte@3.57.0)
+        specifier: workspace:*
+        version: link:../../packages/svelte
       prosemirror-example-setup:
         specifier: ^1.2.1
         version: 1.2.1
@@ -1425,17 +1425,6 @@ packages:
     peerDependencies:
       '@lit-labs/context': ^0.3.0
       lit: ^2.6.1
-
-  '@prosemirror-adapter/react@0.2.6':
-    resolution: {integrity: sha512-JdDqAJV7FnRyIlnXPP+E0Iu80BQPvHeB+7c0ZfdcHLfVb2BLTNHk6iOoqJmBJmqqHt/KjxXXTmxRUS4EEsjVlg==}
-    peerDependencies:
-      react: '*'
-      react-dom: '*'
-
-  '@prosemirror-adapter/svelte@0.2.6':
-    resolution: {integrity: sha512-EQpdYC9Q8smGCqbQ9P7TKjYdxM4edSmgf9BbJBCbEunQaDN2pZi0A/iwTcFNASkVxXDrmn3AJhXkzsPfFyMuaA==}
-    peerDependencies:
-      svelte: ^4.0.0
 
   '@prosemirror-adapter/vue@0.2.6':
     resolution: {integrity: sha512-NYjgHfjfmeS3QtMvGpL885BNdE8OnsdlNfzqO78fT2QIsKITR6hiiqsghlVBzrn41UxBILwVH3rf1gfXi7f7kg==}
@@ -6562,21 +6551,6 @@ snapshots:
       '@prosemirror-adapter/core': 0.2.6
       lit: 2.7.0
       nanoid: 4.0.2
-      tslib: 2.5.0
-
-  '@prosemirror-adapter/react@0.2.6(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
-    dependencies:
-      '@prosemirror-adapter/core': 0.2.6
-      nanoid: 4.0.2
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      tslib: 2.5.0
-
-  '@prosemirror-adapter/svelte@0.2.6(svelte@3.57.0)':
-    dependencies:
-      '@prosemirror-adapter/core': 0.2.6
-      nanoid: 4.0.2
-      svelte: 3.57.0
       tslib: 2.5.0
 
   '@prosemirror-adapter/vue@0.2.6(vue@3.2.47)':

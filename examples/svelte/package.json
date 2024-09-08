@@ -6,7 +6,7 @@
     "start": "vite"
   },
   "dependencies": {
-    "@prosemirror-adapter/svelte": "*",
+    "@prosemirror-adapter/svelte": "workspace:*",
     "prosemirror-example-setup": "^1.2.1",
     "prosemirror-keymap": "^1.2.1",
     "prosemirror-menu": "^1.2.1",

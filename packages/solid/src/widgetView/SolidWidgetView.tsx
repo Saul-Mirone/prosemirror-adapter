@@ -1,42 +1,55 @@
-import { CoreWidgetView } from "@prosemirror-adapter/core";
-import { nanoid } from "nanoid";
-import { Portal } from "solid-js/web";
-import type { JSX } from "solid-js";
+import type { CoreWidgetViewSpec } from '@prosemirror-adapter/core'
+import { CoreWidgetView } from '@prosemirror-adapter/core'
+import { nanoid } from 'nanoid'
+import { Dynamic, Portal } from 'solid-js/web'
+import type { type JSX, Setter, createSignal } from 'solid-js'
 
-import type { SolidRenderer } from "../SolidRenderer";
-import type { SolidWidgetViewComponent } from "./SolidWidgetViewOptions";
-import type { WidgetViewContext } from "./widgetViewContext";
-import { widgetViewContext } from "./widgetViewContext";
-import { hidePortalDiv } from "../utils/hidePortalDiv";
+import type { SolidRenderer } from '../SolidRenderer'
+import { hidePortalDiv } from '../utils/hidePortalDiv'
+import type { SolidWidgetViewComponent } from './SolidWidgetViewOptions'
+import type {
+  WidgetViewContext,
+  WidgetViewContextProps,
+} from './widgetViewContext'
+import { widgetViewContext } from './widgetViewContext'
+
 export class SolidWidgetView
   extends CoreWidgetView<SolidWidgetViewComponent>
-  implements SolidRenderer<WidgetViewContext>
-{
-  key: string = nanoid();
+  implements SolidRenderer<WidgetViewContext> {
+  key: string = nanoid()
 
-  context: WidgetViewContext = {
-    view: this.view!,
-    getPos: this.getPos!,
-    spec: this.spec,
-  };
+  context: WidgetViewContext
+
+  private setContext: Setter<WidgetViewContextProps>
+
+  constructor(spec: CoreWidgetViewSpec<SolidWidgetViewComponent>) {
+    super(spec)
+    const [context, setContext] = createSignal<WidgetViewContextProps>({
+      view: this.view!,
+      getPos: this.getPos!,
+      spec: this.spec,
+    })
+    this.context = context
+    this.setContext = setContext
+  }
 
   updateContext = () => {
-    Object.assign(this.context, {
-      view: this.view,
-      getPos: this.getPos,
+    this.setContext(() => ({
+      view: this.view!,
+      getPos: this.getPos!,
       spec: this.spec,
-    });
-  };
+    }))
+  }
 
   render = (): JSX.Element => {
-    const UserComponent = this.component;
+    const UserComponent = this.component
 
     return (
-      <Portal mount={this.dom} ref={hidePortalDiv}>
+      <Portal mount={this.dom} ref={el => hidePortalDiv(el)}>
         <widgetViewContext.Provider value={this.context}>
-          <UserComponent />
+          <Dynamic component={UserComponent} />
         </widgetViewContext.Provider>
       </Portal>
-    );
-  };
+    )
+  }
 }
