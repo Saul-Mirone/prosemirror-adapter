@@ -1,4 +1,4 @@
-import type { Component, ParentProps } from 'solid-js'
+import { type Component, For, type ParentProps } from 'solid-js'
 import { createNodeViewContext } from './nodeView'
 import { useSolidNodeViewCreator } from './nodeView/useSolidNodeViewCreator'
 import { useSolidRenderer } from './SolidRenderer'
@@ -8,7 +8,7 @@ import { createPluginViewContext } from './pluginView'
 import { useSolidPluginViewCreator } from './pluginView/useSolidPluginViewCreator'
 
 export const ProsemirrorAdapterProvider: Component<ParentProps> = (props) => {
-  const { renderSolidRenderer, removeSolidRenderer }
+  const { renderSolidRenderer, removeSolidRenderer, portals }
     = useSolidRenderer()
 
   const createSolidNodeView = useSolidNodeViewCreator(
@@ -31,6 +31,9 @@ export const ProsemirrorAdapterProvider: Component<ParentProps> = (props) => {
       <createWidgetViewContext.Provider value={createSolidWidgetView}>
         <createPluginViewContext.Provider value={createSolidPluginView}>
           {props.children}
+          <For each={Object.values(portals)}>
+            {portal => portal}
+          </For>
         </createPluginViewContext.Provider>
       </createWidgetViewContext.Provider>
     </createNodeViewContext.Provider>
