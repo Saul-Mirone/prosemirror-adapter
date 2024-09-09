@@ -2,11 +2,12 @@ import { resolve } from 'node:path'
 import react from '@vitejs/plugin-react'
 import vue from '@vitejs/plugin-vue'
 import { svelte } from '@sveltejs/vite-plugin-svelte'
+import solid from 'vite-plugin-solid'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
   root: 'src',
-  plugins: [react(), vue(), svelte()],
+  plugins: [react(), vue(), svelte(), solid()],
   optimizeDeps: {
     exclude: ['svelte'],
   },
@@ -20,6 +21,7 @@ export default defineConfig({
         vue: resolve(__dirname, 'src/vue/index.html'),
         svelte: resolve(__dirname, 'src/svelte/index.html'),
         lit: resolve(__dirname, 'src/lit/index.html'),
+        solid: resolve(__dirname, 'src/solid/index.html'),
       },
     },
   },
