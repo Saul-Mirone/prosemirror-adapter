@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid'
 import type { JSX, Setter } from 'solid-js'
 import { createSignal } from 'solid-js'
 
-import { Portal } from 'solid-js/web'
+import { Dynamic, Portal } from 'solid-js/web'
 import type { SolidRenderer } from '../SolidRenderer'
 import { hidePortalDiv } from '../utils/hidePortalDiv'
 import type {
@@ -46,7 +46,7 @@ export class SolidPluginView
     return (
       <Portal mount={this.root} ref={el => hidePortalDiv(el)}>
         <pluginViewContext.Provider value={this.context}>
-          <UserComponent />
+          <Dynamic component={UserComponent} />
         </pluginViewContext.Provider>
       </Portal>
     )

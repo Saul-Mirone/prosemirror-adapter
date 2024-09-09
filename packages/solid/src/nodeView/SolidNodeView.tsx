@@ -1,6 +1,6 @@
 import { CoreNodeView, type CoreNodeViewSpec } from '@prosemirror-adapter/core'
 import { nanoid } from 'nanoid'
-import { Portal } from 'solid-js/web'
+import { Dynamic, Portal } from 'solid-js/web'
 
 import type { Setter } from 'solid-js'
 import { createSignal } from 'solid-js'
@@ -54,7 +54,7 @@ export class SolidNodeView
     return (
       <Portal mount={this.dom} ref={el => hidePortalDiv(el)}>
         <nodeViewContext.Provider value={this.context}>
-          <UserComponent />
+          <Dynamic component={UserComponent} />
         </nodeViewContext.Provider>
       </Portal>
     )
