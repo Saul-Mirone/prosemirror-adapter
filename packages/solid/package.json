@@ -20,13 +20,13 @@
     "tsc": "tsc --noEmit && echo",
     "build": "tsc --emitDeclarationOnly && vite build"
   },
+  "peerDependencies": {
+    "solid-js": "^1.8.22"
+  },
   "dependencies": {
     "@prosemirror-adapter/core": "workspace:*",
     "nanoid": "^5.0.0",
     "tslib": "^2.5.0"
-  },
-  "peerDependencies": {
-    "solid-js": "^1.8.22"
   },
   "devDependencies": {
     "vite-plugin-solid": "^2.8.2"

@@ -1,34 +1,21 @@
-## Usage
+# Example for @prosemirror-adapter/solid
 
-Those templates dependencies are maintained via [pnpm](https://pnpm.io) via `pnpm up -Lri`.
+A simple example for [`@prosemirror-adapter/solid`](../../packages/solid/).
 
-This is the reason you see a `pnpm-lock.yaml`. That being said, any package manager will work. This file can be safely be removed once you clone a template.
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/Saul-Mirone/prosemirror-adapter/tree/main/examples/solid)
 
-```bash
-$ npm install # or pnpm install or yarn install
-```
+## Getting Started
 
-### Learn more on the [Solid Website](https://solidjs.com) and come chat with us on our [Discord](https://discord.com/invite/solidjs)
+1. Clone the repo.
 
-## Available Scripts
+2. Install dependencies by `pnpm install`.
 
-In the project directory, you can run:
+3. Run the example by `pnpm --filter=@examples/solid start`.
 
-### `npm run dev` or `npm start`
+## Contributing
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Follow our [contribution guide](../../CONTRIBUTING.md) to learn how to contribute to prosemirror-adapter.
 
-The page will reload if you make edits.<br>
+## License
 
-### `npm run build`
-
-Builds the app for production to the `dist` folder.<br>
-It correctly bundles Solid in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-## Deployment
-
-You can deploy the `dist` folder to any static host provider (netlify, surge, now, etc.)
+[MIT](../../LICENSE)

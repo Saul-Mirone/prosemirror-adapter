@@ -1,12 +1,12 @@
 import type {
   CorePluginViewSpec,
   CorePluginViewUserOptions,
-} from "@prosemirror-adapter/core";
-import type { Component } from "solid-js";
+} from '@prosemirror-adapter/core'
+import type { ValidComponent } from 'solid-js'
 
-export type SolidPluginViewComponent = Component<Record<string, never>>;
+export type SolidPluginViewComponent = ValidComponent
 
-export type SolidPluginViewSpec = CorePluginViewSpec<SolidPluginViewComponent>;
+export type SolidPluginViewSpec = CorePluginViewSpec<SolidPluginViewComponent>
 
 export type SolidPluginViewUserOptions =
-  CorePluginViewUserOptions<SolidPluginViewComponent>;
+  CorePluginViewUserOptions<SolidPluginViewComponent>

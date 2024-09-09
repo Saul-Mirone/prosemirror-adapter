@@ -1,12 +1,12 @@
 import type {
   CoreNodeViewSpec,
   CoreNodeViewUserOptions,
-} from "@prosemirror-adapter/core";
-import type { Component } from "solid-js";
+} from '@prosemirror-adapter/core'
+import type { ValidComponent } from 'solid-js'
 
-export type SolidNodeViewComponent = Component;
+export type SolidNodeViewComponent = ValidComponent
 
-export type SolidNodeViewSpec = CoreNodeViewSpec<SolidNodeViewComponent>;
+export type SolidNodeViewSpec = CoreNodeViewSpec<SolidNodeViewComponent>
 
 export type SolidNodeViewUserOptions =
-  CoreNodeViewUserOptions<SolidNodeViewComponent>;
+  CoreNodeViewUserOptions<SolidNodeViewComponent>
