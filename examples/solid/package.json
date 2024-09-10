@@ -10,7 +10,7 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "@prosemirror-adapter/solid": "*",
+    "@prosemirror-adapter/solid": "workspace:*",
     "prosemirror-example-setup": "^1.2.1",
     "prosemirror-keymap": "^1.2.1",
     "prosemirror-menu": "^1.2.1",
