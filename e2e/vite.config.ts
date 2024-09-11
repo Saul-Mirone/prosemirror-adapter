@@ -7,7 +7,16 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   root: 'src',
-  plugins: [react(), vue(), svelte(), solid()],
+  plugins: [
+    vue(),
+    svelte(),
+    react({
+      include: ['src/react/**/*'],
+    }),
+    solid({
+      include: ['src/solid/**/*'],
+    }),
+  ],
   optimizeDeps: {
     exclude: ['svelte'],
   },
