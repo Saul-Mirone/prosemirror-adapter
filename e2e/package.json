@@ -16,6 +16,7 @@
     "@lit-labs/context": "^0.5.0",
     "@prosemirror-adapter/lit": "workspace:*",
     "@prosemirror-adapter/react": "workspace:*",
+    "@prosemirror-adapter/solid": "workspace:*",
     "@prosemirror-adapter/svelte": "workspace:*",
     "@prosemirror-adapter/vue": "workspace:*",
     "@sveltejs/vite-plugin-svelte": "^3.0.0",
@@ -30,8 +31,10 @@
     "prosemirror-schema-basic": "^1.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "solid-js": "^1.8.11",
     "start-server-and-test": "^2.0.0",
     "svelte": "^4.0.0",
+    "vite-plugin-solid": "^2.8.2",
     "vue": "3.5.3"
   }
 }
