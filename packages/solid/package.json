@@ -3,6 +3,11 @@
   "type": "module",
   "version": "0.2.6",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Saul-Mirone/prosemirror-adapter.git",
+    "directory": "packages/solid"
+  },
   "keywords": [
     "prosemirror-adapter",
     "solid-js"
