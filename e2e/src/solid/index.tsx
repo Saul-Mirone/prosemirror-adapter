@@ -7,8 +7,8 @@ import { Editor } from './components/Editor'
 
 const root = document.getElementById('root')
 
-if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
-  throw new Error(
+if (!(root instanceof HTMLElement)) {
+  throw new TypeError(
     'Root element not found. Did you forget to add it to your index.html? Or maybe the id attribute got misspelled?',
   )
 }
@@ -16,7 +16,7 @@ if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
 render(
   () => (
     <>
-      <h1>Prosemirror Adapter React</h1>
+      <h1>Prosemirror Adapter Solid</h1>
 
       <ProsemirrorAdapterProvider>
         <Editor />
