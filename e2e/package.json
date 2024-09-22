@@ -35,6 +35,6 @@
     "start-server-and-test": "^2.0.0",
     "svelte": "^4.0.0",
     "vite-plugin-solid": "^2.8.2",
-    "vue": "3.5.7"
+    "vue": "3.5.8"
   }
 }
