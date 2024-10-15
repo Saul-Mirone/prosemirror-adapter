@@ -1,7 +1,7 @@
 {
   "name": "@prosemirror-adapter/monorepo",
   "private": true,
-  "packageManager": "pnpm@9.11.0",
+  "packageManager": "pnpm@9.12.1",
   "license": "MIT",
   "engines": {
     "node": ">=20"
@@ -30,7 +30,7 @@
     "cross-env": "^7.0.3",
     "eslint": "^9.3.0",
     "eslint-plugin-react": "^7.34.1",
-    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-react-hooks": "^5.0.0",
     "git-cz": "^4.9.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.0.0",
