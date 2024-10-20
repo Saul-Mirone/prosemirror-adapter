@@ -1,4 +1,3 @@
-import { flushSync } from 'svelte'
 import type { Writable } from 'svelte/store'
 import { writable } from 'svelte/store'
 
@@ -25,7 +24,6 @@ export function useSvelteRenderer(): SvelteRendererResult {
       ...records,
       [renderer.key]: renderer.render(),
     }))
-    flushSync()
   }
 
   const removeSvelteRenderer = (renderer: SvelteRenderer<unknown>) => {
