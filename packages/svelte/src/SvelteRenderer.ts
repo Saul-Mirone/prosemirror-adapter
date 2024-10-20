@@ -17,17 +17,17 @@ export interface SvelteRendererResult {
 }
 
 export function useSvelteRenderer(): SvelteRendererResult {
-  const portals: Writable<Record<string, VoidFunction>> = writable({})
+  const unmounts: Writable<Record<string, VoidFunction>> = writable({})
 
   const renderSvelteRenderer = (renderer: SvelteRenderer<unknown>) => {
-    portals.update(records => ({
+    unmounts.update(records => ({
       ...records,
       [renderer.key]: renderer.render(),
     }))
   }
 
   const removeSvelteRenderer = (renderer: SvelteRenderer<unknown>) => {
-    portals.update((records) => {
+    unmounts.update((records) => {
       const { [renderer.key]: unmount, ...rest } = records
       unmount?.()
       return rest
