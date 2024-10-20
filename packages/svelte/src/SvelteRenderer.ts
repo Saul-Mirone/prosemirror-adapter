@@ -1,4 +1,4 @@
-import type { SvelteComponent } from 'svelte'
+import { flushSync } from 'svelte'
 import type { Writable } from 'svelte/store'
 import { writable } from 'svelte/store'
 
@@ -7,36 +7,36 @@ export interface SvelteRenderer<Context> {
 
   context: Context
 
-  render: () => SvelteComponent
+  render: () => VoidFunction
 
   updateContext: () => void
 }
 
 export interface SvelteRendererResult {
-  readonly portals: Writable<Record<string, SvelteComponent>>
   readonly renderSvelteRenderer: (renderer: SvelteRenderer<unknown>) => void
   readonly removeSvelteRenderer: (renderer: SvelteRenderer<unknown>) => void
 }
 
 export function useSvelteRenderer(): SvelteRendererResult {
-  const portals: Writable<Record<string, SvelteComponent>> = writable({})
+  const portals: Writable<Record<string, VoidFunction>> = writable({})
 
   const renderSvelteRenderer = (renderer: SvelteRenderer<unknown>) => {
     portals.update(records => ({
       ...records,
       [renderer.key]: renderer.render(),
     }))
+    flushSync()
   }
 
   const removeSvelteRenderer = (renderer: SvelteRenderer<unknown>) => {
     portals.update((records) => {
-      const { [renderer.key]: _, ...rest } = records
+      const { [renderer.key]: unmount, ...rest } = records
+      unmount?.()
       return rest
     })
   }
 
   return {
-    portals,
     renderSvelteRenderer,
     removeSvelteRenderer,
   } as const
