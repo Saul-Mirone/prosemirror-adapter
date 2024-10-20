@@ -21,7 +21,7 @@ function mountFunctionComponent(UserComponent: SvelteComponentConstructor, optio
   return () => svelte.unmount(component)
 }
 
-function mountClassComponent(UserComponent: SvelteClassComponentConstructor, options: MountOptions): VoidFunction {
+function mountClassComponent(UserComponent: SvelteComponentConstructor, options: MountOptions): VoidFunction {
   // Using Svelte v4, where components are classes
   const component = new (UserComponent as SvelteClassComponentConstructor)(options)
   return () => component.$destroy()
