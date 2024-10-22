@@ -6,14 +6,12 @@
   } from "@prosemirror-adapter/svelte";
   import { Plugin } from 'prosemirror-state'
   import { DecorationSet, EditorView } from "prosemirror-view";
-  import { onDestroy, SvelteComponent } from "svelte";
+  import { onDestroy } from "svelte";
   import { createEditorView } from "../libs/createEditorView";
   import Hashes from "./Hashes.svelte";
   import Paragraph from "./Paragraph.svelte";
   import Heading from "./Heading.svelte";
   import Size from "./Size.svelte";
-
-  let components: SvelteComponent[]
 
   const nodeViewFactory = useNodeViewFactory()
   const pluginViewFactory = usePluginViewFactory()

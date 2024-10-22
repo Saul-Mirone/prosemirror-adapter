@@ -3,6 +3,7 @@ import { nanoid } from 'nanoid'
 import type { Writable } from 'svelte/store'
 import { writable } from 'svelte/store'
 import type { SvelteRenderer } from '../SvelteRenderer'
+import { mount } from '../mount'
 import type { PluginViewContext, PluginViewContextMap } from './pluginViewContext'
 import type { SveltePluginViewComponent } from './SveltePluginViewOptions'
 
@@ -31,7 +32,7 @@ export class SveltePluginView extends CorePluginView<SveltePluginViewComponent> 
   render = () => {
     const UserComponent = this.component
 
-    return new UserComponent({
+    return mount(UserComponent, {
       target: this.root,
       context: this.context,
     })

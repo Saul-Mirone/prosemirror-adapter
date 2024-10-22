@@ -4,6 +4,7 @@ import type { Writable } from 'svelte/store'
 import { writable } from 'svelte/store'
 
 import type { SvelteRenderer } from '../SvelteRenderer'
+import { mount } from '../mount'
 import type { NodeViewContext, NodeViewContextMap } from './nodeViewContext'
 import type { SvelteNodeViewComponent } from './SvelteNodeViewOptions'
 
@@ -50,7 +51,7 @@ export class SvelteNodeView extends CoreNodeView<SvelteNodeViewComponent> implem
   render = () => {
     const UserComponent = this.component
 
-    return new UserComponent({
+    return mount(UserComponent, {
       target: this.dom,
       context: this.context,
     })
