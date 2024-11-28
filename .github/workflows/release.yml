@@ -22,19 +22,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Export screenshots (on failure only)
-        uses: actions/upload-artifact@v4.4.3
-        if: ${{ failure() }}
-        with:
-          name: cypress-screenshots
-          path: e2e/cypress/screenshots
-          retention-days: 7
-
-      - name: Export screen recordings (on failure only)
-        uses: actions/upload-artifact@v4.4.3
-        if: ${{ failure() }}
-        with:
-          name: cypress-videos
-          path: e2e/cypress/videos
-          retention-days: 7
