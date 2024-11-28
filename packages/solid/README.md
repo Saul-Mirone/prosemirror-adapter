@@ -274,7 +274,7 @@ interface NodeViewFactoryOptions {
     decorations: readonly Decoration[],
     innerDecorations: DecorationSource
   ) => boolean | void
-  ignoreMutation?: (mutation: MutationRecord) => boolean | void
+  ignoreMutation?: (mutation: ViewMutationRecord) => boolean | void
   selectNode?: () => void
   deselectNode?: () => void
   setSelection?: (
