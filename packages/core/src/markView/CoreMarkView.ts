@@ -1,21 +1,11 @@
 import type { Mark } from 'prosemirror-model'
-import type { EditorView, ViewMutationRecord } from 'prosemirror-view'
+import type { EditorView, MarkView, ViewMutationRecord } from 'prosemirror-view'
 
 import type {
   CoreMarkViewSpec,
   CoreMarkViewUserOptions,
   MarkViewDOMSpec,
 } from './CoreMarkViewOptions'
-
-// TODO: Remove this definition and import MarkView from prosemirror-view once
-// the PR below is released:
-// https://github.com/ProseMirror/prosemirror-view/pull/174
-interface MarkView {
-  dom: Node
-  contentDOM?: HTMLElement | null
-  destroy?: () => void
-  ignoreMutation?: (m: MutationRecord) => boolean
-}
 
 export class CoreMarkView<ComponentType> implements MarkView {
   dom: HTMLElement
