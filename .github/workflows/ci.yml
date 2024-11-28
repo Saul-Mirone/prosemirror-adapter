@@ -6,52 +6,25 @@ on:
   pull_request:
     branches: [main]
 
-env:
-  CI: true
 jobs:
-  release:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: setup node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20.18.1
+      - uses: ./.github/actions/setup
 
-      - uses: pnpm/action-setup@v4.0.0
-        with:
-          run_install: false
+      - name: Lint
+        run: pnpm run lint
 
-      - name: get pnpm store directory
-        id: pnpm-cache
-        run: echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
-
-      - name: load cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.cache/Cypress
-            ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
-
-      - name: install dependencies
-        run: pnpm install
-
-      - name: build packs
-        run: pnpm build
-
-      - name: run lint test
-        run: pnpm lint
-
-      - name: setup firefox
+      - name: Setup firefox
         uses: browser-actions/setup-firefox@latest
         with:
           firefox-version: latest-esr
 
-      - name: run e2e test on chrome
+      - name: Run e2e test on chrome
         uses: cypress-io/github-action@v6
         env:
           CYPRESS_SERVER_PORT: 7000
@@ -60,10 +33,10 @@ jobs:
           install: false
           working-directory: e2e
           start: pnpm exec vite preview --port 7000 --host
-          wait-on: 'http://localhost:7000'
+          wait-on: "http://localhost:7000"
           browser: chrome
 
-      - name: run e2e test on firefox
+      - name: Run e2e test on firefox
         uses: cypress-io/github-action@v6
         env:
           CYPRESS_SERVER_PORT: 7001
@@ -72,30 +45,5 @@ jobs:
           install: false
           working-directory: e2e
           start: pnpm exec vite preview --port 7001 --host
-          wait-on: 'http://localhost:7001'
+          wait-on: "http://localhost:7001"
           browser: firefox
-
-      - name: create versions or publish to npm registry
-        uses: changesets/action@v1
-        with:
-          publish: pnpm release
-          commit: 'ci(changeset): release prosemirror-adapter'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: export screenshots (on failure only)
-        uses: actions/upload-artifact@v4.4.3
-        if: ${{ failure() }}
-        with:
-          name: cypress-screenshots
-          path: e2e/cypress/screenshots
-          retention-days: 7
-
-      - name: export screen recordings (on failure only)
-        uses: actions/upload-artifact@v4.4.3
-        if: ${{ failure() }}
-        with:
-          name: cypress-videos
-          path: e2e/cypress/videos
-          retention-days: 7
