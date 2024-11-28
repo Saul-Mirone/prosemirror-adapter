@@ -19,6 +19,9 @@ jobs:
       - name: Lint
         run: pnpm run lint
 
+      - name: Install cypress
+        run: pnpm exec cypress install
+
       - name: Setup firefox
         uses: browser-actions/setup-firefox@latest
         with:
