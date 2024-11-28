@@ -5,7 +5,7 @@ inputs:
   node-version:
     description: The version of node.js
     required: false
-    default: "20"
+    default: '20'
 
 runs:
   using: composite
@@ -19,7 +19,7 @@ runs:
       with:
         node-version: ${{ inputs.node-version }}
         cache: pnpm
-        registry-url: "https://registry.npmjs.org"
+        registry-url: 'https://registry.npmjs.org'
 
     - name: Install
       run: pnpm install
