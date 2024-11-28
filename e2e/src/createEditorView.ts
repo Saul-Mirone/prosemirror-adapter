@@ -1,11 +1,11 @@
-import 'prosemirror-view/style/prosemirror.css'
 import 'prosemirror-example-setup/style/style.css'
 import 'prosemirror-menu/style/menu.css'
+import 'prosemirror-view/style/prosemirror.css'
 
 import { exampleSetup } from 'prosemirror-example-setup'
 import { keymap } from 'prosemirror-keymap'
-import { DOMParser, Schema } from 'prosemirror-model'
-import { schema as schema_base } from 'prosemirror-schema-basic'
+import { DOMParser } from 'prosemirror-model'
+import { schema } from 'prosemirror-schema-basic'
 import type { Plugin } from 'prosemirror-state'
 import { EditorState } from 'prosemirror-state'
 import type {
@@ -13,25 +13,6 @@ import type {
   NodeViewConstructor,
 } from 'prosemirror-view'
 import { EditorView } from 'prosemirror-view'
-
-const spec = schema_base.spec
-const emSpec = spec.marks.get('em')
-
-if (emSpec) {
-  emSpec.toDOM = () => {
-    return [
-      'em',
-      ['span', { class: 'em_before token' }, 'em_before'],
-      ['span', { class: 'em_text token' }, 0],
-      ['span', { class: 'em_after token' }, 'em_after'],
-    ]
-  }
-}
-else {
-  throw new Error('unable to find em in the schema')
-}
-
-const schema = new Schema(spec)
 
 export function createEditorView(
   element: HTMLElement | ShadowRoot,
