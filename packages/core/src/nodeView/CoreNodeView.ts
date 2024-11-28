@@ -1,5 +1,5 @@
 import type { Attrs, Node } from 'prosemirror-model'
-import type { Decoration, DecorationSource, EditorView, NodeView } from 'prosemirror-view'
+import type { Decoration, DecorationSource, EditorView, NodeView, ViewMutationRecord } from 'prosemirror-view'
 
 import type { CoreNodeViewSpec, CoreNodeViewUserOptions } from './CoreNodeViewOptions'
 
@@ -102,7 +102,7 @@ export class CoreNodeView<ComponentType> implements NodeView {
     return result
   }
 
-  shouldIgnoreMutation: (mutation: MutationRecord) => boolean = (mutation) => {
+  shouldIgnoreMutation: (mutation: ViewMutationRecord) => boolean = (mutation) => {
     if (!this.dom || !this.contentDOM)
       return true
 
@@ -121,7 +121,7 @@ export class CoreNodeView<ComponentType> implements NodeView {
     return true
   }
 
-  ignoreMutation: (mutation: MutationRecord) => boolean = (mutation) => {
+  ignoreMutation: (mutation: ViewMutationRecord) => boolean = (mutation) => {
     if (!this.dom || !this.contentDOM)
       return true
 
