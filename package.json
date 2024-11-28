@@ -1,7 +1,7 @@
 {
   "name": "@prosemirror-adapter/monorepo",
   "private": true,
-  "packageManager": "pnpm@9.12.2",
+  "packageManager": "pnpm@9.14.2",
   "license": "MIT",
   "engines": {
     "node": ">=20"
@@ -41,7 +41,7 @@
     "prosemirror-view": "^1.37.0",
     "tslib": "^2.5.0",
     "typescript": "^5.4.5",
-    "vite": "^5.2.11"
+    "vite": "^6.0.0"
   },
   "pnpm": {
     "peerDependencyRules": {
