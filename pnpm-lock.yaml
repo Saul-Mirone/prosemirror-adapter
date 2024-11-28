@@ -57,17 +57,17 @@ importers:
         specifier: ^15.0.0
         version: 15.0.2
       prosemirror-keymap:
-        specifier: ^1.2.1
-        version: 1.2.1
+        specifier: ^1.2.2
+        version: 1.2.2
       prosemirror-model:
-        specifier: ^1.19.0
-        version: 1.19.0
+        specifier: ^1.24.0
+        version: 1.24.0
       prosemirror-state:
-        specifier: ^1.4.2
-        version: 1.4.2
+        specifier: ^1.4.3
+        version: 1.4.3
       prosemirror-view:
-        specifier: ^1.30.2
-        version: 1.30.2
+        specifier: ^1.37.0
+        version: 1.37.0
       tslib:
         specifier: ^2.5.0
         version: 2.7.0
@@ -76,7 +76,7 @@ importers:
         version: 5.4.5
       vite:
         specifier: ^5.2.11
-        version: 5.4.9(@types/node@18.15.10)
+        version: 5.4.11(@types/node@18.15.10)
 
   e2e:
     devDependencies:
@@ -100,7 +100,7 @@ importers:
         version: link:../packages/vue
       '@sveltejs/vite-plugin-svelte':
         specifier: ^4.0.0
-        version: 4.0.0(svelte@5.0.2)(vite@5.4.9(@types/node@18.15.10))
+        version: 4.0.0(svelte@5.0.2)(vite@5.4.11(@types/node@18.15.10))
       '@types/react':
         specifier: ^18.0.30
         version: 18.0.30
@@ -109,10 +109,10 @@ importers:
         version: 18.0.11
       '@vitejs/plugin-react':
         specifier: ^4.0.0
-        version: 4.0.0(vite@5.4.9(@types/node@18.15.10))
+        version: 4.0.0(vite@5.4.11(@types/node@18.15.10))
       '@vitejs/plugin-vue':
         specifier: ^5.0.0
-        version: 5.0.0(vite@5.4.9(@types/node@18.15.10))(vue@3.5.12(typescript@5.4.5))
+        version: 5.0.0(vite@5.4.11(@types/node@18.15.10))(vue@3.5.12(typescript@5.4.5))
       cypress:
         specifier: ^13.15.0
         version: 13.15.0
@@ -120,14 +120,14 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       prosemirror-example-setup:
-        specifier: ^1.2.1
-        version: 1.2.1
+        specifier: ^1.2.3
+        version: 1.2.3
       prosemirror-menu:
-        specifier: ^1.2.1
-        version: 1.2.1
+        specifier: ^1.2.4
+        version: 1.2.4
       prosemirror-schema-basic:
-        specifier: ^1.2.1
-        version: 1.2.1
+        specifier: ^1.2.3
+        version: 1.2.3
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -145,7 +145,7 @@ importers:
         version: 5.0.2
       vite-plugin-solid:
         specifier: ^2.8.2
-        version: 2.10.2(solid-js@1.8.22)(vite@5.4.9(@types/node@18.15.10))
+        version: 2.10.2(solid-js@1.8.22)(vite@5.4.11(@types/node@18.15.10))
       vue:
         specifier: 3.5.12
         version: 3.5.12(typescript@5.4.5)
@@ -157,31 +157,31 @@ importers:
         version: 0.3.0
       '@prosemirror-adapter/lit':
         specifier: '*'
-        version: link:../../packages/lit
+        version: 0.2.6(@lit-labs/context@0.3.0)(lit@2.7.0)
       lit:
         specifier: ^2.7.0
         version: 2.7.0
       prosemirror-example-setup:
-        specifier: ^1.2.1
-        version: 1.2.1
+        specifier: ^1.2.3
+        version: 1.2.3
       prosemirror-keymap:
-        specifier: ^1.2.1
-        version: 1.2.1
+        specifier: ^1.2.2
+        version: 1.2.2
       prosemirror-menu:
-        specifier: ^1.2.1
-        version: 1.2.1
+        specifier: ^1.2.4
+        version: 1.2.4
       prosemirror-model:
-        specifier: ^1.19.0
-        version: 1.19.0
+        specifier: ^1.24.0
+        version: 1.24.0
       prosemirror-schema-basic:
-        specifier: ^1.2.1
-        version: 1.2.1
+        specifier: ^1.2.3
+        version: 1.2.3
       prosemirror-state:
-        specifier: ^1.4.2
-        version: 1.4.2
+        specifier: ^1.4.3
+        version: 1.4.3
       prosemirror-view:
-        specifier: ^1.30.2
-        version: 1.30.2
+        specifier: ^1.37.0
+        version: 1.37.0
       tslib:
         specifier: ^2.5.0
         version: 2.7.0
@@ -190,14 +190,14 @@ importers:
         specifier: ^4.9.5
         version: 4.9.5
       vite:
-        specifier: ^4.2.1
-        version: 4.2.1(@types/node@18.15.10)
+        specifier: ^5.4.11
+        version: 5.4.11(@types/node@18.15.10)
 
   examples/react:
     dependencies:
       '@prosemirror-adapter/react':
         specifier: '*'
-        version: link:../../packages/react
+        version: 0.2.6(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       '@type-config/strict':
         specifier: ^1.2.1
         version: 1.2.1
@@ -209,28 +209,28 @@ importers:
         version: 18.0.11
       '@vitejs/plugin-react':
         specifier: ^2.2.0
-        version: 2.2.0(vite@3.2.5(@types/node@18.15.10))
+        version: 2.2.0(vite@5.4.11(@types/node@18.15.10))
       prosemirror-example-setup:
-        specifier: ^1.2.1
-        version: 1.2.1
+        specifier: ^1.2.3
+        version: 1.2.3
       prosemirror-keymap:
-        specifier: ^1.2.1
-        version: 1.2.1
+        specifier: ^1.2.2
+        version: 1.2.2
       prosemirror-menu:
-        specifier: ^1.2.1
-        version: 1.2.1
+        specifier: ^1.2.4
+        version: 1.2.4
       prosemirror-model:
-        specifier: ^1.19.0
-        version: 1.19.0
+        specifier: ^1.24.0
+        version: 1.24.0
       prosemirror-schema-basic:
-        specifier: ^1.2.1
-        version: 1.2.1
+        specifier: ^1.2.3
+        version: 1.2.3
       prosemirror-state:
-        specifier: ^1.4.2
-        version: 1.4.2
+        specifier: ^1.4.3
+        version: 1.4.3
       prosemirror-view:
-        specifier: ^1.30.2
-        version: 1.30.2
+        specifier: ^1.37.0
+        version: 1.37.0
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -244,8 +244,8 @@ importers:
         specifier: ^4.9.5
         version: 4.9.5
       vite:
-        specifier: ^3.2.5
-        version: 3.2.5(@types/node@18.15.10)
+        specifier: ^5.4.11
+        version: 5.4.11(@types/node@18.15.10)
 
   examples/solid:
     dependencies:
@@ -253,76 +253,76 @@ importers:
         specifier: workspace:*
         version: link:../../packages/solid
       prosemirror-example-setup:
-        specifier: ^1.2.1
-        version: 1.2.1
+        specifier: ^1.2.3
+        version: 1.2.3
       prosemirror-keymap:
-        specifier: ^1.2.1
-        version: 1.2.1
+        specifier: ^1.2.2
+        version: 1.2.2
       prosemirror-menu:
-        specifier: ^1.2.1
-        version: 1.2.1
+        specifier: ^1.2.4
+        version: 1.2.4
       prosemirror-model:
-        specifier: ^1.19.0
-        version: 1.19.0
+        specifier: ^1.24.0
+        version: 1.24.0
       prosemirror-schema-basic:
-        specifier: ^1.2.1
-        version: 1.2.1
+        specifier: ^1.2.3
+        version: 1.2.3
       prosemirror-state:
-        specifier: ^1.4.2
-        version: 1.4.2
+        specifier: ^1.4.3
+        version: 1.4.3
       prosemirror-view:
-        specifier: ^1.30.2
-        version: 1.30.2
+        specifier: ^1.37.0
+        version: 1.37.0
       solid-js:
         specifier: ^1.8.11
         version: 1.8.22
     devDependencies:
       solid-devtools:
         specifier: ^0.29.2
-        version: 0.29.3(solid-js@1.8.22)(vite@5.4.9(@types/node@18.15.10))
+        version: 0.29.3(solid-js@1.8.22)(vite@5.4.11(@types/node@18.15.10))
       typescript:
         specifier: ^5.3.3
         version: 5.4.5
       vite:
         specifier: ^5.0.11
-        version: 5.4.9(@types/node@18.15.10)
+        version: 5.4.11(@types/node@18.15.10)
       vite-plugin-solid:
         specifier: ^2.8.2
-        version: 2.10.2(solid-js@1.8.22)(vite@5.4.9(@types/node@18.15.10))
+        version: 2.10.2(solid-js@1.8.22)(vite@5.4.11(@types/node@18.15.10))
 
   examples/svelte:
     dependencies:
       '@prosemirror-adapter/svelte':
         specifier: '*'
-        version: link:../../packages/svelte
+        version: 0.2.6(svelte@5.0.2)
       prosemirror-example-setup:
-        specifier: ^1.2.1
-        version: 1.2.1
+        specifier: ^1.2.3
+        version: 1.2.3
       prosemirror-keymap:
-        specifier: ^1.2.1
-        version: 1.2.1
+        specifier: ^1.2.2
+        version: 1.2.2
       prosemirror-menu:
-        specifier: ^1.2.1
-        version: 1.2.1
+        specifier: ^1.2.4
+        version: 1.2.4
       prosemirror-model:
-        specifier: ^1.19.0
-        version: 1.19.0
+        specifier: ^1.24.0
+        version: 1.24.0
       prosemirror-schema-basic:
-        specifier: ^1.2.1
-        version: 1.2.1
+        specifier: ^1.2.3
+        version: 1.2.3
       prosemirror-state:
-        specifier: ^1.4.2
-        version: 1.4.2
+        specifier: ^1.4.3
+        version: 1.4.3
       prosemirror-view:
-        specifier: ^1.30.2
-        version: 1.30.2
+        specifier: ^1.37.0
+        version: 1.37.0
     devDependencies:
       '@sveltejs/adapter-auto':
         specifier: ^3.2.5
-        version: 3.2.5(@sveltejs/kit@2.7.2(@sveltejs/vite-plugin-svelte@4.0.0(svelte@5.0.2)(vite@5.4.9(@types/node@18.15.10)))(svelte@5.0.2)(vite@5.4.9(@types/node@18.15.10)))
+        version: 3.2.5(@sveltejs/kit@2.7.2(@sveltejs/vite-plugin-svelte@4.0.0(svelte@5.0.2)(vite@5.4.11(@types/node@18.15.10)))(svelte@5.0.2)(vite@5.4.11(@types/node@18.15.10)))
       '@sveltejs/kit':
         specifier: ^2.7.2
-        version: 2.7.2(@sveltejs/vite-plugin-svelte@4.0.0(svelte@5.0.2)(vite@5.4.9(@types/node@18.15.10)))(svelte@5.0.2)(vite@5.4.9(@types/node@18.15.10))
+        version: 2.7.2(@sveltejs/vite-plugin-svelte@4.0.0(svelte@5.0.2)(vite@5.4.11(@types/node@18.15.10)))(svelte@5.0.2)(vite@5.4.11(@types/node@18.15.10))
       prettier:
         specifier: ^2.8.7
         version: 2.8.7
@@ -343,40 +343,40 @@ importers:
         version: 5.4.5
       vite:
         specifier: ^5.4.9
-        version: 5.4.9(@types/node@18.15.10)
+        version: 5.4.11(@types/node@18.15.10)
 
   examples/vue:
     dependencies:
       '@prosemirror-adapter/vue':
         specifier: '*'
-        version: link:../../packages/vue
+        version: 0.2.6(vue@3.5.12(typescript@4.9.5))
       '@type-config/strict':
         specifier: ^1.2.1
         version: 1.2.1
       '@vitejs/plugin-vue':
         specifier: ^3.2.0
-        version: 3.2.0(vite@3.2.5(@types/node@18.15.10))(vue@3.5.12(typescript@4.9.5))
+        version: 3.2.0(vite@5.4.11(@types/node@18.15.10))(vue@3.5.12(typescript@4.9.5))
       prosemirror-example-setup:
-        specifier: ^1.2.1
-        version: 1.2.1
+        specifier: ^1.2.3
+        version: 1.2.3
       prosemirror-keymap:
-        specifier: ^1.2.1
-        version: 1.2.1
+        specifier: ^1.2.2
+        version: 1.2.2
       prosemirror-menu:
-        specifier: ^1.2.1
-        version: 1.2.1
+        specifier: ^1.2.4
+        version: 1.2.4
       prosemirror-model:
-        specifier: ^1.19.0
-        version: 1.19.0
+        specifier: ^1.24.0
+        version: 1.24.0
       prosemirror-schema-basic:
-        specifier: ^1.2.1
-        version: 1.2.1
+        specifier: ^1.2.3
+        version: 1.2.3
       prosemirror-state:
-        specifier: ^1.4.2
-        version: 1.4.2
+        specifier: ^1.4.3
+        version: 1.4.3
       prosemirror-view:
-        specifier: ^1.30.2
-        version: 1.30.2
+        specifier: ^1.37.0
+        version: 1.37.0
       tslib:
         specifier: ^2.5.0
         version: 2.7.0
@@ -384,8 +384,8 @@ importers:
         specifier: ^4.9.5
         version: 4.9.5
       vite:
-        specifier: ^3.2.5
-        version: 3.2.5(@types/node@18.15.10)
+        specifier: ^5.4.11
+        version: 5.4.11(@types/node@18.15.10)
       vue:
         specifier: ^3.2.47
         version: 3.5.12(typescript@4.9.5)
@@ -457,7 +457,7 @@ importers:
     devDependencies:
       vite-plugin-solid:
         specifier: ^2.8.2
-        version: 2.10.2(solid-js@1.8.22)(vite@5.4.9(@types/node@18.15.10))
+        version: 2.10.2(solid-js@1.8.22)(vite@5.4.11(@types/node@18.15.10))
 
   packages/svelte:
     dependencies:
@@ -473,7 +473,7 @@ importers:
     devDependencies:
       '@sveltejs/vite-plugin-svelte':
         specifier: ^4.0.0
-        version: 4.0.0(svelte@5.0.2)(vite@5.4.9(@types/node@18.15.10))
+        version: 4.0.0(svelte@5.0.2)(vite@5.4.11(@types/node@18.15.10))
       svelte:
         specifier: ^5.0.2
         version: 5.0.2
@@ -492,7 +492,7 @@ importers:
     devDependencies:
       '@vitejs/plugin-vue-jsx':
         specifier: ^4.0.0
-        version: 4.0.0(vite@5.4.9(@types/node@18.15.10))(vue@3.5.12(typescript@5.4.5))
+        version: 4.0.0(vite@5.4.11(@types/node@18.15.10))(vue@3.5.12(typescript@5.4.5))
       vue:
         specifier: ^3.4.31
         version: 3.5.12(typescript@5.4.5)
@@ -886,28 +886,10 @@ packages:
     cpu: [ppc64]
     os: [aix]
 
-  '@esbuild/android-arm64@0.17.14':
-    resolution: {integrity: sha512-eLOpPO1RvtsP71afiFTvS7tVFShJBCT0txiv/xjFBo5a7R7Gjw7X0IgIaFoLKhqXYAXhahoXm7qAmRXhY4guJg==}
-    engines: {node: '>=12'}
-    cpu: [arm64]
-    os: [android]
-
   '@esbuild/android-arm64@0.21.5':
     resolution: {integrity: sha512-c0uX9VAUBQ7dTDCjq+wdyGLowMdtR/GoC2U5IYk/7D1H1JYC0qseD7+11iMP2mRLN9RcCMRcjC4YMclCzGwS/A==}
     engines: {node: '>=12'}
     cpu: [arm64]
-    os: [android]
-
-  '@esbuild/android-arm@0.15.18':
-    resolution: {integrity: sha512-5GT+kcs2WVGjVs7+boataCkO5Fg0y4kCjzkB5bAip7H4jfnOS3dA6KPiww9W1OEKTKeAcUVhdZGvgI65OXmUnw==}
-    engines: {node: '>=12'}
-    cpu: [arm]
-    os: [android]
-
-  '@esbuild/android-arm@0.17.14':
-    resolution: {integrity: sha512-0CnlwnjDU8cks0yJLXfkaU/uoLyRf9VZJs4p1PskBr2AlAHeEsFEwJEo0of/Z3g+ilw5mpyDwThlxzNEIxOE4g==}
-    engines: {node: '>=12'}
-    cpu: [arm]
     os: [android]
 
   '@esbuild/android-arm@0.21.5':
@@ -916,34 +898,16 @@ packages:
     cpu: [arm]
     os: [android]
 
-  '@esbuild/android-x64@0.17.14':
-    resolution: {integrity: sha512-nrfQYWBfLGfSGLvRVlt6xi63B5IbfHm3tZCdu/82zuFPQ7zez4XjmRtF/wIRYbJQ/DsZrxJdEvYFE67avYXyng==}
-    engines: {node: '>=12'}
-    cpu: [x64]
-    os: [android]
-
   '@esbuild/android-x64@0.21.5':
     resolution: {integrity: sha512-D7aPRUUNHRBwHxzxRvp856rjUHRFW1SdQATKXH2hqA0kAZb1hKmi02OpYRacl0TxIGz/ZmXWlbZgjwWYaCakTA==}
     engines: {node: '>=12'}
     cpu: [x64]
     os: [android]
 
-  '@esbuild/darwin-arm64@0.17.14':
-    resolution: {integrity: sha512-eoSjEuDsU1ROwgBH/c+fZzuSyJUVXQTOIN9xuLs9dE/9HbV/A5IqdXHU1p2OfIMwBwOYJ9SFVGGldxeRCUJFyw==}
-    engines: {node: '>=12'}
-    cpu: [arm64]
-    os: [darwin]
-
   '@esbuild/darwin-arm64@0.21.5':
     resolution: {integrity: sha512-DwqXqZyuk5AiWWf3UfLiRDJ5EDd49zg6O9wclZ7kUMv2WRFr4HKjXp/5t8JZ11QbQfUS6/cRCKGwYhtNAY88kQ==}
     engines: {node: '>=12'}
     cpu: [arm64]
-    os: [darwin]
-
-  '@esbuild/darwin-x64@0.17.14':
-    resolution: {integrity: sha512-zN0U8RWfrDttdFNkHqFYZtOH8hdi22z0pFm0aIJPsNC4QQZv7je8DWCX5iA4Zx6tRhS0CCc0XC2m7wKsbWEo5g==}
-    engines: {node: '>=12'}
-    cpu: [x64]
     os: [darwin]
 
   '@esbuild/darwin-x64@0.21.5':
@@ -952,22 +916,10 @@ packages:
     cpu: [x64]
     os: [darwin]
 
-  '@esbuild/freebsd-arm64@0.17.14':
-    resolution: {integrity: sha512-z0VcD4ibeZWVQCW1O7szaLxGsx54gcCnajEJMdYoYjLiq4g1jrP2lMq6pk71dbS5+7op/L2Aod+erw+EUr28/A==}
-    engines: {node: '>=12'}
-    cpu: [arm64]
-    os: [freebsd]
-
   '@esbuild/freebsd-arm64@0.21.5':
     resolution: {integrity: sha512-5JcRxxRDUJLX8JXp/wcBCy3pENnCgBR9bN6JsY4OmhfUtIHe3ZW0mawA7+RDAcMLrMIZaf03NlQiX9DGyB8h4g==}
     engines: {node: '>=12'}
     cpu: [arm64]
-    os: [freebsd]
-
-  '@esbuild/freebsd-x64@0.17.14':
-    resolution: {integrity: sha512-hd9mPcxfTgJlolrPlcXkQk9BMwNBvNBsVaUe5eNUqXut6weDQH8whcNaKNF2RO8NbpT6GY8rHOK2A9y++s+ehw==}
-    engines: {node: '>=12'}
-    cpu: [x64]
     os: [freebsd]
 
   '@esbuild/freebsd-x64@0.21.5':
@@ -976,22 +928,10 @@ packages:
     cpu: [x64]
     os: [freebsd]
 
-  '@esbuild/linux-arm64@0.17.14':
-    resolution: {integrity: sha512-FhAMNYOq3Iblcj9i+K0l1Fp/MHt+zBeRu/Qkf0LtrcFu3T45jcwB6A1iMsemQ42vR3GBhjNZJZTaCe3VFPbn9g==}
-    engines: {node: '>=12'}
-    cpu: [arm64]
-    os: [linux]
-
   '@esbuild/linux-arm64@0.21.5':
     resolution: {integrity: sha512-ibKvmyYzKsBeX8d8I7MH/TMfWDXBF3db4qM6sy+7re0YXya+K1cem3on9XgdT2EQGMu4hQyZhan7TeQ8XkGp4Q==}
     engines: {node: '>=12'}
     cpu: [arm64]
-    os: [linux]
-
-  '@esbuild/linux-arm@0.17.14':
-    resolution: {integrity: sha512-BNTl+wSJ1omsH8s3TkQmIIIQHwvwJrU9u1ggb9XU2KTVM4TmthRIVyxSp2qxROJHhZuW/r8fht46/QE8hU8Qvg==}
-    engines: {node: '>=12'}
-    cpu: [arm]
     os: [linux]
 
   '@esbuild/linux-arm@0.21.5':
@@ -1000,28 +940,10 @@ packages:
     cpu: [arm]
     os: [linux]
 
-  '@esbuild/linux-ia32@0.17.14':
-    resolution: {integrity: sha512-91OK/lQ5y2v7AsmnFT+0EyxdPTNhov3y2CWMdizyMfxSxRqHazXdzgBKtlmkU2KYIc+9ZK3Vwp2KyXogEATYxQ==}
-    engines: {node: '>=12'}
-    cpu: [ia32]
-    os: [linux]
-
   '@esbuild/linux-ia32@0.21.5':
     resolution: {integrity: sha512-YvjXDqLRqPDl2dvRODYmmhz4rPeVKYvppfGYKSNGdyZkA01046pLWyRKKI3ax8fbJoK5QbxblURkwK/MWY18Tg==}
     engines: {node: '>=12'}
     cpu: [ia32]
-    os: [linux]
-
-  '@esbuild/linux-loong64@0.15.18':
-    resolution: {integrity: sha512-L4jVKS82XVhw2nvzLg/19ClLWg0y27ulRwuP7lcyL6AbUWB5aPglXY3M21mauDQMDfRLs8cQmeT03r/+X3cZYQ==}
-    engines: {node: '>=12'}
-    cpu: [loong64]
-    os: [linux]
-
-  '@esbuild/linux-loong64@0.17.14':
-    resolution: {integrity: sha512-vp15H+5NR6hubNgMluqqKza85HcGJgq7t6rMH7O3Y6ApiOWPkvW2AJfNojUQimfTp6OUrACUXfR4hmpcENXoMQ==}
-    engines: {node: '>=12'}
-    cpu: [loong64]
     os: [linux]
 
   '@esbuild/linux-loong64@0.21.5':
@@ -1030,22 +952,10 @@ packages:
     cpu: [loong64]
     os: [linux]
 
-  '@esbuild/linux-mips64el@0.17.14':
-    resolution: {integrity: sha512-90TOdFV7N+fgi6c2+GO9ochEkmm9kBAKnuD5e08GQMgMINOdOFHuYLPQ91RYVrnWwQ5683sJKuLi9l4SsbJ7Hg==}
-    engines: {node: '>=12'}
-    cpu: [mips64el]
-    os: [linux]
-
   '@esbuild/linux-mips64el@0.21.5':
     resolution: {integrity: sha512-IajOmO+KJK23bj52dFSNCMsz1QP1DqM6cwLUv3W1QwyxkyIWecfafnI555fvSGqEKwjMXVLokcV5ygHW5b3Jbg==}
     engines: {node: '>=12'}
     cpu: [mips64el]
-    os: [linux]
-
-  '@esbuild/linux-ppc64@0.17.14':
-    resolution: {integrity: sha512-NnBGeoqKkTugpBOBZZoktQQ1Yqb7aHKmHxsw43NddPB2YWLAlpb7THZIzsRsTr0Xw3nqiPxbA1H31ZMOG+VVPQ==}
-    engines: {node: '>=12'}
-    cpu: [ppc64]
     os: [linux]
 
   '@esbuild/linux-ppc64@0.21.5':
@@ -1054,22 +964,10 @@ packages:
     cpu: [ppc64]
     os: [linux]
 
-  '@esbuild/linux-riscv64@0.17.14':
-    resolution: {integrity: sha512-0qdlKScLXA8MGVy21JUKvMzCYWovctuP8KKqhtE5A6IVPq4onxXhSuhwDd2g5sRCzNDlDjitc5sX31BzDoL5Fw==}
-    engines: {node: '>=12'}
-    cpu: [riscv64]
-    os: [linux]
-
   '@esbuild/linux-riscv64@0.21.5':
     resolution: {integrity: sha512-2HdXDMd9GMgTGrPWnJzP2ALSokE/0O5HhTUvWIbD3YdjME8JwvSCnNGBnTThKGEB91OZhzrJ4qIIxk/SBmyDDA==}
     engines: {node: '>=12'}
     cpu: [riscv64]
-    os: [linux]
-
-  '@esbuild/linux-s390x@0.17.14':
-    resolution: {integrity: sha512-Hdm2Jo1yaaOro4v3+6/zJk6ygCqIZuSDJHdHaf8nVH/tfOuoEX5Riv03Ka15LmQBYJObUTNS1UdyoMk0WUn9Ww==}
-    engines: {node: '>=12'}
-    cpu: [s390x]
     os: [linux]
 
   '@esbuild/linux-s390x@0.21.5':
@@ -1078,23 +976,11 @@ packages:
     cpu: [s390x]
     os: [linux]
 
-  '@esbuild/linux-x64@0.17.14':
-    resolution: {integrity: sha512-8KHF17OstlK4DuzeF/KmSgzrTWQrkWj5boluiiq7kvJCiQVzUrmSkaBvcLB2UgHpKENO2i6BthPkmUhNDaJsVw==}
-    engines: {node: '>=12'}
-    cpu: [x64]
-    os: [linux]
-
   '@esbuild/linux-x64@0.21.5':
     resolution: {integrity: sha512-1rYdTpyv03iycF1+BhzrzQJCdOuAOtaqHTWJZCWvijKD2N5Xu0TtVC8/+1faWqcP9iBCWOmjmhoH94dH82BxPQ==}
     engines: {node: '>=12'}
     cpu: [x64]
     os: [linux]
-
-  '@esbuild/netbsd-x64@0.17.14':
-    resolution: {integrity: sha512-nVwpqvb3yyXztxIT2+VsxJhB5GCgzPdk1n0HHSnchRAcxqKO6ghXwHhJnr0j/B+5FSyEqSxF4q03rbA2fKXtUQ==}
-    engines: {node: '>=12'}
-    cpu: [x64]
-    os: [netbsd]
 
   '@esbuild/netbsd-x64@0.21.5':
     resolution: {integrity: sha512-Woi2MXzXjMULccIwMnLciyZH4nCIMpWQAs049KEeMvOcNADVxo0UBIQPfSmxB3CWKedngg7sWZdLvLczpe0tLg==}
@@ -1102,23 +988,11 @@ packages:
     cpu: [x64]
     os: [netbsd]
 
-  '@esbuild/openbsd-x64@0.17.14':
-    resolution: {integrity: sha512-1RZ7uQQ9zcy/GSAJL1xPdN7NDdOOtNEGiJalg/MOzeakZeTrgH/DoCkbq7TaPDiPhWqnDF+4bnydxRqQD7il6g==}
-    engines: {node: '>=12'}
-    cpu: [x64]
-    os: [openbsd]
-
   '@esbuild/openbsd-x64@0.21.5':
     resolution: {integrity: sha512-HLNNw99xsvx12lFBUwoT8EVCsSvRNDVxNpjZ7bPn947b8gJPzeHWyNVhFsaerc0n3TsbOINvRP2byTZ5LKezow==}
     engines: {node: '>=12'}
     cpu: [x64]
     os: [openbsd]
-
-  '@esbuild/sunos-x64@0.17.14':
-    resolution: {integrity: sha512-nqMjDsFwv7vp7msrwWRysnM38Sd44PKmW8EzV01YzDBTcTWUpczQg6mGao9VLicXSgW/iookNK6AxeogNVNDZA==}
-    engines: {node: '>=12'}
-    cpu: [x64]
-    os: [sunos]
 
   '@esbuild/sunos-x64@0.21.5':
     resolution: {integrity: sha512-6+gjmFpfy0BHU5Tpptkuh8+uw3mnrvgs+dSPQXQOv3ekbordwnzTVEb4qnIvQcYXq6gzkyTnoZ9dZG+D4garKg==}
@@ -1126,34 +1000,16 @@ packages:
     cpu: [x64]
     os: [sunos]
 
-  '@esbuild/win32-arm64@0.17.14':
-    resolution: {integrity: sha512-xrD0mccTKRBBIotrITV7WVQAwNJ5+1va6L0H9zN92v2yEdjfAN7864cUaZwJS7JPEs53bDTzKFbfqVlG2HhyKQ==}
-    engines: {node: '>=12'}
-    cpu: [arm64]
-    os: [win32]
-
   '@esbuild/win32-arm64@0.21.5':
     resolution: {integrity: sha512-Z0gOTd75VvXqyq7nsl93zwahcTROgqvuAcYDUr+vOv8uHhNSKROyU961kgtCD1e95IqPKSQKH7tBTslnS3tA8A==}
     engines: {node: '>=12'}
     cpu: [arm64]
     os: [win32]
 
-  '@esbuild/win32-ia32@0.17.14':
-    resolution: {integrity: sha512-nXpkz9bbJrLLyUTYtRotSS3t5b+FOuljg8LgLdINWFs3FfqZMtbnBCZFUmBzQPyxqU87F8Av+3Nco/M3hEcu1w==}
-    engines: {node: '>=12'}
-    cpu: [ia32]
-    os: [win32]
-
   '@esbuild/win32-ia32@0.21.5':
     resolution: {integrity: sha512-SWXFF1CL2RVNMaVs+BBClwtfZSvDgtL//G/smwAc5oVK/UPu2Gu9tIaRgFmYFFKrmg3SyAjSrElf0TiJ1v8fYA==}
     engines: {node: '>=12'}
     cpu: [ia32]
-    os: [win32]
-
-  '@esbuild/win32-x64@0.17.14':
-    resolution: {integrity: sha512-gPQmsi2DKTaEgG14hc3CHXHp62k8g6qr0Pas+I4lUxRMugGSATh/Bi8Dgusoz9IQ0IfdrvLpco6kujEIBoaogA==}
-    engines: {node: '>=12'}
-    cpu: [x64]
     os: [win32]
 
   '@esbuild/win32-x64@0.21.5':
@@ -1276,6 +1132,31 @@ packages:
 
   '@polka/url@1.0.0-next.28':
     resolution: {integrity: sha512-8LduaNlMZGwdZ6qWrKlfa+2M4gahzFkprZiAt2TF8uS0qQgBizKXpXURqvTJ4WtmupWxaLqjRb2UCTe72mu+Aw==}
+
+  '@prosemirror-adapter/core@0.2.6':
+    resolution: {integrity: sha512-7GXWQBR/bd6ngvek8SgtlEVC0x3KL7LKZ5cxyZl4IBAlRDbITQWsuKLChEXNan9A6+9Ry4a46crbDGTQlzooOg==}
+
+  '@prosemirror-adapter/lit@0.2.6':
+    resolution: {integrity: sha512-vdTc51W8iu771bohR6JLLga+0eukMJZDDG9bLSfF9JzcNNlLo7LSw47tBsjn1Jqf5/dqYvsmXVxIbOOkZ/+vcA==}
+    peerDependencies:
+      '@lit-labs/context': ^0.3.0
+      lit: ^2.6.1
+
+  '@prosemirror-adapter/react@0.2.6':
+    resolution: {integrity: sha512-JdDqAJV7FnRyIlnXPP+E0Iu80BQPvHeB+7c0ZfdcHLfVb2BLTNHk6iOoqJmBJmqqHt/KjxXXTmxRUS4EEsjVlg==}
+    peerDependencies:
+      react: '*'
+      react-dom: '*'
+
+  '@prosemirror-adapter/svelte@0.2.6':
+    resolution: {integrity: sha512-EQpdYC9Q8smGCqbQ9P7TKjYdxM4edSmgf9BbJBCbEunQaDN2pZi0A/iwTcFNASkVxXDrmn3AJhXkzsPfFyMuaA==}
+    peerDependencies:
+      svelte: ^4.0.0
+
+  '@prosemirror-adapter/vue@0.2.6':
+    resolution: {integrity: sha512-NYjgHfjfmeS3QtMvGpL885BNdE8OnsdlNfzqO78fT2QIsKITR6hiiqsghlVBzrn41UxBILwVH3rf1gfXi7f7kg==}
+    peerDependencies:
+      vue: ^3.0.0
 
   '@rollup/rollup-android-arm-eabi@4.24.0':
     resolution: {integrity: sha512-Q6HJd7Y6xdB48x8ZNVDOqsbh2uByBhgK8PiQgPhwkIw/HC/YX5Ghq2mQY5sRMZWHb3VsFkWooUVOZHKr7DmDIA==}
@@ -2352,136 +2233,6 @@ packages:
   es-to-primitive@1.2.1:
     resolution: {integrity: sha512-QCOllgZJtaUo9miYBcLChTUaHNjJF3PYs1VidD7AwiEj1kYxKeQTctLAezAOH5ZKRH0g2IgPn6KwB4IT8iRpvA==}
     engines: {node: '>= 0.4'}
-
-  esbuild-android-64@0.15.18:
-    resolution: {integrity: sha512-wnpt3OXRhcjfIDSZu9bnzT4/TNTDsOUvip0foZOUBG7QbSt//w3QV4FInVJxNhKc/ErhUxc5z4QjHtMi7/TbgA==}
-    engines: {node: '>=12'}
-    cpu: [x64]
-    os: [android]
-
-  esbuild-android-arm64@0.15.18:
-    resolution: {integrity: sha512-G4xu89B8FCzav9XU8EjsXacCKSG2FT7wW9J6hOc18soEHJdtWu03L3TQDGf0geNxfLTtxENKBzMSq9LlbjS8OQ==}
-    engines: {node: '>=12'}
-    cpu: [arm64]
-    os: [android]
-
-  esbuild-darwin-64@0.15.18:
-    resolution: {integrity: sha512-2WAvs95uPnVJPuYKP0Eqx+Dl/jaYseZEUUT1sjg97TJa4oBtbAKnPnl3b5M9l51/nbx7+QAEtuummJZW0sBEmg==}
-    engines: {node: '>=12'}
-    cpu: [x64]
-    os: [darwin]
-
-  esbuild-darwin-arm64@0.15.18:
-    resolution: {integrity: sha512-tKPSxcTJ5OmNb1btVikATJ8NftlyNlc8BVNtyT/UAr62JFOhwHlnoPrhYWz09akBLHI9nElFVfWSTSRsrZiDUA==}
-    engines: {node: '>=12'}
-    cpu: [arm64]
-    os: [darwin]
-
-  esbuild-freebsd-64@0.15.18:
-    resolution: {integrity: sha512-TT3uBUxkteAjR1QbsmvSsjpKjOX6UkCstr8nMr+q7zi3NuZ1oIpa8U41Y8I8dJH2fJgdC3Dj3CXO5biLQpfdZA==}
-    engines: {node: '>=12'}
-    cpu: [x64]
-    os: [freebsd]
-
-  esbuild-freebsd-arm64@0.15.18:
-    resolution: {integrity: sha512-R/oVr+X3Tkh+S0+tL41wRMbdWtpWB8hEAMsOXDumSSa6qJR89U0S/PpLXrGF7Wk/JykfpWNokERUpCeHDl47wA==}
-    engines: {node: '>=12'}
-    cpu: [arm64]
-    os: [freebsd]
-
-  esbuild-linux-32@0.15.18:
-    resolution: {integrity: sha512-lphF3HiCSYtaa9p1DtXndiQEeQDKPl9eN/XNoBf2amEghugNuqXNZA/ZovthNE2aa4EN43WroO0B85xVSjYkbg==}
-    engines: {node: '>=12'}
-    cpu: [ia32]
-    os: [linux]
-
-  esbuild-linux-64@0.15.18:
-    resolution: {integrity: sha512-hNSeP97IviD7oxLKFuii5sDPJ+QHeiFTFLoLm7NZQligur8poNOWGIgpQ7Qf8Balb69hptMZzyOBIPtY09GZYw==}
-    engines: {node: '>=12'}
-    cpu: [x64]
-    os: [linux]
-
-  esbuild-linux-arm64@0.15.18:
-    resolution: {integrity: sha512-54qr8kg/6ilcxd+0V3h9rjT4qmjc0CccMVWrjOEM/pEcUzt8X62HfBSeZfT2ECpM7104mk4yfQXkosY8Quptug==}
-    engines: {node: '>=12'}
-    cpu: [arm64]
-    os: [linux]
-
-  esbuild-linux-arm@0.15.18:
-    resolution: {integrity: sha512-UH779gstRblS4aoS2qpMl3wjg7U0j+ygu3GjIeTonCcN79ZvpPee12Qun3vcdxX+37O5LFxz39XeW2I9bybMVA==}
-    engines: {node: '>=12'}
-    cpu: [arm]
-    os: [linux]
-
-  esbuild-linux-mips64le@0.15.18:
-    resolution: {integrity: sha512-Mk6Ppwzzz3YbMl/ZZL2P0q1tnYqh/trYZ1VfNP47C31yT0K8t9s7Z077QrDA/guU60tGNp2GOwCQnp+DYv7bxQ==}
-    engines: {node: '>=12'}
-    cpu: [mips64el]
-    os: [linux]
-
-  esbuild-linux-ppc64le@0.15.18:
-    resolution: {integrity: sha512-b0XkN4pL9WUulPTa/VKHx2wLCgvIAbgwABGnKMY19WhKZPT+8BxhZdqz6EgkqCLld7X5qiCY2F/bfpUUlnFZ9w==}
-    engines: {node: '>=12'}
-    cpu: [ppc64]
-    os: [linux]
-
-  esbuild-linux-riscv64@0.15.18:
-    resolution: {integrity: sha512-ba2COaoF5wL6VLZWn04k+ACZjZ6NYniMSQStodFKH/Pu6RxzQqzsmjR1t9QC89VYJxBeyVPTaHuBMCejl3O/xg==}
-    engines: {node: '>=12'}
-    cpu: [riscv64]
-    os: [linux]
-
-  esbuild-linux-s390x@0.15.18:
-    resolution: {integrity: sha512-VbpGuXEl5FCs1wDVp93O8UIzl3ZrglgnSQ+Hu79g7hZu6te6/YHgVJxCM2SqfIila0J3k0csfnf8VD2W7u2kzQ==}
-    engines: {node: '>=12'}
-    cpu: [s390x]
-    os: [linux]
-
-  esbuild-netbsd-64@0.15.18:
-    resolution: {integrity: sha512-98ukeCdvdX7wr1vUYQzKo4kQ0N2p27H7I11maINv73fVEXt2kyh4K4m9f35U1K43Xc2QGXlzAw0K9yoU7JUjOg==}
-    engines: {node: '>=12'}
-    cpu: [x64]
-    os: [netbsd]
-
-  esbuild-openbsd-64@0.15.18:
-    resolution: {integrity: sha512-yK5NCcH31Uae076AyQAXeJzt/vxIo9+omZRKj1pauhk3ITuADzuOx5N2fdHrAKPxN+zH3w96uFKlY7yIn490xQ==}
-    engines: {node: '>=12'}
-    cpu: [x64]
-    os: [openbsd]
-
-  esbuild-sunos-64@0.15.18:
-    resolution: {integrity: sha512-On22LLFlBeLNj/YF3FT+cXcyKPEI263nflYlAhz5crxtp3yRG1Ugfr7ITyxmCmjm4vbN/dGrb/B7w7U8yJR9yw==}
-    engines: {node: '>=12'}
-    cpu: [x64]
-    os: [sunos]
-
-  esbuild-windows-32@0.15.18:
-    resolution: {integrity: sha512-o+eyLu2MjVny/nt+E0uPnBxYuJHBvho8vWsC2lV61A7wwTWC3jkN2w36jtA+yv1UgYkHRihPuQsL23hsCYGcOQ==}
-    engines: {node: '>=12'}
-    cpu: [ia32]
-    os: [win32]
-
-  esbuild-windows-64@0.15.18:
-    resolution: {integrity: sha512-qinug1iTTaIIrCorAUjR0fcBk24fjzEedFYhhispP8Oc7SFvs+XeW3YpAKiKp8dRpizl4YYAhxMjlftAMJiaUw==}
-    engines: {node: '>=12'}
-    cpu: [x64]
-    os: [win32]
-
-  esbuild-windows-arm64@0.15.18:
-    resolution: {integrity: sha512-q9bsYzegpZcLziq0zgUi5KqGVtfhjxGbnksaBFYmWLxeV/S1fK4OLdq2DFYnXcLMjlZw2L0jLsk1eGoB522WXQ==}
-    engines: {node: '>=12'}
-    cpu: [arm64]
-    os: [win32]
-
-  esbuild@0.15.18:
-    resolution: {integrity: sha512-x/R72SmW3sSFRm5zrrIjAhCeQSAWoni3CmHEqfQrZIQTM3lVCdehdwuIqaOtfC2slvpdlLa62GYoN8SxT23m6Q==}
-    engines: {node: '>=12'}
-    hasBin: true
-
-  esbuild@0.17.14:
-    resolution: {integrity: sha512-vOO5XhmVj/1XQR9NQ1UPq6qvMYL7QFJU57J5fKBKBKxp17uDt5PgxFDb4A2nEiXhr1qQs4x0F5+66hVVw4ruNw==}
-    engines: {node: '>=12'}
-    hasBin: true
 
   esbuild@0.21.5:
     resolution: {integrity: sha512-mg3OPMV4hXywwpoDxu3Qda5xCKQi+vCTZq8S9J/EpkhB2HzKXq4SNFZE3+NK93JYxc8VMSep+lOUSC/RVKaBqw==}
@@ -3618,6 +3369,11 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
+  nanoid@4.0.2:
+    resolution: {integrity: sha512-7ZtY5KTCNheRGfEFxnedV5zFiORN1+Y1N6zvPTnHQd8ENUvfaDBeuJDZb2bN/oXwXxu3qkTXDzy57W5vAmDTBw==}
+    engines: {node: ^14 || ^16 || >=18}
+    hasBin: true
+
   nanoid@5.0.1:
     resolution: {integrity: sha512-vWeVtV5Cw68aML/QaZvqN/3QQXc6fBfIieAlu05m7FZW2Dgb+3f0xc0TTxuJW+7u30t7iSDTV/j3kVI0oJqIfQ==}
     engines: {node: ^18 || >=20}
@@ -3885,8 +3641,8 @@ packages:
   prosemirror-dropcursor@1.8.0:
     resolution: {integrity: sha512-TZMitR8nlp9Xh42pDYGcWopCoFPmJduoyGJ7FjYM2/7gZKnfD41TIaZN5Q1cQjm6Fm/P5vk/DpVYFhS8kDdigw==}
 
-  prosemirror-example-setup@1.2.1:
-    resolution: {integrity: sha512-sxFBVjxP+Mgd7sPigjN4QenrEn8e1vgX/YWsB+Bv6nPZf9Eakx7TDdjLPs+7v/iCXFqCdRX7C20LcYdUQhvWpA==}
+  prosemirror-example-setup@1.2.3:
+    resolution: {integrity: sha512-+hXZi8+xbFvYM465zZH3rdZ9w7EguVKmUYwYLZjIJIjPK+I0nPTwn8j0ByW2avchVczRwZmOJGNvehblyIerSQ==}
 
   prosemirror-gapcursor@1.3.1:
     resolution: {integrity: sha512-GKTeE7ZoMsx5uVfc51/ouwMFPq0o8YrZ7Hx4jTF4EeGbXxBveUV8CGv46mSHuBBeXGmvu50guoV2kSnOeZZnUA==}
@@ -3897,29 +3653,29 @@ packages:
   prosemirror-inputrules@1.2.0:
     resolution: {integrity: sha512-eAW/M/NTSSzpCOxfR8Abw6OagdG0MiDAiWHQMQveIsZtoKVYzm0AflSPq/ymqJd56/Su1YPbwy9lM13wgHOFmQ==}
 
-  prosemirror-keymap@1.2.1:
-    resolution: {integrity: sha512-kVK6WGC+83LZwuSJnuCb9PsADQnFZllt94qPP3Rx/vLcOUV65+IbBeH2nS5cFggPyEVJhGkGrgYFRrG250WhHQ==}
+  prosemirror-keymap@1.2.2:
+    resolution: {integrity: sha512-EAlXoksqC6Vbocqc0GtzCruZEzYgrn+iiGnNjsJsH4mrnIGex4qbLdWWNza3AW5W36ZRrlBID0eM6bdKH4OStQ==}
 
-  prosemirror-menu@1.2.1:
-    resolution: {integrity: sha512-sBirXxVfHalZO4f1ZS63WzewINK4182+7dOmoMeBkqYO8wqMBvBS7wQuwVOHnkMWPEh0+N0LJ856KYUN+vFkmQ==}
+  prosemirror-menu@1.2.4:
+    resolution: {integrity: sha512-S/bXlc0ODQup6aiBbWVsX/eM+xJgCTAfMq/nLqaO5ID/am4wS0tTCIkzwytmao7ypEtjj39i7YbJjAgO20mIqA==}
 
-  prosemirror-model@1.19.0:
-    resolution: {integrity: sha512-/CvFGJnwc41EJSfDkQLly1cAJJJmBpZwwUJtwZPTjY2RqZJfM8HVbCreOY/jti8wTRbVyjagcylyGoeJH/g/3w==}
+  prosemirror-model@1.24.0:
+    resolution: {integrity: sha512-Ft7epNnycoQSM+2ObF35SBbBX+5WY39v8amVlrtlAcpglhlHs2tCTnWl7RX5tbp/PsMKcRcWV9cXPuoBWq0AIQ==}
 
-  prosemirror-schema-basic@1.2.1:
-    resolution: {integrity: sha512-vYBdIHsYKSDIqYmPBC7lnwk9DsKn8PnVqK97pMYP5MLEDFqWIX75JiaJTzndBii4bRuNqhC2UfDOfM3FKhlBHg==}
+  prosemirror-schema-basic@1.2.3:
+    resolution: {integrity: sha512-h+H0OQwZVqMon1PNn0AG9cTfx513zgIG2DY00eJ00Yvgb3UD+GQ/VlWW5rcaxacpCGT1Yx8nuhwXk4+QbXUfJA==}
 
   prosemirror-schema-list@1.2.2:
     resolution: {integrity: sha512-rd0pqSDp86p0MUMKG903g3I9VmElFkQpkZ2iOd3EOVg1vo5Cst51rAsoE+5IPy0LPXq64eGcCYlW1+JPNxOj2w==}
 
-  prosemirror-state@1.4.2:
-    resolution: {integrity: sha512-puuzLD2mz/oTdfgd8msFbe0A42j5eNudKAAPDB0+QJRw8cO1ygjLmhLrg9RvDpf87Dkd6D4t93qdef00KKNacQ==}
+  prosemirror-state@1.4.3:
+    resolution: {integrity: sha512-goFKORVbvPuAQaXhpbemJFRKJ2aixr+AZMGiquiqKxaucC6hlpHNZHWgz5R7dS4roHiwq9vDctE//CZ++o0W1Q==}
 
   prosemirror-transform@1.7.1:
     resolution: {integrity: sha512-VteoifAfpt46z0yEt6Fc73A5OID9t/y2QIeR5MgxEwTuitadEunD/V0c9jQW8ziT8pbFM54uTzRLJ/nLuQjMxg==}
 
-  prosemirror-view@1.30.2:
-    resolution: {integrity: sha512-nTNzZvalQf9kHeEyO407LiV6DoOs/pXsid88UqW9Vvybo4ozJW2PJhkfZUxCUF1hR/9vJLdhxX84wuw9P9HsXA==}
+  prosemirror-view@1.37.0:
+    resolution: {integrity: sha512-z2nkKI1sJzyi7T47Ji/ewBPuIma1RNvQCCYVdV+MqWBV7o4Sa1n94UJCJJ1aQRF/xRkFfyqLGlGFWitIcCOtbg==}
 
   proxy-from-env@1.0.0:
     resolution: {integrity: sha512-F2JHgJQ1iqwnHDcQjVBsq3n/uoaFL+iPW/eAeL7kVxy/2RrWaN4WroKjjvbsoRtv0ftelNyC01bjRhn/bhcf4A==}
@@ -4073,16 +3829,6 @@ packages:
 
   rfdc@1.3.0:
     resolution: {integrity: sha512-V2hovdzFbOi77/WajaSMXk2OLm+xNIeQdMMuB7icj7bk6zi2F8GGAxigcnDFpJHbNyNcgyJDiP+8nOrY5cZGrA==}
-
-  rollup@2.79.1:
-    resolution: {integrity: sha512-uKxbd0IhMZOhjAiD5oAFp7BqvkA4Dv47qpOCtaNvng4HBwdbWtdOh8f5nZNuk2rp51PMGk3bzfWu5oayNEuYnw==}
-    engines: {node: '>=10.0.0'}
-    hasBin: true
-
-  rollup@3.20.2:
-    resolution: {integrity: sha512-3zwkBQl7Ai7MFYQE0y1MeQ15+9jsi7XxfrqwTb/9EK8D9C9+//EBR4M+CuA1KODRaNbFez/lWxA5vhEGZp4MUg==}
-    engines: {node: '>=14.18.0', npm: '>=8.0.0'}
-    hasBin: true
 
   rollup@4.24.0:
     resolution: {integrity: sha512-DOmrlGSXNk1DM0ljiQA+i+o0rSLhtii1je5wgk60j49d1jHT5YYttBv1iWOnYSTG+fZZESUOSNiAl89SIet+Cg==}
@@ -4595,58 +4341,8 @@ packages:
       '@testing-library/jest-dom':
         optional: true
 
-  vite@3.2.5:
-    resolution: {integrity: sha512-4mVEpXpSOgrssFZAOmGIr85wPHKvaDAcXqxVxVRZhljkJOMZi1ibLibzjLHzJvcok8BMguLc7g1W6W/GqZbLdQ==}
-    engines: {node: ^14.18.0 || >=16.0.0}
-    hasBin: true
-    peerDependencies:
-      '@types/node': '>= 14'
-      less: '*'
-      sass: '*'
-      stylus: '*'
-      sugarss: '*'
-      terser: ^5.4.0
-    peerDependenciesMeta:
-      '@types/node':
-        optional: true
-      less:
-        optional: true
-      sass:
-        optional: true
-      stylus:
-        optional: true
-      sugarss:
-        optional: true
-      terser:
-        optional: true
-
-  vite@4.2.1:
-    resolution: {integrity: sha512-7MKhqdy0ISo4wnvwtqZkjke6XN4taqQ2TBaTccLIpOKv7Vp2h4Y+NpmWCnGDeSvvn45KxvWgGyb0MkHvY1vgbg==}
-    engines: {node: ^14.18.0 || >=16.0.0}
-    hasBin: true
-    peerDependencies:
-      '@types/node': '>= 14'
-      less: '*'
-      sass: '*'
-      stylus: '*'
-      sugarss: '*'
-      terser: ^5.4.0
-    peerDependenciesMeta:
-      '@types/node':
-        optional: true
-      less:
-        optional: true
-      sass:
-        optional: true
-      stylus:
-        optional: true
-      sugarss:
-        optional: true
-      terser:
-        optional: true
-
-  vite@5.4.9:
-    resolution: {integrity: sha512-20OVpJHh0PAM0oSOELa5GaZNWeDjcAvQjGXy2Uyr+Tp+/D2/Hdz6NLgpJLsarPTA2QJ6v8mX2P1ZfbsSKvdMkg==}
+  vite@5.4.11:
+    resolution: {integrity: sha512-c7jFQRklXua0mTzneGW9QVyxFjUgwcihC4bXEtujIo2ouWCe1Ajt/amn2PCxYnhYfd5k09JX3SB7OYWFKYqj8Q==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
@@ -5417,139 +5113,67 @@ snapshots:
   '@esbuild/aix-ppc64@0.21.5':
     optional: true
 
-  '@esbuild/android-arm64@0.17.14':
-    optional: true
-
   '@esbuild/android-arm64@0.21.5':
-    optional: true
-
-  '@esbuild/android-arm@0.15.18':
-    optional: true
-
-  '@esbuild/android-arm@0.17.14':
     optional: true
 
   '@esbuild/android-arm@0.21.5':
     optional: true
 
-  '@esbuild/android-x64@0.17.14':
-    optional: true
-
   '@esbuild/android-x64@0.21.5':
-    optional: true
-
-  '@esbuild/darwin-arm64@0.17.14':
     optional: true
 
   '@esbuild/darwin-arm64@0.21.5':
     optional: true
 
-  '@esbuild/darwin-x64@0.17.14':
-    optional: true
-
   '@esbuild/darwin-x64@0.21.5':
-    optional: true
-
-  '@esbuild/freebsd-arm64@0.17.14':
     optional: true
 
   '@esbuild/freebsd-arm64@0.21.5':
     optional: true
 
-  '@esbuild/freebsd-x64@0.17.14':
-    optional: true
-
   '@esbuild/freebsd-x64@0.21.5':
-    optional: true
-
-  '@esbuild/linux-arm64@0.17.14':
     optional: true
 
   '@esbuild/linux-arm64@0.21.5':
     optional: true
 
-  '@esbuild/linux-arm@0.17.14':
-    optional: true
-
   '@esbuild/linux-arm@0.21.5':
-    optional: true
-
-  '@esbuild/linux-ia32@0.17.14':
     optional: true
 
   '@esbuild/linux-ia32@0.21.5':
     optional: true
 
-  '@esbuild/linux-loong64@0.15.18':
-    optional: true
-
-  '@esbuild/linux-loong64@0.17.14':
-    optional: true
-
   '@esbuild/linux-loong64@0.21.5':
-    optional: true
-
-  '@esbuild/linux-mips64el@0.17.14':
     optional: true
 
   '@esbuild/linux-mips64el@0.21.5':
     optional: true
 
-  '@esbuild/linux-ppc64@0.17.14':
-    optional: true
-
   '@esbuild/linux-ppc64@0.21.5':
-    optional: true
-
-  '@esbuild/linux-riscv64@0.17.14':
     optional: true
 
   '@esbuild/linux-riscv64@0.21.5':
     optional: true
 
-  '@esbuild/linux-s390x@0.17.14':
-    optional: true
-
   '@esbuild/linux-s390x@0.21.5':
-    optional: true
-
-  '@esbuild/linux-x64@0.17.14':
     optional: true
 
   '@esbuild/linux-x64@0.21.5':
     optional: true
 
-  '@esbuild/netbsd-x64@0.17.14':
-    optional: true
-
   '@esbuild/netbsd-x64@0.21.5':
-    optional: true
-
-  '@esbuild/openbsd-x64@0.17.14':
     optional: true
 
   '@esbuild/openbsd-x64@0.21.5':
     optional: true
 
-  '@esbuild/sunos-x64@0.17.14':
-    optional: true
-
   '@esbuild/sunos-x64@0.21.5':
-    optional: true
-
-  '@esbuild/win32-arm64@0.17.14':
     optional: true
 
   '@esbuild/win32-arm64@0.21.5':
     optional: true
 
-  '@esbuild/win32-ia32@0.17.14':
-    optional: true
-
   '@esbuild/win32-ia32@0.21.5':
-    optional: true
-
-  '@esbuild/win32-x64@0.17.14':
     optional: true
 
   '@esbuild/win32-x64@0.21.5':
@@ -5680,6 +5304,40 @@ snapshots:
   '@pkgr/core@0.1.1': {}
 
   '@polka/url@1.0.0-next.28': {}
+
+  '@prosemirror-adapter/core@0.2.6':
+    dependencies:
+      tslib: 2.7.0
+
+  '@prosemirror-adapter/lit@0.2.6(@lit-labs/context@0.3.0)(lit@2.7.0)':
+    dependencies:
+      '@lit-labs/context': 0.3.0
+      '@prosemirror-adapter/core': 0.2.6
+      lit: 2.7.0
+      nanoid: 4.0.2
+      tslib: 2.7.0
+
+  '@prosemirror-adapter/react@0.2.6(react-dom@18.2.0(react@18.2.0))(react@18.2.0)':
+    dependencies:
+      '@prosemirror-adapter/core': 0.2.6
+      nanoid: 4.0.2
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      tslib: 2.7.0
+
+  '@prosemirror-adapter/svelte@0.2.6(svelte@5.0.2)':
+    dependencies:
+      '@prosemirror-adapter/core': 0.2.6
+      nanoid: 4.0.2
+      svelte: 5.0.2
+      tslib: 2.7.0
+
+  '@prosemirror-adapter/vue@0.2.6(vue@3.5.12(typescript@4.9.5))':
+    dependencies:
+      '@prosemirror-adapter/core': 0.2.6
+      nanoid: 4.0.2
+      tslib: 2.7.0
+      vue: 3.5.12(typescript@4.9.5)
 
   '@rollup/rollup-android-arm-eabi@4.24.0':
     optional: true
@@ -5863,14 +5521,14 @@ snapshots:
       - supports-color
       - typescript
 
-  '@sveltejs/adapter-auto@3.2.5(@sveltejs/kit@2.7.2(@sveltejs/vite-plugin-svelte@4.0.0(svelte@5.0.2)(vite@5.4.9(@types/node@18.15.10)))(svelte@5.0.2)(vite@5.4.9(@types/node@18.15.10)))':
+  '@sveltejs/adapter-auto@3.2.5(@sveltejs/kit@2.7.2(@sveltejs/vite-plugin-svelte@4.0.0(svelte@5.0.2)(vite@5.4.11(@types/node@18.15.10)))(svelte@5.0.2)(vite@5.4.11(@types/node@18.15.10)))':
     dependencies:
-      '@sveltejs/kit': 2.7.2(@sveltejs/vite-plugin-svelte@4.0.0(svelte@5.0.2)(vite@5.4.9(@types/node@18.15.10)))(svelte@5.0.2)(vite@5.4.9(@types/node@18.15.10))
+      '@sveltejs/kit': 2.7.2(@sveltejs/vite-plugin-svelte@4.0.0(svelte@5.0.2)(vite@5.4.11(@types/node@18.15.10)))(svelte@5.0.2)(vite@5.4.11(@types/node@18.15.10))
       import-meta-resolve: 4.1.0
 
-  '@sveltejs/kit@2.7.2(@sveltejs/vite-plugin-svelte@4.0.0(svelte@5.0.2)(vite@5.4.9(@types/node@18.15.10)))(svelte@5.0.2)(vite@5.4.9(@types/node@18.15.10))':
+  '@sveltejs/kit@2.7.2(@sveltejs/vite-plugin-svelte@4.0.0(svelte@5.0.2)(vite@5.4.11(@types/node@18.15.10)))(svelte@5.0.2)(vite@5.4.11(@types/node@18.15.10))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 4.0.0(svelte@5.0.2)(vite@5.4.9(@types/node@18.15.10))
+      '@sveltejs/vite-plugin-svelte': 4.0.0(svelte@5.0.2)(vite@5.4.11(@types/node@18.15.10))
       '@types/cookie': 0.6.0
       cookie: 0.6.0
       devalue: 5.1.1
@@ -5884,27 +5542,27 @@ snapshots:
       sirv: 3.0.0
       svelte: 5.0.2
       tiny-glob: 0.2.9
-      vite: 5.4.9(@types/node@18.15.10)
+      vite: 5.4.11(@types/node@18.15.10)
 
-  '@sveltejs/vite-plugin-svelte-inspector@3.0.0(@sveltejs/vite-plugin-svelte@4.0.0(svelte@5.0.2)(vite@5.4.9(@types/node@18.15.10)))(svelte@5.0.2)(vite@5.4.9(@types/node@18.15.10))':
+  '@sveltejs/vite-plugin-svelte-inspector@3.0.0(@sveltejs/vite-plugin-svelte@4.0.0(svelte@5.0.2)(vite@5.4.11(@types/node@18.15.10)))(svelte@5.0.2)(vite@5.4.11(@types/node@18.15.10))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte': 4.0.0(svelte@5.0.2)(vite@5.4.9(@types/node@18.15.10))
+      '@sveltejs/vite-plugin-svelte': 4.0.0(svelte@5.0.2)(vite@5.4.11(@types/node@18.15.10))
       debug: 4.3.7(supports-color@8.1.1)
       svelte: 5.0.2
-      vite: 5.4.9(@types/node@18.15.10)
+      vite: 5.4.11(@types/node@18.15.10)
     transitivePeerDependencies:
       - supports-color
 
-  '@sveltejs/vite-plugin-svelte@4.0.0(svelte@5.0.2)(vite@5.4.9(@types/node@18.15.10))':
+  '@sveltejs/vite-plugin-svelte@4.0.0(svelte@5.0.2)(vite@5.4.11(@types/node@18.15.10))':
     dependencies:
-      '@sveltejs/vite-plugin-svelte-inspector': 3.0.0(@sveltejs/vite-plugin-svelte@4.0.0(svelte@5.0.2)(vite@5.4.9(@types/node@18.15.10)))(svelte@5.0.2)(vite@5.4.9(@types/node@18.15.10))
+      '@sveltejs/vite-plugin-svelte-inspector': 3.0.0(@sveltejs/vite-plugin-svelte@4.0.0(svelte@5.0.2)(vite@5.4.11(@types/node@18.15.10)))(svelte@5.0.2)(vite@5.4.11(@types/node@18.15.10))
       debug: 4.3.7(supports-color@8.1.1)
       deepmerge: 4.3.1
       kleur: 4.1.5
       magic-string: 0.30.12
       svelte: 5.0.2
-      vite: 5.4.9(@types/node@18.15.10)
-      vitefu: 1.0.3(vite@5.4.9(@types/node@18.15.10))
+      vite: 5.4.11(@types/node@18.15.10)
+      vitefu: 1.0.3(vite@5.4.11(@types/node@18.15.10))
     transitivePeerDependencies:
       - supports-color
 
@@ -6079,7 +5737,7 @@ snapshots:
       '@typescript-eslint/types': 8.4.0
       eslint-visitor-keys: 3.4.3
 
-  '@vitejs/plugin-react@2.2.0(vite@3.2.5(@types/node@18.15.10))':
+  '@vitejs/plugin-react@2.2.0(vite@5.4.11(@types/node@18.15.10))':
     dependencies:
       '@babel/core': 7.24.6
       '@babel/plugin-transform-react-jsx': 7.21.0(@babel/core@7.24.6)
@@ -6088,38 +5746,38 @@ snapshots:
       '@babel/plugin-transform-react-jsx-source': 7.19.6(@babel/core@7.24.6)
       magic-string: 0.26.7
       react-refresh: 0.14.0
-      vite: 3.2.5(@types/node@18.15.10)
+      vite: 5.4.11(@types/node@18.15.10)
     transitivePeerDependencies:
       - supports-color
 
-  '@vitejs/plugin-react@4.0.0(vite@5.4.9(@types/node@18.15.10))':
+  '@vitejs/plugin-react@4.0.0(vite@5.4.11(@types/node@18.15.10))':
     dependencies:
       '@babel/core': 7.24.6
       '@babel/plugin-transform-react-jsx-self': 7.21.0(@babel/core@7.24.6)
       '@babel/plugin-transform-react-jsx-source': 7.19.6(@babel/core@7.24.6)
       react-refresh: 0.14.0
-      vite: 5.4.9(@types/node@18.15.10)
+      vite: 5.4.11(@types/node@18.15.10)
     transitivePeerDependencies:
       - supports-color
 
-  '@vitejs/plugin-vue-jsx@4.0.0(vite@5.4.9(@types/node@18.15.10))(vue@3.5.12(typescript@5.4.5))':
+  '@vitejs/plugin-vue-jsx@4.0.0(vite@5.4.11(@types/node@18.15.10))(vue@3.5.12(typescript@5.4.5))':
     dependencies:
       '@babel/core': 7.24.6
       '@babel/plugin-transform-typescript': 7.24.6(@babel/core@7.24.6)
       '@vue/babel-plugin-jsx': 1.2.2(@babel/core@7.24.6)
-      vite: 5.4.9(@types/node@18.15.10)
+      vite: 5.4.11(@types/node@18.15.10)
       vue: 3.5.12(typescript@5.4.5)
     transitivePeerDependencies:
       - supports-color
 
-  '@vitejs/plugin-vue@3.2.0(vite@3.2.5(@types/node@18.15.10))(vue@3.5.12(typescript@4.9.5))':
+  '@vitejs/plugin-vue@3.2.0(vite@5.4.11(@types/node@18.15.10))(vue@3.5.12(typescript@4.9.5))':
     dependencies:
-      vite: 3.2.5(@types/node@18.15.10)
+      vite: 5.4.11(@types/node@18.15.10)
       vue: 3.5.12(typescript@4.9.5)
 
-  '@vitejs/plugin-vue@5.0.0(vite@5.4.9(@types/node@18.15.10))(vue@3.5.12(typescript@5.4.5))':
+  '@vitejs/plugin-vue@5.0.0(vite@5.4.11(@types/node@18.15.10))(vue@3.5.12(typescript@5.4.5))':
     dependencies:
-      vite: 5.4.9(@types/node@18.15.10)
+      vite: 5.4.11(@types/node@18.15.10)
       vue: 3.5.12(typescript@5.4.5)
 
   '@vitest/eslint-plugin@1.1.0(@typescript-eslint/utils@8.4.0(eslint@9.3.0)(typescript@5.4.5))(eslint@9.3.0)(typescript@5.4.5)':
@@ -6938,116 +6596,6 @@ snapshots:
       is-callable: 1.2.7
       is-date-object: 1.0.5
       is-symbol: 1.0.4
-
-  esbuild-android-64@0.15.18:
-    optional: true
-
-  esbuild-android-arm64@0.15.18:
-    optional: true
-
-  esbuild-darwin-64@0.15.18:
-    optional: true
-
-  esbuild-darwin-arm64@0.15.18:
-    optional: true
-
-  esbuild-freebsd-64@0.15.18:
-    optional: true
-
-  esbuild-freebsd-arm64@0.15.18:
-    optional: true
-
-  esbuild-linux-32@0.15.18:
-    optional: true
-
-  esbuild-linux-64@0.15.18:
-    optional: true
-
-  esbuild-linux-arm64@0.15.18:
-    optional: true
-
-  esbuild-linux-arm@0.15.18:
-    optional: true
-
-  esbuild-linux-mips64le@0.15.18:
-    optional: true
-
-  esbuild-linux-ppc64le@0.15.18:
-    optional: true
-
-  esbuild-linux-riscv64@0.15.18:
-    optional: true
-
-  esbuild-linux-s390x@0.15.18:
-    optional: true
-
-  esbuild-netbsd-64@0.15.18:
-    optional: true
-
-  esbuild-openbsd-64@0.15.18:
-    optional: true
-
-  esbuild-sunos-64@0.15.18:
-    optional: true
-
-  esbuild-windows-32@0.15.18:
-    optional: true
-
-  esbuild-windows-64@0.15.18:
-    optional: true
-
-  esbuild-windows-arm64@0.15.18:
-    optional: true
-
-  esbuild@0.15.18:
-    optionalDependencies:
-      '@esbuild/android-arm': 0.15.18
-      '@esbuild/linux-loong64': 0.15.18
-      esbuild-android-64: 0.15.18
-      esbuild-android-arm64: 0.15.18
-      esbuild-darwin-64: 0.15.18
-      esbuild-darwin-arm64: 0.15.18
-      esbuild-freebsd-64: 0.15.18
-      esbuild-freebsd-arm64: 0.15.18
-      esbuild-linux-32: 0.15.18
-      esbuild-linux-64: 0.15.18
-      esbuild-linux-arm: 0.15.18
-      esbuild-linux-arm64: 0.15.18
-      esbuild-linux-mips64le: 0.15.18
-      esbuild-linux-ppc64le: 0.15.18
-      esbuild-linux-riscv64: 0.15.18
-      esbuild-linux-s390x: 0.15.18
-      esbuild-netbsd-64: 0.15.18
-      esbuild-openbsd-64: 0.15.18
-      esbuild-sunos-64: 0.15.18
-      esbuild-windows-32: 0.15.18
-      esbuild-windows-64: 0.15.18
-      esbuild-windows-arm64: 0.15.18
-
-  esbuild@0.17.14:
-    optionalDependencies:
-      '@esbuild/android-arm': 0.17.14
-      '@esbuild/android-arm64': 0.17.14
-      '@esbuild/android-x64': 0.17.14
-      '@esbuild/darwin-arm64': 0.17.14
-      '@esbuild/darwin-x64': 0.17.14
-      '@esbuild/freebsd-arm64': 0.17.14
-      '@esbuild/freebsd-x64': 0.17.14
-      '@esbuild/linux-arm': 0.17.14
-      '@esbuild/linux-arm64': 0.17.14
-      '@esbuild/linux-ia32': 0.17.14
-      '@esbuild/linux-loong64': 0.17.14
-      '@esbuild/linux-mips64el': 0.17.14
-      '@esbuild/linux-ppc64': 0.17.14
-      '@esbuild/linux-riscv64': 0.17.14
-      '@esbuild/linux-s390x': 0.17.14
-      '@esbuild/linux-x64': 0.17.14
-      '@esbuild/netbsd-x64': 0.17.14
-      '@esbuild/openbsd-x64': 0.17.14
-      '@esbuild/sunos-x64': 0.17.14
-      '@esbuild/win32-arm64': 0.17.14
-      '@esbuild/win32-ia32': 0.17.14
-      '@esbuild/win32-x64': 0.17.14
 
   esbuild@0.21.5:
     optionalDependencies:
@@ -8299,6 +7847,8 @@ snapshots:
 
   nanoid@3.3.7: {}
 
+  nanoid@4.0.2: {}
+
   nanoid@5.0.1: {}
 
   natural-compare-lite@1.4.0: {}
@@ -8545,86 +8095,86 @@ snapshots:
 
   prosemirror-commands@1.5.1:
     dependencies:
-      prosemirror-model: 1.19.0
-      prosemirror-state: 1.4.2
+      prosemirror-model: 1.24.0
+      prosemirror-state: 1.4.3
       prosemirror-transform: 1.7.1
 
   prosemirror-dropcursor@1.8.0:
     dependencies:
-      prosemirror-state: 1.4.2
+      prosemirror-state: 1.4.3
       prosemirror-transform: 1.7.1
-      prosemirror-view: 1.30.2
+      prosemirror-view: 1.37.0
 
-  prosemirror-example-setup@1.2.1:
+  prosemirror-example-setup@1.2.3:
     dependencies:
       prosemirror-commands: 1.5.1
       prosemirror-dropcursor: 1.8.0
       prosemirror-gapcursor: 1.3.1
       prosemirror-history: 1.3.0
       prosemirror-inputrules: 1.2.0
-      prosemirror-keymap: 1.2.1
-      prosemirror-menu: 1.2.1
+      prosemirror-keymap: 1.2.2
+      prosemirror-menu: 1.2.4
       prosemirror-schema-list: 1.2.2
-      prosemirror-state: 1.4.2
+      prosemirror-state: 1.4.3
 
   prosemirror-gapcursor@1.3.1:
     dependencies:
-      prosemirror-keymap: 1.2.1
-      prosemirror-model: 1.19.0
-      prosemirror-state: 1.4.2
-      prosemirror-view: 1.30.2
+      prosemirror-keymap: 1.2.2
+      prosemirror-model: 1.24.0
+      prosemirror-state: 1.4.3
+      prosemirror-view: 1.37.0
 
   prosemirror-history@1.3.0:
     dependencies:
-      prosemirror-state: 1.4.2
+      prosemirror-state: 1.4.3
       prosemirror-transform: 1.7.1
       rope-sequence: 1.3.3
 
   prosemirror-inputrules@1.2.0:
     dependencies:
-      prosemirror-state: 1.4.2
+      prosemirror-state: 1.4.3
       prosemirror-transform: 1.7.1
 
-  prosemirror-keymap@1.2.1:
+  prosemirror-keymap@1.2.2:
     dependencies:
-      prosemirror-state: 1.4.2
+      prosemirror-state: 1.4.3
       w3c-keyname: 2.2.6
 
-  prosemirror-menu@1.2.1:
+  prosemirror-menu@1.2.4:
     dependencies:
       crelt: 1.0.5
       prosemirror-commands: 1.5.1
       prosemirror-history: 1.3.0
-      prosemirror-state: 1.4.2
+      prosemirror-state: 1.4.3
 
-  prosemirror-model@1.19.0:
+  prosemirror-model@1.24.0:
     dependencies:
       orderedmap: 2.1.0
 
-  prosemirror-schema-basic@1.2.1:
+  prosemirror-schema-basic@1.2.3:
     dependencies:
-      prosemirror-model: 1.19.0
+      prosemirror-model: 1.24.0
 
   prosemirror-schema-list@1.2.2:
     dependencies:
-      prosemirror-model: 1.19.0
-      prosemirror-state: 1.4.2
+      prosemirror-model: 1.24.0
+      prosemirror-state: 1.4.3
       prosemirror-transform: 1.7.1
 
-  prosemirror-state@1.4.2:
+  prosemirror-state@1.4.3:
     dependencies:
-      prosemirror-model: 1.19.0
+      prosemirror-model: 1.24.0
       prosemirror-transform: 1.7.1
-      prosemirror-view: 1.30.2
+      prosemirror-view: 1.37.0
 
   prosemirror-transform@1.7.1:
     dependencies:
-      prosemirror-model: 1.19.0
+      prosemirror-model: 1.24.0
 
-  prosemirror-view@1.30.2:
+  prosemirror-view@1.37.0:
     dependencies:
-      prosemirror-model: 1.19.0
-      prosemirror-state: 1.4.2
+      prosemirror-model: 1.24.0
+      prosemirror-state: 1.4.3
       prosemirror-transform: 1.7.1
 
   proxy-from-env@1.0.0: {}
@@ -8776,14 +8326,6 @@ snapshots:
   reusify@1.0.4: {}
 
   rfdc@1.3.0: {}
-
-  rollup@2.79.1:
-    optionalDependencies:
-      fsevents: 2.3.3
-
-  rollup@3.20.2:
-    optionalDependencies:
-      fsevents: 2.3.3
 
   rollup@4.24.0:
     dependencies:
@@ -8943,7 +8485,7 @@ snapshots:
       wcwidth: 1.0.1
       yargs: 15.4.1
 
-  solid-devtools@0.29.3(solid-js@1.8.22)(vite@5.4.9(@types/node@18.15.10)):
+  solid-devtools@0.29.3(solid-js@1.8.22)(vite@5.4.11(@types/node@18.15.10)):
     dependencies:
       '@babel/core': 7.24.6
       '@babel/plugin-syntax-typescript': 7.24.6(@babel/core@7.24.6)
@@ -8952,7 +8494,7 @@ snapshots:
       '@solid-devtools/shared': 0.13.2(solid-js@1.8.22)
       solid-js: 1.8.22
     optionalDependencies:
-      vite: 5.4.9(@types/node@18.15.10)
+      vite: 5.4.11(@types/node@18.15.10)
     transitivePeerDependencies:
       - supports-color
 
@@ -9338,7 +8880,7 @@ snapshots:
       core-util-is: 1.0.2
       extsprintf: 1.3.0
 
-  vite-plugin-solid@2.10.2(solid-js@1.8.22)(vite@5.4.9(@types/node@18.15.10)):
+  vite-plugin-solid@2.10.2(solid-js@1.8.22)(vite@5.4.11(@types/node@18.15.10)):
     dependencies:
       '@babel/core': 7.24.6
       '@types/babel__core': 7.20.5
@@ -9346,32 +8888,12 @@ snapshots:
       merge-anything: 5.1.7
       solid-js: 1.8.22
       solid-refresh: 0.6.3(solid-js@1.8.22)
-      vite: 5.4.9(@types/node@18.15.10)
-      vitefu: 0.2.5(vite@5.4.9(@types/node@18.15.10))
+      vite: 5.4.11(@types/node@18.15.10)
+      vitefu: 0.2.5(vite@5.4.11(@types/node@18.15.10))
     transitivePeerDependencies:
       - supports-color
 
-  vite@3.2.5(@types/node@18.15.10):
-    dependencies:
-      esbuild: 0.15.18
-      postcss: 8.4.47
-      resolve: 1.22.8
-      rollup: 2.79.1
-    optionalDependencies:
-      '@types/node': 18.15.10
-      fsevents: 2.3.3
-
-  vite@4.2.1(@types/node@18.15.10):
-    dependencies:
-      esbuild: 0.17.14
-      postcss: 8.4.47
-      resolve: 1.22.8
-      rollup: 3.20.2
-    optionalDependencies:
-      '@types/node': 18.15.10
-      fsevents: 2.3.3
-
-  vite@5.4.9(@types/node@18.15.10):
+  vite@5.4.11(@types/node@18.15.10):
     dependencies:
       esbuild: 0.21.5
       postcss: 8.4.47
@@ -9380,13 +8902,13 @@ snapshots:
       '@types/node': 18.15.10
       fsevents: 2.3.3
 
-  vitefu@0.2.5(vite@5.4.9(@types/node@18.15.10)):
+  vitefu@0.2.5(vite@5.4.11(@types/node@18.15.10)):
     optionalDependencies:
-      vite: 5.4.9(@types/node@18.15.10)
+      vite: 5.4.11(@types/node@18.15.10)
 
-  vitefu@1.0.3(vite@5.4.9(@types/node@18.15.10)):
+  vitefu@1.0.3(vite@5.4.11(@types/node@18.15.10)):
     optionalDependencies:
-      vite: 5.4.9(@types/node@18.15.10)
+      vite: 5.4.11(@types/node@18.15.10)
 
   vue-eslint-parser@9.4.3(eslint@9.3.0):
     dependencies:

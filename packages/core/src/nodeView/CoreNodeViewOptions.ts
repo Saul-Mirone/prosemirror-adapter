@@ -1,5 +1,5 @@
 import type { Node } from 'prosemirror-model'
-import type { Decoration, DecorationSource, EditorView } from 'prosemirror-view'
+import type { Decoration, DecorationSource, EditorView, ViewMutationRecord } from 'prosemirror-view'
 
 export type NodeViewDOMSpec = string | HTMLElement | ((node: Node) => HTMLElement)
 
@@ -13,7 +13,7 @@ export interface CoreNodeViewUserOptions<Component> {
 
   // Overrides
   update?: (node: Node, decorations: readonly Decoration[], innerDecorations: DecorationSource) => boolean | void
-  ignoreMutation?: (mutation: MutationRecord) => boolean | void
+  ignoreMutation?: (mutation: ViewMutationRecord) => boolean | void
   selectNode?: () => void
   deselectNode?: () => void
   setSelection?: (anchor: number, head: number, root: Document | ShadowRoot) => void
