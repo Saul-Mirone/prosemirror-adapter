@@ -14,7 +14,7 @@ jobs:
 
       - uses: ./.github/actions/setup
 
-      - name: create versions or publish to npm registry
+      - name: Create versions or publish to npm registry
         uses: changesets/action@v1
         with:
           publish: pnpm release
@@ -23,7 +23,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: export screenshots (on failure only)
+      - name: Export screenshots (on failure only)
         uses: actions/upload-artifact@v4.4.3
         if: ${{ failure() }}
         with:
@@ -31,7 +31,7 @@ jobs:
           path: e2e/cypress/screenshots
           retention-days: 7
 
-      - name: export screen recordings (on failure only)
+      - name: Export screen recordings (on failure only)
         uses: actions/upload-artifact@v4.4.3
         if: ${{ failure() }}
         with:
