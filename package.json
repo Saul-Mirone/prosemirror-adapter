@@ -15,7 +15,8 @@
     "changeset": "changeset",
     "lint": "eslint .",
     "release": "changeset publish",
-    "prepare": "husky"
+    "prepare": "husky",
+    "install:cypress": "pnpm --filter=e2e install:cypress"
   },
   "dependencies": {
     "@antfu/eslint-config": "^3.0.0",
