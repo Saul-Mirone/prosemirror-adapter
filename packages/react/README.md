@@ -273,7 +273,7 @@ interface NodeViewFactoryOptions {
 
   // Overrides: this part is equal to properties of [NodeView](https://prosemirror.net/docs/ref/#view.NodeView)
   update?: (node: Node, decorations: readonly Decoration[], innerDecorations: DecorationSource) => boolean | void
-  ignoreMutation?: (mutation: MutationRecord) => boolean | void
+  ignoreMutation?: (mutation: ViewMutationRecord) => boolean | void
   selectNode?: () => void
   deselectNode?: () => void
   setSelection?: (anchor: number, head: number, root: Document | ShadowRoot) => void

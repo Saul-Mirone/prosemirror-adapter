@@ -15,7 +15,8 @@
     "changeset": "changeset",
     "lint": "eslint .",
     "release": "changeset publish",
-    "prepare": "husky"
+    "prepare": "husky",
+    "install:cypress": "pnpm --filter=e2e install:cypress"
   },
   "dependencies": {
     "@antfu/eslint-config": "^3.0.0",
@@ -34,10 +35,10 @@
     "git-cz": "^4.9.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.0.0",
-    "prosemirror-keymap": "^1.2.1",
-    "prosemirror-model": "^1.19.0",
-    "prosemirror-state": "^1.4.2",
-    "prosemirror-view": "^1.30.2",
+    "prosemirror-keymap": "^1.2.2",
+    "prosemirror-model": "^1.24.0",
+    "prosemirror-state": "^1.4.3",
+    "prosemirror-view": "^1.37.0",
     "tslib": "^2.5.0",
     "typescript": "^5.4.5",
     "vite": "^5.2.11"

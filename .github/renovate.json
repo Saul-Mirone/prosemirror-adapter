@@ -1,3 +1,4 @@
 {
-  "extends": ["config:base", ":preserveSemverRanges", "group:all"]
+  "dependencyDashboard": true,
+  "extends": ["github>ocavue/config-renovate"]
 }
