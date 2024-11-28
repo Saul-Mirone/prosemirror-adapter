@@ -1,4 +1,4 @@
-import type { MarkView, MarkViewConstructor } from 'prosemirror-view'
+import type { MarkViewConstructor } from 'prosemirror-view'
 import { useCallback } from 'react'
 import type { ReactRendererResult } from '../ReactRenderer'
 import { ReactMarkView } from './ReactMarkView'
