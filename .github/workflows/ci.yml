@@ -81,7 +81,7 @@ jobs:
           publish: pnpm release
           commit: 'ci(changeset): release prosemirror-adapter'
         env:
-          GITHUB_TOKEN: ${{ secrets.CHANGESET_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: export screenshots (on failure only)
