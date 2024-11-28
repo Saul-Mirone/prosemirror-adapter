@@ -1,5 +1,5 @@
 import type { Mark } from 'prosemirror-model'
-import type { EditorView } from 'prosemirror-view'
+import type { EditorView, ViewMutationRecord } from 'prosemirror-view'
 
 import type {
   CoreMarkViewSpec,
@@ -70,11 +70,10 @@ export class CoreMarkView<ComponentType> implements MarkView {
     return this.options.component
   }
 
-  shouldIgnoreMutation: (mutation: MutationRecord) => boolean = (mutation) => {
+  shouldIgnoreMutation: (mutation: ViewMutationRecord) => boolean = (mutation) => {
     if (!this.dom || !this.contentDOM)
       return true
 
-    // @ts-expect-error: TODO: I will fix this on the PM side.
     if (mutation.type === 'selection')
       return false
 
@@ -87,7 +86,7 @@ export class CoreMarkView<ComponentType> implements MarkView {
     return true
   }
 
-  ignoreMutation: (mutation: MutationRecord) => boolean = (mutation) => {
+  ignoreMutation: (mutation: ViewMutationRecord) => boolean = (mutation) => {
     if (!this.dom || !this.contentDOM)
       return true
 

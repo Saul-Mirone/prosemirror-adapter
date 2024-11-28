@@ -1,5 +1,5 @@
 import type { Mark } from 'prosemirror-model'
-import type { EditorView } from 'prosemirror-view'
+import type { EditorView, ViewMutationRecord } from 'prosemirror-view'
 
 export type MarkViewDOMSpec = string | HTMLElement | ((mark: Mark) => HTMLElement)
 
@@ -12,7 +12,7 @@ export interface CoreMarkViewUserOptions<Component> {
   component: Component
 
   // Overrides
-  ignoreMutation?: (mutation: MutationRecord) => boolean | void
+  ignoreMutation?: (mutation: ViewMutationRecord) => boolean | void
   destroy?: () => void
 }
 

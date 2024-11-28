@@ -109,7 +109,6 @@ export class CoreNodeView<ComponentType> implements NodeView {
     if (this.node.isLeaf || this.node.isAtom)
       return true
 
-    // @ts-expect-error: TODO: I will fix this on the PM side.
     if (mutation.type === 'selection')
       return false
 
