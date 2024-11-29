@@ -19,34 +19,15 @@ jobs:
       - name: Lint
         run: pnpm run lint
 
-      - name: Install cypress
-        run: pnpm run install:cypress
+      - name: Install browsers
+        run: pnpm run test:install
 
-      - name: Setup firefox
-        uses: browser-actions/setup-firefox@latest
-        with:
-          firefox-version: latest-esr
+      - name: Run e2e tests
+        run: pnpm run test
 
-      - name: Run e2e test on chrome
-        uses: cypress-io/github-action@v6
-        env:
-          CYPRESS_SERVER_PORT: 7000
-          CYPRESS_PORT: 8000
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
         with:
-          install: false
-          working-directory: e2e
-          start: pnpm exec vite preview --port 7000 --host
-          wait-on: 'http://localhost:7000'
-          browser: chrome
-
-      - name: Run e2e test on firefox
-        uses: cypress-io/github-action@v6
-        env:
-          CYPRESS_SERVER_PORT: 7001
-          CYPRESS_PORT: 8000
-        with:
-          install: false
-          working-directory: e2e
-          start: pnpm exec vite preview --port 7001 --host
-          wait-on: 'http://localhost:7001'
-          browser: firefox
+          name: playwright-report
+          path: e2e/playwright-report/
+          retention-days: 7

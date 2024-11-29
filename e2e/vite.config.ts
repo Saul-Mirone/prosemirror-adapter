@@ -7,6 +7,12 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   root: 'src',
+  server: {
+    port: 7001,
+  },
+  preview: {
+    port: 7001,
+  },
   plugins: [
     vue(),
     svelte(),
