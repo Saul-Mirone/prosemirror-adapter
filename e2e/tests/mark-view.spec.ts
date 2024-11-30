@@ -24,4 +24,4 @@ testAll(() => {
     await locator.hover()
     await expect(locator).toContainText('hover count: 2')
   })
-}, ['react'])
+}, /* TODO: remove this once we have implemented mark view for other frameworks */ ['react'])

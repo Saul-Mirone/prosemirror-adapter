@@ -36,4 +36,4 @@ testAll(() => {
     await page.keyboard.press('ControlOrMeta+[')
     await expect(h5).toBeVisible()
   })
-}, /* TODO: remove this once we have implemented mark view for other frameworks */ ['react'])
+})
