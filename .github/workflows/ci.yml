@@ -31,3 +31,16 @@ jobs:
           name: playwright-report
           path: e2e/playwright-report/
           retention-days: 7
+
+  preview-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ./.github/actions/setup
+
+
+      - name: Publish snapshot packages
+        if: ${{ github.event_name == 'pull_request' }}
+        run: >
+          ./node_modules/.bin/pkg-pr-new publish --pnpm './packages/*'

@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@antfu/eslint-config": "^3.0.0",
+    "pkg-pr-new": "^0.0.35",
     "@changesets/cli": "^2.26.1",
     "@commitlint/cli": "^19.0.0",
     "@commitlint/config-conventional": "^19.0.0",
