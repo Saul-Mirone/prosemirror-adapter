@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useNodeViewFactory, usePluginViewFactory, useWidgetViewFactory } from '@prosemirror-adapter/vue'
-import type { VNodeRef } from 'vue'
+import { ref, watchEffect } from 'vue'
 import { Plugin } from 'prosemirror-state'
 import { DecorationSet } from 'prosemirror-view'
 import { createEditorView } from '../createEditorView'
@@ -18,12 +18,15 @@ const getHashWidget = widgetViewFactory({
   component: Hashes,
 })
 
-const editorRef: VNodeRef = (element) => {
-  const el = element as HTMLElement
-  if (!el || el.firstChild)
-    return
+const editorRef = ref<HTMLDivElement | null>(null)
 
-  createEditorView(el, {
+watchEffect((onCleanup) => {
+  const el = editorRef.value
+  if (!el) {
+    return 
+  }
+
+  const view = createEditorView(el, {
     paragraph: nodeViewFactory({
       component: Paragraph,
       as: 'div',
@@ -56,11 +59,15 @@ const editorRef: VNodeRef = (element) => {
       },
     }),
   ])
-}
+
+  onCleanup(() => {
+    view.destroy()
+  })
+})
 </script>
 
 <template>
-  <div :ref="editorRef" class="editor" />
+  <div ref="editorRef" class="editor" />
 </template>
 
 <style>
@@ -72,6 +79,7 @@ const editorRef: VNodeRef = (element) => {
     border: 2px solid rgba(0, 0, 0, 0.2);
     padding: 5px 0;
     margin-bottom: 23px;
+    position: relative;
 }
 
 .ProseMirror p:first-child,
