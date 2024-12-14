@@ -6,7 +6,7 @@ import type { Writable } from 'svelte/store'
 import type { Obj2Map } from '../types'
 import type { SveltePluginViewUserOptions } from './SveltePluginViewOptions'
 
-export type PluginViewContentRef = (node: HTMLElement | null) => void
+export type PluginViewContentRef = (element: HTMLElement | null) => void
 
 export interface PluginViewContext {
   view: Writable<EditorView>

@@ -5,7 +5,7 @@ import type { InjectionKey, ShallowRef } from 'vue'
 import { inject } from 'vue'
 import type { VuePluginViewUserOptions } from './VuePluginViewOptions'
 
-export type PluginViewContentRef = (node: HTMLElement | null) => void
+export type PluginViewContentRef = (element: HTMLElement | null) => void
 
 export interface PluginViewContext {
   view: ShallowRef<EditorView>

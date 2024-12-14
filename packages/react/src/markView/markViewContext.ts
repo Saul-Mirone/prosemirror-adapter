@@ -3,7 +3,7 @@ import type { EditorView, MarkViewConstructor } from 'prosemirror-view'
 import { createContext, useContext } from 'react'
 import type { ReactMarkViewUserOptions } from './ReactMarkViewOptions'
 
-export type MarkViewContentRef = (node: HTMLElement | null) => void
+export type MarkViewContentRef = (element: HTMLElement | null) => void
 
 export interface MarkViewContext {
   // won't change

@@ -7,7 +7,7 @@ import type { SvelteNodeViewUserOptions } from './SvelteNodeViewOptions'
 
 export interface NodeViewContext {
   // won't change
-  contentRef: (node: HTMLElement | null) => void
+  contentRef: (element: HTMLElement | null) => void
   view: EditorView
   getPos: () => number | undefined
   setAttrs: (attrs: Attrs) => void

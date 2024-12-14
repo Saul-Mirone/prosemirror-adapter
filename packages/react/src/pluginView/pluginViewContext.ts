@@ -4,7 +4,7 @@ import type { EditorView } from 'prosemirror-view'
 import { createContext, useContext } from 'react'
 import type { ReactPluginViewUserOptions } from './ReactPluginViewOptions'
 
-export type PluginViewContentRef = (node: HTMLElement | null) => void
+export type PluginViewContentRef = (element: HTMLElement | null) => void
 
 export interface PluginViewContext {
   view: EditorView
