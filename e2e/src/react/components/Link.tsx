@@ -36,5 +36,12 @@ export function Link() {
     return () => clearInterval(interval)
   }, [])
 
-  return <a href={href} ref={contentRef} style={{ color }}></a>
+  return (
+    <a
+      href={href}
+      ref={contentRef}
+      style={{ color, transition: 'color 1s ease-in-out' }}
+    >
+    </a>
+  )
 }
