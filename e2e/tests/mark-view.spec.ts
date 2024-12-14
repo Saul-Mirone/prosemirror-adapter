@@ -34,5 +34,5 @@ testAll(
     })
   },
   /* TODO: remove this once we have implemented mark view for other frameworks */
-  ['react', 'solid'],
+  ['react', 'solid', 'vue'],
 )

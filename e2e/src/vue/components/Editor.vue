@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useNodeViewFactory, usePluginViewFactory, useWidgetViewFactory } from '@prosemirror-adapter/vue'
+import { useMarkViewFactory, useNodeViewFactory, usePluginViewFactory, useWidgetViewFactory } from '@prosemirror-adapter/vue'
 import { ref, watchEffect } from 'vue'
 import { Plugin } from 'prosemirror-state'
 import { DecorationSet } from 'prosemirror-view'
@@ -8,8 +8,10 @@ import Paragraph from './Paragraph.vue'
 import Heading from './Heading.vue'
 import Size from './Size.vue'
 import Hashes from './Hashes.vue'
+import Link from './Link.vue'
 
 const nodeViewFactory = useNodeViewFactory()
+const markViewFactory = useMarkViewFactory()
 const pluginViewFactory = usePluginViewFactory()
 const widgetViewFactory = useWidgetViewFactory()
 
@@ -35,7 +37,13 @@ watchEffect((onCleanup) => {
     heading: nodeViewFactory({
       component: Heading,
     }),
-  }, {}, [
+  }, {
+    link: markViewFactory({
+      component: Link,
+      as: 'span',
+      contentAs: 'span',
+    }),
+  }, [
     new Plugin({
       view: pluginViewFactory({
         component: Size,
