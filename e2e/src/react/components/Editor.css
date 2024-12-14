@@ -26,13 +26,3 @@
 }
 
 .ProseMirror p { margin-bottom: 1em }
-
-.link-with-hover-count::after {
-    display: inline-flex;
-    content: var(--hover-count);
-    padding: 0 6px;
-    background: rgba(123, 123, 123, 0.25);
-    border-radius: 4px;
-    margin: 0 4px;
-  }
-  
