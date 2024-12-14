@@ -1,5 +1,6 @@
 import {
   ShallowLitElement,
+  useMarkViewFactory,
   useNodeViewFactory,
   usePluginViewFactory,
   useWidgetViewFactory,
@@ -16,10 +17,12 @@ import { Hashes } from './Hashes'
 import { Heading } from './Heading'
 import { Paragraph } from './Paragraph'
 import { Size } from './Size'
+import { Link } from './Link'
 
 @customElement('my-editor')
 export class MyEditor extends ShallowLitElement {
   nodeViewFactory = useNodeViewFactory(this)
+  markViewFactory = useMarkViewFactory(this)
   pluginViewFactory = usePluginViewFactory(this)
   widgetViewFactory = useWidgetViewFactory(this)
 
@@ -30,6 +33,7 @@ export class MyEditor extends ShallowLitElement {
       return
 
     const nodeViewFactory = this.nodeViewFactory.value!
+    const markViewFactory = this.markViewFactory.value!
     const pluginViewFactory = this.pluginViewFactory.value!
     const widgetViewFactory = this.widgetViewFactory.value!
     const getHashWidget = widgetViewFactory({
@@ -46,7 +50,13 @@ export class MyEditor extends ShallowLitElement {
       heading: nodeViewFactory({
         component: Heading,
       }),
-    }, {}, [
+    }, {
+      link: markViewFactory({
+        component: Link,
+        as: 'span',
+        contentAs: 'span',
+      }),
+    }, [
       new Plugin({
         view: pluginViewFactory({
           component: Size,
