@@ -33,6 +33,4 @@ testAll(
       expect(colors.size).toBeGreaterThan(2)
     })
   },
-  /* TODO: remove this once we have implemented mark view for other frameworks */
-  ['react', 'solid', 'vue', 'svelte'],
 )
