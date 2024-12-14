@@ -12,7 +12,7 @@ export function Link() {
       onPointerEnter={() => setCount(count => count + 1)}
       style={{
         // @ts-expect-error: CSS custom properties are not typed
-        '--hover-count': JSON.stringify(String(count)),
+        '--hover-count': `"${count}"`,
       }}
       className="link-with-hover-count"
     >
