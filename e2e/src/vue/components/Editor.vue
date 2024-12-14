@@ -40,8 +40,6 @@ watchEffect((onCleanup) => {
   }, {
     link: markViewFactory({
       component: Link,
-      as: 'span',
-      contentAs: 'span',
     }),
   }, [
     new Plugin({

@@ -53,8 +53,6 @@ export class MyEditor extends ShallowLitElement {
     }, {
       link: markViewFactory({
         component: Link,
-        as: 'span',
-        contentAs: 'span',
       }),
     }, [
       new Plugin({

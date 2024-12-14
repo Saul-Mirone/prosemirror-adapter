@@ -9,7 +9,7 @@ import type {
 
 export class CoreMarkView<ComponentType> implements MarkView {
   dom: HTMLElement
-  contentDOM: HTMLElement | undefined
+  contentDOM: HTMLElement
   mark: Mark
   view: EditorView
   inline: boolean
@@ -46,14 +46,10 @@ export class CoreMarkView<ComponentType> implements MarkView {
     this.options = options
 
     this.dom = this.createDOM(options.as)
-    this.contentDOM = options.contentAs
-      ? this.createContentDOM(options.contentAs)
-      : undefined
+    this.contentDOM = this.createContentDOM(options.contentAs)
     this.dom.setAttribute('data-mark-view-root', 'true')
-    if (this.contentDOM) {
-      this.contentDOM.setAttribute('data-mark-view-content', 'true')
-      this.contentDOM.style.whiteSpace = 'inherit'
-    }
+    this.contentDOM.setAttribute('data-mark-view-content', 'true')
+    this.contentDOM.style.whiteSpace = 'inherit'
   }
 
   get component() {
@@ -96,6 +92,6 @@ export class CoreMarkView<ComponentType> implements MarkView {
   destroy: () => void = () => {
     this.options.destroy?.()
     this.dom.remove()
-    this.contentDOM?.remove()
+    this.contentDOM.remove()
   }
 }

@@ -47,8 +47,6 @@ export const Editor: FC = () => {
     }, {
       link: markViewFactory({
         component: Link,
-        as: 'span',
-        contentAs: 'span',
       }),
     }, [
       new Plugin({
