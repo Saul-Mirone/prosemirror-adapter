@@ -1,22 +1,40 @@
+import { useEffect, useState } from 'react'
 import { useMarkViewContext } from '@prosemirror-adapter/react'
-import { useState } from 'react'
+
+const colors = [
+  '#f06292',
+  '#ba68c8',
+  '#9575cd',
+  '#7986cb',
+  '#64b5f6',
+  '#4fc3f7',
+  '#4dd0e1',
+  '#4db6ac',
+  '#81c784',
+  '#aed581',
+  '#ffb74d',
+  '#ffa726',
+  '#ff8a65',
+  '#d4e157',
+  '#ffd54f',
+  '#ffecb3',
+]
+
+function pickRandomColor() {
+  return colors[Math.floor(Math.random() * colors.length)]
+}
 
 export function Link() {
-  const { contentRef, mark } = useMarkViewContext()
-  const [count, setCount] = useState(0)
-
+  const [color, setColor] = useState(colors[0])
+  const { mark, contentRef } = useMarkViewContext()
   const href = mark.attrs.href as string
 
-  return (
-    <span
-      onPointerEnter={() => setCount(count => count + 1)}
-      style={{
-        // @ts-expect-error: CSS custom properties are not typed
-        '--hover-count': `"${count}"`,
-      }}
-      className="link-with-hover-count"
-    >
-      <a href={href} ref={contentRef}></a>
-    </span>
-  )
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setColor(pickRandomColor())
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [])
+
+  return <a href={href} ref={contentRef} style={{ color }}></a>
 }
