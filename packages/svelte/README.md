@@ -97,6 +97,100 @@ const editor = (element: HTMLElement) => {
 
 <summary>
 
+### Play with mark view
+
+</summary>
+
+In this section we will implement a mark view for links that changes color periodically.
+
+#### Build component for mark view
+
+```svelte
+<script lang="ts">
+import { onMount, onDestroy } from 'svelte'
+import { useMarkViewContext } from '@prosemirror-adapter/svelte'
+
+const colors = [
+  '#f06292', '#ba68c8', '#9575cd', '#7986cb', '#64b5f6',
+  '#4fc3f7', '#4dd0e1', '#4db6ac', '#81c784', '#aed581',
+  '#ffb74d', '#ffa726', '#ff8a65', '#d4e157', '#ffd54f',
+  '#ffecb3',
+]
+
+function pickRandomColor() {
+  return colors[Math.floor(Math.random() * colors.length)]
+}
+
+const { mark, contentRef } = useMarkViewContext()
+let color = colors[0]
+const href = $mark.attrs.href as string
+const title = $mark.attrs.title as string | null
+
+let interval: ReturnType<typeof setInterval>
+
+onMount(() => {
+  interval = setInterval(() => {
+    color = pickRandomColor()
+  }, 1000)
+})
+
+onDestroy(() => {
+  clearInterval(interval)
+})
+</script>
+
+<a
+  {href}
+  use:contentRef
+  style="color: {color}; transition: color 1s ease-in-out"
+  title={title || undefined}
+/>
+```
+
+#### Bind mark view components with prosemirror
+
+```svelte
+<script lang="ts">
+import { useMarkViewFactory } from '@prosemirror-adapter/svelte'
+import { Plugin } from 'prosemirror-state'
+import Link from './Link.svelte'
+
+const markViewFactory = useMarkViewFactory()
+
+function editorRef(element: HTMLElement) {
+  if (!element || element.firstChild)
+    return
+
+  const editorView = new EditorView(element, {
+    state: EditorState.create({
+      schema: YourProsemirrorSchema,
+      plugins: [
+        new Plugin({
+          props: {
+            markViews: {
+              link: markViewFactory({
+                component: Link,
+              }),
+            },
+          },
+        }),
+      ]
+    })
+  })
+}
+</script>
+
+<div class="editor" bind:this={editorRef} />
+```
+
+🚀 Congratulations! You have built your first svelte mark view with prosemirror-adapter.
+
+</details>
+
+<details>
+
+<summary>
+
 ### Play with plugin view
 
 </summary>
@@ -300,6 +394,54 @@ interface NodeViewContext {
 
   // Whether the node is selected.
   selected: Writable<boolean>
+}
+```
+
+</details>
+
+<details>
+
+<summary>
+
+### Mark view API
+
+</summary>
+
+#### useMarkViewFactory: () => (options: MarkViewFactoryOptions) => MarkView
+
+```ts
+type MarkViewDOMSpec = string | HTMLElement | ((mark: Mark) => HTMLElement)
+
+interface MarkViewFactoryOptions {
+  // Component
+  component: SvelteComponent
+
+  // The DOM element to use as the root node of the mark view
+  as?: MarkViewDOMSpec
+
+  // The DOM element that contains the content of the mark
+  contentAs?: MarkViewDOMSpec
+
+  // Called when the mark view is destroyed
+  destroy?: () => void
+}
+```
+
+#### useMarkViewContext: () => MarkViewContext
+
+```ts
+interface MarkViewContext {
+  // The DOM element that contains the content of the mark
+  contentRef: (node: HTMLElement) => void
+
+  // The prosemirror editor view
+  view: Writable<EditorView>
+
+  // The prosemirror mark for current mark view
+  mark: Writable<Mark>
+
+  // Whether the mark is inline 
+  inline: Writable<boolean>
 }
 ```
 
