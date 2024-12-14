@@ -28,6 +28,7 @@ function pickRandomColor() {
 const color = ref(colors[0])
 const { mark, contentRef } = useMarkViewContext()
 const href = computed(() => mark.value.attrs.href as string)
+const title = computed(() => mark.value.attrs.title as string | null)
 
 let interval: number
 
@@ -47,5 +48,6 @@ onUnmounted(() => {
     :href="href"
     :ref="contentRef"
     :style="{ color: color, transition: 'color 1s ease-in-out' }"
+    :title="title || undefined"
   />
 </template>

@@ -28,7 +28,7 @@ export function Link() {
   const [color, setColor] = createSignal(colors[0])
   const context = useMarkViewContext()
   const href = createMemo(() => context().mark.attrs.href as string)
-
+  const title = createMemo(() => context().mark.attrs.title as string | null)
   createEffect(() => {
     const interval = setInterval(() => {
       setColor(pickRandomColor())
@@ -39,6 +39,7 @@ export function Link() {
   return (
     <a
       href={href()}
+      title={title() || undefined}
       ref={context().contentRef}
       style={{ color: color(), transition: 'color 1s ease-in-out' }}
     >

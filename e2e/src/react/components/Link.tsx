@@ -28,6 +28,7 @@ export function Link() {
   const [color, setColor] = useState(colors[0])
   const { mark, contentRef } = useMarkViewContext()
   const href = mark.attrs.href as string
+  const title = mark.attrs.title as string | null
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -41,6 +42,7 @@ export function Link() {
       href={href}
       ref={contentRef}
       style={{ color, transition: 'color 1s ease-in-out' }}
+      title={title || undefined}
     >
     </a>
   )
