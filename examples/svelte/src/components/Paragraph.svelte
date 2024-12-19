@@ -10,7 +10,7 @@
 
 </script>
 
-<div use:contentRef class:selected={selected} />
+<div use:contentRef class:selected={selected} ></div>
 
 <style>
   .selected {
