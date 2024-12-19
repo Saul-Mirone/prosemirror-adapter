@@ -1,7 +1,7 @@
 import antfu from '@antfu/eslint-config'
+import { fixupPluginRules } from '@eslint/compat'
 import react from 'eslint-plugin-react'
 import hooks from 'eslint-plugin-react-hooks'
-import { fixupPluginRules } from '@eslint/compat'
 
 export default antfu(
   {

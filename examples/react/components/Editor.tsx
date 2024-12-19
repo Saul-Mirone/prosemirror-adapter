@@ -1,17 +1,17 @@
-import './Editor.css'
-
-import { useNodeViewFactory, usePluginViewFactory, useWidgetViewFactory } from '@prosemirror-adapter/react'
 import type { EditorView } from 'prosemirror-view'
-import { DecorationSet } from 'prosemirror-view'
+
 import type { FC } from 'react'
+import { useNodeViewFactory, usePluginViewFactory, useWidgetViewFactory } from '@prosemirror-adapter/react'
+import { Plugin } from 'prosemirror-state'
+import { DecorationSet } from 'prosemirror-view'
 import { useCallback, useRef } from 'react'
 
-import { Plugin } from 'prosemirror-state'
 import { createEditorView } from '../createEditorView'
+import { Hashes } from './Hashes'
 import { Heading } from './Heading'
 import { Paragraph } from './Paragraph'
 import { Size } from './Size'
-import { Hashes } from './Hashes'
+import './Editor.css'
 
 export const Editor: FC = () => {
   const viewRef = useRef<EditorView>()

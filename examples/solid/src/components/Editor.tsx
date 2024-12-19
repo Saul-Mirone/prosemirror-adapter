@@ -1,14 +1,14 @@
-import { DecorationSet } from 'prosemirror-view'
 import {
   useNodeViewFactory,
   usePluginViewFactory,
   useWidgetViewFactory,
 } from '@prosemirror-adapter/solid'
 import { Plugin } from 'prosemirror-state'
+import { DecorationSet } from 'prosemirror-view'
 import { createEditorView } from '../createEditorView'
-import { Paragraph } from './Paragraph'
 import { Hashes } from './Hashes'
 import { Heading } from './Heading'
+import { Paragraph } from './Paragraph'
 import { Size } from './Size'
 
 export function Editor() {

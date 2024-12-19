@@ -1,4 +1,6 @@
 import { setContext } from 'svelte'
+import { markViewFactoryKey } from './markView'
+import { useSvelteMarkViewCreator } from './markView/useSvelteMarkViewCreator'
 import { nodeViewFactoryKey } from './nodeView'
 import { useSvelteNodeViewCreator } from './nodeView/useSvelteNodeViewCreator'
 import { pluginViewFactoryKey } from './pluginView'
@@ -6,8 +8,6 @@ import { useSveltePluginViewCreator } from './pluginView/useSveltePluginViewCrea
 import { useSvelteRenderer } from './SvelteRenderer'
 import { widgetViewFactoryKey } from './widgetView'
 import { useSvelteWidgetViewCreator } from './widgetView/useSvelteWidgetViewCreator'
-import { markViewFactoryKey } from './markView'
-import { useSvelteMarkViewCreator } from './markView/useSvelteMarkViewCreator'
 
 export function useProsemirrorAdapterProvider() {
   const {

@@ -1,11 +1,11 @@
-import { CoreMarkView } from '@prosemirror-adapter/core'
-import { nanoid } from 'nanoid'
-import { Teleport, defineComponent, markRaw, provide, shallowRef } from 'vue'
-
 import type { VueRenderer, VueRendererComponent } from '../VueRenderer'
 import type { MarkViewContext } from './markViewContext'
-import { markViewContext } from './markViewContext'
 import type { VueMarkViewComponent } from './VueMarkViewOptions'
+
+import { CoreMarkView } from '@prosemirror-adapter/core'
+import { nanoid } from 'nanoid'
+import { defineComponent, markRaw, provide, shallowRef, Teleport } from 'vue'
+import { markViewContext } from './markViewContext'
 
 export class VueMarkView
   extends CoreMarkView<VueMarkViewComponent>

@@ -1,14 +1,14 @@
+import type { Setter } from 'solid-js'
+import type { SolidRenderer } from '../SolidRenderer'
+import type { NodeViewContext, NodeViewContextProps } from './nodeViewContext'
+
+import type { SolidNodeViewComponent } from './SolidNodeViewOptions'
 import { CoreNodeView, type CoreNodeViewSpec } from '@prosemirror-adapter/core'
 import { nanoid } from 'nanoid'
-import { Dynamic, Portal } from 'solid-js/web'
-
-import type { Setter } from 'solid-js'
 import { createSignal } from 'solid-js'
-import type { SolidRenderer } from '../SolidRenderer'
+import { Dynamic, Portal } from 'solid-js/web'
 import { hidePortalDiv } from '../utils/hidePortalDiv'
-import type { NodeViewContext, NodeViewContextProps } from './nodeViewContext'
 import { nodeViewContext } from './nodeViewContext'
-import type { SolidNodeViewComponent } from './SolidNodeViewOptions'
 
 export class SolidNodeView
   extends CoreNodeView<SolidNodeViewComponent>

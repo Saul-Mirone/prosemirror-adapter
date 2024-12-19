@@ -3,16 +3,16 @@ import {
   h,
   provide,
 } from 'vue'
+import { markViewFactoryKey } from './markView'
+import { useVueMarkViewCreator } from './markView/useVueMarkViewCreator'
 import { nodeViewFactoryKey } from './nodeView'
 import { useVueNodeViewCreator } from './nodeView/useVueNodeViewCreator'
+
 import { pluginViewFactoryKey } from './pluginView'
 import { useVuePluginViewCreator } from './pluginView/useVuePluginViewCreator'
-
 import { useVueRenderer } from './VueRenderer'
 import { useVueWidgetViewCreator } from './widgetView/useVueWidgetViewCreator'
 import { widgetViewFactoryKey } from './widgetView/widgetViewContext'
-import { useVueMarkViewCreator } from './markView/useVueMarkViewCreator'
-import { markViewFactoryKey } from './markView'
 
 export type CreateVueNodeView = ReturnType<typeof useVueNodeViewCreator>
 export type CreateVueMarkView = ReturnType<typeof useVueMarkViewCreator>

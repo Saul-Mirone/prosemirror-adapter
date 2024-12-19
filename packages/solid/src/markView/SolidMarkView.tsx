@@ -1,14 +1,14 @@
+import type { Setter } from 'solid-js'
+import type { SolidRenderer } from '../SolidRenderer'
+import type { MarkViewContext, MarkViewContextProps } from './markViewContext'
+
+import type { SolidMarkViewComponent } from './SolidMarkViewOptions'
 import { CoreMarkView, type CoreMarkViewSpec } from '@prosemirror-adapter/core'
 import { nanoid } from 'nanoid'
-import { Dynamic, Portal } from 'solid-js/web'
-
-import type { Setter } from 'solid-js'
 import { createSignal } from 'solid-js'
-import type { SolidRenderer } from '../SolidRenderer'
+import { Dynamic, Portal } from 'solid-js/web'
 import { hidePortalDiv } from '../utils/hidePortalDiv'
-import type { MarkViewContext, MarkViewContextProps } from './markViewContext'
 import { markViewContext } from './markViewContext'
-import type { SolidMarkViewComponent } from './SolidMarkViewOptions'
 
 export class SolidMarkView
   extends CoreMarkView<SolidMarkViewComponent>
