@@ -7,7 +7,7 @@
     "node": ">=20"
   },
   "scripts": {
-    "build": "pnpm -r --sort run --sequential build",
+    "build": "pnpm -r build",
     "commit": "git-cz",
     "ex": "pnpm --filter=e2e start",
     "test": "pnpm build && pnpm --filter=e2e test",
