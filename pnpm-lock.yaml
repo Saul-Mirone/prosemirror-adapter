@@ -195,9 +195,6 @@ importers:
 
   examples/react:
     dependencies:
-      '@prosemirror-adapter/react':
-        specifier: '*'
-        version: link:../../packages/react
       '@type-config/strict':
         specifier: ^1.2.1
         version: 1.2.1
@@ -246,6 +243,10 @@ importers:
       vite:
         specifier: ^5.4.11
         version: 5.4.11(@types/node@22.10.1)
+    devDependencies:
+      '@prosemirror-adapter/react':
+        specifier: '*'
+        version: link:../../packages/react
 
   examples/solid:
     dependencies:
