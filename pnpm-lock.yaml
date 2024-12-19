@@ -250,7 +250,7 @@ importers:
   examples/solid:
     dependencies:
       '@prosemirror-adapter/solid':
-        specifier: workspace:*
+        specifier: '*'
         version: link:../../packages/solid
       prosemirror-example-setup:
         specifier: ^1.2.3
