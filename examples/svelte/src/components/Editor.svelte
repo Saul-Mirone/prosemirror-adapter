@@ -66,7 +66,7 @@
 
 </script>
 
-<div class="editor" use:editor/>
+<div class="editor" use:editor></div>
 
 <style>
   .editor {

@@ -5,12 +5,10 @@
   "license": "MIT",
   "scripts": {
     "start": "vite",
-    "dev": "vite",
-    "build": "vite build",
-    "serve": "vite preview"
+    "dev": "vite"
   },
   "dependencies": {
-    "@prosemirror-adapter/solid": "workspace:*",
+    "@prosemirror-adapter/solid": "*",
     "prosemirror-example-setup": "^1.2.3",
     "prosemirror-keymap": "^1.2.2",
     "prosemirror-menu": "^1.2.4",

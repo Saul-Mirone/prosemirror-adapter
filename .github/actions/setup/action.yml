@@ -26,5 +26,5 @@ runs:
       shell: bash
 
     - name: Build packages
-      run: pnpm build
+      run: pnpm run build
       shell: bash

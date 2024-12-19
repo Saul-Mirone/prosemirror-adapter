@@ -1,7 +1,7 @@
 {
   "name": "@prosemirror-adapter/monorepo",
   "private": true,
-  "packageManager": "pnpm@9.12.2",
+  "packageManager": "pnpm@9.15.0",
   "license": "MIT",
   "engines": {
     "node": ">=20"
@@ -10,7 +10,7 @@
     "build": "pnpm -r run build",
     "commit": "git-cz",
     "ex": "pnpm --filter=e2e start",
-    "test": "pnpm build && pnpm --filter=e2e test",
+    "test": "pnpm run build && pnpm --filter=e2e test",
     "test:install": "pnpm --filter=e2e test:install",
     "changeset": "changeset",
     "lint": "eslint .",
@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@antfu/eslint-config": "^3.0.0",
-    "@changesets/cli": "^2.26.1",
+    "@changesets/cli": "^2.27.11",
     "@commitlint/cli": "^19.0.0",
     "@commitlint/config-conventional": "^19.0.0",
     "@eslint/compat": "^1.0.1",
