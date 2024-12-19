@@ -2,8 +2,8 @@ import type { PluginViewSpec } from '@prosemirror-adapter/core'
 import type { LitElement } from 'lit'
 import type { EditorState } from 'prosemirror-state'
 import type { EditorView } from 'prosemirror-view'
-import { ContextConsumer, createContext } from '@lit-labs/context'
 import type { LitPluginViewUserOptions } from './LitPluginViewOptions'
+import { ContextConsumer, createContext } from '@lit-labs/context'
 
 export interface PluginViewContext {
   view: EditorView

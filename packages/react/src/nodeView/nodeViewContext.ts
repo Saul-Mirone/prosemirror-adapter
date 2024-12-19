@@ -1,7 +1,7 @@
 import type { Attrs, Node } from 'prosemirror-model'
 import type { Decoration, DecorationSource, EditorView, NodeViewConstructor } from 'prosemirror-view'
-import { createContext, useContext } from 'react'
 import type { ReactNodeViewUserOptions } from './ReactNodeViewOptions'
+import { createContext, useContext } from 'react'
 
 export type NodeViewContentRef = (element: HTMLElement | null) => void
 

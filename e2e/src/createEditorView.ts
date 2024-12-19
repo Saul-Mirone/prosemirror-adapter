@@ -1,18 +1,18 @@
-import 'prosemirror-example-setup/style/style.css'
-import 'prosemirror-menu/style/menu.css'
-import 'prosemirror-view/style/prosemirror.css'
-
-import { exampleSetup } from 'prosemirror-example-setup'
-import { keymap } from 'prosemirror-keymap'
-import { DOMParser } from 'prosemirror-model'
-import { schema } from 'prosemirror-schema-basic'
 import type { Plugin } from 'prosemirror-state'
-import { EditorState } from 'prosemirror-state'
 import type {
   MarkViewConstructor,
   NodeViewConstructor,
 } from 'prosemirror-view'
+import { exampleSetup } from 'prosemirror-example-setup'
+
+import { keymap } from 'prosemirror-keymap'
+import { DOMParser } from 'prosemirror-model'
+import { schema } from 'prosemirror-schema-basic'
+import { EditorState } from 'prosemirror-state'
 import { EditorView } from 'prosemirror-view'
+import 'prosemirror-example-setup/style/style.css'
+import 'prosemirror-menu/style/menu.css'
+import 'prosemirror-view/style/prosemirror.css'
 
 export function createEditorView(
   element: HTMLElement | ShadowRoot,

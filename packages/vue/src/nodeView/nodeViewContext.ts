@@ -1,8 +1,8 @@
 import type { Attrs, Node } from 'prosemirror-model'
 import type { Decoration, DecorationSource, EditorView, NodeViewConstructor } from 'prosemirror-view'
 import type { InjectionKey, ShallowRef, VNodeRef } from 'vue'
-import { inject } from 'vue'
 import type { VueNodeViewUserOptions } from './VueNodeViewOptions'
+import { inject } from 'vue'
 
 export interface NodeViewContext {
   // won't change

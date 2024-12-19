@@ -1,11 +1,11 @@
-import { CoreNodeView } from '@prosemirror-adapter/core'
-import { nanoid } from 'nanoid'
-import { Teleport, defineComponent, markRaw, provide, shallowRef } from 'vue'
-
 import type { VueRenderer, VueRendererComponent } from '../VueRenderer'
 import type { NodeViewContext } from './nodeViewContext'
-import { nodeViewContext } from './nodeViewContext'
 import type { VueNodeViewComponent } from './VueNodeViewOptions'
+
+import { CoreNodeView } from '@prosemirror-adapter/core'
+import { nanoid } from 'nanoid'
+import { defineComponent, markRaw, provide, shallowRef, Teleport } from 'vue'
+import { nodeViewContext } from './nodeViewContext'
 
 export class VueNodeView extends CoreNodeView<VueNodeViewComponent> implements VueRenderer<NodeViewContext> {
   key: string = nanoid()

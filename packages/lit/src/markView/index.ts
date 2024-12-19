@@ -1,3 +1,3 @@
-export * from './markViewContext'
 export * from './LitMarkView'
 export * from './LitMarkViewOptions'
+export * from './markViewContext'

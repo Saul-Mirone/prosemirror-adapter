@@ -1,7 +1,7 @@
 import type { NodeViewConstructor } from 'prosemirror-view'
 import type { SolidRendererResult } from '../SolidRenderer'
-import { SolidNodeView } from './SolidNodeView'
 import type { SolidNodeViewUserOptions } from './SolidNodeViewOptions'
+import { SolidNodeView } from './SolidNodeView'
 
 export function useSolidNodeViewCreator(
   renderSolidRenderer: SolidRendererResult['renderSolidRenderer'],

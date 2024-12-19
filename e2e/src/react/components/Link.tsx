@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
 import { useMarkViewContext } from '@prosemirror-adapter/react'
+import { useEffect, useState } from 'react'
 
 const colors = [
   '#f06292',

@@ -1,8 +1,8 @@
 import type { PluginViewSpec } from '@prosemirror-adapter/core'
-import { useCallback } from 'react'
 import type { ReactRendererResult } from '../ReactRenderer'
-import { ReactPluginView } from './ReactPluginView'
 import type { ReactPluginViewUserOptions } from './ReactPluginViewOptions'
+import { useCallback } from 'react'
+import { ReactPluginView } from './ReactPluginView'
 
 export function useReactPluginViewCreator(renderReactRenderer: ReactRendererResult['renderReactRenderer'], removeReactRenderer: ReactRendererResult['removeReactRenderer']) {
   const createReactPluginView = useCallback((options: ReactPluginViewUserOptions): PluginViewSpec => {

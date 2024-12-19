@@ -2,8 +2,8 @@ import type { PluginViewSpec } from '@prosemirror-adapter/core'
 import type { EditorState } from 'prosemirror-state'
 import type { EditorView } from 'prosemirror-view'
 import type { InjectionKey, ShallowRef } from 'vue'
-import { inject } from 'vue'
 import type { VuePluginViewUserOptions } from './VuePluginViewOptions'
+import { inject } from 'vue'
 
 export type PluginViewContentRef = (element: HTMLElement | null) => void
 

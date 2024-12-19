@@ -1,4 +1,3 @@
-import { type Accessor, createContext, useContext } from 'solid-js'
 import type { Attrs, Node } from 'prosemirror-model'
 import type {
   Decoration,
@@ -7,6 +6,7 @@ import type {
   NodeViewConstructor,
 } from 'prosemirror-view'
 import type { SolidNodeViewUserOptions } from './SolidNodeViewOptions'
+import { type Accessor, createContext, useContext } from 'solid-js'
 
 export type NodeViewContentRef = (element: HTMLElement | null) => void
 

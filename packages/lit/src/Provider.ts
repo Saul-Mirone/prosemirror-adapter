@@ -1,6 +1,8 @@
 import { ContextProvider } from '@lit-labs/context'
 import { customElement } from 'lit/decorators.js'
 import { useLitRenderer } from './LitRenderer'
+import { markViewFactoryKey } from './markView'
+import { useLitMarkViewCreator } from './markView/useLitMarkViewCreator'
 import { nodeViewFactoryKey } from './nodeView'
 import { useLitNodeViewCreator } from './nodeView/useLitNodeViewCreator'
 import { pluginViewFactoryKey } from './pluginView'
@@ -8,8 +10,6 @@ import { useLitPluginViewCreator } from './pluginView/useLitPluginViewCreator'
 import { ShallowLitElement } from './utils/ShallowLitElement'
 import { widgetViewFactoryKey } from './widgetView'
 import { useLitWidgetViewCreator } from './widgetView/useLitWidgetViewCreator'
-import { markViewFactoryKey } from './markView'
-import { useLitMarkViewCreator } from './markView/useLitMarkViewCreator'
 
 @customElement('prosemirror-adapter-provider')
 export class ProsemirrorAdapterProvider extends ShallowLitElement {

@@ -1,14 +1,14 @@
 import type { Context } from '@lit-labs/context'
+import type { LitRenderer } from '../LitRenderer'
+import type { LitNodeViewComponent } from './LitNodeViewOptions'
+import type { NodeViewContext } from './nodeViewContext'
 import { ContextProvider } from '@lit-labs/context'
+
 import { CoreNodeView } from '@prosemirror-adapter/core'
 import { customElement } from 'lit/decorators.js'
 import { nanoid } from 'nanoid'
-
-import type { LitRenderer } from '../LitRenderer'
 import { ShallowLitElement } from '../utils'
 import { nodeViewContextKey } from './nodeViewContext'
-import type { NodeViewContext } from './nodeViewContext'
-import type { LitNodeViewComponent } from './LitNodeViewOptions'
 
 declare global {
   interface HTMLElementTagNameMap {

@@ -1,9 +1,9 @@
+import { ProsemirrorAdapterProvider } from '@prosemirror-adapter/solid'
+
 /* @refresh reload */
 import { render } from 'solid-js/web'
-
-import './index.css'
-import { ProsemirrorAdapterProvider } from '@prosemirror-adapter/solid'
 import { Editor } from './components/Editor'
+import './index.css'
 
 const root = document.getElementById('root')
 

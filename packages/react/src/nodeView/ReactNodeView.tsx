@@ -1,12 +1,12 @@
+import type { ReactRenderer } from '../ReactRenderer'
+import type { NodeViewContext } from './nodeViewContext'
+import type { ReactNodeViewComponent } from './ReactNodeViewOptions'
 import { CoreNodeView } from '@prosemirror-adapter/core'
+
 import { nanoid } from 'nanoid'
 import React from 'react'
 import { createPortal } from 'react-dom'
-
-import type { ReactRenderer } from '../ReactRenderer'
-import type { NodeViewContext } from './nodeViewContext'
 import { nodeViewContext } from './nodeViewContext'
-import type { ReactNodeViewComponent } from './ReactNodeViewOptions'
 
 export class ReactNodeView extends CoreNodeView<ReactNodeViewComponent> implements ReactRenderer<NodeViewContext> {
   key: string = nanoid()

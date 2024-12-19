@@ -1,4 +1,3 @@
-import { DecorationSet } from 'prosemirror-view'
 import {
   useMarkViewFactory,
   useNodeViewFactory,
@@ -6,12 +5,13 @@ import {
   useWidgetViewFactory,
 } from '@prosemirror-adapter/solid'
 import { Plugin } from 'prosemirror-state'
+import { DecorationSet } from 'prosemirror-view'
 import { createEditorView } from '../../createEditorView'
-import { Paragraph } from './Paragraph'
 import { Hashes } from './Hashes'
 import { Heading } from './Heading'
-import { Size } from './Size'
 import { Link } from './Link'
+import { Paragraph } from './Paragraph'
+import { Size } from './Size'
 
 export function Editor() {
   const nodeViewFactory = useNodeViewFactory()
