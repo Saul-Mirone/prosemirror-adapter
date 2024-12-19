@@ -1,5 +1,6 @@
 import { DecorationSet } from 'prosemirror-view'
 import {
+  useMarkViewFactory,
   useNodeViewFactory,
   usePluginViewFactory,
   useWidgetViewFactory,
@@ -10,9 +11,11 @@ import { Paragraph } from './Paragraph'
 import { Hashes } from './Hashes'
 import { Heading } from './Heading'
 import { Size } from './Size'
+import { Link } from './Link'
 
 export function Editor() {
   const nodeViewFactory = useNodeViewFactory()
+  const markViewFactory = useMarkViewFactory()
   const widgetViewFactory = useWidgetViewFactory()
   const pluginViewFactory = usePluginViewFactory()
 
@@ -35,6 +38,11 @@ export function Editor() {
         }),
         heading: nodeViewFactory({
           component: Heading,
+        }),
+      },
+      {
+        link: markViewFactory({
+          component: Link,
         }),
       },
       [

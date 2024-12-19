@@ -31,6 +31,7 @@ You'll need this adapter if you want to use Prosemirror to build a rich text edi
   - [ ] 🚀 coming soon...
 - [x] Add out of box support for prosemirror features
   - [x] [Prosemirror Node View](https://prosemirror.net/docs/ref/#view.NodeView)
+  - [x] [Prosemirror Mark View](https://prosemirror.net/docs/ref/#view.MarkView)
   - [x] [Prosemirror Plugin View](https://prosemirror.net/docs/ref/#state.PluginView)
   - [x] [Prosemirror Widget Decoration](https://prosemirror.net/docs/ref/#view.Decoration%5Ewidget)
 

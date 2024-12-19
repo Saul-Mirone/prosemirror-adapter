@@ -99,6 +99,101 @@ export const YourAwesomeEditor: FC = () => {
 
 <summary>
 
+### Play with mark view
+
+</summary>
+
+In this section we will implement a mark view for links that changes color periodically.
+
+#### Build component for mark view
+
+```tsx
+import { useEffect, useState } from 'react'
+import { useMarkViewContext } from '@prosemirror-adapter/react'
+
+const colors = [
+  '#f06292', '#ba68c8', '#9575cd', '#7986cb', '#64b5f6',
+  '#4fc3f7', '#4dd0e1', '#4db6ac', '#81c784', '#aed581',
+  '#ffb74d', '#ffa726', '#ff8a65', '#d4e157', '#ffd54f',
+  '#ffecb3',
+]
+
+function pickRandomColor() {
+  return colors[Math.floor(Math.random() * colors.length)]
+}
+
+export function Link() {
+  const [color, setColor] = useState(colors[0])
+  const { mark, contentRef } = useMarkViewContext()
+  const href = mark.attrs.href as string
+  const title = mark.attrs.title as string | null
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setColor(pickRandomColor())
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [])
+
+  return (
+    <a
+      href={href}
+      ref={contentRef}
+      style={{ color, transition: 'color 1s ease-in-out' }}
+      title={title || undefined}
+    >
+    </a>
+  )
+}
+```
+
+#### Bind mark view components with prosemirror
+
+```tsx
+import { useMarkViewFactory } from '@prosemirror-adapter/react'
+import type { FC } from 'react'
+import { useCallback } from 'react'
+
+export const YourAwesomeEditor: FC = () => {
+  const markViewFactory = useMarkViewFactory()
+
+  const editorRef = useCallback(
+    (element: HTMLDivElement) => {
+      if (!element || element.firstChild)
+        return
+
+      const editorView = new EditorView(element, {
+        state: EditorState.create({
+          schema: YourProsemirrorSchema,
+          plugins: [
+            new Plugin({
+              props: {
+                markViews: {
+                  link: markViewFactory({
+                    component: Link,
+                  }),
+                },
+              },
+            }),
+          ]
+        })
+      })
+    },
+    [markViewFactory],
+  )
+
+  return <div className="editor" ref={editorRef} />
+}
+```
+
+🚀 Congratulations! You have built your first react mark view with prosemirror-adapter.
+
+</details>
+
+<details>
+
+<summary>
+
 ### Play with plugin view
 
 </summary>
@@ -313,6 +408,54 @@ interface NodeViewContext {
 
   // Whether the node is selected.
   selected: boolean
+}
+```
+
+</details>
+
+<details>
+
+<summary>
+
+### Mark view API
+
+</summary>
+
+#### useMarkViewFactory: () => (options: MarkViewFactoryOptions) => MarkView
+
+```ts
+type MarkViewDOMSpec = string | HTMLElement | ((mark: Mark) => HTMLElement)
+
+interface MarkViewFactoryOptions {
+  // Component
+  component: ReactComponent
+
+  // The DOM element to use as the root node of the mark view
+  as?: MarkViewDOMSpec
+
+  // The DOM element that contains the content of the mark
+  contentAs?: MarkViewDOMSpec
+
+  // Called when the mark view is destroyed
+  destroy?: () => void
+}
+```
+
+#### useMarkViewContext: () => MarkViewContext
+
+```ts
+interface MarkViewContext {
+  // The DOM element that contains the content of the mark
+  contentRef: MarkViewContentRef
+
+  // The prosemirror editor view
+  view: EditorView
+
+  // The prosemirror mark for current mark view
+  mark: Mark
+
+  // Whether the mark is inline 
+  inline: boolean
 }
 ```
 

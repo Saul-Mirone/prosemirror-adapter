@@ -1,5 +1,6 @@
 export * from './utils'
 export * from './Provider'
 export * from './nodeView'
+export * from './markView'
 export * from './pluginView'
 export * from './widgetView'

@@ -3,7 +3,7 @@ import type { Decoration, DecorationSource, EditorView, NodeViewConstructor } fr
 import { createContext, useContext } from 'react'
 import type { ReactNodeViewUserOptions } from './ReactNodeViewOptions'
 
-export type NodeViewContentRef = (node: HTMLElement | null) => void
+export type NodeViewContentRef = (element: HTMLElement | null) => void
 
 export interface NodeViewContext {
   // won't change

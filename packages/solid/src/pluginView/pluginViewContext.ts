@@ -4,7 +4,7 @@ import type { EditorView } from 'prosemirror-view'
 import { type Accessor, createContext, useContext } from 'solid-js'
 import type { SolidPluginViewUserOptions } from './SolidPluginViewOptions'
 
-export type PluginViewContentRef = (node: HTMLElement | null) => void
+export type PluginViewContentRef = (element: HTMLElement | null) => void
 
 export interface PluginViewContextProps {
   view: EditorView

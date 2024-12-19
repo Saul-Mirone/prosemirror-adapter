@@ -8,7 +8,7 @@ import type {
 } from 'prosemirror-view'
 import type { SolidNodeViewUserOptions } from './SolidNodeViewOptions'
 
-export type NodeViewContentRef = (node: HTMLElement | null) => void
+export type NodeViewContentRef = (element: HTMLElement | null) => void
 
 export interface NodeViewContextProps {
   // won't change

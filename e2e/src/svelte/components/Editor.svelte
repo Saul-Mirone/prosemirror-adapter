@@ -2,7 +2,8 @@
   import {
     useNodeViewFactory,
     usePluginViewFactory,
-    useWidgetViewFactory
+    useWidgetViewFactory,
+    useMarkViewFactory,
   } from "@prosemirror-adapter/svelte";
   import { Plugin } from 'prosemirror-state'
   import {DecorationSet, EditorView} from "prosemirror-view";
@@ -12,8 +13,10 @@
   import Paragraph from "./Paragraph.svelte";
   import Heading from "./Heading.svelte";
   import Size from "./Size.svelte";
+  import Link from "./Link.svelte";
 
   const nodeViewFactory = useNodeViewFactory()
+  const markViewFactory = useMarkViewFactory()
   const pluginViewFactory = usePluginViewFactory()
   const widgetViewFactory = useWidgetViewFactory()
 
@@ -33,6 +36,12 @@
       }),
       heading: nodeViewFactory({
         component: Heading
+      })
+    }, {
+      link: markViewFactory({
+        component: Link,
+        as: 'span',
+        contentAs: 'span'
       })
     }, [
       new Plugin({
