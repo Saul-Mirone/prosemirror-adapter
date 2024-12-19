@@ -10,18 +10,18 @@
     "prosemirror-example-setup": "^1.2.3",
     "prosemirror-keymap": "^1.2.2",
     "prosemirror-menu": "^1.2.4",
-    "prosemirror-model": "^1.24.0",
+    "prosemirror-model": "^1.24.1",
     "prosemirror-schema-basic": "^1.2.3",
     "prosemirror-state": "^1.4.3",
-    "prosemirror-view": "^1.37.0"
+    "prosemirror-view": "^1.37.1"
   },
   "devDependencies": {
-    "@sveltejs/adapter-auto": "^3.2.5",
-    "@sveltejs/kit": "^2.7.2",
+    "@sveltejs/adapter-auto": "^3.3.1",
+    "@sveltejs/kit": "^2.12.2",
     "prettier": "^3.4.2",
     "prettier-plugin-svelte": "^3.3.2",
-    "svelte": "^5.0.2",
-    "svelte-check": "^4.0.5",
+    "svelte": "^5.14.4",
+    "svelte-check": "^4.1.1",
     "tslib": "^2.8.1",
     "typescript": "~5.6.3",
     "vite": "^5.4.11"
