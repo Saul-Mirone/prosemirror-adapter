@@ -324,11 +324,11 @@ importers:
         specifier: ^2.7.2
         version: 2.7.2(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.0.2)(vite@5.4.11(@types/node@22.10.1)))(svelte@5.0.2)(vite@5.4.11(@types/node@22.10.1))
       prettier:
-        specifier: ^2.8.7
-        version: 2.8.7
+        specifier: ^3.4.2
+        version: 3.4.2
       prettier-plugin-svelte:
-        specifier: ^3.2.8
-        version: 3.3.2(prettier@2.8.7)(svelte@5.0.2)
+        specifier: ^3.3.2
+        version: 3.3.2(prettier@3.4.2)(svelte@5.0.2)
       svelte:
         specifier: ^5.0.2
         version: 5.0.2
@@ -1496,8 +1496,8 @@ packages:
   '@vitest/eslint-plugin@1.1.0':
     resolution: {integrity: sha512-Ur80Y27Wbw8gFHJ3cv6vypcjXmrx6QHfw+q435h6Q2L+tf+h4Xf5pJTCL4YU/Jps9EVeggQxS85OcUZU7sdXRw==}
     peerDependencies:
-      '@typescript-eslint/utils': ^8.4.0
-      eslint: ^9.10.0
+      '@typescript-eslint/utils': '>= 8.0'
+      eslint: '>= 8.57.0'
       typescript: '>= 5.0.0'
       vitest: '*'
     peerDependenciesMeta:
@@ -3284,6 +3284,11 @@ packages:
   prettier@2.8.7:
     resolution: {integrity: sha512-yPngTo3aXUUmyuTjeTUT75txrf+aMh9FiD7q9ZE/i6r0bPb22g4FsE6Y338PQX1bmfy08i9QQCB7/rcUAVntfw==}
     engines: {node: '>=10.13.0'}
+    hasBin: true
+
+  prettier@3.4.2:
+    resolution: {integrity: sha512-e9MewbtFo+Fevyuxn/4rrcDAaq0IYxPGLvObpQjiZBMAzB9IGmzlnG9RZy3FFas+eBMu2vA0CszMeduow5dIuQ==}
+    engines: {node: '>=14'}
     hasBin: true
 
   prop-types@15.8.1:
@@ -7273,12 +7278,14 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier-plugin-svelte@3.3.2(prettier@2.8.7)(svelte@5.0.2):
+  prettier-plugin-svelte@3.3.2(prettier@3.4.2)(svelte@5.0.2):
     dependencies:
-      prettier: 2.8.7
+      prettier: 3.4.2
       svelte: 5.0.2
 
   prettier@2.8.7: {}
+
+  prettier@3.4.2: {}
 
   prop-types@15.8.1:
     dependencies:
